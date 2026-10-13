@@ -43,29 +43,14 @@ pub fn names(bytes: &[u8]) -> Result<(String, String), String> {
     Ok((family, postscript))
 }
 
-/// A selected external font is document input. Require its own open-licence declaration;
-/// never turn a proprietary system-interface fallback into an exported PDF font.
+/// A selected external font is document input: a font the user chose, going only into the
+/// user's own document. This fork accepts any licence; the font's own OS/2 `fsType`
+/// embedding permissions are still enforced by `validate` (via `names`), so a face whose
+/// vendor forbids editable embedding is refused. Upstream additionally required an open-licence
+/// declaration and excluded Adobe-authored and some CJK families; that is the project's asset
+/// policy (AGENTS.md §1), which governs what the project ships, not what a user embeds.
 pub fn validate_document_input(bytes: &[u8]) -> Result<(), String> {
-    use skrifa::string::StringId;
-    let (family, _) = names(bytes)?;
-    let key = face_key(&family);
-    if ["sourcehan", "sourceserif", "sourcesans", "notosanscjk", "notoserifcjk"].iter().any(|n| key.starts_with(n)) {
-        return Err("this font family is excluded by the project's asset policy".into());
-    }
-    let f = FontRef::new(bytes).map_err(|e| e.to_string())?;
-    let attribution: String =
-        [StringId::COPYRIGHT_NOTICE, StringId::MANUFACTURER].into_iter().flat_map(|id| f.localized_strings(id)).map(|s| s.to_string()).collect();
-    if attribution.to_ascii_lowercase().contains("adobe") {
-        return Err("Adobe-authored font assets are excluded by the project's asset policy".into());
-    }
-    let license: String = f.localized_strings(StringId::LICENSE_DESCRIPTION).map(|s| s.to_string()).collect();
-    if !["SIL OPEN FONT", "SIL Open Font", "Apache License", "Ubuntu Font Licence", "Bitstream Vera", "MIT License"]
-        .iter()
-        .any(|l| license.contains(l))
-    {
-        return Err("select an openly licensed font whose name table declares its licence (OFL, Apache, Ubuntu, Bitstream Vera or MIT)".into());
-    }
-    Ok(())
+    names(bytes).map(|_| ())
 }
 
 /// Validate before allocating any PDF objects, so an invalid font cannot partly mutate a doc.
