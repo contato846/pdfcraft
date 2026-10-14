@@ -350,12 +350,16 @@ fn format_section(app: &mut PdfCraftApp, ui: &mut egui::Ui, t: &Tokens) {
         let mut ed = ed;
         let mut changed = false;
         let font_choices = app.session.get(app.views[i].id).map(|d| d.text_editor_fonts(ed.page)).unwrap_or_default();
+        // Like Acrobat: with no font chosen, the box names the paragraph's own font.
+        let source_face = crate::edit_text_ui::source_face(&ed);
         egui::ComboBox::from_id_salt("document-font-resource")
             .selected_text(
                 ed.font_resource
                     .as_ref()
                     .and_then(|r| font_choices.iter().find(|f| &f.resource == r))
-                    .map_or(tl!("Keep source fonts"), |f| f.face.as_str()),
+                    .map(|f| f.face.as_str())
+                    .or(source_face.as_deref())
+                    .unwrap_or(tl!("Keep source fonts")),
             )
             .show_ui(ui, |ui| {
                 changed |= ui.selectable_value(&mut ed.font_resource, None, tl!("Keep source fonts")).changed();

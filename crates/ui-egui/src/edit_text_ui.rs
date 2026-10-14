@@ -711,6 +711,10 @@ pub(crate) fn page_input(
         view.block_drag = Some(BlockDrag { page, block, generation: doc.edit_generation(), start: o, grip });
         return true;
     }
+    // Scan the installed fonts while the text tool is open, so the first click on a paragraph
+    // can already show it in its installed face.
+    #[cfg(not(target_arch = "wasm32"))]
+    crate::files::warm_installed_fonts(ui.ctx());
     let Some(p) = ui.input(|i| i.pointer.hover_pos()).filter(|p| xf.rect.contains(*p)) else { return false };
     let Some((hit, grip)) = grab_at(&boxes, p, upright) else { return false };
     if active != Some(hit) {
@@ -757,6 +761,34 @@ pub(crate) fn page_input(
     true
 }
 
+/// Installed full faces loaded into the editor's font atlas, one per PDF face (subset tag ignored).
+#[derive(Default)]
+struct InstalledFaces(BTreeMap<String, Option<String>>);
+
+impl InstalledFaces {
+    /// The atlas name of the installed face matching `base_font`, loading it on first use.
+    fn full_face(&mut self, ctx: &egui::Context, definitions: &mut egui::FontDefinitions, base_font: &str) -> Option<String> {
+        let key = pdfcraft_fonts::embedding::face_key(base_font);
+        if let Some(known) = self.0.get(&key) {
+            return known.clone();
+        }
+        let name = crate::files::installed_match(ctx, base_font).map(|bytes| {
+            let name = format!("pdf-source-installed-{key}");
+            definitions.font_data.insert(name.clone(), Arc::new(egui::FontData::from_owned(bytes)));
+            name
+        });
+        self.0.insert(key, name.clone());
+        name
+    }
+}
+
+/// The face a paragraph is drawn in, without the PDF subset tag ("ABCDEF+NeutraText-Book").
+pub(crate) fn source_face(ed: &LineEditor) -> Option<String> {
+    let (block, _) = ed.source.as_ref()?;
+    let face = block.base_font.rsplit('+').next().unwrap_or(&block.base_font);
+    (!face.is_empty()).then(|| face.to_owned())
+}
+
 /// One TextEdit lays out all source runs; its caret and selection span the whole region.
 pub(crate) fn install_source_fonts(ctx: &egui::Context, doc: &pdfcraft_engine::Document, page: usize) -> BTreeMap<String, String> {
     let programs = doc.text_editor_fonts(page);
@@ -765,6 +797,7 @@ pub(crate) fn install_source_fonts(ctx: &egui::Context, doc: &pdfcraft_engine::D
     // programs of previously opened files or add them to the interface's default families.
     definitions.font_data.retain(|name, _| !name.starts_with("pdf-source-"));
     definitions.families.retain(|family, _| !matches!(family, FontFamily::Name(name) if name.starts_with("pdf-source-")));
+    let mut installed = InstalledFaces::default();
     let mut families = BTreeMap::new();
     for (index, program) in programs.iter().enumerate() {
         let name = format!("pdf-source-{index}");
@@ -785,10 +818,31 @@ pub(crate) fn install_source_fonts(ctx: &egui::Context, doc: &pdfcraft_engine::D
                 })
                 .filter_map(|p| families.get(&p.resource).cloned()),
         );
+        // A subset lacks the glyphs the PDF never used; the installed full face draws those
+        // in the paragraph's own face instead of the interface font.
+        if let Some(full) = installed.full_face(ctx, &mut definitions, &program.face) {
+            stack.push(full);
+        }
         if let Some(fallback) = definitions.families.get(&FontFamily::Proportional) {
             stack.extend(fallback.iter().cloned());
         }
         definitions.families.insert(FontFamily::Name(name.clone().into()), stack);
+    }
+    // Runs whose PDF font can't be drawn here (bare CFF or Type 1, as Distiller and InDesign
+    // embed, or not embedded at all) show in the matching installed face, as Acrobat does,
+    // rather than in the interface font. Display only: the document is not changed.
+    for line in doc.text_lines(page) {
+        if families.contains_key(&line.font) {
+            continue;
+        }
+        if let Some(full) = installed.full_face(ctx, &mut definitions, &line.base_font) {
+            let mut stack = vec![full.clone()];
+            if let Some(fallback) = definitions.families.get(&FontFamily::Proportional) {
+                stack.extend(fallback.iter().cloned());
+            }
+            definitions.families.insert(FontFamily::Name(full.clone().into()), stack);
+            families.insert(line.font.clone(), full);
+        }
     }
     if !families.is_empty() {
         ctx.set_fonts(definitions);

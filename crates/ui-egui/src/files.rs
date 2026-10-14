@@ -28,13 +28,48 @@ pub enum FilePurpose {
     RedactWords,
 }
 
+#[cfg(not(target_arch = "wasm32"))]
+type InstalledFonts = Arc<std::sync::Mutex<Option<Vec<pdfcraft_engine::text_fonts::FontFile>>>>;
+
 /// Discover installed document fonts off the GUI thread, only when the picker is opened.
 #[cfg(not(target_arch = "wasm32"))]
 pub(crate) fn installed_font_files(ctx: &egui::Context) -> Option<Vec<pdfcraft_engine::text_fonts::FontFile>> {
+    installed_fonts_cache(ctx).lock().ok().and_then(|f| f.clone())
+}
+
+/// Start the installed-font scan without copying its result (cheap enough to call every frame).
+#[cfg(not(target_arch = "wasm32"))]
+pub(crate) fn warm_installed_fonts(ctx: &egui::Context) {
+    installed_fonts_cache(ctx);
+}
+
+/// The full installed face whose PostScript name is a PDF font's face, ignoring the subset tag
+/// ("ABCDEF+NeutraText-Book" finds NeutraText-Book). The editor shows a paragraph in it, and an
+/// edit embeds it so characters missing from the PDF's subset keep the paragraph's face.
+/// `None` while the scan is still running.
+#[cfg(not(target_arch = "wasm32"))]
+pub(crate) fn installed_match(ctx: &egui::Context, base_font: &str) -> Option<Vec<u8>> {
+    let key = pdfcraft_fonts::embedding::face_key(base_font);
+    if key.is_empty() {
+        return None;
+    }
+    let cache = installed_fonts_cache(ctx).lock().ok()?;
+    let path = cache.as_ref()?.iter().find(|f| pdfcraft_fonts::embedding::face_key(&f.face) == key)?.path.clone();
+    drop(cache);
+    std::fs::read(path).ok()
+}
+
+#[cfg(target_arch = "wasm32")]
+pub(crate) fn installed_match(_ctx: &egui::Context, _base_font: &str) -> Option<Vec<u8>> {
+    None
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+fn installed_fonts_cache(ctx: &egui::Context) -> &'static InstalledFonts {
     use std::sync::{Mutex, OnceLock};
-    type Files = Arc<Mutex<Option<Vec<pdfcraft_engine::text_fonts::FontFile>>>>;
+    type Files = InstalledFonts;
     static CACHE: OnceLock<Files> = OnceLock::new();
-    let files = CACHE.get_or_init(|| {
+    CACHE.get_or_init(|| {
         let files: Files = Arc::new(Mutex::new(None));
         let result = files.clone();
         let ctx = ctx.clone();
@@ -53,8 +88,7 @@ pub(crate) fn installed_font_files(ctx: &egui::Context) -> Option<Vec<pdfcraft_e
             *result = Some(Vec::new());
         }
         files
-    });
-    files.lock().ok().and_then(|f| f.clone())
+    })
 }
 
 /// The picker for `purpose`: PDFs, and for Create and Insert also what they convert.

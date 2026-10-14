@@ -7,13 +7,16 @@ use pdfcraft_engine::{BlockStyle, Edit, Session};
 use pdfcraft_render::{PageRenderer, RenderRequest};
 use std::sync::Arc;
 fn document() -> Arc<Vec<u8>> {
+    document_with("Helvetica")
+}
+fn document_with(base_font: &str) -> Arc<Vec<u8>> {
     let mut d = Document::new_empty();
     let pages = d.add(Object::Dict(Dict::new()));
     let contents = d.add(Object::Stream(Stream::flate(Dict::new(), b"BT /F1 18 Tf 30 160 Td (Source) Tj ET")));
     let mut font = Dict::new();
     font.set(b"Type".to_vec(), Object::name("Font"));
     font.set(b"Subtype".to_vec(), Object::name("Type1"));
-    font.set(b"BaseFont".to_vec(), Object::name("Helvetica"));
+    font.set(b"BaseFont".to_vec(), Object::name(base_font));
     let mut fonts = Dict::new();
     fonts.set(b"F1".to_vec(), Object::Dict(font));
     let mut res = Dict::new();
@@ -97,4 +100,32 @@ fn contextual_arabic_marks_ligatures_and_mixed_bidi_keep_logical_text_after_reop
         return;
     }
     exercise(font.bytes.to_vec(), "سَلَام 123", "NotoSansArabic-Regular");
+}
+
+/// A paragraph whose PDF font is subset-tagged and not drawable here (as from Distiller), and an
+/// installed full face of the same name registered before the rewrite (what the desktop app does
+/// when the draft has new characters): characters outside the source encoding stay in that face.
+#[test]
+fn registered_installed_face_completes_a_subset_tagged_paragraph() {
+    let inter = std::fs::read(concat!(env!("CARGO_MANIFEST_DIR"), "/../../assets/fonts/Inter-Regular.ttf")).unwrap();
+    let draft = "Source ő";
+    for register in [false, true] {
+        let mut s = Session::new();
+        let id = s.open("subset.pdf", None, document_with("ABCDEF+Inter-Regular"), None).unwrap();
+        if register {
+            s.apply(id, Edit::RegisterTextFont { page: 0, bytes: Arc::new(inter.clone()) }).unwrap();
+        }
+        let applied = s.apply(id, Edit::EditTextBlock { page: 0, block: 0, text: draft.into(), style: BlockStyle::default() });
+        let faces: Vec<String> = s.get(id).unwrap().text_lines(0).iter().map(|l| pdfcraft_fonts::embedding::face_key(&l.base_font)).collect();
+        eprintln!("register={register}: {applied:?} {faces:?}");
+        if register {
+            applied.unwrap();
+            // The space between runs is a gap in the page, not a glyph.
+            let text: String = s.get(id).unwrap().text_lines(0).iter().map(|l| l.text.as_str()).collect();
+            assert_eq!(text, draft.replace(' ', ""));
+            assert!(faces.iter().all(|f| f == "interregular"), "{faces:?}");
+        } else {
+            assert!(applied.is_err() || faces.iter().any(|f| f != "interregular"), "{faces:?}");
+        }
+    }
 }

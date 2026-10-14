@@ -31,6 +31,12 @@ impl PdfCraftApp {
     /// Apply an edit to the active document. Returns `true` on success; failures are shown.
     pub fn apply_edit(&mut self, edit: Edit) -> bool {
         let Some((i, id)) = self.active_ids() else { return false };
+        if let Edit::EditTextBlock { page, block, text, style } = &edit
+            && style.family.is_none()
+            && style.resource.is_none()
+        {
+            self.register_installed_faces(id, *page, *block, text);
+        }
         let label = edit.label();
         let (form_before, page_count_before, had_xfa) = if let Some(d) = self.session.get(id) {
             (Some(std::sync::Arc::clone(&d.form)), d.info.pages.len(), d.xfa.is_some())
@@ -846,6 +852,36 @@ impl PdfCraftApp {
         } else {
             // A clean quit: nothing is left to recover.
             self.shutdown_recovery();
+        }
+    }
+
+    /// Before a paragraph is rewritten with new characters, load the installed full face of
+    /// each of its fonts into the page, as Acrobat does. The rewrite then keeps the paragraph's
+    /// face for characters its embedded subset lacks, instead of falling back to Helvetica.
+    /// Only when the draft has characters the paragraph didn't, and only once per face and page.
+    fn register_installed_faces(&mut self, id: crate::DocId, page: usize, block: usize, draft: &str) {
+        let Some(ctx) = self.ctx.clone() else { return };
+        let Some(doc) = self.session.get(id) else { return };
+        let Some(b) = doc.text_blocks(page).into_iter().nth(block) else { return };
+        if draft.chars().filter(|c| !c.is_whitespace()).all(|c| b.text.contains(c)) {
+            return;
+        }
+        let lines = doc.text_lines(page);
+        let registered: Vec<String> = doc
+            .text_editor_fonts(page)
+            .into_iter()
+            .filter(|f| f.resource.starts_with("PCFull"))
+            .map(|f| pdfcraft_fonts::embedding::face_key(&f.face))
+            .collect();
+        let faces: std::collections::BTreeMap<String, String> =
+            b.lines.iter().filter_map(|i| lines.get(*i)).map(|l| (pdfcraft_fonts::embedding::face_key(&l.base_font), l.base_font.clone())).collect();
+        for (key, face) in faces {
+            if key.is_empty() || registered.contains(&key) {
+                continue;
+            }
+            let Some(bytes) = crate::files::installed_match(&ctx, &face) else { continue };
+            // A face the engine refuses (a font collection, a variable font) just isn't used.
+            let _ = self.session.apply(id, Edit::RegisterTextFont { page, bytes: std::sync::Arc::new(bytes) });
         }
     }
 }
