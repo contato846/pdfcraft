@@ -180,6 +180,24 @@ impl LineEditor {
         (self.max_width > self.rect.width()).then_some(self.max_width)
     }
 
+    /// The look of the source run drawing the draft's character at `byte`: its face's weight
+    /// and slant, its size and colour. Block-wide settings (alignment) stay as they are.
+    fn look_at(&self, byte: usize) -> Option<pdfcraft_engine::AddedText> {
+        let (block, lines) = self.source.as_ref()?;
+        let spans = block.edited_spans(&self.text);
+        let index = spans.iter().find(|(r, _)| r.contains(&byte)).or(spans.last()).map(|(_, i)| *i)?;
+        let line = lines.get(index)?;
+        let run = source_look(&line.base_font, line.size, line.color, line.bold, line.italic);
+        Some(pdfcraft_engine::AddedText {
+            family: run.family,
+            bold: run.bold,
+            italic: run.italic,
+            size: run.size,
+            color: run.color,
+            ..self.look.clone()
+        })
+    }
+
     /// Whether the edited text differs from the original (unsaved changes).
     pub fn has_unsaved_text(&self) -> bool {
         self.text != self.original
@@ -1084,6 +1102,17 @@ pub(crate) fn overlay(ctx: &egui::Context, view: &mut DocView, info: &DocInfo) -
                     let selected = cursor.as_sorted_char_range();
                     let byte = |index| ed.text.char_indices().nth(index).map_or(ed.text.len(), |(at, _)| at);
                     ed.selection = (!selected.is_empty()).then(|| byte(selected.start.into())..byte(selected.end.into()));
+                    // Like Word and Acrobat, the Format panel shows the run under the caret (the
+                    // character before it) or the start of the selection, while nothing is pending.
+                    let start: usize = selected.start.into();
+                    let at = if selected.is_empty() { start.saturating_sub(1) } else { start };
+                    if ed.look == ed.look0
+                        && let Some(look) = ed.look_at(byte(at))
+                        && look != ed.look
+                    {
+                        ed.look = look.clone();
+                        ed.look0 = look;
+                    }
                 }
                 let r = output.response;
                 if r.changed() {

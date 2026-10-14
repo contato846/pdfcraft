@@ -103,3 +103,65 @@ fn a_paragraph_opens_in_its_installed_face_and_new_characters_keep_it() {
     assert_eq!(lines.iter().map(|l| l.text.as_str()).collect::<String>().replace(' ', ""), "Page1ő");
     assert!(lines.iter().all(|l| pdfcraft_fonts::embedding::face_key(&l.base_font) == "interregular"), "{lines:?}");
 }
+
+/// One line drawn in two runs: "Page " in Helvetica 24 pt and "bold" in Helvetica-BoldOblique 18 pt.
+fn mixed_fixture() -> Vec<u8> {
+    let body = "BT /F1 24 Tf 20 150 Td (Page ) Tj /F2 18 Tf (bold) Tj ET";
+    let objs = [
+        "<< /Type /Catalog /Pages 2 0 R >>".to_string(),
+        "<< /Type /Pages /Kids [4 0 R] /Count 1 /MediaBox [0 0 200 300] >>".into(),
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>".into(),
+        "<< /Type /Page /Parent 2 0 R /Contents 5 0 R /Resources << /Font << /F1 3 0 R /F2 6 0 R >> >> >>".into(),
+        format!("<< /Length {} >>\nstream\n{body}\nendstream", body.len()),
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-BoldOblique >>".into(),
+    ];
+    let mut out = b"%PDF-1.7\n".to_vec();
+    let mut offsets = Vec::new();
+    for (i, o) in objs.iter().enumerate() {
+        offsets.push(out.len());
+        out.extend_from_slice(format!("{} 0 obj\n{o}\nendobj\n", i + 1).as_bytes());
+    }
+    let xref = out.len();
+    out.extend_from_slice(format!("xref\n0 {}\n0000000000 65535 f \n", objs.len() + 1).as_bytes());
+    for o in offsets {
+        out.extend_from_slice(format!("{o:010} 00000 n \n").as_bytes());
+    }
+    out.extend_from_slice(format!("trailer\n<< /Size {} /Root 1 0 R >>\nstartxref\n{xref}\n%%EOF\n", objs.len() + 1).as_bytes());
+    out
+}
+
+#[test]
+fn the_format_panel_follows_the_run_under_the_caret() {
+    let mut h = Harness::builder().with_size(egui::vec2(1400.0, 900.0)).build_eframe(|_cc| {
+        let mut app = PdfCraftApp::new();
+        app.set_option("language", "en").unwrap();
+        app.open_bytes("mixed.pdf", None, mixed_fixture()).unwrap();
+        app
+    });
+    h.run_steps(4);
+    assert!(h.state_mut().execute("edit.edit_text"));
+    h.run_steps(2);
+    let r = h.state().views[0].page_screen_rect(0).unwrap();
+    let at = egui::pos2(r.left() + 30.0 / 200.0 * r.width(), r.top() + (300.0 - 158.0) / 300.0 * r.height());
+    h.hover_at(at);
+    h.run_steps(1);
+    h.drag_at(at);
+    h.run_steps(1);
+    h.drop_at(at);
+    h.run_steps(4);
+    let blocks = h.state().session.get(h.state().views[0].id).unwrap().text_blocks(0);
+    assert_eq!(blocks.len(), 1, "one paragraph with two runs: {blocks:?}");
+    // The caret at the end of the line sits after "bold": the panel shows bold italic 18 pt.
+    h.key_press(Key::End);
+    h.run_steps(2);
+    let look = h.state().views[0].line_editor.as_ref().unwrap().look.clone();
+    assert!(look.bold && look.italic && look.size == 18.0, "{look:?}");
+    // At the start of the line, after "P": regular 24 pt.
+    h.key_press(Key::Home);
+    h.key_press(Key::ArrowRight);
+    h.run_steps(2);
+    let look = h.state().views[0].line_editor.as_ref().unwrap().look.clone();
+    assert!(!look.bold && !look.italic && look.size == 24.0, "{look:?}");
+    // Nothing was changed by moving the caret.
+    assert_eq!(h.state().session.get(h.state().views[0].id).unwrap().can_undo(), None);
+}
