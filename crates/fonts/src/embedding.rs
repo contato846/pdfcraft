@@ -44,11 +44,10 @@ pub fn names(bytes: &[u8]) -> Result<(String, String), String> {
 }
 
 /// A selected external font is document input: a font the user chose, going only into the
-/// user's own document. This fork accepts any licence; the font's own OS/2 `fsType`
-/// embedding permissions are still enforced by `validate` (via `names`), so a face whose
-/// vendor forbids editable embedding is refused. Upstream additionally required an open-licence
-/// declaration and excluded Adobe-authored and some CJK families; that is the project's asset
-/// policy (AGENTS.md §1), which governs what the project ships, not what a user embeds.
+/// user's own document. This fork accepts any licence and does not enforce the OS/2 `fsType`
+/// embedding bits (see `validate`); licensing is the user's responsibility. Upstream requires an
+/// open-licence declaration, excludes Adobe-authored and some CJK families (the project's asset
+/// policy, AGENTS.md §1) and refuses faces whose fsType forbids editable embedding.
 pub fn validate_document_input(bytes: &[u8]) -> Result<(), String> {
     names(bytes).map(|_| ())
 }
@@ -65,9 +64,9 @@ pub fn validate(bytes: &[u8]) -> Result<(), String> {
     if (font.glyf().is_err() && font.cff().is_err()) || font.head().is_err() || font.hhea().is_err() || font.hmtx().is_err() {
         return Err("the selected font has no usable TrueType/CFF outlines and metrics".into());
     }
-    if font.os2().is_ok_and(|t| t.fs_type() & (0x0002 | 0x0004 | 0x0200) != 0) {
-        return Err("this font's embedding permissions prohibit editable outline embedding".into());
-    }
+    // This fork does not enforce the OS/2 fsType embedding bits (Restricted, Preview & Print,
+    // Bitmap only): the fork's user holds licences for the fonts they embed and decided to rely
+    // on those licences rather than on the flag. Upstream refuses such faces here.
     let m = font.metrics(Size::unscaled(), LocationRef::default());
     if m.units_per_em == 0 || font.charmap().mappings().next().is_none() {
         return Err("the selected font has no Unicode mapping or valid units per em".into());

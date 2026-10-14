@@ -32,7 +32,7 @@ pub fn installed_directories() -> Vec<PathBuf> {
     }
 }
 
-/// Bounded, symlink-free scan. Only standalone faces whose fsType permits editable embedding are listed.
+/// Bounded, symlink-free scan. Only standalone, valid TrueType/OpenType faces are listed.
 /// The caller controls roots (automation resolves confinement before calling this).
 pub fn discover(roots: &[PathBuf]) -> Vec<FontFile> {
     use std::io::Read;
