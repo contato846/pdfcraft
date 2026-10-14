@@ -165,3 +165,56 @@ fn the_format_panel_follows_the_run_under_the_caret() {
     // Nothing was changed by moving the caret.
     assert_eq!(h.state().session.get(h.state().views[0].id).unwrap().can_undo(), None);
 }
+
+/// One font list, in Format text beside the size: it names the paragraph's font, and choosing a
+/// font (here, loading one, as the list's installed fonts and "Load font…" do) applies it at once.
+#[test]
+fn the_font_list_sits_in_format_text_and_applies_the_chosen_font() {
+    use egui_kittest::kittest::Queryable;
+    let mut h = Harness::builder().with_size(egui::vec2(1400.0, 900.0)).build_eframe(|_cc| {
+        let mut app = PdfCraftApp::new();
+        app.set_option("language", "en").unwrap();
+        app.open_bytes("mixed.pdf", None, mixed_fixture()).unwrap();
+        app
+    });
+    h.run_steps(4);
+    assert!(h.state_mut().execute("edit.edit_text"));
+    h.run_steps(2);
+    let r = h.state().views[0].page_screen_rect(0).unwrap();
+    let at = egui::pos2(r.left() + 30.0 / 200.0 * r.width(), r.top() + (300.0 - 158.0) / 300.0 * r.height());
+    h.hover_at(at);
+    h.run_steps(1);
+    h.drag_at(at);
+    h.run_steps(1);
+    h.drop_at(at);
+    h.run_steps(4);
+    h.key_press(Key::Home);
+    h.key_press(Key::ArrowRight);
+    h.run_steps(2);
+    assert!(h.state().views[0].line_editor.is_some(), "editing");
+    h.run_steps(4);
+    // The font box names the run's font; the separate boxes above Format text are gone.
+    let title = h.get_by_label("FORMAT TEXT").rect();
+    let combo = |h: &Harness<'static, PdfCraftApp>, value: &str| {
+        h.query_by(|n| n.role() == egui::accesskit::Role::ComboBox && n.value().as_deref() == Some(value)).map(|n| n.rect())
+    };
+    let font = combo(&h, "Helvetica").expect("font list");
+    let size = combo(&h, "24 pt").expect("size list");
+    assert!(
+        font.top() > title.bottom() && (font.center().y - size.center().y).abs() <= 6.0 && font.right() <= size.left(),
+        "{title:?} {font:?} {size:?}"
+    );
+    assert!(combo(&h, "Keep source fonts").is_none() && combo(&h, "Installed fonts…").is_none());
+    assert!(h.query_by_label("Load font…").is_none(), "Load font… is inside the list");
+    // Choosing a font applies it to the paragraph in one step.
+    let inter = std::fs::read(concat!(env!("CARGO_MANIFEST_DIR"), "/../../assets/fonts/Inter-Regular.ttf")).unwrap();
+    h.state_mut().use_files(pdfcraft_ui_egui::FilePurpose::TextFont { page: 0 }, vec![("Inter-Regular.ttf".into(), inter)]);
+    h.run_steps(4);
+    let id = h.state().views[0].id;
+    let doc = h.state().session.get(id).unwrap();
+    assert_eq!(doc.can_undo(), Some("Edit text"));
+    assert!(doc.text_lines(0).iter().all(|l| l.base_font == "Inter-Regular"), "{:?}", doc.text_lines(0));
+    assert!(h.state().views[0].line_editor.is_some(), "still editing");
+    h.run_steps(2);
+    assert!(combo(&h, "Inter-Regular").is_some(), "the list names the applied font");
+}

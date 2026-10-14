@@ -198,6 +198,11 @@ impl LineEditor {
         })
     }
 
+    /// What the paragraph (or the run under the caret) had before the panel changed it.
+    pub(crate) fn look0(&self) -> &pdfcraft_engine::AddedText {
+        &self.look0
+    }
+
     /// Whether the edited text differs from the original (unsaved changes).
     pub fn has_unsaved_text(&self) -> bool {
         self.text != self.original

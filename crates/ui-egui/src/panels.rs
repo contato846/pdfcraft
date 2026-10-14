@@ -350,44 +350,91 @@ fn format_section(app: &mut PdfCraftApp, ui: &mut egui::Ui, t: &Tokens) {
         let mut ed = ed;
         let mut changed = false;
         let font_choices = app.session.get(app.views[i].id).map(|d| d.text_editor_fonts(ed.page)).unwrap_or_default();
-        // Like Acrobat: with no font chosen, the box names the paragraph's own font.
+        // Like Acrobat: one font list beside the size. With nothing chosen it names the font of
+        // the run under the caret; it also offers the page's document fonts and the standard
+        // families.
         let source_face = crate::edit_text_ui::source_face(&ed);
-        egui::ComboBox::from_id_salt("document-font-resource")
-            .selected_text(
-                ed.font_resource
-                    .as_ref()
-                    .and_then(|r| font_choices.iter().find(|f| &f.resource == r))
-                    .map(|f| f.face.as_str())
-                    .or(source_face.as_deref())
-                    .unwrap_or(tl!("Keep source fonts")),
-            )
-            .show_ui(ui, |ui| {
-                changed |= ui.selectable_value(&mut ed.font_resource, None, tl!("Keep source fonts")).changed();
+        let mut picked_family = None;
+        let mut picked_resource = None;
+        let mut picked_installed: Option<std::path::PathBuf> = None;
+        let mut load_font = false;
+        let selected = ed
+            .font_resource
+            .as_ref()
+            .and_then(|r| font_choices.iter().find(|f| &f.resource == r))
+            .map(|f| f.face.clone())
+            .or_else(|| (ed.look.family == ed.look0().family).then(|| source_face.clone()).flatten())
+            .unwrap_or_else(|| ed.look.family.label().to_owned());
+        let mut font_box = |ui: &mut egui::Ui| {
+            egui::ComboBox::from_id_salt("document-font-resource").selected_text(selected.as_str()).width(150.0).show_ui(ui, |ui| {
+                if let Some(face) = &source_face
+                    && ui.selectable_label(ed.font_resource.is_none() && ed.look.family == ed.look0().family, face.as_str()).clicked()
+                {
+                    picked_resource = Some(None);
+                    picked_family = Some(ed.look0().family);
+                }
                 for font in font_choices.iter().filter(|f| !f.resource.starts_with("PCApproved")) {
-                    changed |= ui.selectable_value(&mut ed.font_resource, Some(font.resource.clone()), &font.face).changed();
-                }
-            });
-        if ui.button(tl!("Load font…")).clicked() {
-            app.pick_files(crate::files::FilePurpose::TextFont { page: ed.page }, false);
-        }
-        #[cfg(not(target_arch = "wasm32"))]
-        egui::ComboBox::from_id_salt("installed-document-font").selected_text(tl!("Installed fonts…")).show_ui(ui, |ui| {
-            if let Some(fonts) = crate::files::installed_font_files(ui.ctx()) {
-                if fonts.is_empty() {
-                    ui.label(tl!("No openly licensed document fonts found. Load a font file."));
-                }
-                for font in fonts {
-                    if ui.selectable_label(false, &font.face).clicked() {
-                        app.use_paths(crate::files::FilePurpose::TextFont { page: ed.page }, &[font.path]);
+                    if source_face.as_deref() == Some(font.face.as_str()) {
+                        continue;
+                    }
+                    if ui.selectable_label(ed.font_resource.as_deref() == Some(font.resource.as_str()), &font.face).clicked() {
+                        picked_resource = Some(Some(font.resource.clone()));
                     }
                 }
-            } else {
-                ui.label(tl!("Finding document fonts…"));
-            }
-        });
-        if let Some(look) = crate::content_ui::format_panel(ui, t, &ed.look) {
+                // Installed fonts and a font file, in the same list: one place to choose a font.
+                #[cfg(not(target_arch = "wasm32"))]
+                {
+                    ui.separator();
+                    match crate::files::installed_font_files(ui.ctx()) {
+                        Some(fonts) => {
+                            egui::ScrollArea::vertical().id_salt("installed-document-fonts").max_height(260.0).show(ui, |ui| {
+                                for font in fonts {
+                                    if font_choices.iter().any(|f| f.face == font.face) || source_face.as_deref() == Some(font.face.as_str()) {
+                                        continue;
+                                    }
+                                    if ui.selectable_label(false, &font.face).clicked() {
+                                        picked_installed = Some(font.path.clone());
+                                    }
+                                }
+                            });
+                        }
+                        None => {
+                            ui.label(tl!("Finding document fonts…"));
+                        }
+                    }
+                }
+                if ui.selectable_label(false, tl!("Load font…")).clicked() {
+                    load_font = true;
+                }
+                ui.separator();
+                for f in [pdfcraft_engine::FontFamily::Helvetica, pdfcraft_engine::FontFamily::Times, pdfcraft_engine::FontFamily::Courier] {
+                    if ui
+                        .selectable_label(ed.font_resource.is_none() && ed.look.family != ed.look0().family && ed.look.family == f, f.label())
+                        .clicked()
+                    {
+                        picked_resource = Some(None);
+                        picked_family = Some(f);
+                    }
+                }
+            });
+        };
+        let mut look = crate::content_ui::format_panel_with(ui, t, &ed.look, Some(&mut font_box)).unwrap_or_else(|| ed.look.clone());
+        if let Some(resource) = picked_resource {
+            changed |= ed.font_resource != resource;
+            ed.font_resource = resource;
+        }
+        if let Some(family) = picked_family {
+            look.family = family;
+        }
+        if look != ed.look {
             ed.look = look;
             changed = true;
+        }
+        if load_font {
+            app.pick_files(crate::files::FilePurpose::TextFont { page: ed.page }, false);
+        }
+        if let Some(path) = picked_installed {
+            app.use_paths(crate::files::FilePurpose::TextFont { page: ed.page }, &[path]);
         }
         changed |= crate::edit_text_ui::extras_panel(ui, &mut ed.extras);
         if changed {

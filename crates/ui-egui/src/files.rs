@@ -497,14 +497,38 @@ impl PdfCraftApp {
         match purpose {
             FilePurpose::TextFont { page } => {
                 let Some((_, bytes)) = files.into_iter().next() else { return };
-                if self.apply_edit(Edit::RegisterTextFont { page, bytes: Arc::new(bytes) })
-                    && let Some((index, id)) = self.active_ids()
-                    && let Some(doc) = self.session.get(id)
-                    && let Some(ed) = self.views[index].line_editor.as_mut()
+                let face = pdfcraft_fonts::embedding::names(&bytes).ok().map(|(_, postscript)| postscript);
+                if !self.apply_edit(Edit::RegisterTextFont { page, bytes: Arc::new(bytes) }) {
+                    return;
+                }
+                let Some((index, id)) = self.active_ids() else { return };
+                let Some(mut ed) = self.views[index].line_editor.clone().filter(|ed| ed.page == page) else { return };
+                // Choosing a font applies it, as in Word: to the selection, or to the paragraph.
+                let resource = self.session.get(id).and_then(|doc| {
+                    doc.text_editor_fonts(page)
+                        .into_iter()
+                        .rev()
+                        .find(|f| f.resource.starts_with("PCFull") && Some(&f.face) == face.as_ref())
+                        .map(|f| f.resource)
+                });
+                if let Some(resource) = resource {
+                    ed.font_resource = Some(resource);
+                    let edit = Edit::EditTextBlock { page, block: ed.block, text: ed.text.clone(), style: ed.style() };
+                    if self.apply_edit(edit) {
+                        ed.applied();
+                    } else {
+                        ed.font_resource = None;
+                    }
+                }
+                if let Some(doc) = self.session.get(id)
                     && let Some(ctx) = self.ctx.as_ref()
                 {
+                    if let Some(block) = doc.text_blocks(page).get(ed.block) {
+                        ed.refresh_source(block, doc.text_lines(page));
+                    }
                     ed.fonts = crate::edit_text_ui::install_source_fonts(ctx, doc, page);
                 }
+                self.views[index].line_editor = Some(ed);
             }
             FilePurpose::Combine => self.stage_combine(files),
             FilePurpose::InsertPages => self.insert_files(files),
