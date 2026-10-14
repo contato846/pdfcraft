@@ -182,6 +182,9 @@ struct TextState {
     leading: f64,
     rise: f64,
     fill: Vec<Op>,
+    /// The fill colour space is Separation or DeviceN: `sc`/`scn` operands are ink tints
+    /// (1 = full ink), not grey levels.
+    fill_tint: bool,
     /// The text rendering mode (`Tr`); 3 is invisible text, as in an OCR layer over a scan.
     render_mode: i64,
 }
@@ -196,6 +199,7 @@ impl TextState {
             leading: ts.leading,
             rise: ts.rise,
             fill: ts.fill.clone(),
+            fill_tint: ts.fill_tint,
             render_mode: ts.render_mode,
         }
     }
@@ -336,6 +340,8 @@ struct Ts {
     ctm: Matrix,
     /// The operators that set the current fill colour (`g`, `rg`, `k`, or `cs` + `sc`/`scn`).
     fill: Vec<Op>,
+    /// See [`TextState::fill_tint`].
+    fill_tint: bool,
     font: Option<(Vec<u8>, Rc<Metrics>)>,
     /// The Japanese or Hebrew fallback face the font subsets, when the font is one (see [`is_type3_fallback`]).
     face: Option<String>,
@@ -420,10 +426,29 @@ fn page_dict(doc: &Document, page: usize) -> Result<pdfcraft_model::Page, EditEr
     pdfcraft_model::pages(doc).into_iter().nth(page).ok_or(EditError::NoSuchPage(page))
 }
 
-fn fill_color(fill: &[Op]) -> [f64; 3] {
+/// Whether the named fill colour space is Separation or DeviceN (spot or process inks), whose
+/// components are tints. InDesign and Distiller often set text in one ("Black", a Pantone).
+fn tint_space(doc: &Document, resources: &Dict, name: &[u8]) -> bool {
+    let spaces = resources.get(b"ColorSpace").and_then(|c| doc.dict(c)).unwrap_or_default();
+    let Some(space) = spaces.get(name) else { return false };
+    let space = doc.resolve(space);
+    let family = match space.as_ref() {
+        Object::Array(a) => a.first().and_then(|f| f.as_name().map(<[u8]>::to_vec)),
+        other => other.as_name().map(<[u8]>::to_vec),
+    };
+    matches!(family.as_deref(), Some(b"Separation" | b"DeviceN"))
+}
+
+fn fill_color(fill: &[Op], tint: bool) -> [f64; 3] {
     let Some(op) = fill.iter().rev().find(|op| matches!(op.op.as_slice(), b"g" | b"rg" | b"k" | b"sc" | b"scn")) else {
         return [0.0, 0.0, 0.0];
     };
+    // An ink tint of 1 is full ink: shown as dark grey of the strongest component, never as
+    // the white a grey level of 1 would be (which hid such text while it was being edited).
+    if tint && matches!(op.op.as_slice(), b"sc" | b"scn") {
+        let ink = op.operands.iter().filter_map(Object::as_f64).fold(0.0_f64, f64::max).clamp(0.0, 1.0);
+        return [1.0 - ink; 3];
+    }
     let space = match op.op.as_slice() {
         b"sc" | b"scn" => match op.operands.len() {
             1 => b"g".as_slice(),
@@ -501,6 +526,7 @@ impl Carry {
         let ts = Ts {
             ctm: Matrix::IDENTITY,
             fill: Vec::new(),
+            fill_tint: false,
             font: None,
             face: None,
             size: 0.0,
@@ -521,12 +547,13 @@ type Invocation = (usize, Vec<u8>, Ts);
 fn interpret(
     doc: &Document,
     ops: &[Op],
-    fonts_res: &Dict,
+    resources: &Dict,
     cache: &mut HashMap<Vec<u8>, (Rc<Metrics>, Option<String>)>,
     carry: &mut Carry,
     mut invoked: Option<&mut Vec<Invocation>>,
     logical_text: bool,
 ) -> Vec<Shown> {
+    let fonts_res = resources.get(b"Font").map(|f| doc.resolve(f)).and_then(|f| f.as_dict().cloned()).unwrap_or_default();
     let mut out: Vec<Shown> = Vec::new();
     let mut ts = carry.ts.clone();
     let mut at_bt = (0usize, ts.clone());
@@ -596,7 +623,10 @@ fn interpret(
                 bt += 1;
                 at_bt = (i, ts.clone());
             }
-            b"g" | b"rg" | b"k" | b"cs" => ts.fill = vec![op.clone()],
+            b"g" | b"rg" | b"k" | b"cs" => {
+                ts.fill = vec![op.clone()];
+                ts.fill_tint = op.is("cs") && op.name(0).is_some_and(|name| tint_space(doc, resources, name));
+            }
             b"sc" | b"scn" => {
                 ts.fill.retain(|o| o.is("cs"));
                 ts.fill.push(op.clone());
@@ -750,7 +780,6 @@ fn interpret(
 pub fn text_lines(doc: &Document, page: usize) -> Result<Vec<TextLine>, EditError> {
     let p = page_dict(doc, page)?;
     let res = p.dict.get(b"Resources").map(|r| doc.resolve(r)).and_then(|r| r.as_dict().cloned()).unwrap_or_default();
-    let fonts_res = res.get(b"Font").map(|f| doc.resolve(f)).and_then(|f| f.as_dict().cloned()).unwrap_or_default();
     let mut cache = HashMap::new();
     let mut lines: Vec<TextLine> = Vec::new();
     let mut carry = Carry::new();
@@ -758,7 +787,7 @@ pub fn text_lines(doc: &Document, page: usize) -> Result<Vec<TextLine>, EditErro
     // joined, so an operator whose operands end one piece still has them.
     let pieces = Pieces::join(&content_streams(doc, &p.dict).into_iter().map(|(_, d)| d).collect::<Vec<_>>());
     let ops = pieces.parse().ops;
-    let shown = interpret(doc, &ops, &fonts_res, &mut cache, &mut carry, None, true);
+    let shown = interpret(doc, &ops, &res, &mut cache, &mut carry, None, true);
     let mut last: Option<(usize, usize, f64, f64, f64)> = None; // (piece, bt, baseline, end_x, size)
     for mut s in shown {
         // A single RTL glyph's ActualText (e.g. lam-alef) is an inline ligature, not a
@@ -779,7 +808,7 @@ pub fn text_lines(doc: &Document, page: usize) -> Result<Vec<TextLine>, EditErro
                 && (s.text.trim().is_empty() || lines.last().is_some_and(|l| same_font(l, &s.font, s.face.as_deref())))
                 && (s.text.trim().is_empty()
                     || lines.last().is_some_and(|l| {
-                        (s.size - l.size).abs() < 0.01 && s.bold == l.bold && s.italic == l.italic && fill_color(&s.state.fill) == l.color
+                        (s.size - l.size).abs() < 0.01 && s.bold == l.bold && s.italic == l.italic && fill_color(&s.state.fill, s.state.fill_tint) == l.color
                     }))
                 && (s.baseline - base).abs() < size * 0.3
                 && s.start_x > end - size
@@ -810,7 +839,7 @@ pub fn text_lines(doc: &Document, page: usize) -> Result<Vec<TextLine>, EditErro
                 size: s.size,
                 bold: s.bold,
                 italic: s.italic,
-                color: fill_color(&s.state.fill),
+                color: fill_color(&s.state.fill, s.state.fill_tint),
                 decodable: s.decodable,
                 visual_order: s.visual_order,
                 face: s.face.clone(),
@@ -869,7 +898,10 @@ fn add_shown(lines: &mut Vec<TextLine>, last: &mut Option<(usize, f64, f64, f64)
             && (s.text.trim().is_empty() || lines.last().is_some_and(|l| same_font(l, &s.font, s.face.as_deref())))
             && (s.text.trim().is_empty()
                 || lines.last().is_some_and(|l| {
-                    (s.size - l.size).abs() < 0.01 && s.bold == l.bold && s.italic == l.italic && fill_color(&s.state.fill) == l.color
+                    (s.size - l.size).abs() < 0.01
+                        && s.bold == l.bold
+                        && s.italic == l.italic
+                        && fill_color(&s.state.fill, s.state.fill_tint) == l.color
                 }))
             && (s.baseline - base).abs() < size * 0.3
             && s.start_x > end - size
@@ -896,7 +928,7 @@ fn add_shown(lines: &mut Vec<TextLine>, last: &mut Option<(usize, f64, f64, f64)
             size: s.size,
             bold: s.bold,
             italic: s.italic,
-            color: fill_color(&s.state.fill),
+            color: fill_color(&s.state.fill, s.state.fill_tint),
             decodable: s.decodable,
             visual_order: s.visual_order,
             face: s.face.clone(),
@@ -990,10 +1022,9 @@ fn reading_lines(doc: &Document, page: usize) -> Result<Vec<TextLine>, EditError
         visits: usize,
     }
     fn walk(w: &mut Walk, ops: &[Op], resources: &Dict, carry: &mut Carry, stream: usize) {
-        let fonts_res = resources.get(b"Font").map(|f| w.doc.resolve(f)).and_then(|f| f.as_dict().cloned()).unwrap_or_default();
         let mut cache = HashMap::new();
         let mut invoked = Vec::new();
-        let shown = interpret(w.doc, ops, &fonts_res, &mut cache, carry, Some(&mut invoked), true);
+        let shown = interpret(w.doc, ops, resources, &mut cache, carry, Some(&mut invoked), true);
         let mut last = None;
         let mut forms = invoked.into_iter().peekable();
         for s in shown {
@@ -1563,11 +1594,10 @@ pub fn clear_block(doc: &mut Document, page: usize, block: usize) -> Result<(), 
     drops.extend(target.lines.iter().filter_map(|i| lines.get(*i)).flat_map(|l| l.ops.iter().copied()));
     let p = page_dict(doc, page)?;
     let res = p.dict.get(b"Resources").and_then(|r| doc.resolve(r).as_dict().cloned()).unwrap_or_default();
-    let fonts = res.get(b"Font").and_then(|r| doc.resolve(r).as_dict().cloned()).unwrap_or_default();
     let streams = content_streams(doc, &p.dict);
     let pieces = Pieces::join(&streams.iter().map(|(_, d)| d.as_slice()).collect::<Vec<_>>());
     let ops = pieces.parse().ops;
-    let shown = interpret(doc, &ops, &fonts, &mut HashMap::new(), &mut Carry::new(), None, false);
+    let shown = interpret(doc, &ops, &res, &mut HashMap::new(), &mut Carry::new(), None, false);
     let mut patches = HashMap::new();
     for s in shown.into_iter().filter(|s| drops.contains(&s.op)) {
         if s.state.render_mode >= 4 {
@@ -2118,7 +2148,7 @@ pub(crate) fn translate_blocks(doc: &mut Document, page: usize, indexes: &[usize
     let fonts = res.get(b"Font").map(|r| doc.resolve(r)).and_then(|r| r.as_dict().cloned()).unwrap_or_default();
     let pieces = Pieces::join(&streams.iter().map(|(_, d)| d.as_slice()).collect::<Vec<_>>());
     let ops = pieces.parse().ops;
-    let shown = interpret(doc, &ops, &fonts, &mut HashMap::new(), &mut Carry::new(), None, false);
+    let shown = interpret(doc, &ops, &res, &mut HashMap::new(), &mut Carry::new(), None, false);
     let mut patches = HashMap::new();
     // Keep full precision: a tiny rounded text-space change can be magnified by a CTM,
     // and restoring rise/spacing must not alter following unselected text.

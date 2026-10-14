@@ -3443,3 +3443,38 @@ fn an_items_measured_face_is_the_face_it_is_written_as() {
     let courier = |italic| Family::Courier.width("Anna", 12.0, false, italic);
     assert_eq!(courier(false), courier(true));
 }
+
+/// Text set in a Separation ink (InDesign's and Distiller's "Black" or a Pantone) at full tint
+/// reads as dark, not as the white a grey level of 1 would be; an ICC grey of 1 stays white.
+#[test]
+fn separation_ink_text_reads_dark_not_white() {
+    let objs: Vec<String> = vec![
+        "<< /Type /Catalog /Pages 2 0 R >>".into(),
+        "<< /Type /Pages /Kids [3 0 R] /Count 1 /MediaBox [0 0 600 800] >>".into(),
+        "<< /Type /Page /Parent 2 0 R /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> /ColorSpace << /CS0 [/Separation /Black /DeviceCMYK 6 0 R] /CS1 [/DeviceN [/Cyan /PANTONE#20286] /DeviceCMYK 6 0 R] /CS2 /DeviceGray >> >> >>".into(),
+        {
+            let body = "BT /F1 12 Tf 50 700 Td /CS0 cs 1 scn (Ink) Tj 0 -20 Td /CS1 cs 0 0.6 scn (Two) Tj 0 -20 Td /CS2 cs 1 scn (Grey) Tj ET";
+            format!("<< /Length {} >>\nstream\n{body}\nendstream", body.len())
+        },
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>".into(),
+        "<< /FunctionType 2 /Domain [0 1] /C0 [0 0 0 0] /C1 [0 0 0 1] /N 1 >>".into(),
+    ];
+    let mut out = b"%PDF-1.7\n".to_vec();
+    let mut offs = Vec::new();
+    for (i, o) in objs.iter().enumerate() {
+        offs.push(out.len());
+        out.extend_from_slice(format!("{} 0 obj\n{o}\nendobj\n", i + 1).as_bytes());
+    }
+    let x = out.len();
+    out.extend_from_slice(format!("xref\n0 {}\n0000000000 65535 f \n", objs.len() + 1).as_bytes());
+    for o in offs {
+        out.extend_from_slice(format!("{o:010} 00000 n \n").as_bytes());
+    }
+    out.extend_from_slice(format!("trailer\n<< /Size {} /Root 1 0 R >>\nstartxref\n{x}\n%%EOF\n", objs.len() + 1).as_bytes());
+    let doc = Document::open(Arc::new(out)).unwrap();
+    let lines = text::text_lines(&doc, 0).unwrap();
+    let color = |t: &str| lines.iter().find(|l| l.text == t).map(|l| l.color).unwrap();
+    assert_eq!(color("Ink"), [0.0; 3], "full Separation tint is full ink");
+    assert!((color("Two")[0] - 0.4).abs() < 1e-9, "DeviceN shows its strongest ink: {:?}", color("Two"));
+    assert_eq!(color("Grey"), [1.0; 3], "a grey level of 1 is still white");
+}
