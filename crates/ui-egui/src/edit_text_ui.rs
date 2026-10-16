@@ -1034,6 +1034,7 @@ pub(crate) fn overlay(ctx: &egui::Context, view: &mut DocView, info: &DocInfo) -
         .as_ref()
         .is_some_and(|ed| view.text_background.ready(ed.page, ed.block) && !ed.source.as_ref().is_some_and(|(b, _)| b.invisible));
     let draft_rect = view.text_background.draft_rect.map(|r| xf.user_rect(info, page, r.map(|v| v as f32)));
+    let viewport = view.viewport_rect();
     let ed = view.line_editor.as_mut()?;
     if hold {
         ed.focus = true;
@@ -1056,6 +1057,9 @@ pub(crate) fn overlay(ctx: &egui::Context, view: &mut DocView, info: &DocInfo) -
     egui::Area::new(egui::Id::new("edit-text-line")).order(egui::Order::Foreground).fixed_pos(Pos2::new(ed.rect.left(), ed.rect.top())).show(
         ctx,
         |ui| {
+            // The editor floats above the interface; clip it to the document view, or scrolling
+            // carries it over the toolbars and panels.
+            ui.set_clip_rect(viewport);
             // The editor opens at the source size. Once text changes, show the real draft
             // extent: single rows grow toward the page edge, paragraphs rewrap at their
             // source width, and the visible frame grows/shrinks vertically with their rows.

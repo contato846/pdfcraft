@@ -354,8 +354,12 @@ pub(crate) fn overlay(ctx: &egui::Context, view: &mut DocView, info: &DocInfo, f
                 da.iter().position(|x| *x == "Tf").and_then(|i| da.get(i.wrapping_sub(1))).and_then(|s| s.parse::<f32>().ok()).filter(|s| *s > 0.0);
             let multiline = f.has(field_flags::MULTILINE);
             let font = (size.unwrap_or(((w.rect[3] - w.rect[1]) as f32 * 0.6).clamp(6.0, 12.0)) * zoom).clamp(6.0, 64.0);
+            let viewport = view.viewport_rect();
             egui::Area::new(egui::Id::new(("form-editor", view.id.0))).order(egui::Order::Foreground).fixed_pos(rect.min).show(ctx, |ui| {
                 ui.set_min_size(rect.size());
+                // The editor floats above the interface; clip it to the document view, or scrolling
+                // carries it over the toolbars and panels.
+                ui.set_clip_rect(viewport);
                 let Some(fx) = view.forms.focus.as_mut() else { return };
                 // The field is pale yellow in every theme, so the caret must not follow the theme (pale in dark mode) (#655).
                 ui.visuals_mut().text_cursor.stroke.color = crate::edit_text_ui::caret_color_on(FIELD_FILL);

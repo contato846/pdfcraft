@@ -4263,3 +4263,54 @@ fn files_dropped_on_page_thumbnails_are_inserted_there() {
     h.run_steps(6);
     assert_eq!(h.state().views.len(), 2, "dropped on the page, the file opens");
 }
+
+#[test]
+fn the_open_text_editor_stays_inside_the_document_view_when_scrolled() {
+    let mut h = harness(3, |_| {});
+    assert!(h.state_mut().execute("edit.edit_text"));
+    h.run_steps(2);
+    let r = h.state().views[0].page_screen_rect(0).expect("on screen");
+    let at = egui::pos2(r.left() + 40.0 / 200.0 * r.width(), r.top() + (300.0 - 158.0) / 300.0 * r.height());
+    h.hover_at(at);
+    h.run_steps(1);
+    h.drag_at(at);
+    h.run_steps(1);
+    h.drop_at(at);
+    h.run_steps(3);
+    assert!(h.state().views[0].line_editor.is_some(), "the line opens for editing");
+    // The line "Page 1" fills about (20, 150)–(110, 174) on the 200 × 300 page; its box on screen.
+    let line = |h: &Harness<'static, PdfCraftApp>| {
+        let r = h.state().views[0].page_screen_rect(0).expect("page laid out");
+        let (sx, sy) = (r.width() / 200.0, r.height() / 300.0);
+        egui::Rect::from_min_max(egui::pos2(r.left() + 20.0 * sx, r.top() + 126.0 * sy), egui::pos2(r.left() + 110.0 * sx, r.top() + 150.0 * sy))
+    };
+    // Scroll down until the paragraph has left the top of the document view.
+    let viewport = h.state().views[0].viewport_rect();
+    for _ in 0..40 {
+        if line(&h).bottom() < viewport.top() - 20.0 {
+            break;
+        }
+        h.hover_at(viewport.center());
+        h.event(egui::Event::MouseWheel {
+            unit: egui::MouseWheelUnit::Point,
+            delta: egui::vec2(0.0, -60.0),
+            phase: egui::TouchPhase::Move,
+            modifiers: egui::Modifiers::NONE,
+        });
+        h.run_steps(2);
+    }
+    assert!(h.state().views[0].line_editor.is_some(), "still editing");
+    let source = line(&h);
+    assert!(source.bottom() < viewport.top(), "the paragraph has scrolled above the document view");
+    // Nothing the editor draws (its blue frame, its white cover, its text) may show outside the view.
+    let mut seen = 0;
+    for shape in &h.output().shapes {
+        let bounds = shape.shape.visual_bounding_rect();
+        if bounds.is_positive() && source.expand(40.0).contains_rect(bounds) {
+            seen += 1;
+            let shown = bounds.intersect(shape.clip_rect);
+            assert!(!shown.is_positive() || viewport.expand(0.5).contains_rect(shown), "editor shape shows over the interface at {shown:?}");
+        }
+    }
+    assert!(seen > 0, "the editor is still painted while open");
+}
