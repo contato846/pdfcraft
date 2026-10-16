@@ -256,6 +256,9 @@ struct GridDrop {
     files: Vec<GridFile>,
     /// When to stop waiting for the pointer (egui time, seconds).
     deadline: f64,
+    /// Dropped on the Pages panel's thumbnails rather than the page grid. Where the pointer only
+    /// shows up after the drop and it isn't over the thumbnails, the files open as documents.
+    thumbs: bool,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -551,6 +554,9 @@ pub struct PdfCraftApp {
     pub recent: Vec<RecentFile>,
     /// Preferences: reopen the files that were open when PdfCraft last closed (#442).
     pub reopen_last_session: bool,
+    /// Extra items on the mode bar, chosen with its context menu: `metadata`, `certificate` or
+    /// `tool:<group id>` (see `chrome::BAR_ITEMS`).
+    pub bar_items: Vec<String>,
     /// The files open when PdfCraft last closed, read from the settings for
     /// [`PdfCraftApp::reopen_last_files`].
     pub last_session: last_session::LastSession,
@@ -607,7 +613,7 @@ pub struct PdfCraftApp {
     /// Save to this path instead of asking (tests and automation).
     pub save_override: Option<String>,
     /// Document Properties ▸ Description fields being edited: (document, Title/Author/Subject/Keywords).
-    pub props_draft: Option<(DocId, [String; 4])>,
+    pub props_draft: Option<(DocId, [String; 6])>,
     /// Document Properties ▸ Initial View (and reading options) being edited.
     pub view_draft: Option<(DocId, pdfcraft_engine::InitialView)>,
     /// Files picked asynchronously for combine / insert (web).
@@ -905,6 +911,7 @@ impl PdfCraftApp {
             all_tools_expanded: false,
             recent: Vec::new(),
             reopen_last_session: false,
+            bar_items: chrome::default_bar_items(),
             last_session: Default::default(),
             quit_session: None,
             reload_changed_files: true,
@@ -1368,11 +1375,31 @@ impl PdfCraftApp {
         (self.dialog.is_none() && self.session.get(view.id)?.allows_assembly()).then_some(view.id)
     }
 
+    /// The document whose Pages panel (page thumbnails) shows and may take pages, if any.
+    fn thumbs_target(&self) -> Option<pdfcraft_engine::DocId> {
+        let view = self.active_view().filter(|v| !v.organize)?;
+        (self.right == Some(RightPanel::Pages) && self.dialog.is_none() && self.session.get(view.id)?.allows_assembly()).then_some(view.id)
+    }
+
+    fn active_view(&self) -> Option<&DocView> {
+        self.active.and_then(|i| self.views.get(i))
+    }
+
     /// Files dropped while the page grid shows are inserted into it rather than opened: they
     /// are kept until [`Self::finish_grid_drop`] knows the gap. Returns the files not taken.
     #[cfg(not(target_arch = "wasm32"))]
     fn drop_on_grid(&mut self, dropped: Vec<egui::DroppedFileHandle>, ctx: &egui::Context) -> Vec<egui::DroppedFileHandle> {
-        let Some(id) = self.grid_target().filter(|_| !dropped.is_empty()) else { return dropped };
+        if dropped.is_empty() {
+            return dropped;
+        }
+        let (id, thumbs) = match (self.grid_target(), self.thumbs_target()) {
+            (Some(id), _) => (id, false),
+            // Over the page itself, a dropped file opens as a document, as it always did.
+            (None, Some(id)) if ctx.input(|i| i.pointer.hover_pos()).is_none() || self.active_view().is_some_and(|v| v.thumb_gap.is_some()) => {
+                (id, true)
+            }
+            _ => return dropped,
+        };
         let mut files = Vec::new();
         for f in &dropped {
             let name = f.path().file_name().map(|n| n.to_string_lossy().into_owned()).unwrap_or_else(|| "dropped.pdf".into());
@@ -1389,7 +1416,7 @@ impl PdfCraftApp {
             // Where there is no telling where the pointer is during the drag, its place arrives
             // with the first move after the drop.
             ctx.request_repaint();
-            self.grid_drop = Some(GridDrop { doc: id, files, deadline: ctx.input(|i| i.time) + 1.0 });
+            self.grid_drop = Some(GridDrop { doc: id, files, deadline: ctx.input(|i| i.time) + 1.0, thumbs });
         }
         Vec::new()
     }
@@ -1397,17 +1424,36 @@ impl PdfCraftApp {
     /// Insert files dropped on the page grid at the gap under the pointer, or at the end when
     /// the pointer hasn't shown up in time.
     fn finish_grid_drop(&mut self, ctx: &egui::Context) {
-        let Some(GridDrop { doc: id, deadline, .. }) = &self.grid_drop else { return };
-        let (id, deadline) = (*id, *deadline);
-        if self.grid_target() != Some(id) {
+        let Some(GridDrop { doc: id, deadline, thumbs, .. }) = &self.grid_drop else { return };
+        let (id, deadline, thumbs) = (*id, *deadline, *thumbs);
+        let target = if thumbs { self.thumbs_target() } else { self.grid_target() };
+        if target != Some(id) {
             self.grid_drop = None;
             return self.notify_tr("The document changed while you were choosing a file, so nothing was changed.");
         }
+        let now = ctx.input(|i| i.time);
+        let pointer_known = ctx.input(|i| i.pointer.hover_pos()).is_some();
         let Some(view) = self.active.and_then(|i| self.views.get_mut(i)) else { return };
-        let gap = match view.grid_gap {
-            Some(gap) => gap,
-            None if ctx.input(|i| i.time) >= deadline => usize::MAX,
-            None => return ctx.request_repaint(),
+        let gap = match (thumbs, view.grid_gap, view.thumb_gap) {
+            (false, Some(gap), _) | (true, _, Some(gap)) => gap,
+            (false, None, _) if now >= deadline => usize::MAX,
+            // Let go over the page, not the thumbnails: the files open as documents.
+            (true, _, None) if pointer_known || now >= deadline => {
+                if let Some(drop) = self.grid_drop.take() {
+                    for (name, source) in drop.files {
+                        match source {
+                            Err(path) => self.open_path(&path.to_string_lossy()),
+                            Ok(bytes) => {
+                                if let Err(e) = self.open_bytes(&name, None, bytes) {
+                                    self.notify_fmt("Couldn't open {name}: {e}", &[("name", &name), ("e", &e.to_string())]);
+                                }
+                            }
+                        }
+                    }
+                }
+                return;
+            }
+            _ => return ctx.request_repaint(),
         };
         view.insert_at = Some(gap);
         if let Some(drop) = self.grid_drop.take() {
@@ -2082,7 +2128,7 @@ impl PdfCraftApp {
     /// Serialize the user's persistent state (recent files, theme). Local only.
     pub fn persist(&self) -> String {
         let trusted: Vec<String> = self.session.trusted_certificates().iter().map(pdfcraft_engine::sign::x509::to_pem).collect();
-        serde_json::json!({
+        let mut v = serde_json::json!({
             "docking": self.docking,
             "docking_left_open": self.left_open,
             "docking_right": self.right,
@@ -2141,8 +2187,10 @@ impl PdfCraftApp {
             "combine_zoom": self.combine_zoom,
             "comments_panel_closed": self.comments_panel_closed,
             "right_panel_closed": self.right_panel_closed,
-        })
-        .to_string()
+        });
+        // Outside the macro, which is at its recursion limit.
+        v["bar_items"] = serde_json::json!(self.bar_items);
+        v.to_string()
     }
 
     /// Restore state written by `persist`. Unknown or malformed data is ignored.
@@ -2169,6 +2217,9 @@ impl PdfCraftApp {
             #[cfg(not(target_arch = "wasm32"))]
             let r: Vec<RecentFile> = r.into_iter().filter(|f| std::path::Path::new(&f.path).exists()).collect();
             self.recent = r;
+        }
+        if let Some(items) = v["bar_items"].as_array() {
+            self.bar_items = items.iter().filter_map(|i| i.as_str()).filter(|i| chrome::bar_item_known(i)).map(str::to_owned).collect();
         }
         if let Some(on) = v["reopen_last_session"].as_bool() {
             self.reopen_last_session = on;

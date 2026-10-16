@@ -449,6 +449,9 @@ pub struct DocView {
     /// The page-grid gap under the pointer this frame (where dropped files go), when it can
     /// take pages.
     pub grid_gap: Option<usize>,
+    /// The gap between page thumbnails (the Pages panel) under the pointer, while it is over the
+    /// panel: where files dropped there are inserted.
+    pub thumb_gap: Option<usize>,
     /// How large the page grid draws its pages (1.0 = the usual thumbnails).
     grid_zoom: f32,
     /// A zoom asked for this frame (toolbar, pinch, keys); the grid applies it once it has laid
@@ -649,6 +652,7 @@ impl DocView {
             pending_action: None,
             insert_at: None,
             grid_gap: None,
+            thumb_gap: None,
             grid_zoom: 1.0,
             grid_zoom_request: None,
             grid_anchor: None,

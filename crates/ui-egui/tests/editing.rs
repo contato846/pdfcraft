@@ -4160,3 +4160,106 @@ fn private_new_chinese_keyboard_input_preserves_font_layout_and_saved_pixels() {
     assert_eq!(std::fs::read(path).unwrap(), original);
     println!("verified Chinese keyboard insertion/deletion and save/reopen rendering on {pages} pages");
 }
+
+/// The application and producer are edited like the title, and a cleared one leaves the document.
+#[test]
+fn metadata_application_and_producer_are_editable() {
+    let mut h = harness(1, |app| app.set_option("dialog", "properties").unwrap());
+    let creator = h.get_by_role_and_label(Role::TextInput, "Application");
+    creator.focus();
+    creator.type_text("Editora Exemplo");
+    h.run_steps(2);
+    let producer = h.get_by_role_and_label(Role::TextInput, "PDF producer");
+    producer.focus();
+    producer.type_text("x");
+    h.run_steps(2);
+    h.get_by_label("OK").click();
+    h.run_steps(3);
+    let id = h.state().views[0].id;
+    let doc = h.state().session.get(id).unwrap();
+    assert_eq!(doc.info_value("Creator").as_deref(), Some("Editora Exemplo"));
+    assert_eq!(doc.info_value("Producer").as_deref(), Some("x"));
+    // Clearing the producer removes it.
+    h.state_mut().set_option("dialog", "properties").unwrap();
+    h.run_steps(2);
+    let producer = h.get_by_role_and_label(Role::TextInput, "PDF producer");
+    producer.focus();
+    h.key_press_modifiers(Modifiers::COMMAND, Key::A);
+    h.key_press(Key::Backspace);
+    h.run_steps(2);
+    h.get_by_label("OK").click();
+    h.run_steps(3);
+    assert_eq!(h.state().session.get(id).unwrap().info_value("Producer"), None);
+}
+
+/// Edit metadata follows Edit and Use a certificate follows E-Sign; the bar's context menu adds
+/// and removes tools, and the choice survives a restart.
+#[test]
+fn the_mode_bar_offers_metadata_certificate_and_chosen_tools() {
+    let mut h = harness(1, |_| {});
+    // The mode bar is the strip at the top; the tools panel may name the same tools.
+    let on_bar = |h: &Harness<'static, PdfCraftApp>, label: &str| {
+        let row = h.get_all_by_label("All tools").map(|n| n.rect().center().y).fold(f32::MAX, f32::min);
+        h.get_all_by_label(label).map(|n| n.rect()).find(|r| (r.center().y - row).abs() < 6.0).unwrap_or_else(|| panic!("{label} on the mode bar"))
+    };
+    let x = |h: &Harness<'static, PdfCraftApp>, label: &str| on_bar(h, label).center().x;
+    assert!(x(&h, "Edit") < x(&h, "Edit metadata") && x(&h, "Edit metadata") < x(&h, "Convert"));
+    assert!(x(&h, "E-Sign") < x(&h, "Use a certificate"));
+    let row = h.get_all_by_label("All tools").map(|n| n.rect().center().y).fold(f32::MAX, f32::min);
+    h.get_all_by_label("Edit metadata").find(|n| (n.rect().center().y - row).abs() < 6.0).unwrap().click();
+    h.run_steps(2);
+    assert_eq!(h.state().dialog, Some(pdfcraft_ui_egui::Dialog::Properties(pdfcraft_ui_egui::PropsTab::Description)));
+    h.key_press(Key::Escape);
+    h.run_steps(2);
+    assert!(h.state().dialog.is_none());
+    let row = h.get_all_by_label("All tools").map(|n| n.rect().center().y).fold(f32::MAX, f32::min);
+    h.get_all_by_label("Use a certificate").find(|n| (n.rect().center().y - row).abs() < 6.0).unwrap().click();
+    h.run_steps(2);
+    assert_eq!(h.state().left, pdfcraft_ui_egui::LeftPanel::Tool("certificate"));
+    // Right-click on the bar: add Compress a PDF (or any tool), remove the certificate.
+    let bar = on_bar(&h, "Convert").center();
+    h.hover_at(bar);
+    h.event(egui::Event::PointerButton { pos: bar, button: egui::PointerButton::Secondary, pressed: true, modifiers: Modifiers::NONE });
+    h.event(egui::Event::PointerButton { pos: bar, button: egui::PointerButton::Secondary, pressed: false, modifiers: Modifiers::NONE });
+    h.run_steps(3);
+    h.get_by_label("Add tools and controls");
+    let tool = pdfcraft_engine::catalog::TOOL_GROUPS.iter().find(|g| g.id != "certificate").unwrap();
+    h.get_by_role_and_label(Role::CheckBox, tool.label).click();
+    h.run_steps(2);
+    // Each choice closes the menu, as a menu item does; open it again for the next one.
+    h.event(egui::Event::PointerButton { pos: bar, button: egui::PointerButton::Secondary, pressed: true, modifiers: Modifiers::NONE });
+    h.event(egui::Event::PointerButton { pos: bar, button: egui::PointerButton::Secondary, pressed: false, modifiers: Modifiers::NONE });
+    h.run_steps(3);
+    h.get_by_role_and_label(Role::CheckBox, "Use a certificate").click();
+    h.run_steps(2);
+    assert!(h.state().bar_items.contains(&format!("tool:{}", tool.id)));
+    assert!(!h.state().bar_items.iter().any(|i| i == "certificate"));
+    let saved = h.state().persist();
+    let mut next = PdfCraftApp::new();
+    next.restore(&saved);
+    assert_eq!(next.bar_items, h.state().bar_items);
+}
+
+/// Files dropped on the Pages panel go between the thumbnails under the pointer; dropped on the
+/// page itself they open as documents, as before.
+#[test]
+fn files_dropped_on_page_thumbnails_are_inserted_there() {
+    let mut h = harness(3, |app| app.choose_right_panel(Some(pdfcraft_ui_egui::RightPanel::Pages)));
+    h.run_steps(3);
+    let first = h.get_all_by_label("Page 1").map(|n| n.rect()).find(|r| r.width() < 300.0).expect("thumbnail of page 1");
+    // Over the lower half of the first thumbnail: between pages 1 and 2.
+    h.hover_at(first.center() + egui::vec2(0.0, first.height() * 0.3));
+    h.run_steps(2);
+    assert_eq!(h.state().views[0].thumb_gap, Some(1));
+    drop_files(&mut h, vec![Dropped("extra.pdf", fixture(2))]);
+    h.run_steps(4);
+    assert_eq!(h.state().views.len(), 1, "dropped on the thumbnails, the file is inserted");
+    assert_eq!(texts_of(h.state(), 0), ["Page 1", "Page 1", "Page 2", "Page 2", "Page 3"]);
+    // Over the page itself: it opens as a document.
+    let page = h.state().views[0].viewport_rect().center();
+    h.hover_at(page);
+    h.run_steps(2);
+    drop_files(&mut h, vec![Dropped("other.pdf", fixture(1))]);
+    h.run_steps(6);
+    assert_eq!(h.state().views.len(), 2, "dropped on the page, the file opens");
+}

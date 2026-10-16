@@ -1164,6 +1164,23 @@ fn pages(ui: &mut egui::Ui, t: &Tokens, info: &DocInfo, view: &mut crate::DocVie
         });
         ui.add_space(4.0);
     }
+    // Files dragged in from outside go to the gap under the pointer, as in the page grid: before
+    // the thumbnail whose upper half it is over, otherwise after the last one it has passed.
+    let pointer = ui.input(|i| i.pointer.hover_pos()).filter(|p| ui.clip_rect().contains(*p));
+    view.thumb_gap =
+        pointer.filter(|_| editable && view.panel_drag.is_none()).map(|p| rows.iter().position(|r| p.y < r.center().y).unwrap_or(rows.len()));
+    if let Some(gap) = view.thumb_gap
+        && ui.input(|i| !i.raw.hovered_files.is_empty())
+    {
+        let y = match (gap.checked_sub(1).and_then(|i| rows.get(i)), rows.get(gap)) {
+            (Some(a), Some(b)) => (a.bottom() + b.top()) / 2.0,
+            (None, Some(b)) => b.top(),
+            (Some(a), None) => a.bottom(),
+            (None, None) => ui.clip_rect().top() + 8.0,
+        };
+        let x = ui.clip_rect().x_range().shrink(10.0);
+        ui.painter().line_segment([pos2(x.min, y), pos2(x.max, y)], Stroke::new(3.0, t.accent));
+    }
     page_drag(ui, t, view, &rows, dropped);
 }
 

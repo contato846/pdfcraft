@@ -7,7 +7,18 @@ use pdfcraft_engine::Edit;
 
 use crate::{CloseRequest, Dialog, PdfCraftApp, PropsTab, panels::human_size, widgets};
 
-const INFO_KEYS: [&str; 4] = ["Title", "Author", "Subject", "Keywords"];
+/// The `/Info` entries the Description tab edits (XMP is kept in step by the engine). Creator and
+/// Producer are editable too, so a document can say which application made it, or nothing.
+const INFO_KEYS: [&str; 6] = ["Title", "Author", "Subject", "Keywords", "Creator", "Producer"];
+
+/// The label each of [`INFO_KEYS`] shows.
+fn info_label(key: &'static str) -> &'static str {
+    match key {
+        "Creator" => tl!("Application"),
+        "Producer" => tl!("PDF producer"),
+        other => tl!(other),
+    }
+}
 
 pub fn show(app: &mut PdfCraftApp, ctx: &egui::Context) {
     dialogs(app, ctx);
@@ -122,7 +133,7 @@ fn dialogs(app: &mut PdfCraftApp, ctx: &egui::Context) {
                             match app.props_draft.as_mut() {
                                 Some((_, draft)) if doc.allows_modification() => {
                                     for (k, v) in INFO_KEYS.iter().zip(draft.iter_mut()) {
-                                        let l = ui.label(egui::RichText::new(tl!(k)).color(t.text_muted));
+                                        let l = ui.label(egui::RichText::new(info_label(k)).color(t.text_muted));
                                         ui.add(widgets::line(v).desired_width(420.0).background_color(t.field).id_salt(("info", *k)))
                                             .labelled_by(l.id);
                                         ui.end_row();
@@ -133,10 +144,10 @@ fn dialogs(app: &mut PdfCraftApp, ctx: &egui::Context) {
                                     row(ui, "Author", i.author.clone().unwrap_or_default());
                                     row(ui, "Subject", i.subject.clone().unwrap_or_default());
                                     row(ui, "Keywords", i.keywords.clone().unwrap_or_default());
+                                    row(ui, "Application", i.creator.clone().unwrap_or_default());
+                                    row(ui, "PDF producer", i.producer.clone().unwrap_or_default());
                                 }
                             }
-                            row(ui, "Application", i.creator.clone().unwrap_or_default());
-                            row(ui, "PDF producer", i.producer.clone().unwrap_or_default());
                         }
                         PropsTab::InitialView => {
                             use pdfcraft_engine::{InitialLayout as L, Magnification as M, Navigation as N};

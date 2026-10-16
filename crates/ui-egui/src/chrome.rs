@@ -412,6 +412,11 @@ pub fn mode_bar(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
         .show(ui, |ui| {
             ui.horizontal_centered(|ui| {
                 ui.spacing_mut().item_spacing.x = 2.0;
+                // Right-click on the bar: add or remove tools and controls. The background is
+                // registered before every control on the bar (Menu, the tabs, the buttons), so
+                // that they stay on top for ordinary clicks; each tab offers the same menu.
+                let menu = ui.interact(ui.max_rect(), ui.id().with("mode-bar-menu"), egui::Sense::click());
+                menu.context_menu(|ui| bar_menu(app, ui));
                 main_menu(app, ui);
                 ui.add_space(6.0);
                 ui.painter().vline(ui.cursor().left(), ui.max_rect().y_range().shrink(12.0), Stroke::new(1.0, t.divider));
@@ -419,9 +424,23 @@ pub fn mode_bar(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                 for (mode, label) in
                     [(Mode::AllTools, "All tools"), (Mode::Read, "Read"), (Mode::Edit, "Edit"), (Mode::Convert, "Convert"), (Mode::Sign, "E-Sign")]
                 {
-                    if widgets::mode_tab(ui, tl!(label), app.mode == mode).clicked() {
+                    let tab = widgets::mode_tab(ui, tl!(label), app.mode == mode);
+                    if tab.clicked() {
                         app.switch_mode(mode, true);
                     }
+                    tab.context_menu(|ui| bar_menu(app, ui));
+                    // Edit metadata follows Edit, Use a certificate follows E-Sign, when chosen.
+                    let after = match mode {
+                        Mode::Edit => Some("metadata"),
+                        Mode::Sign => Some("certificate"),
+                        _ => None,
+                    };
+                    if let Some(item) = after.filter(|i| app.bar_items.iter().any(|b| b == i)) {
+                        bar_item(app, ui, item);
+                    }
+                }
+                for item in app.bar_items.clone().iter().filter(|i| i.starts_with("tool:")) {
+                    bar_item(app, ui, item);
                 }
                 ui.with_layout(Layout::right_to_left(Align::Center), |ui| {
                     ui.spacing_mut().item_spacing.x = 4.0;
@@ -447,6 +466,77 @@ pub fn mode_bar(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                 });
             });
         });
+}
+
+/// Mode bar items besides the workspaces, in the order the context menu offers them.
+const BAR_EXTRAS: [(&str, &str); 2] = [("metadata", "Edit metadata"), ("certificate", "Use a certificate")];
+
+/// What the mode bar shows before anyone changes it.
+pub(crate) fn default_bar_items() -> Vec<String> {
+    BAR_EXTRAS.iter().map(|(id, _)| (*id).to_owned()).collect()
+}
+
+/// Whether a saved mode bar item still exists (a tool group can be renamed or removed).
+pub(crate) fn bar_item_known(item: &str) -> bool {
+    BAR_EXTRAS.iter().any(|(id, _)| *id == item)
+        || item.strip_prefix("tool:").is_some_and(|g| pdfcraft_engine::catalog::TOOL_GROUPS.iter().any(|t| t.id == g))
+}
+
+fn bar_item_label(item: &str) -> Option<&'static str> {
+    BAR_EXTRAS.iter().find(|(id, _)| *id == item).map(|(_, label)| *label).or_else(|| {
+        let g = item.strip_prefix("tool:")?;
+        pdfcraft_engine::catalog::TOOL_GROUPS.iter().find(|t| t.id == g).map(|t| t.label)
+    })
+}
+
+/// One added item on the mode bar: a button that opens what it names.
+fn bar_item(app: &mut PdfCraftApp, ui: &mut egui::Ui, item: &str) {
+    let Some(label) = bar_item_label(item) else { return };
+    let group = match item {
+        "certificate" => Some("certificate"),
+        _ => item.strip_prefix("tool:").and_then(|g| pdfcraft_engine::catalog::TOOL_GROUPS.iter().find(|t| t.id == g)).map(|t| t.id),
+    };
+    let active = group.is_some_and(|g| app.left == crate::LeftPanel::Tool(g))
+        || (item == "metadata" && app.dialog == Some(Dialog::Properties(PropsTab::Description)));
+    let tab = widgets::mode_tab(ui, tl!(label), active);
+    if tab.clicked() {
+        match group {
+            Some(g) => app.select_tool(g),
+            None => app.dialog = Some(Dialog::Properties(PropsTab::Description)),
+        }
+    }
+    tab.context_menu(|ui| bar_menu(app, ui));
+}
+
+/// The mode bar's context menu: tick the tools and controls it shows.
+fn bar_menu(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
+    ui.set_min_width(240.0);
+    ui.label(egui::RichText::new(tl!("Add tools and controls")).strong());
+    ui.separator();
+    let toggle = |app: &mut PdfCraftApp, ui: &mut egui::Ui, id: String, label: &str| {
+        let mut on = app.bar_items.contains(&id);
+        if ui.checkbox(&mut on, tl!(label)).changed() {
+            if on {
+                app.bar_items.push(id);
+            } else {
+                app.bar_items.retain(|i| *i != id);
+            }
+        }
+    };
+    for (id, label) in BAR_EXTRAS {
+        toggle(app, ui, id.to_owned(), label);
+    }
+    ui.separator();
+    egui::ScrollArea::vertical().max_height(360.0).show(ui, |ui| {
+        for g in pdfcraft_engine::catalog::TOOL_GROUPS.iter().filter(|g| g.id != "certificate") {
+            toggle(app, ui, format!("tool:{}", g.id), g.label);
+        }
+    });
+    ui.separator();
+    if ui.button(tl!("Reset to default")).clicked() {
+        app.bar_items = default_bar_items();
+        ui.close();
+    }
 }
 
 fn main_menu(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
