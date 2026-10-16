@@ -515,7 +515,7 @@ fn bar_menu(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
     ui.separator();
     let toggle = |app: &mut PdfCraftApp, ui: &mut egui::Ui, id: String, label: &str| {
         let mut on = app.bar_items.contains(&id);
-        if ui.checkbox(&mut on, tl!(label)).changed() {
+        if ui.add(widgets::checkbox(&mut on, tl!(label))).changed() {
             if on {
                 app.bar_items.push(id);
             } else {
