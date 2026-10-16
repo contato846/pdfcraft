@@ -471,9 +471,10 @@ pub(crate) fn editor(ctx: &egui::Context, view: &mut DocView, info: &DocInfo, ad
     let mut undrawable = None;
     let memo = &view.content.undrawable;
     let viewport = view.viewport_rect();
-    egui::Area::new(egui::Id::new(("added-text", view.id.0))).order(egui::Order::Foreground).fixed_pos(r.min).show(ctx, |ui| {
-        // The editor floats above the interface; clip it to the document view, or scrolling
-        // carries it over the toolbars and panels.
+    egui::Area::new(egui::Id::new(("added-text", view.id.0))).order(egui::Order::Foreground).constrain(false).fixed_pos(r.min).show(ctx, |ui| {
+        // The editor floats above the interface, anchored to the page: unconstrained, or egui pushes it
+        // back on screen and its text slides off its frame when scrolled past the window's top; and
+        // clipped to the document view, or scrolling carries it over the toolbars and panels.
         ui.set_clip_rect(viewport);
         let Some(t) = view.content.draft.as_mut() else { return };
         // The box is white in every theme, so the caret must not follow the theme (pale in dark mode) (#655).

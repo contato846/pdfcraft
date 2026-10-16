@@ -1054,11 +1054,14 @@ pub(crate) fn overlay(ctx: &egui::Context, view: &mut DocView, info: &DocInfo) -
     let font = editor_font(&ed.look, ed.size);
     let text_color = color32(ed.look.color);
     let mut done = None;
-    egui::Area::new(egui::Id::new("edit-text-line")).order(egui::Order::Foreground).fixed_pos(Pos2::new(ed.rect.left(), ed.rect.top())).show(
-        ctx,
-        |ui| {
-            // The editor floats above the interface; clip it to the document view, or scrolling
-            // carries it over the toolbars and panels.
+    egui::Area::new(egui::Id::new("edit-text-line"))
+        .order(egui::Order::Foreground)
+        .constrain(false)
+        .fixed_pos(Pos2::new(ed.rect.left(), ed.rect.top()))
+        .show(ctx, |ui| {
+            // The editor floats above the interface, anchored to the page: unconstrained, or egui pushes it
+            // back on screen and its text slides off its frame when scrolled past the window's top; and
+            // clipped to the document view, or scrolling carries it over the toolbars and panels.
             ui.set_clip_rect(viewport);
             // The editor opens at the source size. Once text changes, show the real draft
             // extent: single rows grow toward the page edge, paragraphs rewrap at their
@@ -1140,8 +1143,7 @@ pub(crate) fn overlay(ctx: &egui::Context, view: &mut DocView, info: &DocInfo) -
                     done = Some(true);
                 }
             });
-        },
-    );
+        });
     match done {
         Some(apply) => {
             let ed = view.line_editor.take()?;

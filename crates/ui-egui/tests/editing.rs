@@ -4313,4 +4313,16 @@ fn the_open_text_editor_stays_inside_the_document_view_when_scrolled() {
         }
     }
     assert!(seen > 0, "the editor is still painted while open");
+    // The text stays on its frame: egui must not push the editor back on screen.
+    let frame = h
+        .output()
+        .shapes
+        .iter()
+        .find_map(|s| match &s.shape {
+            egui::Shape::Rect(r) if r.stroke.color == egui::Color32::from_rgb(0x14, 0x73, 0xE6) && r.rect.width() > 20.0 => Some(r.rect),
+            _ => None,
+        })
+        .expect("the editor's frame");
+    let text = h.ctx.memory(|m| m.area_rect(egui::Id::new("edit-text-line"))).expect("the editor's area");
+    assert!((text.top() - (frame.top() + 2.0)).abs() < 1.5, "the text {text:?} has slid off its frame {frame:?}");
 }

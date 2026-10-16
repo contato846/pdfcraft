@@ -355,55 +355,60 @@ pub(crate) fn overlay(ctx: &egui::Context, view: &mut DocView, info: &DocInfo, f
             let multiline = f.has(field_flags::MULTILINE);
             let font = (size.unwrap_or(((w.rect[3] - w.rect[1]) as f32 * 0.6).clamp(6.0, 12.0)) * zoom).clamp(6.0, 64.0);
             let viewport = view.viewport_rect();
-            egui::Area::new(egui::Id::new(("form-editor", view.id.0))).order(egui::Order::Foreground).fixed_pos(rect.min).show(ctx, |ui| {
-                ui.set_min_size(rect.size());
-                // The editor floats above the interface; clip it to the document view, or scrolling
-                // carries it over the toolbars and panels.
-                ui.set_clip_rect(viewport);
-                let Some(fx) = view.forms.focus.as_mut() else { return };
-                // The field is pale yellow in every theme, so the caret must not follow the theme (pale in dark mode) (#655).
-                ui.visuals_mut().text_cursor.stroke.color = crate::edit_text_ui::caret_color_on(FIELD_FILL);
-                let mut te = if multiline { egui::TextEdit::multiline(&mut fx.text) } else { egui::TextEdit::singleline(&mut fx.text) };
-                te = te
-                    .desired_width(rect.width() - 6.0)
-                    .font(egui::FontId::proportional(font))
-                    .background_color(FIELD_FILL)
-                    .text_color(Color32::BLACK)
-                    .margin(egui::Margin::symmetric(3, 1))
-                    .password(f.has(field_flags::PASSWORD))
-                    .id(egui::Id::new(("form-field", view.id.0, &f.name, focus.widget)));
-                if let Some(max) = f.max_len {
-                    te = te.char_limit(max);
-                }
-                if multiline {
-                    te = te.desired_rows(((rect.height() / (font * 1.3)).floor() as usize).max(1));
-                }
-                let r = ui.add_sized(rect.size(), te);
-                if fx.request_focus {
-                    r.request_focus();
-                    fx.request_focus = false;
-                    if std::mem::take(&mut fx.select_all)
-                        && let Some(mut st) = egui::TextEdit::load_state(ui.ctx(), r.id)
-                    {
-                        let n = fx.text.chars().count();
-                        st.cursor.set_char_range(Some(egui::text::CCursorRange::two(egui::text::CCursor::new(0), egui::text::CCursor::new(n))));
-                        st.store(ui.ctx(), r.id);
+            egui::Area::new(egui::Id::new(("form-editor", view.id.0))).order(egui::Order::Foreground).constrain(false).fixed_pos(rect.min).show(
+                ctx,
+                |ui| {
+                    ui.set_min_size(rect.size());
+                    // The editor floats above the interface, anchored to the page: unconstrained, or egui pushes it
+                    // back on screen and its text slides off its frame when scrolled past the window's top; and
+                    // clipped to the document view, or scrolling carries it over the toolbars and panels.
+                    ui.set_clip_rect(viewport);
+                    let Some(fx) = view.forms.focus.as_mut() else { return };
+                    // The field is pale yellow in every theme, so the caret must not follow the theme (pale in dark mode) (#655).
+                    ui.visuals_mut().text_cursor.stroke.color = crate::edit_text_ui::caret_color_on(FIELD_FILL);
+                    let mut te = if multiline { egui::TextEdit::multiline(&mut fx.text) } else { egui::TextEdit::singleline(&mut fx.text) };
+                    te = te
+                        .desired_width(rect.width() - 6.0)
+                        .font(egui::FontId::proportional(font))
+                        .background_color(FIELD_FILL)
+                        .text_color(Color32::BLACK)
+                        .margin(egui::Margin::symmetric(3, 1))
+                        .password(f.has(field_flags::PASSWORD))
+                        .id(egui::Id::new(("form-field", view.id.0, &f.name, focus.widget)));
+                    if let Some(max) = f.max_len {
+                        te = te.char_limit(max);
                     }
-                }
-                let (enter, esc, tab, shift) = ui
-                    .input(|i| (i.key_pressed(egui::Key::Enter), i.key_pressed(egui::Key::Escape), i.key_pressed(egui::Key::Tab), i.modifiers.shift));
-                if esc {
-                    close = true;
-                } else if tab {
-                    next = Some(!shift);
-                } else if r.lost_focus()
-                    && (!multiline || !enter)
-                    && !fx.calendar_rect.is_some_and(|c| ui.input(|i| i.pointer.interact_pos().is_some_and(|p| c.contains(p))))
-                {
-                    // Enter in a single-line field, or clicking elsewhere, commits.
-                    commit(view, form);
-                }
-            });
+                    if multiline {
+                        te = te.desired_rows(((rect.height() / (font * 1.3)).floor() as usize).max(1));
+                    }
+                    let r = ui.add_sized(rect.size(), te);
+                    if fx.request_focus {
+                        r.request_focus();
+                        fx.request_focus = false;
+                        if std::mem::take(&mut fx.select_all)
+                            && let Some(mut st) = egui::TextEdit::load_state(ui.ctx(), r.id)
+                        {
+                            let n = fx.text.chars().count();
+                            st.cursor.set_char_range(Some(egui::text::CCursorRange::two(egui::text::CCursor::new(0), egui::text::CCursor::new(n))));
+                            st.store(ui.ctx(), r.id);
+                        }
+                    }
+                    let (enter, esc, tab, shift) = ui.input(|i| {
+                        (i.key_pressed(egui::Key::Enter), i.key_pressed(egui::Key::Escape), i.key_pressed(egui::Key::Tab), i.modifiers.shift)
+                    });
+                    if esc {
+                        close = true;
+                    } else if tab {
+                        next = Some(!shift);
+                    } else if r.lost_focus()
+                        && (!multiline || !enter)
+                        && !fx.calendar_rect.is_some_and(|c| ui.input(|i| i.pointer.interact_pos().is_some_and(|p| c.contains(p))))
+                    {
+                        // Enter in a single-line field, or clicking elsewhere, commits.
+                        commit(view, form);
+                    }
+                },
+            );
             // Date fields: a calendar under the field (Acrobat's date picker).
             if let pdfcraft_engine::form_scripts::Format::Date(fmt) = &f.actions.format
                 && let Some(picked) = calendar(ctx, view, rect, fmt, today)
