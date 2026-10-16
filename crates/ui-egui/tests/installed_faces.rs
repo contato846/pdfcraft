@@ -218,3 +218,118 @@ fn the_font_list_sits_in_format_text_and_applies_the_chosen_font() {
     h.run_steps(2);
     assert!(combo(&h, "Inter-Regular").is_some(), "the list names the applied font");
 }
+
+/// A bare CFF program (`/FontFile3 /Type1C`, as InDesign and Distiller embed) of three glyphs:
+/// .notdef, "space" and "exclam" (a 500 × 700 box), with the ISO Adobe charset.
+fn bare_cff() -> Vec<u8> {
+    fn number(n: i16) -> Vec<u8> {
+        let mut v = vec![28];
+        v.extend_from_slice(&n.to_be_bytes());
+        v
+    }
+    fn index(items: &[Vec<u8>]) -> Vec<u8> {
+        let mut out = (items.len() as u16).to_be_bytes().to_vec();
+        out.push(1);
+        let mut at = 1u8;
+        out.push(at);
+        for i in items {
+            at += i.len() as u8;
+            out.push(at);
+        }
+        for i in items {
+            out.extend(i);
+        }
+        out
+    }
+    let name = index(&[b"ABCDEF+Book".to_vec()]);
+    let mut dict = Vec::new();
+    for n in [0, 0, 500, 700] {
+        dict.extend(number(n));
+    }
+    dict.push(5);
+    let offset = 4 + name.len() + index(&[vec![0; dict.len() + 4]]).len() + 4;
+    dict.extend(number(offset as i16));
+    dict.push(17);
+    let mut rectangle = number(600);
+    rectangle.extend([139, 139, 21]);
+    for n in [500, 0, 0, 700, -500, 0, 0, -700] {
+        rectangle.extend(number(n));
+    }
+    rectangle.extend([5, 14]);
+    let mut cff = vec![1, 0, 4, 4];
+    cff.extend(name);
+    cff.extend(index(&[dict]));
+    cff.extend([0, 0, 0, 0]);
+    cff.extend(index(&[vec![14], [number(300), vec![14]].concat(), rectangle]));
+    cff
+}
+
+fn bare_cff_fixture() -> Vec<u8> {
+    let cff = bare_cff();
+    let body = "BT /F1 24 Tf 20 150 Td (!! !) Tj ET";
+    let mut out = b"%PDF-1.7\n".to_vec();
+    let objs: Vec<Vec<u8>> = vec![
+        b"<< /Type /Catalog /Pages 2 0 R >>".to_vec(),
+        b"<< /Type /Pages /Kids [4 0 R] /Count 1 /MediaBox [0 0 200 300] >>".to_vec(),
+        b"<< /Type /Font /Subtype /Type1 /BaseFont /ABCDEF+Book /FirstChar 32 /LastChar 33 /Widths [300 600] /FontDescriptor 6 0 R >>".to_vec(),
+        b"<< /Type /Page /Parent 2 0 R /Contents 5 0 R /Resources << /Font << /F1 3 0 R >> >> >>".to_vec(),
+        format!("<< /Length {} >>\nstream\n{body}\nendstream", body.len()).into_bytes(),
+        b"<< /Type /FontDescriptor /FontName /ABCDEF+Book /Flags 32 /FontBBox [0 0 500 700] /ItalicAngle 0 /Ascent 700 /Descent -200 /CapHeight 700 /StemV 80 /FontFile3 7 0 R >>".to_vec(),
+        [format!("<< /Subtype /Type1C /Length {} >>\nstream\n", cff.len()).into_bytes(), cff, b"\nendstream".to_vec()].concat(),
+    ];
+    let mut offsets = Vec::new();
+    for (i, o) in objs.iter().enumerate() {
+        offsets.push(out.len());
+        out.extend_from_slice(format!("{} 0 obj\n", i + 1).as_bytes());
+        out.extend_from_slice(o);
+        out.extend_from_slice(b"\nendobj\n");
+    }
+    let xref = out.len();
+    out.extend_from_slice(format!("xref\n0 {}\n0000000000 65535 f \n", objs.len() + 1).as_bytes());
+    for o in offsets {
+        out.extend_from_slice(format!("{o:010} 00000 n \n").as_bytes());
+    }
+    out.extend_from_slice(format!("trailer\n<< /Size {} /Root 1 0 R >>\nstartxref\n{xref}\n%%EOF\n", objs.len() + 1).as_bytes());
+    out
+}
+
+/// The paragraph's own embedded CFF font draws it in the editor, so clicking it changes nothing
+/// on screen, whatever fonts are installed.
+#[test]
+fn a_paragraph_in_a_bare_cff_font_opens_in_that_font() {
+    let mut h = Harness::builder().with_size(egui::vec2(1400.0, 900.0)).build_eframe(|_cc| {
+        let mut app = PdfCraftApp::new();
+        app.set_option("language", "en").unwrap();
+        app.open_bytes("cff.pdf", None, bare_cff_fixture()).unwrap();
+        app
+    });
+    h.run_steps(4);
+    assert!(h.state_mut().execute("edit.edit_text"));
+    h.run_steps(2);
+    let r = h.state().views[0].page_screen_rect(0).unwrap();
+    let at = egui::pos2(r.left() + 26.0 / 200.0 * r.width(), r.top() + (300.0 - 158.0) / 300.0 * r.height());
+    h.hover_at(at);
+    h.run_steps(1);
+    h.drag_at(at);
+    h.run_steps(1);
+    h.drop_at(at);
+    h.run_steps(4);
+    assert!(h.state().views[0].line_editor.is_some(), "editing");
+    let families: Vec<_> = h
+        .output()
+        .shapes
+        .iter()
+        .filter_map(|s| match &s.shape {
+            egui::Shape::Text(t) if t.galley.text().starts_with("!!") => {
+                Some(t.galley.job.sections.iter().map(|x| x.format.font_id.family.clone()).collect::<Vec<_>>())
+            }
+            _ => None,
+        })
+        .flatten()
+        .collect();
+    assert!(
+        !families.is_empty()
+            && families.iter().all(|f| matches!(f, egui::FontFamily::Name(n) if n.starts_with("pdf-source-") && !n.contains("installed"))),
+        "{families:?}"
+    );
+}
