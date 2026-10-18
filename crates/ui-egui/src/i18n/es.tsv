@@ -2485,3 +2485,33 @@ animation effects	Off	Desactivados
 	Edit metadata	Editar metadatos
 	Add tools and controls	Añadir herramientas y controles
 	Reset to default	Restablecer valores predeterminados
+	House tools	Casa
+	Conjecturas and IPBB	Conjecturas e IPBB
+	Everyday tools	Herramientas cotidianas
+	Finish Conjecturas file	Cerrar archivo Conjecturas
+	Finish Conjecturas file…	Cerrar archivo Conjecturas…
+	Sets the house's document information and removes what other applications left in the file.	Escribe la información del documento según el estándar de la casa y elimina lo que otras aplicaciones dejaron en el archivo.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Eliminar los metadatos XMP de otras aplicaciones (historial de InDesign, identificadores del documento, metadatos de imágenes)
+	Remove the private data of other applications	Eliminar los datos privados de otras aplicaciones
+	Open with the bookmarks panel	Abrir con el panel de marcadores
+	File finished. Save to write the changes into it.	Archivo cerrado. Guarde para escribir los cambios en él.
+	PROOF	PRUEBA
+	Proof for the author	Prueba para el autor
+	Proof for the author…	Prueba para el autor…
+	Marks every page with a watermark and protects the copy against changes and copying.	Marca todas las páginas con una marca de agua y protege la copia contra cambios y copia.
+	Let the author comment on the proof	Permitir que el autor comente la prueba
+	Use Save As for the proof, so the original stays unprotected.	Use Guardar como para la prueba, para que el original siga sin protección.
+	Proof ready. Use Save As to keep the original unprotected.	Prueba lista. Use Guardar como para mantener el original sin protección.
+	Initial every page	Rubricar todas las páginas
+	Initial every page…	Rubricar todas las páginas…
+	Puts your saved initials at the same place on each page.	Coloca sus iniciales guardadas en el mismo lugar de cada página.
+	Create your initials first.	Cree primero sus iniciales.
+	Create initials	Crear iniciales
+	Bottom right corner	Esquina inferior derecha
+	Bottom left corner	Esquina inferior izquierda
+	Right margin, middle	Margen derecho, en el centro
+	Distance from the edges	Distancia de los bordes
+	Leave out the last page	Dejar fuera la última página
+	Then sign the last page	Después, firmar la última página
+	Pages to initial: {n}	Páginas para rubricar: {n}
+	Initialled {n} pages.	{n} páginas rubricadas.

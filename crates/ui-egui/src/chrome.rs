@@ -421,6 +421,10 @@ pub fn mode_bar(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                 ui.add_space(6.0);
                 ui.painter().vline(ui.cursor().left(), ui.max_rect().y_range().shrink(12.0), Stroke::new(1.0, t.divider));
                 ui.add_space(10.0);
+                // House tools first: the routines of this build's owner.
+                if app.bar_items.iter().any(|b| b == "house") {
+                    bar_item(app, ui, "house");
+                }
                 for (mode, label) in
                     [(Mode::AllTools, "All tools"), (Mode::Read, "Read"), (Mode::Edit, "Edit"), (Mode::Convert, "Convert"), (Mode::Sign, "E-Sign")]
                 {
@@ -469,7 +473,7 @@ pub fn mode_bar(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
 }
 
 /// Mode bar items besides the workspaces, in the order the context menu offers them.
-const BAR_EXTRAS: [(&str, &str); 2] = [("metadata", "Edit metadata"), ("certificate", "Use a certificate")];
+const BAR_EXTRAS: [(&str, &str); 3] = [("house", "House tools"), ("metadata", "Edit metadata"), ("certificate", "Use a certificate")];
 
 /// What the mode bar shows before anyone changes it.
 pub(crate) fn default_bar_items() -> Vec<String> {
@@ -494,6 +498,7 @@ fn bar_item(app: &mut PdfCraftApp, ui: &mut egui::Ui, item: &str) {
     let Some(label) = bar_item_label(item) else { return };
     let group = match item {
         "certificate" => Some("certificate"),
+        "house" => Some("house"),
         _ => item.strip_prefix("tool:").and_then(|g| pdfcraft_engine::catalog::TOOL_GROUPS.iter().find(|t| t.id == g)).map(|t| t.id),
     };
     let active = group.is_some_and(|g| app.left == crate::LeftPanel::Tool(g))
@@ -528,7 +533,7 @@ fn bar_menu(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
     }
     ui.separator();
     egui::ScrollArea::vertical().max_height(360.0).show(ui, |ui| {
-        for g in pdfcraft_engine::catalog::TOOL_GROUPS.iter().filter(|g| g.id != "certificate") {
+        for g in pdfcraft_engine::catalog::TOOL_GROUPS.iter().filter(|g| g.id != "certificate" && g.id != "house") {
             toggle(app, ui, format!("tool:{}", g.id), g.label);
         }
     });

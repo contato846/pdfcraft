@@ -59,6 +59,36 @@ const TEAL: [u8; 3] = [0x14, 0x9C, 0xA8];
 const PINK: [u8; 3] = [0xD6, 0x3B, 0x8F];
 
 pub static TOOL_GROUPS: &[ToolGroup] = &[
+    // This personal build's house tools (Editora Conjecturas, IPBB), first so they are found first.
+    ToolGroup {
+        id: "house",
+        label: "House tools",
+        icon: "house",
+        hue: ORANGE,
+        badge: None,
+        availability: Ready,
+        sections: &[
+            ToolSection {
+                title: "Conjecturas and IPBB",
+                items: &[
+                    item("Finish Conjecturas file", "file-check", "house.finish", Ready),
+                    item("Proof for the author", "stamp", "house.proof", Ready),
+                    item("Initial every page", "signature", "house.initials", Ready),
+                ],
+            },
+            ToolSection {
+                title: "Everyday tools",
+                items: &[
+                    item("Remove hidden information", "eye-off", "protect.remove_hidden", Ready),
+                    item("Watermark", "stamp", "edit.watermark", Ready),
+                    item("Protect with password", "lock", "protect.password", Ready),
+                    item("Set page boxes", "square-dashed-mouse-pointer", "page.boxes", Ready),
+                    item("Select files to compare", "git-compare", "doc.compare", Ready),
+                    item("Digitally sign", "signature", "sign.digital", Ready),
+                ],
+            },
+        ],
+    },
     ToolGroup {
         id: "export",
         label: "Export a PDF",

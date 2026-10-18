@@ -2369,3 +2369,33 @@ animation effects	Off	Desativados
 	Edit metadata	Editar metadados
 	Add tools and controls	Adicionar ferramentas e controles
 	Reset to default	Restaurar o padrão
+	House tools	Casa
+	Conjecturas and IPBB	Conjecturas e IPBB
+	Everyday tools	Ferramentas do dia a dia
+	Finish Conjecturas file	Fechar arquivo Conjecturas
+	Finish Conjecturas file…	Fechar arquivo Conjecturas…
+	Sets the house's document information and removes what other applications left in the file.	Grava as informações do documento no padrão da casa e remove o que outros aplicativos deixaram no arquivo.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Remover os metadados XMP de outros aplicativos (histórico do InDesign, identificadores do documento, metadados das imagens)
+	Remove the private data of other applications	Remover os dados privados de outros aplicativos
+	Open with the bookmarks panel	Abrir com o painel de marcadores
+	File finished. Save to write the changes into it.	Arquivo fechado. Salve para gravar as alterações nele.
+	PROOF	PROVA
+	Proof for the author	Prova para o autor
+	Proof for the author…	Prova para o autor…
+	Marks every page with a watermark and protects the copy against changes and copying.	Marca todas as páginas com uma marca d'água e protege a cópia contra alterações e cópia.
+	Let the author comment on the proof	Permitir que o autor comente a prova
+	Use Save As for the proof, so the original stays unprotected.	Use Salvar como para a prova, para que o original continue sem proteção.
+	Proof ready. Use Save As to keep the original unprotected.	Prova pronta. Use Salvar como para manter o original sem proteção.
+	Initial every page	Rubricar todas as páginas
+	Initial every page…	Rubricar todas as páginas…
+	Puts your saved initials at the same place on each page.	Coloca a sua rubrica salva no mesmo lugar de cada página.
+	Create your initials first.	Crie primeiro a sua rubrica.
+	Create initials	Criar rubrica
+	Bottom right corner	Canto inferior direito
+	Bottom left corner	Canto inferior esquerdo
+	Right margin, middle	Margem direita, no meio
+	Distance from the edges	Distância das bordas
+	Leave out the last page	Deixar de fora a última página
+	Then sign the last page	Depois, assinar a última página
+	Pages to initial: {n}	Páginas a rubricar: {n}
+	Initialled {n} pages.	{n} páginas rubricadas.

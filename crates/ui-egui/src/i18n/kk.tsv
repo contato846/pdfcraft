@@ -2353,3 +2353,33 @@ animation effects	Off	Өшірулі
 	Edit metadata	Метадеректерді өңдеу
 	Add tools and controls	Құралдар мен басқару элементтерін қосу
 	Reset to default	Әдепкіге қайтару
+	House tools	Үй
+	Conjecturas and IPBB	Conjecturas және IPBB
+	Everyday tools	Күнделікті құралдар
+	Finish Conjecturas file	Conjecturas файлын аяқтау
+	Finish Conjecturas file…	Conjecturas файлын аяқтау…
+	Sets the house's document information and removes what other applications left in the file.	Құжат мәліметтерін үй стандартына сай орнатады және басқа қолданбалар файлда қалдырғанын жояды.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Басқа қолданбалардың XMP метадеректерін жою (InDesign тарихы, құжат идентификаторлары, сурет метадеректері)
+	Remove the private data of other applications	Басқа қолданбалардың жеке деректерін жою
+	Open with the bookmarks panel	Бетбелгілер панелімен ашу
+	File finished. Save to write the changes into it.	Файл аяқталды. Өзгерістерді жазу үшін сақтаңыз.
+	PROOF	КОРРЕКТУРА
+	Proof for the author	Авторға арналған корректура
+	Proof for the author…	Авторға арналған корректура…
+	Marks every page with a watermark and protects the copy against changes and copying.	Әр бетке су белгісін қояды және көшірмені өзгертуден және көшіруден қорғайды.
+	Let the author comment on the proof	Авторға корректураға пікір қалдыруға рұқсат ету
+	Use Save As for the proof, so the original stays unprotected.	Түпнұсқа қорғаусыз қалуы үшін корректураны «Басқаша сақтау» арқылы сақтаңыз.
+	Proof ready. Use Save As to keep the original unprotected.	Корректура дайын. Түпнұсқаны қорғаусыз қалдыру үшін «Басқаша сақтау» пайдаланыңыз.
+	Initial every page	Барлық беттерге қолтаңба қою
+	Initial every page…	Барлық беттерге қолтаңба қою…
+	Puts your saved initials at the same place on each page.	Сақталған инициалдарыңызды әр беттің бір орнына қояды.
+	Create your initials first.	Алдымен инициалдарыңызды жасаңыз.
+	Create initials	Инициалдар жасау
+	Bottom right corner	Төменгі оң жақ бұрыш
+	Bottom left corner	Төменгі сол жақ бұрыш
+	Right margin, middle	Оң жақ жиек, ортасында
+	Distance from the edges	Шеттерден қашықтық
+	Leave out the last page	Соңғы бетті қоспау
+	Then sign the last page	Содан кейін соңғы бетке қол қою
+	Pages to initial: {n}	Қолтаңба қойылатын беттер: {n}
+	Initialled {n} pages.	{n} бетке қолтаңба қойылды.

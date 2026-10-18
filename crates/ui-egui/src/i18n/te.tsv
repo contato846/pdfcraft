@@ -2268,3 +2268,33 @@ animation effects	Off	ఆఫ్
 	Edit metadata	మెటాడేటాను సవరించు
 	Add tools and controls	సాధనాలు మరియు నియంత్రణలను జోడించు
 	Reset to default	డిఫాల్ట్‌కు రీసెట్ చేయి
+	House tools	హౌస్
+	Conjecturas and IPBB	Conjecturas మరియు IPBB
+	Everyday tools	రోజువారీ సాధనాలు
+	Finish Conjecturas file	Conjecturas ఫైల్‌ను ముగించు
+	Finish Conjecturas file…	Conjecturas ఫైల్‌ను ముగించు…
+	Sets the house's document information and removes what other applications left in the file.	పత్ర సమాచారాన్ని సంస్థ ప్రమాణం ప్రకారం సెట్ చేసి, ఇతర అనువర్తనాలు ఫైల్‌లో వదిలినవాటిని తొలగిస్తుంది.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	ఇతర అనువర్తనాల XMP మెటాడేటాను తొలగించు (InDesign చరిత్ర, పత్ర IDలు, చిత్ర మెటాడేటా)
+	Remove the private data of other applications	ఇతర అనువర్తనాల ప్రైవేట్ డేటాను తొలగించు
+	Open with the bookmarks panel	బుక్‌మార్క్‌ల ప్యానెల్‌తో తెరువు
+	File finished. Save to write the changes into it.	ఫైల్ ముగిసింది. మార్పులను దానిలో రాయడానికి సేవ్ చేయండి.
+	PROOF	ప్రూఫ్
+	Proof for the author	రచయిత కోసం ప్రూఫ్
+	Proof for the author…	రచయిత కోసం ప్రూఫ్…
+	Marks every page with a watermark and protects the copy against changes and copying.	ప్రతి పేజీకి వాటర్‌మార్క్ వేసి, ప్రతిని మార్పులు మరియు కాపీ నుండి రక్షిస్తుంది.
+	Let the author comment on the proof	రచయిత ప్రూఫ్‌పై వ్యాఖ్యానించడానికి అనుమతించు
+	Use Save As for the proof, so the original stays unprotected.	అసలు ఫైల్ రక్షణ లేకుండా ఉండేలా ప్రూఫ్‌ను ఇలా సేవ్ చేయి ద్వారా సేవ్ చేయండి.
+	Proof ready. Use Save As to keep the original unprotected.	ప్రూఫ్ సిద్ధంగా ఉంది. అసలును రక్షణ లేకుండా ఉంచడానికి ఇలా సేవ్ చేయి ఉపయోగించండి.
+	Initial every page	అన్ని పేజీలపై ఇనిషియల్స్ పెట్టు
+	Initial every page…	అన్ని పేజీలపై ఇనిషియల్స్ పెట్టు…
+	Puts your saved initials at the same place on each page.	సేవ్ చేసిన మీ ఇనిషియల్స్‌ను ప్రతి పేజీలో ఒకే చోట పెడుతుంది.
+	Create your initials first.	ముందుగా మీ ఇనిషియల్స్ సృష్టించండి.
+	Create initials	ఇనిషియల్స్ సృష్టించు
+	Bottom right corner	కింది కుడి మూల
+	Bottom left corner	కింది ఎడమ మూల
+	Right margin, middle	కుడి అంచు, మధ్యలో
+	Distance from the edges	అంచుల నుండి దూరం
+	Leave out the last page	చివరి పేజీని వదిలివేయి
+	Then sign the last page	తర్వాత చివరి పేజీపై సంతకం చేయి
+	Pages to initial: {n}	ఇనిషియల్స్ పెట్టాల్సిన పేజీలు: {n}
+	Initialled {n} pages.	{n} పేజీలపై ఇనిషియల్స్ పెట్టబడ్డాయి.

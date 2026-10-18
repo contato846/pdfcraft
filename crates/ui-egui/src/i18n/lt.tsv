@@ -2599,3 +2599,33 @@ key	Space	Tarpas
 	Edit metadata	Redaguoti metaduomenis
 	Add tools and controls	Pridėti įrankių ir valdiklių
 	Reset to default	Atkurti numatytuosius
+	House tools	Namai
+	Conjecturas and IPBB	Conjecturas ir IPBB
+	Everyday tools	Kasdieniai įrankiai
+	Finish Conjecturas file	Užbaigti Conjecturas failą
+	Finish Conjecturas file…	Užbaigti Conjecturas failą…
+	Sets the house's document information and removes what other applications left in the file.	Nustato dokumento informaciją pagal namų standartą ir pašalina tai, ką faile paliko kitos programos.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Pašalinti kitų programų XMP metaduomenis (InDesign istorija, dokumento ID, vaizdų metaduomenys)
+	Remove the private data of other applications	Pašalinti kitų programų privačius duomenis
+	Open with the bookmarks panel	Atidaryti su žymių skydeliu
+	File finished. Save to write the changes into it.	Failas užbaigtas. Įrašykite, kad pakeitimai būtų įrašyti į jį.
+	PROOF	KOREKTŪRA
+	Proof for the author	Korektūra autoriui
+	Proof for the author…	Korektūra autoriui…
+	Marks every page with a watermark and protects the copy against changes and copying.	Kiekviename puslapyje uždeda vandens ženklą ir apsaugo kopiją nuo keitimo ir kopijavimo.
+	Let the author comment on the proof	Leisti autoriui komentuoti korektūrą
+	Use Save As for the proof, so the original stays unprotected.	Korektūrą įrašykite naudodami Įrašyti kaip, kad originalas liktų neapsaugotas.
+	Proof ready. Use Save As to keep the original unprotected.	Korektūra paruošta. Naudokite Įrašyti kaip, kad originalas liktų neapsaugotas.
+	Initial every page	Parafuoti visus puslapius
+	Initial every page…	Parafuoti visus puslapius…
+	Puts your saved initials at the same place on each page.	Įrašytą parafą deda toje pačioje kiekvieno puslapio vietoje.
+	Create your initials first.	Pirmiausia sukurkite parafą.
+	Create initials	Sukurti parafą
+	Bottom right corner	Apatinis dešinysis kampas
+	Bottom left corner	Apatinis kairysis kampas
+	Right margin, middle	Dešinė paraštė, viduryje
+	Distance from the edges	Atstumas nuo kraštų
+	Leave out the last page	Praleisti paskutinį puslapį
+	Then sign the last page	Tada pasirašyti paskutinį puslapį
+	Pages to initial: {n}	Parafuotini puslapiai: {n}
+	Initialled {n} pages.	Parafuota puslapių: {n}.

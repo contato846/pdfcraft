@@ -81,6 +81,7 @@ pub mod fill_sign;
 pub mod folders_ui;
 pub mod forms_ui;
 mod home;
+pub mod house;
 mod icon_data;
 pub mod icons;
 pub mod last_session;
@@ -305,6 +306,12 @@ pub enum Dialog {
     /// Remove Hidden Information and Sanitize Document.
     RemoveHidden,
     Sanitize,
+    /// House tools ▸ Finish Conjecturas file.
+    FinishConjecturas,
+    /// House tools ▸ Proof for the author.
+    AuthorProof,
+    /// House tools ▸ Initial every page.
+    InitialEveryPage,
     /// Documents from a session that ended unexpectedly.
     Recovery,
     /// Comments ▸ Summarize comments (options).
@@ -776,6 +783,9 @@ pub struct PdfCraftApp {
     pub redact_pages_draft: RedactPagesDraft,
     pub redact_search: RedactSearchDraft,
     pub hidden_draft: HiddenDraft,
+    pub finish_draft: house::FinishDraft,
+    pub proof_draft: house::ProofDraft,
+    pub initials_draft: house::InitialsDraft,
     pub print_draft: PrintDraft,
     pub link_draft: Option<LinkDraft>,
     /// The style new text gets (Edit a PDF ▸ Format text).
@@ -1042,6 +1052,9 @@ impl PdfCraftApp {
             redact_pages_draft: RedactPagesDraft::default(),
             redact_search: RedactSearchDraft::default(),
             hidden_draft: HiddenDraft::default(),
+            finish_draft: house::FinishDraft::default(),
+            proof_draft: house::ProofDraft::default(),
+            initials_draft: house::InitialsDraft::default(),
             print_draft: PrintDraft::default(),
             link_draft: None,
             text_style: content_ui::default_style(),

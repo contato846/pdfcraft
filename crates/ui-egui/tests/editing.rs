@@ -4223,7 +4223,8 @@ fn the_mode_bar_offers_metadata_certificate_and_chosen_tools() {
     h.event(egui::Event::PointerButton { pos: bar, button: egui::PointerButton::Secondary, pressed: false, modifiers: Modifiers::NONE });
     h.run_steps(3);
     h.get_by_label("Add tools and controls");
-    let tool = pdfcraft_engine::catalog::TOOL_GROUPS.iter().find(|g| g.id != "certificate").unwrap();
+    // Use a certificate and House tools are fixed entries of the menu, not tool groups.
+    let tool = pdfcraft_engine::catalog::TOOL_GROUPS.iter().find(|g| g.id != "certificate" && g.id != "house").unwrap();
     h.get_by_role_and_label(Role::CheckBox, tool.label).click();
     h.run_steps(2);
     // Each choice closes the menu, as a menu item does; open it again for the next one.
@@ -4325,4 +4326,101 @@ fn the_open_text_editor_stays_inside_the_document_view_when_scrolled() {
         .expect("the editor's frame");
     let text = h.ctx.memory(|m| m.area_rect(egui::Id::new("edit-text-line"))).expect("the editor's area");
     assert!((text.top() - (frame.top() + 2.0)).abs() < 1.5, "the text {text:?} has slid off its frame {frame:?}");
+}
+
+/// House tools ▸ Finish Conjecturas file: the house's application name, no producer, the title
+/// kept, in one undoable step; and the House tools button leads to it.
+#[test]
+fn finish_conjecturas_file_sets_the_house_metadata_in_one_step() {
+    use pdfcraft_engine::Edit;
+    let mut h = harness(1, |app| {
+        assert!(app.apply_edit(Edit::Batch {
+            label: "setup".into(),
+            edits: vec![
+                Edit::SetInfo { key: "Title".into(), value: "Um livro".into() },
+                Edit::SetInfo { key: "Creator".into(), value: "Adobe InDesign 19.0 (Windows)".into() },
+                Edit::SetInfo { key: "Producer".into(), value: "Adobe PDF Library 17.0".into() },
+            ],
+        }));
+    });
+    let id = h.state().views[0].id;
+    // The House tools button on the mode bar opens the group that holds the tool.
+    let row = h.get_all_by_label("All tools").map(|n| n.rect().center().y).fold(f32::MAX, f32::min);
+    let house = h.get_all_by_label("House tools").find(|n| (n.rect().center().y - row).abs() < 6.0).expect("House tools on the mode bar");
+    house.click();
+    h.run_steps(3);
+    h.get_by_label("Finish Conjecturas file").click();
+    h.run_steps(3);
+    assert_eq!(h.state().dialog, Some(Dialog::FinishConjecturas));
+    let d = &h.state().finish_draft;
+    assert_eq!((d.title.as_str(), d.creator.as_str(), d.producer.as_str()), ("Um livro", "Editora Conjecturas", ""));
+    h.get_by_label("Apply").click();
+    h.run_steps(3);
+    let info = |h: &Harness<'static, PdfCraftApp>, k: &str| h.state().session.get(id).unwrap().info_value(k);
+    assert_eq!(info(&h, "Creator").as_deref(), Some("Editora Conjecturas"));
+    assert_eq!(info(&h, "Producer"), None, "no producer");
+    assert_eq!(info(&h, "Title").as_deref(), Some("Um livro"), "the title is kept");
+    // One undo brings back what the layout application wrote.
+    assert!(h.state_mut().execute("edit.undo"));
+    h.run_steps(2);
+    assert_eq!(info(&h, "Creator").as_deref(), Some("Adobe InDesign 19.0 (Windows)"));
+    assert_eq!(info(&h, "Producer").as_deref(), Some("Adobe PDF Library 17.0"));
+}
+
+/// House tools ▸ Proof for the author: a watermark with the name and the date on every page, and
+/// protection against changes and copying that still lets the author comment, in one step.
+#[test]
+fn proof_for_the_author_marks_and_protects_in_one_step() {
+    let mut h = harness(2, |_| {});
+    let id = h.state().views[0].id;
+    assert!(h.state_mut().execute("house.proof"));
+    h.run_steps(3);
+    assert_eq!(h.state().dialog, Some(Dialog::AuthorProof));
+    assert!(h.state().proof_draft.date.len() == 10, "today, DD/MM/YYYY: {}", h.state().proof_draft.date);
+    let name = h.get_by_role_and_label(Role::TextInput, "Name");
+    name.focus();
+    name.type_text("Autora Exemplo");
+    h.run_steps(2);
+    assert!(h.state().proof_draft.mark().starts_with("PROOF – Autora Exemplo – "), "{}", h.state().proof_draft.mark());
+    h.get_by_label("Apply").click();
+    h.run_steps(3);
+    let doc = h.state().session.get(id).unwrap();
+    assert!(doc.marks.contains(&pdfcraft_engine::MarkKind::Watermark), "the watermark is on the pages");
+    let security = doc.security_summary().expect("the proof is protected");
+    let bit = |n: u32| security.permissions.bits & (1 << (n - 1)) != 0;
+    assert!(!bit(5) && !bit(4), "no copying, no changes");
+    assert!(bit(6) && bit(3), "commenting and printing stay allowed");
+    // One undo takes both away.
+    assert!(h.state_mut().execute("edit.undo"));
+    h.run_steps(2);
+    let doc = h.state().session.get(id).unwrap();
+    assert!(doc.security_summary().is_none() && !doc.marks.contains(&pdfcraft_engine::MarkKind::Watermark));
+}
+
+/// House tools ▸ Initial every page: the saved initials on every page but the last, in one
+/// step; then the last page with the signature tool.
+#[test]
+fn initial_every_page_initials_all_but_the_last_in_one_step() {
+    let mut h = harness(3, |app| app.initials = Some(pdfcraft_ui_egui::fill_sign::SavedSig::Typed("BB".into())));
+    let id = h.state().views[0].id;
+    let before = h.state().session.get(id).unwrap().info.annotations.len();
+    assert!(h.state_mut().execute("house.initials"));
+    h.run_steps(3);
+    assert_eq!(h.state().dialog, Some(Dialog::InitialEveryPage));
+    h.get_by_label("Apply").click();
+    h.run_steps(4);
+    let doc = h.state().session.get(id).unwrap();
+    let added: Vec<usize> = doc.info.annotations.iter().skip(before).map(|a| a.page).collect();
+    let mut pages = doc.info.annotations.iter().map(|a| a.page).collect::<Vec<_>>();
+    pages.sort_unstable();
+    assert_eq!(pages.iter().filter(|p| **p < 2).count(), 2, "pages 1 and 2 initialled: {added:?}");
+    assert!(!pages.contains(&2), "the last page is left for the signature");
+    // Bottom right, 10 mm from the edges (the fixture's pages are 200 × 300 pt).
+    let a = doc.info.annotations.iter().find(|a| a.page == 0).unwrap();
+    let margin = 10.0 * 72.0 / 25.4;
+    assert!((a.rect[2] - (200.0 - margin)).abs() < 1.0 && (a.rect[1] - margin).abs() < 1.0, "{:?}", a.rect);
+    assert_eq!(h.state().views[0].current, 2, "on to the last page to sign");
+    assert!(h.state_mut().execute("edit.undo"));
+    h.run_steps(2);
+    assert_eq!(h.state().session.get(id).unwrap().info.annotations.len(), before, "one undo takes them all away");
 }

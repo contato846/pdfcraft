@@ -2365,3 +2365,33 @@ animation effects	Off	Ανενεργά
 	Edit metadata	Επεξεργασία μεταδεδομένων
 	Add tools and controls	Προσθήκη εργαλείων και στοιχείων ελέγχου
 	Reset to default	Επαναφορά προεπιλογών
+	House tools	Σπίτι
+	Conjecturas and IPBB	Conjecturas και IPBB
+	Everyday tools	Καθημερινά εργαλεία
+	Finish Conjecturas file	Ολοκλήρωση αρχείου Conjecturas
+	Finish Conjecturas file…	Ολοκλήρωση αρχείου Conjecturas…
+	Sets the house's document information and removes what other applications left in the file.	Ορίζει τις πληροφορίες του εγγράφου κατά το πρότυπο του οίκου και αφαιρεί ό,τι άφησαν άλλες εφαρμογές στο αρχείο.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Κατάργηση των μεταδεδομένων XMP άλλων εφαρμογών (ιστορικό InDesign, αναγνωριστικά εγγράφου, μεταδεδομένα εικόνων)
+	Remove the private data of other applications	Κατάργηση των ιδιωτικών δεδομένων άλλων εφαρμογών
+	Open with the bookmarks panel	Άνοιγμα με τον πίνακα σελιδοδεικτών
+	File finished. Save to write the changes into it.	Το αρχείο ολοκληρώθηκε. Αποθηκεύστε για να γραφτούν οι αλλαγές.
+	PROOF	ΔΟΚΙΜΙΟ
+	Proof for the author	Δοκίμιο για τον συγγραφέα
+	Proof for the author…	Δοκίμιο για τον συγγραφέα…
+	Marks every page with a watermark and protects the copy against changes and copying.	Σημαίνει κάθε σελίδα με υδατογράφημα και προστατεύει το αντίγραφο από αλλαγές και αντιγραφή.
+	Let the author comment on the proof	Να επιτρέπεται στον συγγραφέα να σχολιάζει το δοκίμιο
+	Use Save As for the proof, so the original stays unprotected.	Χρησιμοποιήστε «Αποθήκευση ως» για το δοκίμιο, ώστε το πρωτότυπο να μείνει απροστάτευτο.
+	Proof ready. Use Save As to keep the original unprotected.	Το δοκίμιο είναι έτοιμο. Χρησιμοποιήστε «Αποθήκευση ως» για να μείνει το πρωτότυπο απροστάτευτο.
+	Initial every page	Μονογραφή όλων των σελίδων
+	Initial every page…	Μονογραφή όλων των σελίδων…
+	Puts your saved initials at the same place on each page.	Βάζει τα αποθηκευμένα αρχικά σας στο ίδιο σημείο κάθε σελίδας.
+	Create your initials first.	Δημιουργήστε πρώτα τα αρχικά σας.
+	Create initials	Δημιουργία αρχικών
+	Bottom right corner	Κάτω δεξιά γωνία
+	Bottom left corner	Κάτω αριστερή γωνία
+	Right margin, middle	Δεξί περιθώριο, στη μέση
+	Distance from the edges	Απόσταση από τα άκρα
+	Leave out the last page	Εξαίρεση της τελευταίας σελίδας
+	Then sign the last page	Έπειτα υπογραφή της τελευταίας σελίδας
+	Pages to initial: {n}	Σελίδες για μονογραφή: {n}
+	Initialled {n} pages.	Μονογράφηκαν {n} σελίδες.

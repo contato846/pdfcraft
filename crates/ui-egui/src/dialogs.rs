@@ -822,6 +822,30 @@ fn dialogs(app: &mut PdfCraftApp, ctx: &egui::Context) {
                 close = ok || cancel;
                 return;
             }
+            Dialog::InitialEveryPage => {
+                let (ok, cancel) = crate::house::initials_body(ui, app, &t);
+                if ok {
+                    redact_now = Some(dialog);
+                }
+                close = ok || cancel;
+                return;
+            }
+            Dialog::AuthorProof => {
+                let (ok, cancel) = crate::house::proof_body(ui, &mut app.proof_draft, &t);
+                if ok {
+                    redact_now = Some(dialog);
+                }
+                close = ok || cancel;
+                return;
+            }
+            Dialog::FinishConjecturas => {
+                let (ok, cancel) = crate::house::finish_body(ui, &mut app.finish_draft, &t);
+                if ok {
+                    redact_now = Some(dialog);
+                }
+                close = ok || cancel;
+                return;
+            }
             Dialog::Sanitize => {
                 let (ok, cancel) = crate::redact_ui::sanitize_body(ui, &t);
                 if ok {
@@ -1242,6 +1266,31 @@ fn dialogs(app: &mut PdfCraftApp, ctx: &egui::Context) {
                 } else {
                     app.notify_fmt("Removed {n} hidden items. Save to remove them from the file.", &[("n", &n.to_string())]);
                 }
+            }
+        }
+        Some(Dialog::InitialEveryPage) => {
+            let n = app.initials_pages().len();
+            if let Some(edit) = app.initial_every_page_edit()
+                && app.apply_edit(edit)
+            {
+                app.notify_fmt("Initialled {n} pages.", &[("n", &n.to_string())]);
+                if app.initials_draft.sign_last {
+                    app.sign_last_page();
+                }
+            }
+        }
+        Some(Dialog::AuthorProof) => {
+            if let Some(edit) = app.author_proof_edit()
+                && app.apply_edit(edit)
+            {
+                app.notify_tr("Proof ready. Use Save As to keep the original unprotected.");
+            }
+        }
+        Some(Dialog::FinishConjecturas) => {
+            if let Some(edit) = app.finish_conjecturas_edit()
+                && app.apply_edit(edit)
+            {
+                app.notify_tr("File finished. Save to write the changes into it.");
             }
         }
         Some(Dialog::Sanitize) if app.apply_edit(Edit::Sanitize) => {

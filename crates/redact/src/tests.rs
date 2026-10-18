@@ -940,3 +940,31 @@ fn redacting_every_inheriting_page_retires_the_parent_resources() {
         assert_eq!(under(&mut saved, page, &[[0.0, 190.0, 300.0, 220.0]]), 0);
     }
 }
+
+/// Placed artwork and images keep their own application data: Illustrator and InDesign leave
+/// `/PieceInfo` in form XObjects, Photoshop an XMP `/Metadata` stream in images.
+#[test]
+fn private_data_and_metadata_of_xobjects_are_removed() {
+    use crate::sanitize::{Hidden, remove_hidden, scan};
+    let mut doc = pdf(vec![
+        b"<< /Type /Catalog /Pages 2 0 R >>".to_vec(),
+        b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>".to_vec(),
+        b"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 300 300] /Contents 4 0 R /Resources << /XObject << /Im 5 0 R /Fm 6 0 R >> >> >>".to_vec(),
+        stream("", b"q 10 0 0 10 0 0 cm /Im Do Q /Fm Do"),
+        stream("/Type /XObject /Subtype /Image /Width 1 /Height 1 /ColorSpace /DeviceGray /BitsPerComponent 8 /Metadata 7 0 R", b"\x80"),
+        stream("/Type /XObject /Subtype /Form /BBox [0 0 10 10] /PieceInfo << /Illustrator << /Private 8 0 R >> >>", b"0 0 m 10 10 l S"),
+        stream("/Type /Metadata /Subtype /XML", b"<x:xmpmeta>Photoshop</x:xmpmeta>"),
+        stream("", b"private artwork"),
+    ]);
+    let counts: std::collections::HashMap<Hidden, usize> = scan(&doc).into_iter().collect();
+    assert_eq!(counts[&Hidden::Metadata], 1, "the image's XMP");
+    assert_eq!(counts[&Hidden::PrivateData], 1, "the form's PieceInfo");
+    let done = remove_hidden(&mut doc, &[Hidden::Metadata, Hidden::PrivateData]).unwrap();
+    assert_eq!(done, [(Hidden::Metadata, 1), (Hidden::PrivateData, 1)]);
+    let doc = reopen(&doc);
+    for n in [5, 6] {
+        let d = doc.get(ObjRef::new(n, 0)).as_dict().cloned().unwrap();
+        assert!(!d.contains(b"Metadata") && !d.contains(b"PieceInfo"), "object {n} still holds application data");
+        assert!(d.contains(b"Subtype"), "object {n} is otherwise intact");
+    }
+}

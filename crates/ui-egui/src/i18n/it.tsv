@@ -2364,3 +2364,33 @@ animation effects	Off	Disattivati
 	Edit metadata	Modifica metadati
 	Add tools and controls	Aggiungi strumenti e controlli
 	Reset to default	Ripristina predefiniti
+	House tools	Casa
+	Conjecturas and IPBB	Conjecturas e IPBB
+	Everyday tools	Strumenti quotidiani
+	Finish Conjecturas file	Finalizza file Conjecturas
+	Finish Conjecturas file…	Finalizza file Conjecturas…
+	Sets the house's document information and removes what other applications left in the file.	Imposta le informazioni del documento secondo lo standard della casa e rimuove ciò che altre applicazioni hanno lasciato nel file.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Rimuovi i metadati XMP di altre applicazioni (cronologia di InDesign, ID del documento, metadati delle immagini)
+	Remove the private data of other applications	Rimuovi i dati privati di altre applicazioni
+	Open with the bookmarks panel	Apri con il pannello dei segnalibri
+	File finished. Save to write the changes into it.	File finalizzato. Salva per scrivervi le modifiche.
+	PROOF	BOZZA
+	Proof for the author	Bozza per l'autore
+	Proof for the author…	Bozza per l'autore…
+	Marks every page with a watermark and protects the copy against changes and copying.	Contrassegna ogni pagina con una filigrana e protegge la copia da modifiche e copia.
+	Let the author comment on the proof	Consenti all'autore di commentare la bozza
+	Use Save As for the proof, so the original stays unprotected.	Usa Salva con nome per la bozza, così l'originale resta non protetto.
+	Proof ready. Use Save As to keep the original unprotected.	Bozza pronta. Usa Salva con nome per mantenere l'originale non protetto.
+	Initial every page	Sigla tutte le pagine
+	Initial every page…	Sigla tutte le pagine…
+	Puts your saved initials at the same place on each page.	Mette la sigla salvata nello stesso punto di ogni pagina.
+	Create your initials first.	Crea prima la tua sigla.
+	Create initials	Crea sigla
+	Bottom right corner	Angolo in basso a destra
+	Bottom left corner	Angolo in basso a sinistra
+	Right margin, middle	Margine destro, al centro
+	Distance from the edges	Distanza dai bordi
+	Leave out the last page	Escludi l'ultima pagina
+	Then sign the last page	Poi firma l'ultima pagina
+	Pages to initial: {n}	Pagine da siglare: {n}
+	Initialled {n} pages.	{n} pagine siglate.

@@ -2351,3 +2351,33 @@ animation effects	Off	Kapalı
 	Edit metadata	Meta verileri düzenle
 	Add tools and controls	Araç ve denetim ekle
 	Reset to default	Varsayılana sıfırla
+	House tools	Ev
+	Conjecturas and IPBB	Conjecturas ve IPBB
+	Everyday tools	Günlük araçlar
+	Finish Conjecturas file	Conjecturas dosyasını tamamla
+	Finish Conjecturas file…	Conjecturas dosyasını tamamla…
+	Sets the house's document information and removes what other applications left in the file.	Belge bilgilerini evin standardına göre ayarlar ve diğer uygulamaların dosyada bıraktıklarını kaldırır.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Diğer uygulamaların XMP meta verilerini kaldır (InDesign geçmişi, belge kimlikleri, görüntü meta verileri)
+	Remove the private data of other applications	Diğer uygulamaların özel verilerini kaldır
+	Open with the bookmarks panel	Yer imleri paneliyle aç
+	File finished. Save to write the changes into it.	Dosya tamamlandı. Değişiklikleri yazmak için kaydedin.
+	PROOF	PROVA
+	Proof for the author	Yazar için prova
+	Proof for the author…	Yazar için prova…
+	Marks every page with a watermark and protects the copy against changes and copying.	Her sayfayı filigranla işaretler ve kopyayı değişikliğe ve kopyalamaya karşı korur.
+	Let the author comment on the proof	Yazarın provaya yorum yapmasına izin ver
+	Use Save As for the proof, so the original stays unprotected.	Orijinal korumasız kalsın diye provayı Farklı Kaydet ile kaydedin.
+	Proof ready. Use Save As to keep the original unprotected.	Prova hazır. Orijinali korumasız tutmak için Farklı Kaydet'i kullanın.
+	Initial every page	Tüm sayfaları paraf et
+	Initial every page…	Tüm sayfaları paraf et…
+	Puts your saved initials at the same place on each page.	Kayıtlı parafınızı her sayfada aynı yere koyar.
+	Create your initials first.	Önce parafınızı oluşturun.
+	Create initials	Paraf oluştur
+	Bottom right corner	Sağ alt köşe
+	Bottom left corner	Sol alt köşe
+	Right margin, middle	Sağ kenar boşluğu, ortada
+	Distance from the edges	Kenarlardan uzaklık
+	Leave out the last page	Son sayfayı dışarıda bırak
+	Then sign the last page	Ardından son sayfayı imzala
+	Pages to initial: {n}	Paraflanacak sayfalar: {n}
+	Initialled {n} pages.	{n} sayfa paraflandı.

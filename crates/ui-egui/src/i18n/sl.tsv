@@ -2360,3 +2360,33 @@ animation effects	Off	Izklopljeni
 	Edit metadata	Uredi metapodatke
 	Add tools and controls	Dodaj orodja in kontrolnike
 	Reset to default	Ponastavi na privzeto
+	House tools	Hiša
+	Conjecturas and IPBB	Conjecturas in IPBB
+	Everyday tools	Vsakdanja orodja
+	Finish Conjecturas file	Zaključi datoteko Conjecturas
+	Finish Conjecturas file…	Zaključi datoteko Conjecturas…
+	Sets the house's document information and removes what other applications left in the file.	Nastavi podatke o dokumentu po hišnem standardu in odstrani, kar so v datoteki pustili drugi programi.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Odstrani metapodatke XMP drugih programov (zgodovina InDesigna, ID-ji dokumenta, metapodatki slik)
+	Remove the private data of other applications	Odstrani zasebne podatke drugih programov
+	Open with the bookmarks panel	Odpri s ploščo zaznamkov
+	File finished. Save to write the changes into it.	Datoteka zaključena. Shranite, da vanjo zapišete spremembe.
+	PROOF	KOREKTURA
+	Proof for the author	Korektura za avtorja
+	Proof for the author…	Korektura za avtorja…
+	Marks every page with a watermark and protects the copy against changes and copying.	Vsako stran označi z vodnim žigom in kopijo zaščiti pred spremembami in kopiranjem.
+	Let the author comment on the proof	Avtorju dovoli komentiranje korekture
+	Use Save As for the proof, so the original stays unprotected.	Korekturo shranite z Shrani kot, da izvirnik ostane nezaščiten.
+	Proof ready. Use Save As to keep the original unprotected.	Korektura je pripravljena. Z Shrani kot izvirnik ostane nezaščiten.
+	Initial every page	Parafiraj vse strani
+	Initial every page…	Parafiraj vse strani…
+	Puts your saved initials at the same place on each page.	Shranjeno parafo postavi na isto mesto vsake strani.
+	Create your initials first.	Najprej ustvarite parafo.
+	Create initials	Ustvari parafo
+	Bottom right corner	Spodnji desni kot
+	Bottom left corner	Spodnji levi kot
+	Right margin, middle	Desni rob, na sredini
+	Distance from the edges	Razdalja od robov
+	Leave out the last page	Izpusti zadnjo stran
+	Then sign the last page	Nato podpiši zadnjo stran
+	Pages to initial: {n}	Strani za parafiranje: {n}
+	Initialled {n} pages.	Parafiranih strani: {n}.

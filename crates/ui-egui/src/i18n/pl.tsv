@@ -2335,3 +2335,33 @@ animation effects	Off	Wyłączone
 	Edit metadata	Edytuj metadane
 	Add tools and controls	Dodaj narzędzia i elementy sterujące
 	Reset to default	Przywróć domyślne
+	House tools	Dom
+	Conjecturas and IPBB	Conjecturas i IPBB
+	Everyday tools	Narzędzia codzienne
+	Finish Conjecturas file	Zakończ plik Conjecturas
+	Finish Conjecturas file…	Zakończ plik Conjecturas…
+	Sets the house's document information and removes what other applications left in the file.	Ustawia informacje o dokumencie według standardu domu i usuwa to, co inne aplikacje zostawiły w pliku.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Usuń metadane XMP innych aplikacji (historia InDesign, identyfikatory dokumentu, metadane obrazów)
+	Remove the private data of other applications	Usuń prywatne dane innych aplikacji
+	Open with the bookmarks panel	Otwórz z panelem zakładek
+	File finished. Save to write the changes into it.	Plik zakończony. Zapisz, aby zapisać w nim zmiany.
+	PROOF	KOREKTA
+	Proof for the author	Korekta dla autora
+	Proof for the author…	Korekta dla autora…
+	Marks every page with a watermark and protects the copy against changes and copying.	Oznacza każdą stronę znakiem wodnym i chroni kopię przed zmianami i kopiowaniem.
+	Let the author comment on the proof	Pozwól autorowi komentować korektę
+	Use Save As for the proof, so the original stays unprotected.	Zapisz korektę przez Zapisz jako, aby oryginał pozostał niechroniony.
+	Proof ready. Use Save As to keep the original unprotected.	Korekta gotowa. Użyj Zapisz jako, aby oryginał pozostał niechroniony.
+	Initial every page	Parafuj wszystkie strony
+	Initial every page…	Parafuj wszystkie strony…
+	Puts your saved initials at the same place on each page.	Umieszcza zapisaną parafę w tym samym miejscu każdej strony.
+	Create your initials first.	Najpierw utwórz parafę.
+	Create initials	Utwórz parafę
+	Bottom right corner	Prawy dolny róg
+	Bottom left corner	Lewy dolny róg
+	Right margin, middle	Prawy margines, środek
+	Distance from the edges	Odległość od krawędzi
+	Leave out the last page	Pomiń ostatnią stronę
+	Then sign the last page	Potem podpisz ostatnią stronę
+	Pages to initial: {n}	Strony do parafowania: {n}
+	Initialled {n} pages.	Sparafowano stron: {n}.

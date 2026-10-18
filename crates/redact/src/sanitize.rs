@@ -83,6 +83,19 @@ fn catalog(doc: &Document) -> Option<(ObjRef, Dict)> {
     Some((r, doc.get(r).as_dict()?.clone()))
 }
 
+/// Images and form XObjects whose dictionary holds `key`. Placed artwork keeps its application's
+/// private data (`/PieceInfo`, left by Illustrator and InDesign) and images keep their own XMP
+/// (`/Metadata`, left by Photoshop), neither reachable from the catalog or the pages.
+fn xobjects_with(doc: &Document, key: &[u8]) -> Vec<ObjRef> {
+    doc.scan_objects()
+        .filter(|(_, o)| {
+            o.as_dict()
+                .is_some_and(|d| d.contains(key) && (d.name(b"Type") == Some(b"XObject") || matches!(d.name(b"Subtype"), Some(b"Image" | b"Form"))))
+        })
+        .map(|(r, _)| r)
+        .collect()
+}
+
 fn sub(doc: &Document, d: &Dict, key: &[u8]) -> Option<Dict> {
     d.get(key).and_then(|o| doc.resolve(o).as_dict().cloned())
 }
@@ -228,7 +241,9 @@ pub fn scan(doc: &Document) -> Vec<(Hidden, usize)> {
             let n = match h {
                 Hidden::Metadata => {
                     let info = doc.trailer().get(b"Info").and_then(|i| doc.resolve(i).as_dict().map(|d| d.len())).unwrap_or(0);
-                    let xmp = usize::from(cat.contains(b"Metadata")) + pages.iter().filter(|p| p.dict.contains(b"Metadata")).count();
+                    let xmp = usize::from(cat.contains(b"Metadata"))
+                        + pages.iter().filter(|p| p.dict.contains(b"Metadata")).count()
+                        + xobjects_with(doc, b"Metadata").len();
                     info + xmp
                 }
                 Hidden::Attachments => sub(doc, &names, b"EmbeddedFiles").map_or(0, |t| name_tree_len(doc, &t, 0)) + count_sub(b"FileAttachment"),
@@ -248,7 +263,11 @@ pub fn scan(doc: &Document) -> Vec<(Hidden, usize)> {
                         + annots.iter().filter(|a| a.contains(b"AA") || (a.name(b"Subtype") == Some(b"Widget") && a.contains(b"A"))).count()
                         + sub(doc, &names, b"JavaScript").map_or(0, |t| name_tree_len(doc, &t, 0))
                 }
-                Hidden::PrivateData => usize::from(cat.contains(b"PieceInfo")) + pages.iter().filter(|p| p.dict.contains(b"PieceInfo")).count(),
+                Hidden::PrivateData => {
+                    usize::from(cat.contains(b"PieceInfo"))
+                        + pages.iter().filter(|p| p.dict.contains(b"PieceInfo")).count()
+                        + xobjects_with(doc, b"PieceInfo").len()
+                }
             };
             (h, n)
         })
@@ -334,6 +353,15 @@ pub fn remove_hidden(doc: &mut Document, which: &[Hidden]) -> Result<Vec<(Hidden
                 d.remove(b"AA");
             }
         })?;
+    }
+    for (on, key) in [(which.contains(&Hidden::PrivateData), &b"PieceInfo"[..]), (which.contains(&Hidden::Metadata), b"Metadata")] {
+        if on {
+            for r in xobjects_with(doc, key) {
+                doc.update_dict(r, |d| {
+                    d.remove(key);
+                })?;
+            }
+        }
     }
     let off = hidden_layers(doc);
     let mut cat = doc.get(root).as_dict().cloned().unwrap_or_default();

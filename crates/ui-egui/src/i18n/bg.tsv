@@ -2318,3 +2318,33 @@ animation effects	Off	Изключени
 	Edit metadata	Редактиране на метаданни
 	Add tools and controls	Добавяне на инструменти и контроли
 	Reset to default	Връщане към стандартните
+	House tools	Дом
+	Conjecturas and IPBB	Conjecturas и IPBB
+	Everyday tools	Ежедневни инструменти
+	Finish Conjecturas file	Завършване на файл Conjecturas
+	Finish Conjecturas file…	Завършване на файл Conjecturas…
+	Sets the house's document information and removes what other applications left in the file.	Задава информацията за документа по стандарта на дома и премахва оставеното във файла от други приложения.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Премахване на XMP метаданните на други приложения (история на InDesign, идентификатори на документа, метаданни на изображенията)
+	Remove the private data of other applications	Премахване на личните данни на други приложения
+	Open with the bookmarks panel	Отваряне с панела с отметки
+	File finished. Save to write the changes into it.	Файлът е завършен. Запишете, за да внесете промените в него.
+	PROOF	КОРЕКТУРА
+	Proof for the author	Коректура за автора
+	Proof for the author…	Коректура за автора…
+	Marks every page with a watermark and protects the copy against changes and copying.	Поставя воден знак на всяка страница и защитава копието от промени и копиране.
+	Let the author comment on the proof	Разрешаване на автора да коментира коректурата
+	Use Save As for the proof, so the original stays unprotected.	Запишете коректурата със „Запиши като“, за да остане оригиналът без защита.
+	Proof ready. Use Save As to keep the original unprotected.	Коректурата е готова. Използвайте „Запиши като“, за да остане оригиналът без защита.
+	Initial every page	Парафиране на всички страници
+	Initial every page…	Парафиране на всички страници…
+	Puts your saved initials at the same place on each page.	Поставя запазените ви инициали на едно и също място на всяка страница.
+	Create your initials first.	Първо създайте инициалите си.
+	Create initials	Създаване на инициали
+	Bottom right corner	Долен десен ъгъл
+	Bottom left corner	Долен ляв ъгъл
+	Right margin, middle	Дясно поле, в средата
+	Distance from the edges	Разстояние от краищата
+	Leave out the last page	Без последната страница
+	Then sign the last page	След това подписване на последната страница
+	Pages to initial: {n}	Страници за парафиране: {n}
+	Initialled {n} pages.	Парафирани страници: {n}.

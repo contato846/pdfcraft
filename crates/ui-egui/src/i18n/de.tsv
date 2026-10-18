@@ -2356,3 +2356,33 @@ animation effects	Off	Aus
 	Edit metadata	Metadaten bearbeiten
 	Add tools and controls	Werkzeuge und Steuerelemente hinzufügen
 	Reset to default	Auf Standard zurücksetzen
+	House tools	Haus
+	Conjecturas and IPBB	Conjecturas und IPBB
+	Everyday tools	Alltagswerkzeuge
+	Finish Conjecturas file	Conjecturas-Datei abschließen
+	Finish Conjecturas file…	Conjecturas-Datei abschließen…
+	Sets the house's document information and removes what other applications left in the file.	Setzt die Dokumentinformationen nach Hausstandard und entfernt, was andere Anwendungen in der Datei hinterlassen haben.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	XMP-Metadaten anderer Anwendungen entfernen (InDesign-Verlauf, Dokument-IDs, Bildmetadaten)
+	Remove the private data of other applications	Private Daten anderer Anwendungen entfernen
+	Open with the bookmarks panel	Mit dem Lesezeichenbedienfeld öffnen
+	File finished. Save to write the changes into it.	Datei abgeschlossen. Speichern, um die Änderungen zu schreiben.
+	PROOF	KORREKTUR
+	Proof for the author	Korrekturabzug für den Autor
+	Proof for the author…	Korrekturabzug für den Autor…
+	Marks every page with a watermark and protects the copy against changes and copying.	Versieht jede Seite mit einem Wasserzeichen und schützt die Kopie vor Änderungen und Kopieren.
+	Let the author comment on the proof	Dem Autor Kommentare zum Abzug erlauben
+	Use Save As for the proof, so the original stays unprotected.	Speichern Sie den Abzug mit „Speichern unter“, damit das Original ungeschützt bleibt.
+	Proof ready. Use Save As to keep the original unprotected.	Abzug fertig. Mit „Speichern unter“ bleibt das Original ungeschützt.
+	Initial every page	Alle Seiten paraphieren
+	Initial every page…	Alle Seiten paraphieren…
+	Puts your saved initials at the same place on each page.	Setzt Ihre gespeicherten Initialen an dieselbe Stelle jeder Seite.
+	Create your initials first.	Erstellen Sie zuerst Ihre Initialen.
+	Create initials	Initialen erstellen
+	Bottom right corner	Untere rechte Ecke
+	Bottom left corner	Untere linke Ecke
+	Right margin, middle	Rechter Rand, Mitte
+	Distance from the edges	Abstand von den Rändern
+	Leave out the last page	Letzte Seite auslassen
+	Then sign the last page	Danach die letzte Seite unterschreiben
+	Pages to initial: {n}	Zu paraphierende Seiten: {n}
+	Initialled {n} pages.	{n} Seiten paraphiert.

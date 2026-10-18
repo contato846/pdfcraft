@@ -2319,3 +2319,33 @@ animation effects	Off	关
 	Edit metadata	编辑元数据
 	Add tools and controls	添加工具和控件
 	Reset to default	恢复默认设置
+	House tools	自家工具
+	Conjecturas and IPBB	Conjecturas 与 IPBB
+	Everyday tools	日常工具
+	Finish Conjecturas file	完成 Conjecturas 文件
+	Finish Conjecturas file…	完成 Conjecturas 文件…
+	Sets the house's document information and removes what other applications left in the file.	按本社标准设置文档信息，并删除其他应用程序留在文件中的内容。
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	删除其他应用程序的 XMP 元数据（InDesign 历史记录、文档 ID、图像元数据）
+	Remove the private data of other applications	删除其他应用程序的私有数据
+	Open with the bookmarks panel	打开时显示书签面板
+	File finished. Save to write the changes into it.	文件已完成。保存以将更改写入文件。
+	PROOF	校样
+	Proof for the author	作者校样
+	Proof for the author…	作者校样…
+	Marks every page with a watermark and protects the copy against changes and copying.	为每页加上水印，并保护副本不被修改和复制。
+	Let the author comment on the proof	允许作者对校样添加注释
+	Use Save As for the proof, so the original stays unprotected.	请用“另存为”保存校样，使原件保持未受保护。
+	Proof ready. Use Save As to keep the original unprotected.	校样已就绪。使用“另存为”使原件保持未受保护。
+	Initial every page	在所有页面上签署姓名首字母
+	Initial every page…	在所有页面上签署姓名首字母…
+	Puts your saved initials at the same place on each page.	将您保存的姓名首字母放在每页的相同位置。
+	Create your initials first.	请先创建姓名首字母。
+	Create initials	创建姓名首字母
+	Bottom right corner	右下角
+	Bottom left corner	左下角
+	Right margin, middle	右边距中部
+	Distance from the edges	距边缘的距离
+	Leave out the last page	不包括最后一页
+	Then sign the last page	然后在最后一页签名
+	Pages to initial: {n}	要签署的页数：{n}
+	Initialled {n} pages.	已在 {n} 页签署姓名首字母。
