@@ -2395,3 +2395,15 @@ animation effects	Off	Ανενεργά
 	Then sign the last page	Έπειτα υπογραφή της τελευταίας σελίδας
 	Pages to initial: {n}	Σελίδες για μονογραφή: {n}
 	Initialled {n} pages.	Μονογράφηκαν {n} σελίδες.
+	Portuguese (Brazil)	Πορτογαλικά (Βραζιλία)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Τα Windows δεν έχουν αναγνώριση κειμένου για αυτή τη γλώσσα. Προσθέστε τη στις Ρυθμίσεις ▸ Ώρα και γλώσσα ▸ Γλώσσα και περιοχή, με την οπτική αναγνώριση χαρακτήρων.
+	Read aloud from this page	Ανάγνωση φωναχτά από αυτή τη σελίδα
+	Pause or resume reading aloud	Παύση ή συνέχιση της ανάγνωσης φωναχτά
+	Read aloud uses the voices of Windows.	Η ανάγνωση φωναχτά χρησιμοποιεί τις φωνές των Windows.
+	Finished reading aloud.	Η ανάγνωση φωναχτά ολοκληρώθηκε.
+	Reading page {n}	Ανάγνωση σελίδας {n}
+	Resume	Συνέχιση
+	Pause	Παύση
+	Stop	Διακοπή
+	Default voice	Προεπιλεγμένη φωνή
+	Speed	Ταχύτητα

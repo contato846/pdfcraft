@@ -2385,3 +2385,15 @@ animation effects	Off	Désactivés
 	Then sign the last page	Puis signer la dernière page
 	Pages to initial: {n}	Pages à parapher : {n}
 	Initialled {n} pages.	{n} pages paraphées.
+	Portuguese (Brazil)	Portugais (Brésil)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows n'a pas de reconnaissance de texte pour cette langue. Ajoutez-la dans Paramètres ▸ Heure et langue ▸ Langue et région, avec sa reconnaissance optique de caractères.
+	Read aloud from this page	Lire à voix haute depuis cette page
+	Pause or resume reading aloud	Mettre en pause ou reprendre la lecture à voix haute
+	Read aloud uses the voices of Windows.	La lecture à voix haute utilise les voix de Windows.
+	Finished reading aloud.	Lecture à voix haute terminée.
+	Reading page {n}	Lecture de la page {n}
+	Resume	Reprendre
+	Pause	Pause
+	Stop	Arrêter
+	Default voice	Voix par défaut
+	Speed	Vitesse

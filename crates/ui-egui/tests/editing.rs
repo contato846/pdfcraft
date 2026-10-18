@@ -4424,3 +4424,18 @@ fn initial_every_page_initials_all_but_the_last_in_one_step() {
     h.run_steps(2);
     assert_eq!(h.state().session.get(id).unwrap().info.annotations.len(), before, "one undo takes them all away");
 }
+
+/// View ▸ Read aloud is a command (menu and House tools). Where the system has no voices this
+/// build can use (anything but Windows), it says so and reads nothing.
+#[test]
+fn read_aloud_says_where_it_needs_windows_voices() {
+    let mut h = harness(2, |_| {});
+    assert!(h.state_mut().execute("view.read_aloud"));
+    h.run_steps(2);
+    if cfg!(windows) {
+        return;
+    }
+    assert!(h.state().reading.is_none());
+    assert_eq!(h.state().toast.as_ref().map(|t| t.0.as_str()), Some("Read aloud uses the voices of Windows."));
+    assert!(h.state().views[0].read_page.is_none() && h.state().views[0].read_word.is_none());
+}

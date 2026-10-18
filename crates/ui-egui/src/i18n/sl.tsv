@@ -2390,3 +2390,15 @@ animation effects	Off	Izklopljeni
 	Then sign the last page	Nato podpiši zadnjo stran
 	Pages to initial: {n}	Strani za parafiranje: {n}
 	Initialled {n} pages.	Parafiranih strani: {n}.
+	Portuguese (Brazil)	Portugalščina (Brazilija)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows za ta jezik nima prepoznavanja besedila. Dodajte ga v Nastavitve ▸ Čas in jezik ▸ Jezik in regija, z optičnim prepoznavanjem znakov.
+	Read aloud from this page	Beri naglas od te strani
+	Pause or resume reading aloud	Začasno ustavi ali nadaljuj branje naglas
+	Read aloud uses the voices of Windows.	Branje naglas uporablja glasove sistema Windows.
+	Finished reading aloud.	Branje naglas je končano.
+	Reading page {n}	Branje strani {n}
+	Resume	Nadaljuj
+	Pause	Premor
+	Stop	Ustavi
+	Default voice	Privzeti glas
+	Speed	Hitrost

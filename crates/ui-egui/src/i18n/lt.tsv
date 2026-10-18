@@ -2629,3 +2629,15 @@ key	Space	Tarpas
 	Then sign the last page	Tada pasirašyti paskutinį puslapį
 	Pages to initial: {n}	Parafuotini puslapiai: {n}
 	Initialled {n} pages.	Parafuota puslapių: {n}.
+	Portuguese (Brazil)	Portugalų (Brazilija)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	„Windows“ neturi šios kalbos teksto atpažinimo. Pridėkite ją skiltyje Parametrai ▸ Laikas ir kalba ▸ Kalba ir regionas su optiniu simbolių atpažinimu.
+	Read aloud from this page	Skaityti garsiai nuo šio puslapio
+	Pause or resume reading aloud	Pristabdyti arba tęsti garsų skaitymą
+	Read aloud uses the voices of Windows.	Garsus skaitymas naudoja „Windows“ balsus.
+	Finished reading aloud.	Garsus skaitymas baigtas.
+	Reading page {n}	Skaitomas {n} puslapis
+	Resume	Tęsti
+	Pause	Pristabdyti
+	Stop	Stabdyti
+	Default voice	Numatytasis balsas
+	Speed	Greitis

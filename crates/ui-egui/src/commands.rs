@@ -456,6 +456,8 @@ impl PdfCraftApp {
             "house.finish" => self.open_finish_conjecturas(),
             "house.proof" => self.open_author_proof(),
             "house.initials" => self.open_initial_every_page(),
+            "view.read_aloud" => self.toggle_read_aloud(),
+            "view.read_aloud.pause" => self.pause_read_aloud(),
             "redact.clear" => {
                 self.apply_edit(Edit::ClearRedactions);
             }

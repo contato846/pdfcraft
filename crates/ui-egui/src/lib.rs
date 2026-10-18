@@ -94,6 +94,7 @@ mod panels;
 mod pickers;
 pub mod prepare;
 mod print_ui;
+pub mod read_aloud;
 mod signature_drag;
 pub mod units;
 mod web_print;
@@ -786,6 +787,9 @@ pub struct PdfCraftApp {
     pub finish_draft: house::FinishDraft,
     pub proof_draft: house::ProofDraft,
     pub initials_draft: house::InitialsDraft,
+    /// View ▸ Read aloud.
+    pub reading: Option<read_aloud::Reading>,
+    pub read_prefs: read_aloud::ReadAloudPrefs,
     pub print_draft: PrintDraft,
     pub link_draft: Option<LinkDraft>,
     /// The style new text gets (Edit a PDF ▸ Format text).
@@ -1055,6 +1059,8 @@ impl PdfCraftApp {
             finish_draft: house::FinishDraft::default(),
             proof_draft: house::ProofDraft::default(),
             initials_draft: house::InitialsDraft::default(),
+            reading: None,
+            read_prefs: read_aloud::ReadAloudPrefs::default(),
             print_draft: PrintDraft::default(),
             link_draft: None,
             text_style: content_ui::default_style(),
@@ -2959,6 +2965,7 @@ impl eframe::App for PdfCraftApp {
         }
         self.poll_export();
         self.poll_ocr();
+        self.poll_read_aloud(ctx);
         self.poll_optimize();
         self.poll_action();
         self.process_file_requests();
@@ -3041,6 +3048,7 @@ impl eframe::App for PdfCraftApp {
         self.process_pending_edits();
         palette::show(self, &ctx);
         dialogs::show(self, &ctx);
+        read_aloud::bar(&ctx, self);
         self.show_progress(&ctx);
         widgets::toast(self, &ctx);
         self.finish_render_frame(&ctx);

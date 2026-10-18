@@ -2298,3 +2298,15 @@ animation effects	Off	ఆఫ్
 	Then sign the last page	తర్వాత చివరి పేజీపై సంతకం చేయి
 	Pages to initial: {n}	ఇనిషియల్స్ పెట్టాల్సిన పేజీలు: {n}
 	Initialled {n} pages.	{n} పేజీలపై ఇనిషియల్స్ పెట్టబడ్డాయి.
+	Portuguese (Brazil)	పోర్చుగీస్ (బ్రెజిల్)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	ఈ భాషకు Windowsలో టెక్స్ట్ గుర్తింపు లేదు. సెట్టింగ్‌లు ▸ సమయం & భాష ▸ భాష & ప్రాంతంలో దాని ఆప్టికల్ క్యారెక్టర్ రికగ్నిషన్‌తో జోడించండి.
+	Read aloud from this page	ఈ పేజీ నుండి బిగ్గరగా చదువు
+	Pause or resume reading aloud	బిగ్గరగా చదవడాన్ని పాజ్ చేయి లేదా కొనసాగించు
+	Read aloud uses the voices of Windows.	బిగ్గరగా చదవడం Windows వాయిస్‌లను ఉపయోగిస్తుంది.
+	Finished reading aloud.	బిగ్గరగా చదవడం పూర్తయింది.
+	Reading page {n}	పేజీ {n} చదువుతోంది
+	Resume	కొనసాగించు
+	Pause	పాజ్
+	Stop	ఆపు
+	Default voice	డిఫాల్ట్ వాయిస్
+	Speed	వేగం

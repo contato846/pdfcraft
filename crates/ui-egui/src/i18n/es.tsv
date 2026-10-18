@@ -2515,3 +2515,15 @@ animation effects	Off	Desactivados
 	Then sign the last page	Después, firmar la última página
 	Pages to initial: {n}	Páginas para rubricar: {n}
 	Initialled {n} pages.	{n} páginas rubricadas.
+	Portuguese (Brazil)	Portugués (Brasil)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows no tiene reconocimiento de texto para este idioma. Agréguelo en Configuración ▸ Hora e idioma ▸ Idioma y región, con su reconocimiento óptico de caracteres.
+	Read aloud from this page	Leer en voz alta desde esta página
+	Pause or resume reading aloud	Pausar o reanudar la lectura en voz alta
+	Read aloud uses the voices of Windows.	La lectura en voz alta usa las voces de Windows.
+	Finished reading aloud.	Lectura en voz alta terminada.
+	Reading page {n}	Leyendo la página {n}
+	Resume	Reanudar
+	Pause	Pausar
+	Stop	Detener
+	Default voice	Voz predeterminada
+	Speed	Velocidad

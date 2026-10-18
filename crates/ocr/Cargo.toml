@@ -15,3 +15,7 @@ pdfcraft-fonts = { workspace = true }
 ocrs = { version = "0.13.1", default-features = false, features = ["rten"] }
 rten = { version = "0.26.0", default-features = false, features = ["rten_format"] }
 thiserror.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+# Windows' own recogniser (Windows.Media.Ocr): Portuguese, English and the other installed languages.
+windows = { version = "0.62", features = ["Foundation", "Foundation_Collections", "Globalization", "Graphics_Imaging", "Media_Ocr", "Storage_Streams"] }

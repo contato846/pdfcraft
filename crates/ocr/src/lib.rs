@@ -7,10 +7,16 @@
 //! searchable image (Acrobat's "Searchable Image (Exact)": the image is left untouched).
 //!
 //! The models read the Latin alphabet (English and other languages written without accents).
+//! On Windows, recognition runs Windows' own recogniser instead ([`windows_ocr`]), which reads
+//! Portuguese and English with their accents; the text layer (Helvetica, WinAnsiEncoding) holds
+//! every letter of both.
 
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
 
 use std::path::{Path, PathBuf};
+
+#[cfg(windows)]
+pub mod windows_ocr;
 
 pub use pdfcraft_fonts::helvetica_width;
 
@@ -23,7 +29,11 @@ pub const RECOGNITION_MODEL: &str = "text-recognition.rten";
 /// `€`, which made a scanned "€250" read as "E250".
 pub const ALPHABET: &str = " 0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~€ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-/// The languages the models read (ISO 639-1); all use the Latin alphabet without accents.
+/// The languages recognition offers: on Windows, BCP-47 tags of Windows' recogniser; elsewhere,
+/// the models' (ISO 639-1; all use the Latin alphabet without accents). The first is the default.
+#[cfg(windows)]
+pub const LANGUAGES: &[(&str, &str)] = &[("pt-BR", "Portuguese (Brazil)"), ("en-US", "English")];
+#[cfg(not(windows))]
 pub const LANGUAGES: &[(&str, &str)] = &[("en", "English")];
 
 #[derive(Debug, thiserror::Error)]
@@ -38,6 +48,11 @@ pub enum OcrError {
     Recognize(String),
     #[error("the image is empty")]
     EmptyImage,
+    /// Shown to end users; the UI catalogs key this exact text.
+    #[error(
+        "Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition."
+    )]
+    LanguageNotInstalled,
 }
 
 /// Where the two model files are.
@@ -105,7 +120,13 @@ impl Line {
 
 /// A loaded recogniser. Loading takes a moment; keep one and reuse it.
 pub struct Ocr {
-    engine: ocrs::OcrEngine,
+    backend: Backend,
+}
+
+enum Backend {
+    Models(ocrs::OcrEngine),
+    #[cfg(windows)]
+    Windows(windows_ocr::WinOcr),
 }
 
 impl Ocr {
@@ -118,7 +139,19 @@ impl Ocr {
             ..Default::default()
         };
         let engine = ocrs::OcrEngine::new(params).map_err(|e| OcrError::Load("ocr engine".into(), e.to_string()))?;
-        Ok(Ocr { engine })
+        Ok(Ocr { backend: Backend::Models(engine) })
+    }
+
+    /// The recogniser for `language` (a code from [`LANGUAGES`]): Windows' own on Windows, the
+    /// models elsewhere.
+    pub fn for_language(language: &str) -> Result<Ocr, OcrError> {
+        #[cfg(windows)]
+        return Ok(Ocr { backend: Backend::Windows(windows_ocr::WinOcr::new(language)?) });
+        #[cfg(not(windows))]
+        {
+            let _ = language;
+            Self::find()
+        }
     }
 
     /// Load the models found by [`Models::find`].
@@ -131,6 +164,13 @@ impl Ocr {
         if width == 0 || height == 0 || pixels.is_empty() {
             return Err(OcrError::EmptyImage);
         }
+        // One arm except on Windows, where Windows' own recogniser is the other.
+        #[allow(clippy::infallible_destructuring_match)]
+        let engine = match &self.backend {
+            Backend::Models(e) => e,
+            #[cfg(windows)]
+            Backend::Windows(w) => return w.recognize(pixels, width, height),
+        };
         // ocrs wants 1 or 3 channels.
         let rgb: std::borrow::Cow<[u8]> = if pixels.len() == (width * height * 4) as usize {
             pixels.as_chunks::<4>().0.iter().flat_map(|p| [p[0], p[1], p[2]]).collect::<Vec<u8>>().into()
@@ -139,10 +179,10 @@ impl Ocr {
         };
         let err = |e: &dyn std::fmt::Display| OcrError::Recognize(e.to_string());
         let source = ocrs::ImageSource::from_bytes(&rgb, (width, height)).map_err(|e| err(&e))?;
-        let input = self.engine.prepare_input(source).map_err(|e| err(&e))?;
-        let found = self.engine.detect_words(&input).map_err(|e| err(&e))?;
-        let lines = self.engine.find_text_lines(&input, &found);
-        let read = self.engine.recognize_text(&input, &lines).map_err(|e| err(&e))?;
+        let input = engine.prepare_input(source).map_err(|e| err(&e))?;
+        let found = engine.detect_words(&input).map_err(|e| err(&e))?;
+        let lines = engine.find_text_lines(&input, &found);
+        let read = engine.recognize_text(&input, &lines).map_err(|e| err(&e))?;
         use ocrs::TextItem;
         Ok(read
             .into_iter()

@@ -2394,3 +2394,15 @@ animation effects	Off	Disattivati
 	Then sign the last page	Poi firma l'ultima pagina
 	Pages to initial: {n}	Pagine da siglare: {n}
 	Initialled {n} pages.	{n} pagine siglate.
+	Portuguese (Brazil)	Portoghese (Brasile)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows non ha il riconoscimento del testo per questa lingua. Aggiungila in Impostazioni ▸ Data/ora e lingua ▸ Lingua e area geografica, con il riconoscimento ottico dei caratteri.
+	Read aloud from this page	Leggi ad alta voce da questa pagina
+	Pause or resume reading aloud	Metti in pausa o riprendi la lettura ad alta voce
+	Read aloud uses the voices of Windows.	La lettura ad alta voce usa le voci di Windows.
+	Finished reading aloud.	Lettura ad alta voce terminata.
+	Reading page {n}	Lettura della pagina {n}
+	Resume	Riprendi
+	Pause	Pausa
+	Stop	Interrompi
+	Default voice	Voce predefinita
+	Speed	Velocità

@@ -2386,3 +2386,15 @@ animation effects	Off	Aus
 	Then sign the last page	Danach die letzte Seite unterschreiben
 	Pages to initial: {n}	Zu paraphierende Seiten: {n}
 	Initialled {n} pages.	{n} Seiten paraphiert.
+	Portuguese (Brazil)	Portugiesisch (Brasilien)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows hat keine Texterkennung für diese Sprache. Fügen Sie sie unter Einstellungen ▸ Zeit und Sprache ▸ Sprache und Region mit ihrer optischen Zeichenerkennung hinzu.
+	Read aloud from this page	Ab dieser Seite vorlesen
+	Pause or resume reading aloud	Vorlesen anhalten oder fortsetzen
+	Read aloud uses the voices of Windows.	Das Vorlesen verwendet die Stimmen von Windows.
+	Finished reading aloud.	Vorlesen beendet.
+	Reading page {n}	Seite {n} wird gelesen
+	Resume	Fortsetzen
+	Pause	Anhalten
+	Stop	Stopp
+	Default voice	Standardstimme
+	Speed	Geschwindigkeit

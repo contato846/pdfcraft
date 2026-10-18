@@ -353,6 +353,10 @@ pub struct DocView {
     pub(crate) texts: HashMap<usize, Arc<PageText>>,
     pub(crate) text_failed: HashSet<usize>,
     pub find: Option<Find>,
+    /// View ▸ Read aloud: the page being read (its text layer is loaded first) and the word
+    /// being spoken (page, glyphs).
+    pub read_page: Option<usize>,
+    pub read_word: Option<(usize, std::ops::Range<usize>)>,
     selection: Option<Selection>,
     /// The drag in progress started a text selection: the wheel scrolls the page during it
     /// (#721), which egui's scroll area refuses while anything is dragged.
@@ -618,6 +622,8 @@ impl DocView {
             texts: HashMap::new(),
             text_failed: HashSet::new(),
             find: None,
+            read_page: None,
+            read_word: None,
             selection: None,
             selection_drag: false,
             clicks: 0,
@@ -2769,6 +2775,11 @@ pub fn document_area(app: &mut PdfCraftApp, index: usize, ui: &mut egui::Ui) {
                         }
                     }
                 }
+                if let Some((_, glyphs)) = view.read_word.as_ref().filter(|(p, _)| *p == i) {
+                    for lr in text.line_rects(glyphs.clone()) {
+                        painter.rect_filled(to_screen(lr).expand(1.0), CornerRadius::same(2), Color32::from_rgba_unmultiplied(0x2D, 0x9D, 0x5B, 90));
+                    }
+                }
                 if let Some(sel) = view.selection.filter(|s| s.page == i) {
                     for lr in sel.rects(&text) {
                         painter.rect_filled(to_screen(lr), CornerRadius::same(1), Color32::from_rgba_unmultiplied(0x3A, 0x7B, 0xF0, 70));
@@ -3237,6 +3248,12 @@ pub fn document_area(app: &mut PdfCraftApp, index: usize, ui: &mut egui::Ui) {
     // Text layers: visible pages for selection, every page while a search is active.
     let need_text = |p: &usize| !view.texts.contains_key(p) && !view.text_failed.contains(p);
     let mut text_pages: Vec<usize> = if hand { Vec::new() } else { visible_now.iter().copied().filter(need_text).collect() };
+    // Read aloud: the page being read, then the next one, ahead of the rest.
+    if let Some(p) = view.read_page {
+        let next: Vec<usize> =
+            [p, p + 1].into_iter().filter(|q| *q < info.pages.len()).filter(need_text).filter(|q| !text_pages.contains(q)).collect();
+        text_pages.splice(0..0, next);
+    }
     if view.find.as_ref().is_some_and(|f| !f.case_query.trim().is_empty()) {
         let n = info.pages.len();
         let rest: Vec<usize> = (0..n).map(|k| (cur + k) % n).filter(need_text).filter(|p| !text_pages.contains(p)).collect();

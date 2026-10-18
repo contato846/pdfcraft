@@ -34,7 +34,14 @@ pub struct OcrDraft {
 
 impl Default for OcrDraft {
     fn default() -> Self {
-        OcrDraft { pages: OcrPages::All, from: 1, to: 1, language: "en".into(), dpi: 300, text_pages: false }
+        OcrDraft {
+            pages: OcrPages::All,
+            from: 1,
+            to: 1,
+            language: pdfcraft_engine::ocr::OcrSettings::default().language,
+            dpi: 300,
+            text_pages: false,
+        }
     }
 }
 
@@ -169,7 +176,7 @@ impl PdfCraftApp {
         let progress = Arc::new(Mutex::new(OcrProgress { total: job.pages.len(), ..Default::default() }));
         let p = progress.clone();
         let work = move || {
-            let result = pdfcraft_engine::ocr::engine().map(|ocr| {
+            let result = pdfcraft_engine::ocr::engine_for(&job.settings.language).map(|ocr| {
                 job.run(&ocr, |done, total| {
                     let Ok(mut s) = p.lock() else { return false };
                     s.done = done;
@@ -228,7 +235,7 @@ impl PdfCraftApp {
         let work = move || {
             crate::i18n::set_current(lang);
             let (mut ok, mut words, mut failed) = (0, 0, Vec::new());
-            match pdfcraft_engine::ocr::engine() {
+            match pdfcraft_engine::ocr::engine_for(&settings.language) {
                 Err(e) => failed.push(e),
                 Ok(ocr) => {
                     for (i, (name, bytes)) in files.into_iter().enumerate() {
@@ -334,7 +341,9 @@ impl PdfCraftApp {
         let found = match result {
             Ok(f) => f,
             Err(e) => {
-                self.notify_error(e);
+                // Fixed messages (no Windows recognition for the language) are in the catalogs;
+                // anything else shows as it is.
+                self.notify_tr(&e);
                 return;
             }
         };

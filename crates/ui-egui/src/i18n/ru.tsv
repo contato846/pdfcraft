@@ -2298,3 +2298,15 @@ animation effects	Off	Выкл
 	Then sign the last page	Затем подписать последнюю страницу
 	Pages to initial: {n}	Страниц для парафирования: {n}
 	Initialled {n} pages.	Парафировано страниц: {n}.
+	Portuguese (Brazil)	Португальский (Бразилия)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	В Windows нет распознавания текста для этого языка. Добавьте его в разделе «Параметры ▸ Время и язык ▸ Язык и регион» вместе с оптическим распознаванием символов.
+	Read aloud from this page	Читать вслух с этой страницы
+	Pause or resume reading aloud	Приостановить или продолжить чтение вслух
+	Read aloud uses the voices of Windows.	Чтение вслух использует голоса Windows.
+	Finished reading aloud.	Чтение вслух завершено.
+	Reading page {n}	Читается страница {n}
+	Resume	Продолжить
+	Pause	Пауза
+	Stop	Остановить
+	Default voice	Голос по умолчанию
+	Speed	Скорость

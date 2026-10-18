@@ -2259,3 +2259,15 @@ animation effects	Off	關
 	Then sign the last page	然後在最後一頁簽名
 	Pages to initial: {n}	要簽署的頁數：{n}
 	Initialled {n} pages.	已在 {n} 頁簽署姓名縮寫。
+	Portuguese (Brazil)	葡萄牙文（巴西）
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows 沒有此語言的文字辨識。請在「設定 ▸ 時間與語言 ▸ 語言與地區」中新增該語言及其光學字元辨識功能。
+	Read aloud from this page	從此頁開始朗讀
+	Pause or resume reading aloud	暫停或繼續朗讀
+	Read aloud uses the voices of Windows.	朗讀使用 Windows 的語音。
+	Finished reading aloud.	朗讀已完成。
+	Reading page {n}	正在朗讀第 {n} 頁
+	Resume	繼續
+	Pause	暫停
+	Stop	停止
+	Default voice	預設語音
+	Speed	速度

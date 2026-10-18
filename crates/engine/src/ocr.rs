@@ -47,7 +47,9 @@ fn covered(word: [f32; 4], text: &[[f32; 4]]) -> f32 {
 
 impl Default for OcrSettings {
     fn default() -> Self {
-        OcrSettings { dpi: 300.0, language: "en".into(), skip_text_pages: true }
+        // The first language offered (Portuguese (Brazil) on Windows, English elsewhere).
+        let language = LANGUAGES.first().map_or("en", |l| l.0);
+        OcrSettings { dpi: 300.0, language: language.into(), skip_text_pages: true }
     }
 }
 
@@ -68,21 +70,28 @@ impl OcrPage {
     }
 }
 
-/// The recogniser, loaded once (it takes a moment) and shared.
+/// The recogniser for the default language (see [`engine_for`]).
 pub fn engine() -> Result<Arc<Ocr>, String> {
-    static OCR: Mutex<Option<Arc<Ocr>>> = Mutex::new(None);
-    let mut slot = OCR.lock().unwrap_or_else(|e| e.into_inner());
-    if let Some(o) = slot.as_ref() {
+    engine_for(&OcrSettings::default().language)
+}
+
+/// The recogniser for `language` (a code from [`LANGUAGES`]), loaded once (it takes a moment)
+/// and shared.
+pub fn engine_for(language: &str) -> Result<Arc<Ocr>, String> {
+    static OCR: Mutex<Vec<(String, Arc<Ocr>)>> = Mutex::new(Vec::new());
+    let mut loaded = OCR.lock().unwrap_or_else(|e| e.into_inner());
+    if let Some((_, o)) = loaded.iter().find(|(l, _)| l == language) {
         return Ok(o.clone());
     }
-    let o = Arc::new(Ocr::find().map_err(|e| e.to_string())?);
-    *slot = Some(o.clone());
+    let o = Arc::new(Ocr::for_language(language).map_err(|e| e.to_string())?);
+    loaded.push((language.to_owned(), o.clone()));
     Ok(o)
 }
 
-/// Whether the recognition models are installed.
+/// Whether text recognition can run: on Windows, Windows' own recogniser (a missing language is
+/// reported when it is chosen); elsewhere, the models must be installed.
 pub fn available() -> bool {
-    Models::find().is_some()
+    cfg!(windows) || Models::find().is_some()
 }
 
 /// Everything recognition needs from a document, detached from the session.
@@ -195,7 +204,7 @@ impl Session {
         if let Some(why) = self.get(id).and_then(|d| d.read_only_reason.clone()) {
             return Err(why);
         }
-        let ocr = engine()?;
+        let ocr = engine_for(&job.settings.language)?;
         let found = job.run(&ocr, |_, _| true);
         self.apply_ocr(id, &found).map_err(|e| e.to_string())?;
         Ok(found)

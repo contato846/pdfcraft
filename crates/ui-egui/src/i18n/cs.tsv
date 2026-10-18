@@ -2459,3 +2459,15 @@ animation effects	Off	Vypnuto
 	Then sign the last page	Potom podepsat poslední stránku
 	Pages to initial: {n}	Stránky k parafování: {n}
 	Initialled {n} pages.	Parafováno stránek: {n}.
+	Portuguese (Brazil)	Portugalština (Brazílie)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows nemá pro tento jazyk rozpoznávání textu. Přidejte ho v Nastavení ▸ Čas a jazyk ▸ Jazyk a oblast i s optickým rozpoznáváním znaků.
+	Read aloud from this page	Číst nahlas od této stránky
+	Pause or resume reading aloud	Pozastavit nebo obnovit čtení nahlas
+	Read aloud uses the voices of Windows.	Čtení nahlas používá hlasy Windows.
+	Finished reading aloud.	Čtení nahlas dokončeno.
+	Reading page {n}	Čte se stránka {n}
+	Resume	Pokračovat
+	Pause	Pozastavit
+	Stop	Zastavit
+	Default voice	Výchozí hlas
+	Speed	Rychlost

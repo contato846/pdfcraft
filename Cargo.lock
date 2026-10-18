@@ -4145,6 +4145,7 @@ dependencies = [
  "pdfcraft-fonts",
  "rten",
  "thiserror 2.0.21",
+ "windows",
 ]
 
 [[package]]
@@ -4176,6 +4177,7 @@ version = "0.7.1"
 dependencies = [
  "async-channel",
  "futures-lite",
+ "windows",
  "zbus",
 ]
 

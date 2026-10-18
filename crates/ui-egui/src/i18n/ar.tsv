@@ -2406,3 +2406,15 @@ animation effects	Off	معطّلة
 	Then sign the last page	ثم توقيع الصفحة الأخيرة
 	Pages to initial: {n}	الصفحات المطلوب وضع الأحرف الأولى عليها: {n}
 	Initialled {n} pages.	وُضعت الأحرف الأولى على {n} صفحة.
+	Portuguese (Brazil)	البرتغالية (البرازيل)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	لا يتوفر في Windows التعرف على النص لهذه اللغة. أضفها من الإعدادات ▸ الوقت واللغة ▸ اللغة والمنطقة مع ميزة التعرف الضوئي على الحروف.
+	Read aloud from this page	القراءة بصوت عالٍ من هذه الصفحة
+	Pause or resume reading aloud	إيقاف القراءة بصوت عالٍ مؤقتًا أو استئنافها
+	Read aloud uses the voices of Windows.	تستخدم القراءة بصوت عالٍ أصوات Windows.
+	Finished reading aloud.	انتهت القراءة بصوت عالٍ.
+	Reading page {n}	قراءة الصفحة {n}
+	Resume	استئناف
+	Pause	إيقاف مؤقت
+	Stop	إيقاف
+	Default voice	الصوت الافتراضي
+	Speed	السرعة

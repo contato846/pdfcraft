@@ -2383,3 +2383,15 @@ animation effects	Off	Өшірулі
 	Then sign the last page	Содан кейін соңғы бетке қол қою
 	Pages to initial: {n}	Қолтаңба қойылатын беттер: {n}
 	Initialled {n} pages.	{n} бетке қолтаңба қойылды.
+	Portuguese (Brazil)	Португал тілі (Бразилия)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows жүйесінде бұл тілге мәтінді тану жоқ. Оны Параметрлер ▸ Уақыт және тіл ▸ Тіл және аймақ бөлімінде таңбаларды оптикалық танумен бірге қосыңыз.
+	Read aloud from this page	Осы беттен бастап дауыстап оқу
+	Pause or resume reading aloud	Дауыстап оқуды кідірту немесе жалғастыру
+	Read aloud uses the voices of Windows.	Дауыстап оқу Windows дауыстарын пайдаланады.
+	Finished reading aloud.	Дауыстап оқу аяқталды.
+	Reading page {n}	{n}-бет оқылуда
+	Resume	Жалғастыру
+	Pause	Кідірту
+	Stop	Тоқтату
+	Default voice	Әдепкі дауыс
+	Speed	Жылдамдық

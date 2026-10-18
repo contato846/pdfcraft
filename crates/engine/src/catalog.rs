@@ -74,6 +74,7 @@ pub static TOOL_GROUPS: &[ToolGroup] = &[
                     item("Finish Conjecturas file", "file-check", "house.finish", Ready),
                     item("Proof for the author", "stamp", "house.proof", Ready),
                     item("Initial every page", "signature", "house.initials", Ready),
+                    item("Read aloud from this page", "mic", "view.read_aloud", Ready),
                 ],
             },
             ToolSection {

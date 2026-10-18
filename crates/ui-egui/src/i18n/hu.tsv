@@ -2384,3 +2384,15 @@ animation effects	Off	Ki
 	Then sign the last page	Utána az utolsó oldal aláírása
 	Pages to initial: {n}	Szignálandó oldalak: {n}
 	Initialled {n} pages.	{n} oldal szignálva.
+	Portuguese (Brazil)	Portugál (Brazília)
+	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	A Windowsban nincs szövegfelismerés ehhez a nyelvhez. Adja hozzá a Gépház ▸ Idő és nyelv ▸ Nyelv és régió helyen, optikai karakterfelismeréssel.
+	Read aloud from this page	Felolvasás ettől az oldaltól
+	Pause or resume reading aloud	Felolvasás szüneteltetése vagy folytatása
+	Read aloud uses the voices of Windows.	A felolvasás a Windows hangjait használja.
+	Finished reading aloud.	A felolvasás befejeződött.
+	Reading page {n}	{n}. oldal felolvasása
+	Resume	Folytatás
+	Pause	Szünet
+	Stop	Leállítás
+	Default voice	Alapértelmezett hang
+	Speed	Sebesség
