@@ -2357,10 +2357,9 @@ animation effects	Off	Aus
 	Add tools and controls	Werkzeuge und Steuerelemente hinzufügen
 	Reset to default	Auf Standard zurücksetzen
 	House tools	Haus
-	Conjecturas and IPBB	Conjecturas und IPBB
 	Everyday tools	Alltagswerkzeuge
-	Finish Conjecturas file	Conjecturas-Datei abschließen
-	Finish Conjecturas file…	Conjecturas-Datei abschließen…
+	Finish publisher file	Verlagsdatei abschließen
+	Finish publisher file…	Verlagsdatei abschließen…
 	Sets the house's document information and removes what other applications left in the file.	Setzt die Dokumentinformationen nach Hausstandard und entfernt, was andere Anwendungen in der Datei hinterlassen haben.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	XMP-Metadaten anderer Anwendungen entfernen (InDesign-Verlauf, Dokument-IDs, Bildmetadaten)
 	Remove the private data of other applications	Private Daten anderer Anwendungen entfernen
@@ -2387,7 +2386,7 @@ animation effects	Off	Aus
 	Pages to initial: {n}	Zu paraphierende Seiten: {n}
 	Initialled {n} pages.	{n} Seiten paraphiert.
 	Portuguese (Brazil)	Portugiesisch (Brasilien)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows hat keine Texterkennung für diese Sprache. Fügen Sie sie unter Einstellungen ▸ Zeit und Sprache ▸ Sprache und Region mit ihrer optischen Zeichenerkennung hinzu.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows hat keine Texterkennung für diese Sprache. Fügen Sie sie unter Einstellungen > Zeit und Sprache > Sprache und Region mit ihrer optischen Zeichenerkennung hinzu.
 	Read aloud from this page	Ab dieser Seite vorlesen
 	Pause or resume reading aloud	Vorlesen anhalten oder fortsetzen
 	Read aloud uses the voices of Windows.	Das Vorlesen verwendet die Stimmen von Windows.

@@ -2352,10 +2352,9 @@ animation effects	Off	Kapalı
 	Add tools and controls	Araç ve denetim ekle
 	Reset to default	Varsayılana sıfırla
 	House tools	Ev
-	Conjecturas and IPBB	Conjecturas ve IPBB
 	Everyday tools	Günlük araçlar
-	Finish Conjecturas file	Conjecturas dosyasını tamamla
-	Finish Conjecturas file…	Conjecturas dosyasını tamamla…
+	Finish publisher file	Yayınevi dosyasını tamamla
+	Finish publisher file…	Yayınevi dosyasını tamamla…
 	Sets the house's document information and removes what other applications left in the file.	Belge bilgilerini evin standardına göre ayarlar ve diğer uygulamaların dosyada bıraktıklarını kaldırır.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Diğer uygulamaların XMP meta verilerini kaldır (InDesign geçmişi, belge kimlikleri, görüntü meta verileri)
 	Remove the private data of other applications	Diğer uygulamaların özel verilerini kaldır
@@ -2382,7 +2381,7 @@ animation effects	Off	Kapalı
 	Pages to initial: {n}	Paraflanacak sayfalar: {n}
 	Initialled {n} pages.	{n} sayfa paraflandı.
 	Portuguese (Brazil)	Portekizce (Brezilya)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows'ta bu dil için metin tanıma yok. Ayarlar ▸ Saat ve dil ▸ Dil ve bölge bölümünden optik karakter tanıma özelliğiyle ekleyin.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows'ta bu dil için metin tanıma yok. Ayarlar > Saat ve dil > Dil ve bölge bölümünden optik karakter tanıma özelliğiyle ekleyin.
 	Read aloud from this page	Bu sayfadan itibaren sesli oku
 	Pause or resume reading aloud	Sesli okumayı duraklat veya sürdür
 	Read aloud uses the voices of Windows.	Sesli okuma Windows seslerini kullanır.

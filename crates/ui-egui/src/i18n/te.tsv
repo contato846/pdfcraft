@@ -2269,10 +2269,9 @@ animation effects	Off	ఆఫ్
 	Add tools and controls	సాధనాలు మరియు నియంత్రణలను జోడించు
 	Reset to default	డిఫాల్ట్‌కు రీసెట్ చేయి
 	House tools	హౌస్
-	Conjecturas and IPBB	Conjecturas మరియు IPBB
 	Everyday tools	రోజువారీ సాధనాలు
-	Finish Conjecturas file	Conjecturas ఫైల్‌ను ముగించు
-	Finish Conjecturas file…	Conjecturas ఫైల్‌ను ముగించు…
+	Finish publisher file	ప్రచురణ ఫైల్‌ను ముగించు
+	Finish publisher file…	ప్రచురణ ఫైల్‌ను ముగించు…
 	Sets the house's document information and removes what other applications left in the file.	పత్ర సమాచారాన్ని సంస్థ ప్రమాణం ప్రకారం సెట్ చేసి, ఇతర అనువర్తనాలు ఫైల్‌లో వదిలినవాటిని తొలగిస్తుంది.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	ఇతర అనువర్తనాల XMP మెటాడేటాను తొలగించు (InDesign చరిత్ర, పత్ర IDలు, చిత్ర మెటాడేటా)
 	Remove the private data of other applications	ఇతర అనువర్తనాల ప్రైవేట్ డేటాను తొలగించు
@@ -2299,7 +2298,7 @@ animation effects	Off	ఆఫ్
 	Pages to initial: {n}	ఇనిషియల్స్ పెట్టాల్సిన పేజీలు: {n}
 	Initialled {n} pages.	{n} పేజీలపై ఇనిషియల్స్ పెట్టబడ్డాయి.
 	Portuguese (Brazil)	పోర్చుగీస్ (బ్రెజిల్)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	ఈ భాషకు Windowsలో టెక్స్ట్ గుర్తింపు లేదు. సెట్టింగ్‌లు ▸ సమయం & భాష ▸ భాష & ప్రాంతంలో దాని ఆప్టికల్ క్యారెక్టర్ రికగ్నిషన్‌తో జోడించండి.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	ఈ భాషకు Windowsలో టెక్స్ట్ గుర్తింపు లేదు. సెట్టింగ్‌లు > సమయం & భాష > భాష & ప్రాంతంలో దాని ఆప్టికల్ క్యారెక్టర్ రికగ్నిషన్‌తో జోడించండి.
 	Read aloud from this page	ఈ పేజీ నుండి బిగ్గరగా చదువు
 	Pause or resume reading aloud	బిగ్గరగా చదవడాన్ని పాజ్ చేయి లేదా కొనసాగించు
 	Read aloud uses the voices of Windows.	బిగ్గరగా చదవడం Windows వాయిస్‌లను ఉపయోగిస్తుంది.

@@ -2377,10 +2377,9 @@ animation effects	Off	معطّلة
 	Add tools and controls	إضافة أدوات وعناصر تحكم
 	Reset to default	إعادة التعيين إلى الافتراضي
 	House tools	المنزل
-	Conjecturas and IPBB	Conjecturas وIPBB
 	Everyday tools	أدوات يومية
-	Finish Conjecturas file	إنهاء ملف Conjecturas
-	Finish Conjecturas file…	إنهاء ملف Conjecturas…
+	Finish publisher file	إنهاء ملف الناشر
+	Finish publisher file…	إنهاء ملف الناشر…
 	Sets the house's document information and removes what other applications left in the file.	يضبط معلومات المستند وفق معيار الدار ويزيل ما تركته التطبيقات الأخرى في الملف.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	إزالة بيانات XMP التعريفية للتطبيقات الأخرى (سجل InDesign، معرّفات المستند، بيانات الصور التعريفية)
 	Remove the private data of other applications	إزالة البيانات الخاصة بالتطبيقات الأخرى
@@ -2407,7 +2406,7 @@ animation effects	Off	معطّلة
 	Pages to initial: {n}	الصفحات المطلوب وضع الأحرف الأولى عليها: {n}
 	Initialled {n} pages.	وُضعت الأحرف الأولى على {n} صفحة.
 	Portuguese (Brazil)	البرتغالية (البرازيل)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	لا يتوفر في Windows التعرف على النص لهذه اللغة. أضفها من الإعدادات ▸ الوقت واللغة ▸ اللغة والمنطقة مع ميزة التعرف الضوئي على الحروف.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	لا يتوفر في Windows التعرف على النص لهذه اللغة. أضفها من الإعدادات > الوقت واللغة > اللغة والمنطقة مع ميزة التعرف الضوئي على الحروف.
 	Read aloud from this page	القراءة بصوت عالٍ من هذه الصفحة
 	Pause or resume reading aloud	إيقاف القراءة بصوت عالٍ مؤقتًا أو استئنافها
 	Read aloud uses the voices of Windows.	تستخدم القراءة بصوت عالٍ أصوات Windows.

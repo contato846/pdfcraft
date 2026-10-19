@@ -453,7 +453,7 @@ impl PdfCraftApp {
             "protect.remove_hidden" => self.open_remove_hidden(),
             "print.dialog" => self.open_print(),
             "redact.sanitize" => self.dialog = Some(Dialog::Sanitize),
-            "house.finish" => self.open_finish_conjecturas(),
+            "house.finish" => self.open_finish_publisher(),
             "house.proof" => self.open_author_proof(),
             "house.initials" => self.open_initial_every_page(),
             "page.split_spreads" => self.open_split_spreads(),

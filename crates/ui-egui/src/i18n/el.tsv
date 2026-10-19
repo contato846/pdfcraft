@@ -2366,10 +2366,9 @@ animation effects	Off	Ανενεργά
 	Add tools and controls	Προσθήκη εργαλείων και στοιχείων ελέγχου
 	Reset to default	Επαναφορά προεπιλογών
 	House tools	Σπίτι
-	Conjecturas and IPBB	Conjecturas και IPBB
 	Everyday tools	Καθημερινά εργαλεία
-	Finish Conjecturas file	Ολοκλήρωση αρχείου Conjecturas
-	Finish Conjecturas file…	Ολοκλήρωση αρχείου Conjecturas…
+	Finish publisher file	Ολοκλήρωση αρχείου εκδότη
+	Finish publisher file…	Ολοκλήρωση αρχείου εκδότη…
 	Sets the house's document information and removes what other applications left in the file.	Ορίζει τις πληροφορίες του εγγράφου κατά το πρότυπο του οίκου και αφαιρεί ό,τι άφησαν άλλες εφαρμογές στο αρχείο.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Κατάργηση των μεταδεδομένων XMP άλλων εφαρμογών (ιστορικό InDesign, αναγνωριστικά εγγράφου, μεταδεδομένα εικόνων)
 	Remove the private data of other applications	Κατάργηση των ιδιωτικών δεδομένων άλλων εφαρμογών
@@ -2396,7 +2395,7 @@ animation effects	Off	Ανενεργά
 	Pages to initial: {n}	Σελίδες για μονογραφή: {n}
 	Initialled {n} pages.	Μονογράφηκαν {n} σελίδες.
 	Portuguese (Brazil)	Πορτογαλικά (Βραζιλία)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Τα Windows δεν έχουν αναγνώριση κειμένου για αυτή τη γλώσσα. Προσθέστε τη στις Ρυθμίσεις ▸ Ώρα και γλώσσα ▸ Γλώσσα και περιοχή, με την οπτική αναγνώριση χαρακτήρων.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Τα Windows δεν έχουν αναγνώριση κειμένου για αυτή τη γλώσσα. Προσθέστε τη στις Ρυθμίσεις > Ώρα και γλώσσα > Γλώσσα και περιοχή, με την οπτική αναγνώριση χαρακτήρων.
 	Read aloud from this page	Ανάγνωση φωναχτά από αυτή τη σελίδα
 	Pause or resume reading aloud	Παύση ή συνέχιση της ανάγνωσης φωναχτά
 	Read aloud uses the voices of Windows.	Η ανάγνωση φωναχτά χρησιμοποιεί τις φωνές των Windows.

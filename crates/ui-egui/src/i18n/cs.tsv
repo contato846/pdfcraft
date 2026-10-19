@@ -2430,10 +2430,9 @@ animation effects	Off	Vypnuto
 	Add tools and controls	Přidat nástroje a ovládací prvky
 	Reset to default	Obnovit výchozí
 	House tools	Dům
-	Conjecturas and IPBB	Conjecturas a IPBB
 	Everyday tools	Každodenní nástroje
-	Finish Conjecturas file	Dokončit soubor Conjecturas
-	Finish Conjecturas file…	Dokončit soubor Conjecturas…
+	Finish publisher file	Dokončit soubor nakladatelství
+	Finish publisher file…	Dokončit soubor nakladatelství…
 	Sets the house's document information and removes what other applications left in the file.	Nastaví informace o dokumentu podle domácího standardu a odstraní, co v souboru zanechaly jiné aplikace.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Odstranit metadata XMP jiných aplikací (historie InDesignu, ID dokumentu, metadata obrázků)
 	Remove the private data of other applications	Odstranit soukromá data jiných aplikací
@@ -2460,7 +2459,7 @@ animation effects	Off	Vypnuto
 	Pages to initial: {n}	Stránky k parafování: {n}
 	Initialled {n} pages.	Parafováno stránek: {n}.
 	Portuguese (Brazil)	Portugalština (Brazílie)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows nemá pro tento jazyk rozpoznávání textu. Přidejte ho v Nastavení ▸ Čas a jazyk ▸ Jazyk a oblast i s optickým rozpoznáváním znaků.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows nemá pro tento jazyk rozpoznávání textu. Přidejte ho v Nastavení > Čas a jazyk > Jazyk a oblast i s optickým rozpoznáváním znaků.
 	Read aloud from this page	Číst nahlas od této stránky
 	Pause or resume reading aloud	Pozastavit nebo obnovit čtení nahlas
 	Read aloud uses the voices of Windows.	Čtení nahlas používá hlasy Windows.

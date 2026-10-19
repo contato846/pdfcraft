@@ -2355,10 +2355,9 @@ animation effects	Off	Ki
 	Add tools and controls	Eszközök és vezérlők hozzáadása
 	Reset to default	Alapértelmezés visszaállítása
 	House tools	Ház
-	Conjecturas and IPBB	Conjecturas és IPBB
 	Everyday tools	Mindennapi eszközök
-	Finish Conjecturas file	Conjecturas-fájl lezárása
-	Finish Conjecturas file…	Conjecturas-fájl lezárása…
+	Finish publisher file	Kiadói fájl lezárása
+	Finish publisher file…	Kiadói fájl lezárása…
 	Sets the house's document information and removes what other applications left in the file.	Beállítja a dokumentum adatait a ház szabványa szerint, és eltávolítja, amit más alkalmazások a fájlban hagytak.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Más alkalmazások XMP-metaadatainak eltávolítása (InDesign-előzmények, dokumentumazonosítók, képmetaadatok)
 	Remove the private data of other applications	Más alkalmazások privát adatainak eltávolítása
@@ -2385,7 +2384,7 @@ animation effects	Off	Ki
 	Pages to initial: {n}	Szignálandó oldalak: {n}
 	Initialled {n} pages.	{n} oldal szignálva.
 	Portuguese (Brazil)	Portugál (Brazília)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	A Windowsban nincs szövegfelismerés ehhez a nyelvhez. Adja hozzá a Gépház ▸ Idő és nyelv ▸ Nyelv és régió helyen, optikai karakterfelismeréssel.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	A Windowsban nincs szövegfelismerés ehhez a nyelvhez. Adja hozzá a Gépház > Idő és nyelv > Nyelv és régió helyen, optikai karakterfelismeréssel.
 	Read aloud from this page	Felolvasás ettől az oldaltól
 	Pause or resume reading aloud	Felolvasás szüneteltetése vagy folytatása
 	Read aloud uses the voices of Windows.	A felolvasás a Windows hangjait használja.

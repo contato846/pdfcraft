@@ -279,7 +279,7 @@ pub const COMMANDS: &[CommandSpec] = &[
     c("redact.clear", "Clear redaction marks", None, None, HasRedactions, "eraser"),
     c("protect.remove_hidden", "Remove hidden information…", None, None, Modification, "eye-off"),
     c("redact.sanitize", "Sanitize document…", None, None, Modification, "sparkles"),
-    c("house.finish", "Finish Conjecturas file…", None, None, Modification, "file-check"),
+    c("house.finish", "Finish publisher file…", None, None, Modification, "file-check"),
     c("house.proof", "Proof for the author…", None, None, Security, "stamp"),
     c("house.initials", "Initial every page…", None, None, Annotate, "signature"),
     c("view.read_aloud", "Read aloud from this page", VIEW, None, Document, "mic"),

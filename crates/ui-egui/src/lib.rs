@@ -311,8 +311,8 @@ pub enum Dialog {
     /// Remove Hidden Information and Sanitize Document.
     RemoveHidden,
     Sanitize,
-    /// House tools ▸ Finish Conjecturas file.
-    FinishConjecturas,
+    /// House tools ▸ Finish publisher file.
+    FinishPublisher,
     /// House tools ▸ Proof for the author.
     AuthorProof,
     /// House tools ▸ Initial every page.

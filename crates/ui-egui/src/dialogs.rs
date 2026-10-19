@@ -846,7 +846,7 @@ fn dialogs(app: &mut PdfCraftApp, ctx: &egui::Context) {
                 close = ok || cancel;
                 return;
             }
-            Dialog::FinishConjecturas => {
+            Dialog::FinishPublisher => {
                 let (ok, cancel) = crate::house::finish_body(ui, &mut app.finish_draft, &t);
                 if ok {
                     redact_now = Some(dialog);
@@ -1295,8 +1295,8 @@ fn dialogs(app: &mut PdfCraftApp, ctx: &egui::Context) {
                 app.notify_tr("Proof ready. Use Save As to keep the original unprotected.");
             }
         }
-        Some(Dialog::FinishConjecturas) => {
-            if let Some(edit) = app.finish_conjecturas_edit()
+        Some(Dialog::FinishPublisher) => {
+            if let Some(edit) = app.finish_publisher_edit()
                 && app.apply_edit(edit)
             {
                 app.notify_tr("File finished. Save to write the changes into it.");

@@ -2486,10 +2486,9 @@ animation effects	Off	Desactivados
 	Add tools and controls	Añadir herramientas y controles
 	Reset to default	Restablecer valores predeterminados
 	House tools	Casa
-	Conjecturas and IPBB	Conjecturas e IPBB
 	Everyday tools	Herramientas cotidianas
-	Finish Conjecturas file	Cerrar archivo Conjecturas
-	Finish Conjecturas file…	Cerrar archivo Conjecturas…
+	Finish publisher file	Cerrar archivo editorial
+	Finish publisher file…	Cerrar archivo editorial…
 	Sets the house's document information and removes what other applications left in the file.	Escribe la información del documento según el estándar de la casa y elimina lo que otras aplicaciones dejaron en el archivo.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Eliminar los metadatos XMP de otras aplicaciones (historial de InDesign, identificadores del documento, metadatos de imágenes)
 	Remove the private data of other applications	Eliminar los datos privados de otras aplicaciones
@@ -2516,7 +2515,7 @@ animation effects	Off	Desactivados
 	Pages to initial: {n}	Páginas para rubricar: {n}
 	Initialled {n} pages.	{n} páginas rubricadas.
 	Portuguese (Brazil)	Portugués (Brasil)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows no tiene reconocimiento de texto para este idioma. Agréguelo en Configuración ▸ Hora e idioma ▸ Idioma y región, con su reconocimiento óptico de caracteres.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows no tiene reconocimiento de texto para este idioma. Agréguelo en Configuración > Hora e idioma > Idioma y región, con su reconocimiento óptico de caracteres.
 	Read aloud from this page	Leer en voz alta desde esta página
 	Pause or resume reading aloud	Pausar o reanudar la lectura en voz alta
 	Read aloud uses the voices of Windows.	La lectura en voz alta usa las voces de Windows.

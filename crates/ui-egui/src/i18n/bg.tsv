@@ -2319,10 +2319,9 @@ animation effects	Off	Изключени
 	Add tools and controls	Добавяне на инструменти и контроли
 	Reset to default	Връщане към стандартните
 	House tools	Дом
-	Conjecturas and IPBB	Conjecturas и IPBB
 	Everyday tools	Ежедневни инструменти
-	Finish Conjecturas file	Завършване на файл Conjecturas
-	Finish Conjecturas file…	Завършване на файл Conjecturas…
+	Finish publisher file	Завършване на файл на издателството
+	Finish publisher file…	Завършване на файл на издателството…
 	Sets the house's document information and removes what other applications left in the file.	Задава информацията за документа по стандарта на дома и премахва оставеното във файла от други приложения.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Премахване на XMP метаданните на други приложения (история на InDesign, идентификатори на документа, метаданни на изображенията)
 	Remove the private data of other applications	Премахване на личните данни на други приложения
@@ -2349,7 +2348,7 @@ animation effects	Off	Изключени
 	Pages to initial: {n}	Страници за парафиране: {n}
 	Initialled {n} pages.	Парафирани страници: {n}.
 	Portuguese (Brazil)	Португалски (Бразилия)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows няма разпознаване на текст за този език. Добавете го от Настройки ▸ Час и език ▸ Език и регион, с оптичното разпознаване на знаци.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows няма разпознаване на текст за този език. Добавете го от Настройки > Час и език > Език и регион, с оптичното разпознаване на знаци.
 	Read aloud from this page	Четене на глас от тази страница
 	Pause or resume reading aloud	Пауза или продължаване на четенето на глас
 	Read aloud uses the voices of Windows.	Четенето на глас използва гласовете на Windows.

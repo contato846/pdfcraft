@@ -2600,10 +2600,9 @@ key	Space	Tarpas
 	Add tools and controls	Pridėti įrankių ir valdiklių
 	Reset to default	Atkurti numatytuosius
 	House tools	Namai
-	Conjecturas and IPBB	Conjecturas ir IPBB
 	Everyday tools	Kasdieniai įrankiai
-	Finish Conjecturas file	Užbaigti Conjecturas failą
-	Finish Conjecturas file…	Užbaigti Conjecturas failą…
+	Finish publisher file	Užbaigti leidyklos failą
+	Finish publisher file…	Užbaigti leidyklos failą…
 	Sets the house's document information and removes what other applications left in the file.	Nustato dokumento informaciją pagal namų standartą ir pašalina tai, ką faile paliko kitos programos.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Pašalinti kitų programų XMP metaduomenis (InDesign istorija, dokumento ID, vaizdų metaduomenys)
 	Remove the private data of other applications	Pašalinti kitų programų privačius duomenis
@@ -2630,7 +2629,7 @@ key	Space	Tarpas
 	Pages to initial: {n}	Parafuotini puslapiai: {n}
 	Initialled {n} pages.	Parafuota puslapių: {n}.
 	Portuguese (Brazil)	Portugalų (Brazilija)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	„Windows“ neturi šios kalbos teksto atpažinimo. Pridėkite ją skiltyje Parametrai ▸ Laikas ir kalba ▸ Kalba ir regionas su optiniu simbolių atpažinimu.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	„Windows“ neturi šios kalbos teksto atpažinimo. Pridėkite ją skiltyje Parametrai > Laikas ir kalba > Kalba ir regionas su optiniu simbolių atpažinimu.
 	Read aloud from this page	Skaityti garsiai nuo šio puslapio
 	Pause or resume reading aloud	Pristabdyti arba tęsti garsų skaitymą
 	Read aloud uses the voices of Windows.	Garsus skaitymas naudoja „Windows“ balsus.

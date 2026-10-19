@@ -2320,10 +2320,9 @@ animation effects	Off	关
 	Add tools and controls	添加工具和控件
 	Reset to default	恢复默认设置
 	House tools	自家工具
-	Conjecturas and IPBB	Conjecturas 与 IPBB
 	Everyday tools	日常工具
-	Finish Conjecturas file	完成 Conjecturas 文件
-	Finish Conjecturas file…	完成 Conjecturas 文件…
+	Finish publisher file	完成出版社文件
+	Finish publisher file…	完成出版社文件…
 	Sets the house's document information and removes what other applications left in the file.	按本社标准设置文档信息，并删除其他应用程序留在文件中的内容。
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	删除其他应用程序的 XMP 元数据（InDesign 历史记录、文档 ID、图像元数据）
 	Remove the private data of other applications	删除其他应用程序的私有数据
@@ -2350,7 +2349,7 @@ animation effects	Off	关
 	Pages to initial: {n}	要签署的页数：{n}
 	Initialled {n} pages.	已在 {n} 页签署姓名首字母。
 	Portuguese (Brazil)	葡萄牙语（巴西）
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows 没有此语言的文字识别。请在“设置 ▸ 时间和语言 ▸ 语言和区域”中添加该语言及其光学字符识别功能。
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows 没有此语言的文字识别。请在“设置 > 时间和语言 > 语言和区域”中添加该语言及其光学字符识别功能。
 	Read aloud from this page	从此页开始朗读
 	Pause or resume reading aloud	暂停或继续朗读
 	Read aloud uses the voices of Windows.	朗读使用 Windows 的语音。

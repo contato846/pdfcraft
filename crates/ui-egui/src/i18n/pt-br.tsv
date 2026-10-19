@@ -2370,10 +2370,9 @@ animation effects	Off	Desativados
 	Add tools and controls	Adicionar ferramentas e controles
 	Reset to default	Restaurar o padrão
 	House tools	Casa
-	Conjecturas and IPBB	Conjecturas e IPBB
 	Everyday tools	Ferramentas do dia a dia
-	Finish Conjecturas file	Fechar arquivo Conjecturas
-	Finish Conjecturas file…	Fechar arquivo Conjecturas…
+	Finish publisher file	Fechar arquivo editora
+	Finish publisher file…	Fechar arquivo editora…
 	Sets the house's document information and removes what other applications left in the file.	Grava as informações do documento no padrão da casa e remove o que outros aplicativos deixaram no arquivo.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Remover os metadados XMP de outros aplicativos (histórico do InDesign, identificadores do documento, metadados das imagens)
 	Remove the private data of other applications	Remover os dados privados de outros aplicativos
@@ -2400,7 +2399,7 @@ animation effects	Off	Desativados
 	Pages to initial: {n}	Páginas a rubricar: {n}
 	Initialled {n} pages.	{n} páginas rubricadas.
 	Portuguese (Brazil)	Português (Brasil)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	O Windows não tem reconhecimento de texto para este idioma. Adicione-o em Configurações ▸ Hora e idioma ▸ Idioma e região, com o reconhecimento óptico de caracteres.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	O Windows não tem reconhecimento de texto para este idioma. Adicione-o em Configurações > Hora e idioma > Idioma e região, com o reconhecimento óptico de caracteres.
 	Read aloud from this page	Ler em voz alta a partir desta página
 	Pause or resume reading aloud	Pausar ou retomar a leitura em voz alta
 	Read aloud uses the voices of Windows.	A leitura em voz alta usa as vozes do Windows.

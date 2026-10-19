@@ -2356,10 +2356,9 @@ animation effects	Off	オフ
 	Add tools and controls	ツールとコントロールを追加
 	Reset to default	デフォルトに戻す
 	House tools	ハウス
-	Conjecturas and IPBB	Conjecturas と IPBB
 	Everyday tools	日常のツール
-	Finish Conjecturas file	Conjecturas ファイルを仕上げる
-	Finish Conjecturas file…	Conjecturas ファイルを仕上げる…
+	Finish publisher file	出版社ファイルを仕上げる
+	Finish publisher file…	出版社ファイルを仕上げる…
 	Sets the house's document information and removes what other applications left in the file.	文書情報をハウス標準に設定し、他のアプリケーションがファイルに残したものを削除します。
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	他のアプリケーションの XMP メタデータを削除（InDesign の履歴、文書 ID、画像のメタデータ）
 	Remove the private data of other applications	他のアプリケーションのプライベートデータを削除
@@ -2386,7 +2385,7 @@ animation effects	Off	オフ
 	Pages to initial: {n}	イニシャルを入れるページ: {n}
 	Initialled {n} pages.	{n} ページにイニシャルを入れました。
 	Portuguese (Brazil)	ポルトガル語 (ブラジル)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows にはこの言語の文字認識がありません。設定 ▸ 時刻と言語 ▸ 言語と地域 で、光学式文字認識と一緒に追加してください。
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows にはこの言語の文字認識がありません。設定 > 時刻と言語 > 言語と地域 で、光学式文字認識と一緒に追加してください。
 	Read aloud from this page	このページから読み上げる
 	Pause or resume reading aloud	読み上げの一時停止または再開
 	Read aloud uses the voices of Windows.	読み上げには Windows の音声を使用します。

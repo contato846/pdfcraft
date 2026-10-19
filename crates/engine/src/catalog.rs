@@ -59,7 +59,7 @@ const TEAL: [u8; 3] = [0x14, 0x9C, 0xA8];
 const PINK: [u8; 3] = [0xD6, 0x3B, 0x8F];
 
 pub static TOOL_GROUPS: &[ToolGroup] = &[
-    // This personal build's house tools (Editora Conjecturas, IPBB), first so they are found first.
+    // This personal build's own tools, first so they are found first.
     ToolGroup {
         id: "house",
         label: "House tools",
@@ -69,9 +69,9 @@ pub static TOOL_GROUPS: &[ToolGroup] = &[
         availability: Ready,
         sections: &[
             ToolSection {
-                title: "Conjecturas and IPBB",
+                title: "Custom",
                 items: &[
-                    item("Finish Conjecturas file", "file-check", "house.finish", Ready),
+                    item("Finish publisher file", "file-check", "house.finish", Ready),
                     item("Proof for the author", "stamp", "house.proof", Ready),
                     item("Initial every page", "signature", "house.initials", Ready),
                     item("Read aloud from this page", "mic", "view.read_aloud", Ready),

@@ -50,7 +50,7 @@ pub enum OcrError {
     EmptyImage,
     /// Shown to end users; the UI catalogs key this exact text.
     #[error(
-        "Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition."
+        "Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition."
     )]
     LanguageNotInstalled,
 }

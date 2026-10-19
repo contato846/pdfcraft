@@ -2365,10 +2365,9 @@ animation effects	Off	Disattivati
 	Add tools and controls	Aggiungi strumenti e controlli
 	Reset to default	Ripristina predefiniti
 	House tools	Casa
-	Conjecturas and IPBB	Conjecturas e IPBB
 	Everyday tools	Strumenti quotidiani
-	Finish Conjecturas file	Finalizza file Conjecturas
-	Finish Conjecturas file…	Finalizza file Conjecturas…
+	Finish publisher file	Finalizza file editore
+	Finish publisher file…	Finalizza file editore…
 	Sets the house's document information and removes what other applications left in the file.	Imposta le informazioni del documento secondo lo standard della casa e rimuove ciò che altre applicazioni hanno lasciato nel file.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Rimuovi i metadati XMP di altre applicazioni (cronologia di InDesign, ID del documento, metadati delle immagini)
 	Remove the private data of other applications	Rimuovi i dati privati di altre applicazioni
@@ -2395,7 +2394,7 @@ animation effects	Off	Disattivati
 	Pages to initial: {n}	Pagine da siglare: {n}
 	Initialled {n} pages.	{n} pagine siglate.
 	Portuguese (Brazil)	Portoghese (Brasile)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows non ha il riconoscimento del testo per questa lingua. Aggiungila in Impostazioni ▸ Data/ora e lingua ▸ Lingua e area geografica, con il riconoscimento ottico dei caratteri.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows non ha il riconoscimento del testo per questa lingua. Aggiungila in Impostazioni > Data/ora e lingua > Lingua e area geografica, con il riconoscimento ottico dei caratteri.
 	Read aloud from this page	Leggi ad alta voce da questa pagina
 	Pause or resume reading aloud	Metti in pausa o riprendi la lettura ad alta voce
 	Read aloud uses the voices of Windows.	La lettura ad alta voce usa le voci di Windows.

@@ -1,7 +1,7 @@
-//! House tools of this personal build: the Editora Conjecturas and IPBB routines, gathered in the
-//! "House tools" group so they are one click from the mode bar.
+//! House tools of this personal build: the publishing routines, gathered in the "House tools"
+//! group so they are one click from the mode bar.
 //!
-//! Finish Conjecturas file sets the house's document information and removes what the layout
+//! Finish publisher file sets the document information the user types and removes what the layout
 //! applications left in the file, in one undoable step: InDesign's XMP history and document IDs,
 //! Photoshop's image XMP, and the private data (`/PieceInfo`) of InDesign and Illustrator.
 //!
@@ -19,10 +19,7 @@ use pdfcraft_render::PageInfo;
 use crate::theme::Tokens;
 use crate::{PdfCraftApp, widgets};
 
-/// The application name the house writes into every finished file.
-pub const HOUSE_CREATOR: &str = "Editora Conjecturas";
-
-/// The Finish Conjecturas file dialog.
+/// The Finish publisher file dialog.
 #[derive(Clone, Debug, Default, PartialEq)]
 pub struct FinishDraft {
     pub title: String,
@@ -42,7 +39,7 @@ pub struct FinishDraft {
 }
 
 impl PdfCraftApp {
-    pub fn open_finish_conjecturas(&mut self) {
+    pub fn open_finish_publisher(&mut self) {
         let Some((_, id)) = self.active_ids() else { return };
         let Some(doc) = self.session.get(id) else { return };
         let info = |k: &str| doc.info_value(k).unwrap_or_default();
@@ -51,7 +48,9 @@ impl PdfCraftApp {
         self.finish_draft = FinishDraft {
             title: info("Title"),
             author: info("Author"),
-            creator: HOUSE_CREATOR.to_owned(),
+            // Left for the user to type: the build carries no publisher's name. Left empty, the
+            // layout application's name is removed.
+            creator: String::new(),
             producer: String::new(),
             subject: info("Subject"),
             keywords: info("Keywords"),
@@ -60,11 +59,11 @@ impl PdfCraftApp {
             show_bookmarks: has_bookmarks,
             has_bookmarks,
         };
-        self.dialog = Some(crate::Dialog::FinishConjecturas);
+        self.dialog = Some(crate::Dialog::FinishPublisher);
     }
 
     /// The single undoable step the dialog's Apply makes, or `None` when there is no document.
-    pub(crate) fn finish_conjecturas_edit(&self) -> Option<Edit> {
+    pub(crate) fn finish_publisher_edit(&self) -> Option<Edit> {
         let (_, id) = self.active_ids()?;
         let doc = self.session.get(id)?;
         let d = &self.finish_draft;
@@ -97,20 +96,20 @@ impl PdfCraftApp {
                 edits.push(Edit::SetInitialView(Box::new(view)));
             }
         }
-        Some(Edit::Batch { label: "Finish Conjecturas file".into(), edits })
+        Some(Edit::Batch { label: "Finish publisher file".into(), edits })
     }
 }
 
 /// Returns (apply, cancel).
 pub(crate) fn finish_body(ui: &mut egui::Ui, d: &mut FinishDraft, t: &Tokens) -> (bool, bool) {
     ui.set_width(520.0);
-    ui.label(egui::RichText::new(tl!("Finish Conjecturas file")).font(crate::theme::semibold(18.0)));
+    ui.label(egui::RichText::new(tl!("Finish publisher file")).font(crate::theme::semibold(18.0)));
     ui.add_space(4.0);
     ui.label(
         egui::RichText::new(tl!("Sets the house's document information and removes what other applications left in the file.")).color(t.text_muted),
     );
     ui.add_space(10.0);
-    egui::Grid::new("finish-conjecturas").num_columns(2).spacing([18.0, 8.0]).min_col_width(120.0).show(ui, |ui| {
+    egui::Grid::new("finish-publisher").num_columns(2).spacing([18.0, 8.0]).min_col_width(120.0).show(ui, |ui| {
         for (label, value, salt) in [
             ("Title", &mut d.title, "title"),
             ("Author", &mut d.author, "author"),

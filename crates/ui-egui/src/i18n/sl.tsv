@@ -2361,10 +2361,9 @@ animation effects	Off	Izklopljeni
 	Add tools and controls	Dodaj orodja in kontrolnike
 	Reset to default	Ponastavi na privzeto
 	House tools	Hiša
-	Conjecturas and IPBB	Conjecturas in IPBB
 	Everyday tools	Vsakdanja orodja
-	Finish Conjecturas file	Zaključi datoteko Conjecturas
-	Finish Conjecturas file…	Zaključi datoteko Conjecturas…
+	Finish publisher file	Zaključi datoteko založbe
+	Finish publisher file…	Zaključi datoteko založbe…
 	Sets the house's document information and removes what other applications left in the file.	Nastavi podatke o dokumentu po hišnem standardu in odstrani, kar so v datoteki pustili drugi programi.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Odstrani metapodatke XMP drugih programov (zgodovina InDesigna, ID-ji dokumenta, metapodatki slik)
 	Remove the private data of other applications	Odstrani zasebne podatke drugih programov
@@ -2391,7 +2390,7 @@ animation effects	Off	Izklopljeni
 	Pages to initial: {n}	Strani za parafiranje: {n}
 	Initialled {n} pages.	Parafiranih strani: {n}.
 	Portuguese (Brazil)	Portugalščina (Brazilija)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows za ta jezik nima prepoznavanja besedila. Dodajte ga v Nastavitve ▸ Čas in jezik ▸ Jezik in regija, z optičnim prepoznavanjem znakov.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows za ta jezik nima prepoznavanja besedila. Dodajte ga v Nastavitve > Čas in jezik > Jezik in regija, z optičnim prepoznavanjem znakov.
 	Read aloud from this page	Beri naglas od te strani
 	Pause or resume reading aloud	Začasno ustavi ali nadaljuj branje naglas
 	Read aloud uses the voices of Windows.	Branje naglas uporablja glasove sistema Windows.

@@ -2354,10 +2354,9 @@ animation effects	Off	Өшірулі
 	Add tools and controls	Құралдар мен басқару элементтерін қосу
 	Reset to default	Әдепкіге қайтару
 	House tools	Үй
-	Conjecturas and IPBB	Conjecturas және IPBB
 	Everyday tools	Күнделікті құралдар
-	Finish Conjecturas file	Conjecturas файлын аяқтау
-	Finish Conjecturas file…	Conjecturas файлын аяқтау…
+	Finish publisher file	Баспа файлын аяқтау
+	Finish publisher file…	Баспа файлын аяқтау…
 	Sets the house's document information and removes what other applications left in the file.	Құжат мәліметтерін үй стандартына сай орнатады және басқа қолданбалар файлда қалдырғанын жояды.
 	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Басқа қолданбалардың XMP метадеректерін жою (InDesign тарихы, құжат идентификаторлары, сурет метадеректері)
 	Remove the private data of other applications	Басқа қолданбалардың жеке деректерін жою
@@ -2384,7 +2383,7 @@ animation effects	Off	Өшірулі
 	Pages to initial: {n}	Қолтаңба қойылатын беттер: {n}
 	Initialled {n} pages.	{n} бетке қолтаңба қойылды.
 	Portuguese (Brazil)	Португал тілі (Бразилия)
-	Windows has no text recognition for this language. Add it in Settings ▸ Time & language ▸ Language & region, with its optical character recognition.	Windows жүйесінде бұл тілге мәтінді тану жоқ. Оны Параметрлер ▸ Уақыт және тіл ▸ Тіл және аймақ бөлімінде таңбаларды оптикалық танумен бірге қосыңыз.
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows жүйесінде бұл тілге мәтінді тану жоқ. Оны Параметрлер > Уақыт және тіл > Тіл және аймақ бөлімінде таңбаларды оптикалық танумен бірге қосыңыз.
 	Read aloud from this page	Осы беттен бастап дауыстап оқу
 	Pause or resume reading aloud	Дауыстап оқуды кідірту немесе жалғастыру
 	Read aloud uses the voices of Windows.	Дауыстап оқу Windows дауыстарын пайдаланады.

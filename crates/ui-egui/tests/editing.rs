@@ -4328,10 +4328,10 @@ fn the_open_text_editor_stays_inside_the_document_view_when_scrolled() {
     assert!((text.top() - (frame.top() + 2.0)).abs() < 1.5, "the text {text:?} has slid off its frame {frame:?}");
 }
 
-/// House tools ▸ Finish Conjecturas file: the house's application name, no producer, the title
-/// kept, in one undoable step; and the House tools button leads to it.
+/// House tools ▸ Finish publisher file: the application name the user types (none is pre-filled),
+/// no producer, the title kept, in one undoable step; and the House tools button leads to it.
 #[test]
-fn finish_conjecturas_file_sets_the_house_metadata_in_one_step() {
+fn finish_publisher_file_sets_the_metadata_in_one_step() {
     use pdfcraft_engine::Edit;
     let mut h = harness(1, |app| {
         assert!(app.apply_edit(Edit::Batch {
@@ -4349,15 +4349,16 @@ fn finish_conjecturas_file_sets_the_house_metadata_in_one_step() {
     let house = h.get_all_by_label("House tools").find(|n| (n.rect().center().y - row).abs() < 6.0).expect("House tools on the mode bar");
     house.click();
     h.run_steps(3);
-    h.get_by_label("Finish Conjecturas file").click();
+    h.get_by_label("Finish publisher file").click();
     h.run_steps(3);
-    assert_eq!(h.state().dialog, Some(Dialog::FinishConjecturas));
+    assert_eq!(h.state().dialog, Some(Dialog::FinishPublisher));
     let d = &h.state().finish_draft;
-    assert_eq!((d.title.as_str(), d.creator.as_str(), d.producer.as_str()), ("Um livro", "Editora Conjecturas", ""));
+    assert_eq!((d.title.as_str(), d.creator.as_str(), d.producer.as_str()), ("Um livro", "", ""), "no publisher's name comes pre-filled");
+    h.state_mut().finish_draft.creator = "Editora Exemplo".into();
     h.get_by_label("Apply").click();
     h.run_steps(3);
     let info = |h: &Harness<'static, PdfCraftApp>, k: &str| h.state().session.get(id).unwrap().info_value(k);
-    assert_eq!(info(&h, "Creator").as_deref(), Some("Editora Conjecturas"));
+    assert_eq!(info(&h, "Creator").as_deref(), Some("Editora Exemplo"));
     assert_eq!(info(&h, "Producer"), None, "no producer");
     assert_eq!(info(&h, "Title").as_deref(), Some("Um livro"), "the title is kept");
     // One undo brings back what the layout application wrote.
