@@ -2397,3 +2397,12 @@ animation effects	Off	Désactivés
 	Stop	Arrêter
 	Default voice	Voix par défaut
 	Speed	Vitesse
+	Split book spreads	Séparer les doubles pages
+	Split book spreads…	Séparer les doubles pages…
+	Finding the binding… page {n} of {total}	Recherche de la reliure… page {n} sur {total}
+	No page here is a book spread (wider than tall).	Aucune page ici n'est une double page (plus large que haute).
+	Split {n} spreads into {pages} pages.	{n} doubles pages séparées en {pages} pages.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Chaque page numérisée livre ouvert devient deux pages, la gauche d'abord. La numérisation elle-même n'est ni coupée ni recompressée.
+	At the binding (found on each page)	À la reliure (détectée sur chaque page)
+	Exactly in the middle	Exactement au milieu
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Doubles pages (plus larges que hautes) : {n}. Les autres restent telles quelles.

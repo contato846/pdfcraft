@@ -2377,3 +2377,12 @@ animation effects	Off	Wyłączone
 	Stop	Zatrzymaj
 	Default voice	Domyślny głos
 	Speed	Szybkość
+	Split book spreads	Podziel rozkładówki książki
+	Split book spreads…	Podziel rozkładówki książki…
+	Finding the binding… page {n} of {total}	Szukanie grzbietu… strona {n} z {total}
+	No page here is a book spread (wider than tall).	Żadna strona tutaj nie jest rozkładówką (szersza niż wyższa).
+	Split {n} spreads into {pages} pages.	Podzielono rozkładówek: {n}, stron: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Każda strona zeskanowana przy otwartej książce staje się dwiema, najpierw lewa. Sam skan nie jest przycinany ani ponownie kompresowany.
+	At the binding (found on each page)	Przy grzbiecie (wykrytym na każdej stronie)
+	Exactly in the middle	Dokładnie pośrodku
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Rozkładówki (szersze niż wyższe): {n}. Pozostałe zostają bez zmian.

@@ -2310,3 +2310,12 @@ animation effects	Off	ఆఫ్
 	Stop	ఆపు
 	Default voice	డిఫాల్ట్ వాయిస్
 	Speed	వేగం
+	Split book spreads	పుస్తకం తెరిచిన పేజీలను విభజించు
+	Split book spreads…	పుస్తకం తెరిచిన పేజీలను విభజించు…
+	Finding the binding… page {n} of {total}	బైండింగ్ కోసం వెతుకుతోంది… {total}లో పేజీ {n}
+	No page here is a book spread (wider than tall).	ఇక్కడ ఏ పేజీ కూడా తెరిచిన పుస్తకపు పేజీ కాదు (ఎత్తు కంటే వెడల్పు ఎక్కువ).
+	Split {n} spreads into {pages} pages.	{n} తెరిచిన పేజీలు {pages} పేజీలుగా విభజించబడ్డాయి.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	పుస్తకం తెరిచి స్కాన్ చేసిన ప్రతి పేజీ రెండు పేజీలవుతుంది, ముందుగా ఎడమది. స్కాన్ కత్తిరించబడదు, మళ్లీ కుదించబడదు.
+	At the binding (found on each page)	బైండింగ్ వద్ద (ప్రతి పేజీలో గుర్తిస్తుంది)
+	Exactly in the middle	సరిగ్గా మధ్యలో
+	Spreads (pages wider than tall): {n}. The others stay as they are.	తెరిచిన పేజీలు (ఎత్తు కంటే వెడల్పు ఎక్కువ): {n}. మిగతావి అలాగే ఉంటాయి.

@@ -2397,3 +2397,12 @@ animation effects	Off	オフ
 	Stop	停止
 	Default voice	既定の音声
 	Speed	速度
+	Split book spreads	見開きページを分割
+	Split book spreads…	見開きページを分割…
+	Finding the binding… page {n} of {total}	のどを検出中… {total} ページ中 {n} ページ
+	No page here is a book spread (wider than tall).	ここには見開きページ（高さより幅が広いページ）がありません。
+	Split {n} spreads into {pages} pages.	{n} 件の見開きを {pages} ページに分割しました。
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	本を開いてスキャンした各ページを 2 ページにします（左ページが先）。スキャン画像自体は切り抜きも再圧縮もしません。
+	At the binding (found on each page)	のどで分割（各ページで検出）
+	Exactly in the middle	ちょうど中央で分割
+	Spreads (pages wider than tall): {n}. The others stay as they are.	見開きページ（高さより幅が広い）: {n}。ほかのページはそのままです。

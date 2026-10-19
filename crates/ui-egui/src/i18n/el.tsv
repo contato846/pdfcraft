@@ -2407,3 +2407,12 @@ animation effects	Off	Ανενεργά
 	Stop	Διακοπή
 	Default voice	Προεπιλεγμένη φωνή
 	Speed	Ταχύτητα
+	Split book spreads	Διαχωρισμός δισέλιδων βιβλίου
+	Split book spreads…	Διαχωρισμός δισέλιδων βιβλίου…
+	Finding the binding… page {n} of {total}	Αναζήτηση της ράχης… σελίδα {n} από {total}
+	No page here is a book spread (wider than tall).	Καμία σελίδα εδώ δεν είναι δισέλιδο (πλατύτερη από ψηλή).
+	Split {n} spreads into {pages} pages.	Χωρίστηκαν {n} δισέλιδα σε {pages} σελίδες.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Κάθε σελίδα σαρωμένη με το βιβλίο ανοιχτό γίνεται δύο, πρώτα η αριστερή. Η ίδια η σάρωση δεν περικόπτεται ούτε ξανασυμπιέζεται.
+	At the binding (found on each page)	Στη ράχη (εντοπίζεται σε κάθε σελίδα)
+	Exactly in the middle	Ακριβώς στη μέση
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Δισέλιδα (πλατύτερα από ψηλά): {n}. Τα υπόλοιπα μένουν όπως είναι.

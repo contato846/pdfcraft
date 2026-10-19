@@ -2402,3 +2402,12 @@ animation effects	Off	Izklopljeni
 	Stop	Ustavi
 	Default voice	Privzeti glas
 	Speed	Hitrost
+	Split book spreads	Razdeli dvostrani knjige
+	Split book spreads…	Razdeli dvostrani knjige…
+	Finding the binding… page {n} of {total}	Iskanje hrbta … stran {n} od {total}
+	No page here is a book spread (wider than tall).	Nobena stran tukaj ni dvostran (širša kot višja).
+	Split {n} spreads into {pages} pages.	Razdeljenih dvostrani: {n}, strani: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Vsaka stran, skenirana z odprto knjigo, postane dve, najprej leva. Sam sken se ne obreže in ne stisne znova.
+	At the binding (found on each page)	Pri hrbtu (zaznano na vsaki strani)
+	Exactly in the middle	Točno na sredini
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Dvostrani (širše kot višje): {n}. Druge ostanejo nespremenjene.

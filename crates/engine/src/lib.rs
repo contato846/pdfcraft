@@ -32,6 +32,7 @@ pub mod printcheck;
 mod scan_colours;
 pub mod signature_image;
 pub mod signature_scan;
+pub mod spreads;
 pub mod text_fonts;
 mod text_preview;
 mod upright_image;
@@ -1117,6 +1118,13 @@ pub enum Edit {
     DuplicatePages {
         pages: Vec<usize>,
     },
+    /// Pages ▸ Split book spreads (one spread): the page is duplicated and the two keep `left`
+    /// and `right` (user-space rectangles) as their media and crop boxes.
+    SplitSpread {
+        page: usize,
+        left: [f64; 4],
+        right: [f64; 4],
+    },
     /// Replace Pages: the content of `pages` is replaced by `src_pages` of another PDF; the
     /// pages' links, comments and bookmarks stay.
     ReplacePages {
@@ -1755,6 +1763,7 @@ impl Edit {
             Edit::MovePages { pages, .. } => plural("Move page", "Move pages", pages.len()),
             Edit::InsertBlankPage { .. } => Label::of("Insert blank page"),
             Edit::DuplicatePages { pages } => plural("Duplicate page", "Duplicate pages", pages.len()),
+            Edit::SplitSpread { .. } => Label::of("Split book spreads"),
             Edit::ReplacePages { pages, .. } => plural("Replace page", "Replace pages", pages.len()),
             Edit::SetPageBox { pages, which: PageBox::Crop, .. } => plural("Crop page", "Crop pages", pages.len()),
             Edit::SetPageBox { .. } => Label::of("Set page boxes"),
@@ -1920,6 +1929,7 @@ fn check_permission(edit: &Edit, p: &pdfcraft_cos::Permissions) -> Result<(), Ed
         | Edit::MovePages { .. }
         | Edit::InsertBlankPage { .. }
         | Edit::DuplicatePages { .. }
+        | Edit::SplitSpread { .. }
         | Edit::ReplacePages { .. }
         | Edit::SetPageBox { .. }
         | Edit::InsertPagesFrom { .. }
@@ -2125,6 +2135,18 @@ fn run_edit(doc: &mut pdfcraft_cos::Document, edit: &Edit, cx: &mut EditCtx) -> 
         }
         Edit::SetInfo { key, value } => pdfcraft_organize::set_info(doc, key, value)?,
         Edit::DuplicatePages { pages } => pdfcraft_organize::duplicate_pages(doc, pages)?,
+        Edit::SplitSpread { page, left, right } => {
+            pdfcraft_organize::duplicate_pages(doc, &[*page])?;
+            for (p, rect) in [(*page, *left), (*page + 1, *right)] {
+                // The half becomes the whole page: media and crop; the print boxes of the spread
+                // would reach past it.
+                pdfcraft_organize::set_page_box(doc, &[p], PageBox::Media, BoxSpec::Rect(rect))?;
+                pdfcraft_organize::set_page_box(doc, &[p], PageBox::Crop, BoxSpec::Rect(rect))?;
+                for b in [PageBox::Bleed, PageBox::Trim, PageBox::Art] {
+                    pdfcraft_organize::set_page_box(doc, &[p], b, BoxSpec::Remove)?;
+                }
+            }
+        }
         Edit::ReplacePages { pages, name, bytes, src_pages } => {
             let src = open_source(name, bytes)?;
             pdfcraft_organize::replace_pages(doc, pages, &src, src_pages)?;

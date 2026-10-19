@@ -2641,3 +2641,12 @@ key	Space	Tarpas
 	Stop	Stabdyti
 	Default voice	Numatytasis balsas
 	Speed	Greitis
+	Split book spreads	Padalyti knygos atvartus
+	Split book spreads…	Padalyti knygos atvartus…
+	Finding the binding… page {n} of {total}	Ieškoma nugarėlės… {n} puslapis iš {total}
+	No page here is a book spread (wider than tall).	Nė vienas puslapis čia nėra atvartas (platesnis nei aukštesnis).
+	Split {n} spreads into {pages} pages.	Padalyta atvartų: {n}, gauta puslapių: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Kiekvienas puslapis, nuskenuotas atverstoje knygoje, tampa dviem, pirma kairysis. Pats skenuotas vaizdas neapkerpamas ir iš naujo nesuglaudinamas.
+	At the binding (found on each page)	Ties nugarėle (aptinkama kiekviename puslapyje)
+	Exactly in the middle	Tiksliai per vidurį
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Atvartai (platesni nei aukštesni): {n}. Kiti lieka tokie, kokie yra.

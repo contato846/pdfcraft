@@ -2271,3 +2271,12 @@ animation effects	Off	關
 	Stop	停止
 	Default voice	預設語音
 	Speed	速度
+	Split book spreads	拆分書本跨頁
+	Split book spreads…	拆分書本跨頁…
+	Finding the binding… page {n} of {total}	正在尋找書脊… 第 {n} 頁，共 {total} 頁
+	No page here is a book spread (wider than tall).	這裡沒有跨頁（寬度大於高度的頁面）。
+	Split {n} spreads into {pages} pages.	已將 {n} 個跨頁拆分為 {pages} 頁。
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	書本攤開掃描的每一頁都會變成兩頁，左頁在前。掃描影像本身不會被裁切或重新壓縮。
+	At the binding (found on each page)	在書脊處（逐頁偵測）
+	Exactly in the middle	正好在中間
+	Spreads (pages wider than tall): {n}. The others stay as they are.	跨頁（寬度大於高度）：{n}。其他頁面保持不變。

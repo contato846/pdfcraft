@@ -822,6 +822,14 @@ fn dialogs(app: &mut PdfCraftApp, ctx: &egui::Context) {
                 close = ok || cancel;
                 return;
             }
+            Dialog::SplitSpreads => {
+                let (ok, cancel) = crate::spreads_ui::body(ui, app, &t);
+                if ok {
+                    redact_now = Some(dialog);
+                }
+                close = ok || cancel;
+                return;
+            }
             Dialog::InitialEveryPage => {
                 let (ok, cancel) = crate::house::initials_body(ui, app, &t);
                 if ok {
@@ -1268,6 +1276,7 @@ fn dialogs(app: &mut PdfCraftApp, ctx: &egui::Context) {
                 }
             }
         }
+        Some(Dialog::SplitSpreads) => app.split_spreads(),
         Some(Dialog::InitialEveryPage) => {
             let n = app.initials_pages().len();
             if let Some(edit) = app.initial_every_page_edit()

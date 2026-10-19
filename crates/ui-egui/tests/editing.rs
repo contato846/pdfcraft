@@ -4439,3 +4439,26 @@ fn read_aloud_says_where_it_needs_windows_voices() {
     assert_eq!(h.state().toast.as_ref().map(|t| t.0.as_str()), Some("Read aloud uses the voices of Windows."));
     assert!(h.state().views[0].read_page.is_none() && h.state().views[0].read_word.is_none());
 }
+
+/// Pages ▸ Split book spreads: a page wider than tall becomes two, in one undoable step.
+#[test]
+fn split_book_spreads_turns_a_spread_into_two_pages() {
+    use pdfcraft_engine::Edit;
+    let mut h = harness(1, |app| {
+        app.run_inline = true;
+        // The fixture's 200 × 300 page shown turned: a 300 × 200 spread.
+        assert!(app.apply_edit(Edit::RotatePages { pages: vec![0], degrees: 90 }));
+    });
+    let id = h.state().views[0].id;
+    assert!(h.state_mut().execute("page.split_spreads"));
+    h.run_steps(3);
+    assert_eq!(h.state().dialog, Some(Dialog::SplitSpreads));
+    h.get_by_role_and_label(Role::Button, "Split").click();
+    h.run_steps(4);
+    let pages = h.state().session.get(id).unwrap().info.pages.clone();
+    assert_eq!(pages.len(), 2, "the spread became two pages");
+    assert!(pages.iter().all(|p| (p.width - 150.0).abs() < 1.0 && (p.height - 200.0).abs() < 1.0), "{pages:?}");
+    assert!(h.state_mut().execute("edit.undo"));
+    h.run_steps(2);
+    assert_eq!(h.state().session.get(id).unwrap().info.pages.len(), 1, "one undo puts the spread back");
+}

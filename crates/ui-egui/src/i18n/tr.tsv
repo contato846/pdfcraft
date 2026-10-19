@@ -2393,3 +2393,12 @@ animation effects	Off	Kapalı
 	Stop	Durdur
 	Default voice	Varsayılan ses
 	Speed	Hız
+	Split book spreads	Kitap çift sayfalarını böl
+	Split book spreads…	Kitap çift sayfalarını böl…
+	Finding the binding… page {n} of {total}	Sırt aranıyor… sayfa {n} / {total}
+	No page here is a book spread (wider than tall).	Buradaki hiçbir sayfa çift sayfa değil (yüksekliğinden geniş).
+	Split {n} spreads into {pages} pages.	{n} çift sayfa {pages} sayfaya bölündü.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Kitap açıkken taranan her sayfa iki sayfa olur, önce soldaki. Taramanın kendisi kırpılmaz veya yeniden sıkıştırılmaz.
+	At the binding (found on each page)	Sırttan (her sayfada bulunur)
+	Exactly in the middle	Tam ortadan
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Çift sayfalar (yüksekliğinden geniş): {n}. Diğerleri olduğu gibi kalır.

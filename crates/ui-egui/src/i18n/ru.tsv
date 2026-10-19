@@ -2310,3 +2310,12 @@ animation effects	Off	Выкл
 	Stop	Остановить
 	Default voice	Голос по умолчанию
 	Speed	Скорость
+	Split book spreads	Разделить развороты книги
+	Split book spreads…	Разделить развороты книги…
+	Finding the binding… page {n} of {total}	Поиск корешка… страница {n} из {total}
+	No page here is a book spread (wider than tall).	Здесь нет разворотов (страниц шире, чем выше).
+	Split {n} spreads into {pages} pages.	Разделено разворотов: {n}, получено страниц: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Каждая страница, отсканированная с раскрытой книги, становится двумя, сначала левая. Сам скан не обрезается и не пережимается.
+	At the binding (found on each page)	По корешку (находится на каждой странице)
+	Exactly in the middle	Точно посередине
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Развороты (шире, чем выше): {n}. Остальные останутся как есть.

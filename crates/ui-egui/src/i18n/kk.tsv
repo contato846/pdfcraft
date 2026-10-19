@@ -2395,3 +2395,12 @@ animation effects	Off	Өшірулі
 	Stop	Тоқтату
 	Default voice	Әдепкі дауыс
 	Speed	Жылдамдық
+	Split book spreads	Кітаптың жайылған беттерін бөлу
+	Split book spreads…	Кітаптың жайылған беттерін бөлу…
+	Finding the binding… page {n} of {total}	Түптеме ізделуде… {total} беттің {n}-і
+	No page here is a book spread (wider than tall).	Мұнда жайылған бет жоқ (биіктігінен ені үлкен).
+	Split {n} spreads into {pages} pages.	{n} жайылған бет {pages} бетке бөлінді.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Кітап ашық күйде сканерленген әр бет екі бетке айналады, алдымен сол жағы. Сканердің өзі кесілмейді және қайта сығылмайды.
+	At the binding (found on each page)	Түптемеден (әр бетте анықталады)
+	Exactly in the middle	Дәл ортасынан
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Жайылған беттер (биіктігінен ені үлкен): {n}. Басқалары өзгеріссіз қалады.

@@ -2398,3 +2398,12 @@ animation effects	Off	Aus
 	Stop	Stopp
 	Default voice	Standardstimme
 	Speed	Geschwindigkeit
+	Split book spreads	Buchdoppelseiten teilen
+	Split book spreads…	Buchdoppelseiten teilen…
+	Finding the binding… page {n} of {total}	Bundsteg wird gesucht… Seite {n} von {total}
+	No page here is a book spread (wider than tall).	Keine Seite hier ist eine Doppelseite (breiter als hoch).
+	Split {n} spreads into {pages} pages.	{n} Doppelseiten in {pages} Seiten geteilt.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Jede bei aufgeschlagenem Buch gescannte Seite wird zu zwei Seiten, die linke zuerst. Der Scan selbst wird weder beschnitten noch neu komprimiert.
+	At the binding (found on each page)	Am Bundsteg (auf jeder Seite erkannt)
+	Exactly in the middle	Genau in der Mitte
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Doppelseiten (breiter als hoch): {n}. Die anderen bleiben unverändert.

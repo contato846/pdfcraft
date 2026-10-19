@@ -2418,3 +2418,12 @@ animation effects	Off	معطّلة
 	Stop	إيقاف
 	Default voice	الصوت الافتراضي
 	Speed	السرعة
+	Split book spreads	تقسيم صفحات الكتاب المفتوح
+	Split book spreads…	تقسيم صفحات الكتاب المفتوح…
+	Finding the binding… page {n} of {total}	جارٍ البحث عن كعب الكتاب… الصفحة {n} من {total}
+	No page here is a book spread (wider than tall).	لا توجد هنا صفحة لكتاب مفتوح (أعرض من ارتفاعها).
+	Split {n} spreads into {pages} pages.	قُسّمت {n} صفحة كتاب مفتوح إلى {pages} صفحة.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	كل صفحة مُسحت والكتاب مفتوح تصبح صفحتين، اليسرى أولًا. لا يُقص المسح نفسه ولا يُعاد ضغطه.
+	At the binding (found on each page)	عند كعب الكتاب (يُكتشف في كل صفحة)
+	Exactly in the middle	في المنتصف تمامًا
+	Spreads (pages wider than tall): {n}. The others stay as they are.	صفحات الكتاب المفتوح (أعرض من ارتفاعها): {n}. تبقى الصفحات الأخرى كما هي.

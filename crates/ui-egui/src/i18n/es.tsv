@@ -2527,3 +2527,12 @@ animation effects	Off	Desactivados
 	Stop	Detener
 	Default voice	Voz predeterminada
 	Speed	Velocidad
+	Split book spreads	Dividir páginas de libro abierto
+	Split book spreads…	Dividir páginas de libro abierto…
+	Finding the binding… page {n} of {total}	Buscando el lomo… página {n} de {total}
+	No page here is a book spread (wider than tall).	Ninguna página aquí es de libro abierto (más ancha que alta).
+	Split {n} spreads into {pages} pages.	{n} páginas de libro abierto divididas en {pages} páginas.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Cada página escaneada con el libro abierto se convierte en dos, primero la izquierda. El escaneo en sí no se recorta ni se recomprime.
+	At the binding (found on each page)	En el lomo (detectado en cada página)
+	Exactly in the middle	Exactamente en el centro
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Páginas de libro abierto (más anchas que altas): {n}. Las demás quedan como están.

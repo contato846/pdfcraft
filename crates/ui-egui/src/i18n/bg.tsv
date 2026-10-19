@@ -2360,3 +2360,12 @@ animation effects	Off	Изключени
 	Stop	Спиране
 	Default voice	Глас по подразбиране
 	Speed	Скорост
+	Split book spreads	Разделяне на разтвори на книга
+	Split book spreads…	Разделяне на разтвори на книга…
+	Finding the binding… page {n} of {total}	Търсене на гръбчето… страница {n} от {total}
+	No page here is a book spread (wider than tall).	Тук няма разтвори (страници, по-широки, отколкото високи).
+	Split {n} spreads into {pages} pages.	Разделени разтвори: {n}, получени страници: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Всяка страница, сканирана при отворена книга, става две, първо лявата. Самото сканиране не се изрязва и не се компресира отново.
+	At the binding (found on each page)	При гръбчето (откривано на всяка страница)
+	Exactly in the middle	Точно по средата
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Разтвори (по-широки, отколкото високи): {n}. Останалите остават както са.

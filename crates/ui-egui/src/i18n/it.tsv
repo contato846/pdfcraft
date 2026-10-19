@@ -2406,3 +2406,12 @@ animation effects	Off	Disattivati
 	Stop	Interrompi
 	Default voice	Voce predefinita
 	Speed	Velocità
+	Split book spreads	Dividi pagine di libro aperto
+	Split book spreads…	Dividi pagine di libro aperto…
+	Finding the binding… page {n} of {total}	Ricerca della rilegatura… pagina {n} di {total}
+	No page here is a book spread (wider than tall).	Nessuna pagina qui è di libro aperto (più larga che alta).
+	Split {n} spreads into {pages} pages.	{n} pagine di libro aperto divise in {pages} pagine.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Ogni pagina scansionata con il libro aperto diventa due pagine, prima la sinistra. La scansione non viene ritagliata né ricompressa.
+	At the binding (found on each page)	Sulla rilegatura (rilevata su ogni pagina)
+	Exactly in the middle	Esattamente a metà
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Pagine di libro aperto (più larghe che alte): {n}. Le altre restano come sono.

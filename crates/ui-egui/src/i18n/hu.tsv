@@ -2396,3 +2396,12 @@ animation effects	Off	Ki
 	Stop	Leállítás
 	Default voice	Alapértelmezett hang
 	Speed	Sebesség
+	Split book spreads	Könyvoldalpárok szétválasztása
+	Split book spreads…	Könyvoldalpárok szétválasztása…
+	Finding the binding… page {n} of {total}	A gerinc keresése… {n}. oldal / {total}
+	No page here is a book spread (wider than tall).	Itt egyik oldal sem oldalpár (szélesebb, mint magas).
+	Split {n} spreads into {pages} pages.	{n} oldalpár szétválasztva {pages} oldalra.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	A nyitott könyvvel szkennelt oldalakból két oldal lesz, előbb a bal. Magát a szkennelt képet nem vágja és nem tömöríti újra.
+	At the binding (found on each page)	A gerincnél (minden oldalon észlelve)
+	Exactly in the middle	Pontosan középen
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Oldalpárok (szélesebbek, mint magasak): {n}. A többi változatlan marad.

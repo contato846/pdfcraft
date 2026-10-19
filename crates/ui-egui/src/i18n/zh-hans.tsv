@@ -2361,3 +2361,12 @@ animation effects	Off	关
 	Stop	停止
 	Default voice	默认语音
 	Speed	速度
+	Split book spreads	拆分书本跨页
+	Split book spreads…	拆分书本跨页…
+	Finding the binding… page {n} of {total}	正在查找书脊… 第 {n} 页，共 {total} 页
+	No page here is a book spread (wider than tall).	这里没有跨页（宽度大于高度的页面）。
+	Split {n} spreads into {pages} pages.	已将 {n} 个跨页拆分为 {pages} 页。
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	书本摊开扫描的每一页都会变成两页，左页在前。扫描图像本身不会被裁切或重新压缩。
+	At the binding (found on each page)	在书脊处（逐页检测）
+	Exactly in the middle	正好在中间
+	Spreads (pages wider than tall): {n}. The others stay as they are.	跨页（宽度大于高度）：{n}。其他页面保持不变。

@@ -2419,3 +2419,12 @@ animation effects	Off	Вимкнено
 	Stop	Зупинити
 	Default voice	Типовий голос
 	Speed	Швидкість
+	Split book spreads	Розділити розвороти книги
+	Split book spreads…	Розділити розвороти книги…
+	Finding the binding… page {n} of {total}	Пошук корінця… сторінка {n} з {total}
+	No page here is a book spread (wider than tall).	Тут немає розворотів (сторінок, ширших за висоту).
+	Split {n} spreads into {pages} pages.	Розділено розворотів: {n}, отримано сторінок: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Кожна сторінка, відсканована з розгорнутої книги, стає двома, спершу ліва. Сам скан не обрізається й не перестискається.
+	At the binding (found on each page)	По корінцю (знаходиться на кожній сторінці)
+	Exactly in the middle	Точно посередині
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Розвороти (ширші за висоту): {n}. Решта лишаться як є.

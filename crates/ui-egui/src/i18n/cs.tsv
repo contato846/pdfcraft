@@ -2471,3 +2471,12 @@ animation effects	Off	Vypnuto
 	Stop	Zastavit
 	Default voice	Výchozí hlas
 	Speed	Rychlost
+	Split book spreads	Rozdělit dvoustrany knihy
+	Split book spreads…	Rozdělit dvoustrany knihy…
+	Finding the binding… page {n} of {total}	Hledá se hřbet… stránka {n} z {total}
+	No page here is a book spread (wider than tall).	Žádná stránka zde není dvoustrana (širší než vyšší).
+	Split {n} spreads into {pages} pages.	Rozděleno dvoustran: {n}, vzniklo stránek: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Každá stránka naskenovaná s otevřenou knihou se změní na dvě, nejprve levá. Samotný sken se neořezává ani znovu nekomprimuje.
+	At the binding (found on each page)	U hřbetu (zjištěno na každé stránce)
+	Exactly in the middle	Přesně uprostřed
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Dvoustrany (širší než vyšší): {n}. Ostatní zůstanou beze změny.

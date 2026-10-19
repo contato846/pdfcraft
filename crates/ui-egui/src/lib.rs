@@ -96,6 +96,7 @@ pub mod prepare;
 mod print_ui;
 pub mod read_aloud;
 mod signature_drag;
+mod spreads_ui;
 pub mod units;
 mod web_print;
 pub use print_ui::{Handling as PrintHandling, PrintDraft, PrinterSource, Which as PrintWhich, system_printers};
@@ -313,6 +314,8 @@ pub enum Dialog {
     AuthorProof,
     /// House tools ▸ Initial every page.
     InitialEveryPage,
+    /// Pages ▸ Split book spreads.
+    SplitSpreads,
     /// Documents from a session that ended unexpectedly.
     Recovery,
     /// Comments ▸ Summarize comments (options).
@@ -790,6 +793,8 @@ pub struct PdfCraftApp {
     /// View ▸ Read aloud.
     pub reading: Option<read_aloud::Reading>,
     pub read_prefs: read_aloud::ReadAloudPrefs,
+    pub spread_draft: spreads_ui::SpreadDraft,
+    spread_run: Option<spreads_ui::SpreadRun>,
     pub print_draft: PrintDraft,
     pub link_draft: Option<LinkDraft>,
     /// The style new text gets (Edit a PDF ▸ Format text).
@@ -1061,6 +1066,8 @@ impl PdfCraftApp {
             initials_draft: house::InitialsDraft::default(),
             reading: None,
             read_prefs: read_aloud::ReadAloudPrefs::default(),
+            spread_draft: spreads_ui::SpreadDraft::default(),
+            spread_run: None,
             print_draft: PrintDraft::default(),
             link_draft: None,
             text_style: content_ui::default_style(),
@@ -2966,6 +2973,7 @@ impl eframe::App for PdfCraftApp {
         self.poll_export();
         self.poll_ocr();
         self.poll_read_aloud(ctx);
+        self.poll_spreads();
         self.poll_optimize();
         self.poll_action();
         self.process_file_requests();
