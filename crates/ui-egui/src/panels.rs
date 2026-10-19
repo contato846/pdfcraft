@@ -527,6 +527,8 @@ pub fn right_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
     let mut sig_action: Option<crate::sign_ui::PanelAction> = None;
     let mut a11y_action: Option<crate::a11y_ui::PanelAction> = None;
     let mut compare_action: Option<crate::compare_ui::PanelAction> = None;
+    let mut assistant_action: Option<crate::assistant::PanelAction> = None;
+    let has_transport = app.ai_transport.is_some();
     let mut bm_rename = app.bookmark_rename.clone();
     let bm_editable = app.session.get(id).is_some_and(|d| d.allows_assembly() && d.read_only_reason.is_none());
     // Prepare a form is open: the Fields panel orders tabs.
@@ -540,6 +542,7 @@ pub fn right_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
         let a11y = &mut app.a11y;
         let tags_state = &mut app.tags_state;
         let compare = &app.compare;
+        let assistant = &mut app.assistant;
         let comment_allowed = doc.allows_annotation();
         // A dialog or the palette owns the keyboard: the panel leaves Escape to it.
         let modal = app.dialog.is_some() || app.palette_open;
@@ -560,6 +563,7 @@ pub fn right_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     RightPanel::Tags => ("Tags", None),
                     RightPanel::Search => ("Search", None),
                     RightPanel::Compare => ("Compare", compare.as_ref().filter(|c| c.new == id).map(|c| c.result.changes.len())),
+                    RightPanel::Assistant => ("Assistant", None),
                 };
                 ui.horizontal(|ui| {
                     ui.label(egui::RichText::new(tl!(title)).font(theme::semibold(15.5)));
@@ -730,6 +734,7 @@ pub fn right_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     }
                     RightPanel::Search => crate::search_ui::panel(ui, &t, view, info.pages.len()),
                     RightPanel::Compare => compare_action = crate::compare_ui::panel(ui, &t, compare, id),
+                    RightPanel::Assistant => assistant_action = crate::assistant::panel(ui, &t, assistant, has_transport),
                     RightPanel::Attachments => {
                         if info.attachments.is_empty() {
                             empty(ui, &t, "paperclip", "This document has no attachments.");
@@ -788,6 +793,13 @@ pub fn right_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
     }
     if let Some(a) = compare_action {
         app.compare_action(index, a);
+    }
+    match assistant_action {
+        Some(crate::assistant::PanelAction::Send) => app.assistant_send(),
+        Some(crate::assistant::PanelAction::Stop) => app.assistant_stop(),
+        Some(crate::assistant::PanelAction::FetchModels) => app.assistant_fetch_models(),
+        Some(crate::assistant::PanelAction::GoToPage(p)) => app.views[index].go_to_page(p),
+        None => {}
     }
     match sig_action {
         Some(crate::sign_ui::PanelAction::Validate) => app.run_command("sign.validate"),

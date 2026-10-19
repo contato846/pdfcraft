@@ -75,6 +75,7 @@ pub static TOOL_GROUPS: &[ToolGroup] = &[
                     item("Proof for the author", "stamp", "house.proof", Ready),
                     item("Initial every page", "signature", "house.initials", Ready),
                     item("Read aloud from this page", "mic", "view.read_aloud", Ready),
+                    item("Assistant", "sparkles", "view.assistant", Ready),
                     item("Split book spreads", "columns-2", "page.split_spreads", Ready),
                 ],
             },

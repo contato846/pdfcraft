@@ -2427,3 +2427,25 @@ animation effects	Off	معطّلة
 	At the binding (found on each page)	عند كعب الكتاب (يُكتشف في كل صفحة)
 	Exactly in the middle	في المنتصف تمامًا
 	Spreads (pages wider than tall): {n}. The others stay as they are.	صفحات الكتاب المفتوح (أعرض من ارتفاعها): {n}. تبقى الصفحات الأخرى كما هي.
+	API key	مفتاح API
+	Ask a question (Enter sends, Shift+Enter for a new line)	اطرح سؤالًا (Enter للإرسال، وShift+Enter لسطر جديد)
+	Ask about the open document: a summary, where something is said, what a passage means…	اسأل عن المستند المفتوح: ملخص، أين يُذكر شيء ما، ماذا يعني مقطع…
+	Assistant	المساعد
+	Assistant settings	إعدادات المساعد
+	Choose a model first (Refresh the list).	اختر نموذجًا أولًا (حدّث القائمة).
+	Enter your API key for this AI first.	أدخل أولًا مفتاح API الخاص بك لهذا الذكاء الاصطناعي.
+	Get a key	الحصول على مفتاح
+	New conversation	محادثة جديدة
+	No models found for this key.	لم يُعثر على نماذج لهذا المفتاح.
+	Ollama address	عنوان Ollama
+	Refresh the model list	تحديث قائمة النماذج
+	Remember the keys on this computer	تذكّر المفاتيح على هذا الكمبيوتر
+	Send	إرسال
+	The AI declined to answer this.	رفض الذكاء الاصطناعي الإجابة.
+	The Assistant needs the desktop app to reach the AI.	يحتاج المساعد إلى تطبيق سطح المكتب للوصول إلى الذكاء الاصطناعي.
+	The document is too long for this AI: it got the text up to page {n}.	المستند طويل جدًا لهذا الذكاء الاصطناعي: تلقّى النص حتى الصفحة {n}.
+	These pages have no text (scanned pages need Recognize text first).	لا تحتوي هذه الصفحات على نص (تحتاج الصفحات الممسوحة أولًا إلى التعرف على النص).
+	This page	هذه الصفحة
+	Whole document	المستند كاملًا
+	Your question	سؤالك
+	Local model (Ollama)	نموذج محلي (Ollama)

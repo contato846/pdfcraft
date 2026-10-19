@@ -2416,3 +2416,25 @@ animation effects	Off	Ανενεργά
 	At the binding (found on each page)	Στη ράχη (εντοπίζεται σε κάθε σελίδα)
 	Exactly in the middle	Ακριβώς στη μέση
 	Spreads (pages wider than tall): {n}. The others stay as they are.	Δισέλιδα (πλατύτερα από ψηλά): {n}. Τα υπόλοιπα μένουν όπως είναι.
+	API key	Κλειδί API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Κάντε μια ερώτηση (Enter αποστολή, Shift+Enter νέα γραμμή)
+	Ask about the open document: a summary, where something is said, what a passage means…	Ρωτήστε για το ανοιχτό έγγραφο: μια περίληψη, πού λέγεται κάτι, τι σημαίνει ένα απόσπασμα…
+	Assistant	Βοηθός
+	Assistant settings	Ρυθμίσεις βοηθού
+	Choose a model first (Refresh the list).	Επιλέξτε πρώτα ένα μοντέλο (ανανεώστε τη λίστα).
+	Enter your API key for this AI first.	Εισαγάγετε πρώτα το κλειδί API σας για αυτή την ΤΝ.
+	Get a key	Λήψη κλειδιού
+	New conversation	Νέα συζήτηση
+	No models found for this key.	Δεν βρέθηκαν μοντέλα για αυτό το κλειδί.
+	Ollama address	Διεύθυνση Ollama
+	Refresh the model list	Ανανέωση της λίστας μοντέλων
+	Remember the keys on this computer	Απομνημόνευση των κλειδιών σε αυτόν τον υπολογιστή
+	Send	Αποστολή
+	The AI declined to answer this.	Η ΤΝ αρνήθηκε να απαντήσει.
+	The Assistant needs the desktop app to reach the AI.	Ο βοηθός χρειάζεται την εφαρμογή υπολογιστή για να φτάσει στην ΤΝ.
+	The document is too long for this AI: it got the text up to page {n}.	Το έγγραφο είναι πολύ μεγάλο για αυτή την ΤΝ: έλαβε το κείμενο έως τη σελίδα {n}.
+	These pages have no text (scanned pages need Recognize text first).	Αυτές οι σελίδες δεν έχουν κείμενο (οι σαρωμένες σελίδες χρειάζονται πρώτα Αναγνώριση κειμένου).
+	This page	Αυτή η σελίδα
+	Whole document	Ολόκληρο το έγγραφο
+	Your question	Η ερώτησή σας
+	Local model (Ollama)	Τοπικό μοντέλο (Ollama)

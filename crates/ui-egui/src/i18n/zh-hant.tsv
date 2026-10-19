@@ -2280,3 +2280,26 @@ animation effects	Off	關
 	At the binding (found on each page)	在書脊處（逐頁偵測）
 	Exactly in the middle	正好在中間
 	Spreads (pages wider than tall): {n}. The others stay as they are.	跨頁（寬度大於高度）：{n}。其他頁面保持不變。
+	API key	API 金鑰
+	Ask a question (Enter sends, Shift+Enter for a new line)	提出問題（Enter 傳送，Shift+Enter 換行）
+	Ask about the open document: a summary, where something is said, what a passage means…	就開啟的文件提問：摘要、某處說了什麼、某段話的含義…
+	Assistant	助理
+	Assistant settings	助理設定
+	Choose a model first (Refresh the list).	請先選擇模型（重新整理清單）。
+	Enter your API key for this AI first.	請先輸入此 AI 的 API 金鑰。
+	Get a key	取得金鑰
+	New conversation	新對話
+	No models found for this key.	找不到此金鑰可用的模型。
+	Ollama address	Ollama 位址
+	Refresh the model list	重新整理模型清單
+	Remember the keys on this computer	在此電腦上記住金鑰
+	Send	傳送
+	The AI declined to answer this.	AI 拒絕回答。
+	The Assistant needs the desktop app to reach the AI.	助理需要桌面應用程式才能連線到 AI。
+	The document is too long for this AI: it got the text up to page {n}.	文件對此 AI 來說太長：它收到了第 {n} 頁之前的文字。
+	These pages have no text (scanned pages need Recognize text first).	這些頁面沒有文字（掃描頁面需先進行文字辨識）。
+	This page	此頁
+	Whole document	整份文件
+	Your question	你的問題
+	Local model (Ollama)	本機模型（Ollama）
+	Model	模型

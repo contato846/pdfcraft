@@ -2319,3 +2319,26 @@ animation effects	Off	Выкл
 	At the binding (found on each page)	По корешку (находится на каждой странице)
 	Exactly in the middle	Точно посередине
 	Spreads (pages wider than tall): {n}. The others stay as they are.	Развороты (шире, чем выше): {n}. Остальные останутся как есть.
+	API key	Ключ API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Задайте вопрос (Enter — отправить, Shift+Enter — новая строка)
+	Ask about the open document: a summary, where something is said, what a passage means…	Спросите об открытом документе: краткое содержание, где что сказано, что значит фрагмент…
+	Assistant	Помощник
+	Assistant settings	Настройки помощника
+	Choose a model first (Refresh the list).	Сначала выберите модель (обновите список).
+	Enter your API key for this AI first.	Сначала введите свой ключ API для этого ИИ.
+	Get a key	Получить ключ
+	New conversation	Новый разговор
+	No models found for this key.	Для этого ключа моделей не найдено.
+	Ollama address	Адрес Ollama
+	Refresh the model list	Обновить список моделей
+	Remember the keys on this computer	Запомнить ключи на этом компьютере
+	Send	Отправить
+	The AI declined to answer this.	ИИ отказался отвечать.
+	The Assistant needs the desktop app to reach the AI.	Помощнику нужно настольное приложение, чтобы обратиться к ИИ.
+	The document is too long for this AI: it got the text up to page {n}.	Документ слишком длинный для этого ИИ: он получил текст до страницы {n}.
+	These pages have no text (scanned pages need Recognize text first).	На этих страницах нет текста (для отсканированных страниц сначала нужно «Распознать текст»).
+	This page	Эта страница
+	Whole document	Весь документ
+	Your question	Ваш вопрос
+	Local model (Ollama)	Локальная модель (Ollama)
+	Model	Модель

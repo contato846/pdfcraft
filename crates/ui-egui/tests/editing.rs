@@ -4462,3 +4462,57 @@ fn split_book_spreads_turns_a_spread_into_two_pages() {
     h.run_steps(2);
     assert_eq!(h.state().session.get(id).unwrap().info.pages.len(), 1, "one undo puts the spread back");
 }
+
+/// View ▸ Assistant: the question goes out with the page's text, and the streamed answer shows
+/// in the conversation, its page citations included.
+#[test]
+fn the_assistant_sends_the_page_and_shows_the_streamed_answer() {
+    use pdfcraft_ui_egui::assistant::{AiTransport, HttpCall};
+    use std::sync::{Arc, Mutex};
+    let sent: Arc<Mutex<Option<HttpCall>>> = Arc::new(Mutex::new(None));
+    let seen = sent.clone();
+    let transport: AiTransport = Arc::new(move |call: &HttpCall, line: &mut dyn FnMut(u16, &str) -> bool| {
+        *seen.lock().unwrap() = Some(call.clone());
+        for l in [
+            "event: message_start",
+            r#"data: {"type":"message_start","message":{"id":"m"}}"#,
+            r#"data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"A página diz "}}"#,
+            r#"data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"Page 1 (p. 1)."}}"#,
+            r#"data: {"type":"message_stop"}"#,
+        ] {
+            if !line(200, l) {
+                break;
+            }
+        }
+        Ok(200)
+    });
+    let mut h = harness(2, move |app| {
+        app.ai_transport = Some(transport);
+        app.assistant.settings.keys[0] = "test-key".into();
+    });
+    assert!(h.state_mut().execute("view.assistant"));
+    h.run_steps(3);
+    let input = h.get_by_role_and_label(Role::MultilineTextInput, "Your question");
+    input.focus();
+    input.type_text("O que diz esta página?");
+    h.run_steps(2);
+    h.get_by_role_and_label(Role::Button, "Send").click();
+    for _ in 0..200 {
+        h.run_steps(1);
+        if !h.state().assistant.busy() {
+            break;
+        }
+        std::thread::sleep(std::time::Duration::from_millis(10));
+    }
+    let call = sent.lock().unwrap().clone().expect("the AI was called");
+    assert_eq!(call.url, "https://api.anthropic.com/v1/messages");
+    let body: serde_json::Value = serde_json::from_str(call.body.as_deref().unwrap()).unwrap();
+    let system = body["system"][0]["text"].as_str().unwrap();
+    assert!(system.contains("=== Page 1 ===\nPage 1"), "the page's text goes out: {system}");
+    assert!(!system.contains("Page 2"), "only the current page: {system}");
+    assert_eq!(body["messages"][0]["content"], "O que diz esta página?");
+    let turns = &h.state().assistant.turns;
+    assert_eq!(turns.len(), 2);
+    assert_eq!(turns[1].text, "A página diz Page 1 (p. 1).");
+    assert!(h.state().assistant.status.is_none(), "{:?}", h.state().assistant.status);
+}

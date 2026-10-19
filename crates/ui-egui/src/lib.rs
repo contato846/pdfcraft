@@ -68,6 +68,7 @@ pub use create_ui::Clip;
 pub use link_ui::LinkDraft;
 pub use optimize_ui::{OptimizeDraft, OptimizeTab};
 pub use sign_ui::{DigitalIdEntry, SignDraft, SignGraphic, SignStep};
+pub mod assistant;
 mod autoscroll;
 mod bidi;
 pub mod bulk_fields;
@@ -197,6 +198,8 @@ pub enum RightPanel {
     Search,
     /// Compare files: the differences.
     Compare,
+    /// A conversation about the document with the user's AI.
+    Assistant,
 }
 
 /// Quick-action bar tools (the vertical floating strip).
@@ -794,6 +797,10 @@ pub struct PdfCraftApp {
     pub reading: Option<read_aloud::Reading>,
     pub read_prefs: read_aloud::ReadAloudPrefs,
     pub spread_draft: spreads_ui::SpreadDraft,
+    /// View ▸ Assistant.
+    pub assistant: assistant::Assistant,
+    /// How the Assistant reaches the AI (the desktop app's network code; `None` in tests and on the web).
+    pub ai_transport: Option<assistant::AiTransport>,
     spread_run: Option<spreads_ui::SpreadRun>,
     pub print_draft: PrintDraft,
     pub link_draft: Option<LinkDraft>,
@@ -1067,6 +1074,8 @@ impl PdfCraftApp {
             reading: None,
             read_prefs: read_aloud::ReadAloudPrefs::default(),
             spread_draft: spreads_ui::SpreadDraft::default(),
+            assistant: assistant::Assistant::default(),
+            ai_transport: None,
             spread_run: None,
             print_draft: PrintDraft::default(),
             link_draft: None,
@@ -2216,6 +2225,7 @@ impl PdfCraftApp {
         });
         // Outside the macro, which is at its recursion limit.
         v["bar_items"] = serde_json::json!(self.bar_items);
+        v["assistant"] = self.assistant.settings.to_json();
         v.to_string()
     }
 
@@ -2243,6 +2253,9 @@ impl PdfCraftApp {
             #[cfg(not(target_arch = "wasm32"))]
             let r: Vec<RecentFile> = r.into_iter().filter(|f| std::path::Path::new(&f.path).exists()).collect();
             self.recent = r;
+        }
+        if v.get("assistant").is_some() {
+            self.assistant.settings = assistant::AssistantSettings::from_json(&v["assistant"]);
         }
         if let Some(items) = v["bar_items"].as_array() {
             self.bar_items = items.iter().filter_map(|i| i.as_str()).filter(|i| chrome::bar_item_known(i)).map(str::to_owned).collect();
@@ -2420,6 +2433,7 @@ impl PdfCraftApp {
                     "tags" => Some(RightPanel::Tags),
                     "search" => Some(RightPanel::Search),
                     "compare" => Some(RightPanel::Compare),
+                    "assistant" => Some(RightPanel::Assistant),
                     "none" => None,
                     other => return Err(format!("unknown panel {other}")),
                 }
@@ -2974,6 +2988,7 @@ impl eframe::App for PdfCraftApp {
         self.poll_ocr();
         self.poll_read_aloud(ctx);
         self.poll_spreads();
+        self.poll_assistant();
         self.poll_optimize();
         self.poll_action();
         self.process_file_requests();

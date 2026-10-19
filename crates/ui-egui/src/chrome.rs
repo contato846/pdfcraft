@@ -618,6 +618,7 @@ fn main_menu(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     (RightPanel::Tags, tl!("Tags")),
                     (RightPanel::Search, tl!("Search")),
                     (RightPanel::Compare, tl!("Compare")),
+                    (RightPanel::Assistant, tl!("Assistant")),
                 ] {
                     if ui.add(widgets::radio(app.right == Some(p), tl!(label))).clicked() {
                         app.choose_right_panel(Some(p));
@@ -672,6 +673,7 @@ pub fn right_rail(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                 rail_button(ui, RightPanel::Accessibility, "accessibility", "Accessibility Checker", false);
             }
             rail_button(ui, RightPanel::Tags, "tag", "Tags", false);
+            rail_button(ui, RightPanel::Assistant, "sparkles", "Assistant", false);
 
             // Page navigation cluster at the bottom (as in Acrobat's rail).
             let view = &mut app.views[index];

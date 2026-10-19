@@ -2411,3 +2411,25 @@ animation effects	Off	Izklopljeni
 	At the binding (found on each page)	Pri hrbtu (zaznano na vsaki strani)
 	Exactly in the middle	Točno na sredini
 	Spreads (pages wider than tall): {n}. The others stay as they are.	Dvostrani (širše kot višje): {n}. Druge ostanejo nespremenjene.
+	API key	Ključ API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Postavite vprašanje (Enter pošlje, Shift+Enter nova vrstica)
+	Ask about the open document: a summary, where something is said, what a passage means…	Vprašajte o odprtem dokumentu: povzetek, kje je kaj zapisano, kaj pomeni odlomek…
+	Assistant	Pomočnik
+	Assistant settings	Nastavitve pomočnika
+	Choose a model first (Refresh the list).	Najprej izberite model (osvežite seznam).
+	Enter your API key for this AI first.	Najprej vnesite svoj ključ API za to UI.
+	Get a key	Pridobi ključ
+	New conversation	Nov pogovor
+	No models found for this key.	Za ta ključ ni bilo najdenih modelov.
+	Ollama address	Naslov Ollama
+	Refresh the model list	Osveži seznam modelov
+	Remember the keys on this computer	Zapomni si ključe v tem računalniku
+	Send	Pošlji
+	The AI declined to answer this.	UI je zavrnila odgovor.
+	The Assistant needs the desktop app to reach the AI.	Pomočnik potrebuje namizno aplikacijo za dostop do UI.
+	The document is too long for this AI: it got the text up to page {n}.	Dokument je predolg za to UI: prejela je besedilo do strani {n}.
+	These pages have no text (scanned pages need Recognize text first).	Te strani nimajo besedila (skenirane strani najprej potrebujejo Prepoznavanje besedila).
+	This page	Ta stran
+	Whole document	Cel dokument
+	Your question	Vaše vprašanje
+	Local model (Ollama)	Lokalni model (Ollama)

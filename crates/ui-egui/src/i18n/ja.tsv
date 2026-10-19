@@ -2406,3 +2406,25 @@ animation effects	Off	オフ
 	At the binding (found on each page)	のどで分割（各ページで検出）
 	Exactly in the middle	ちょうど中央で分割
 	Spreads (pages wider than tall): {n}. The others stay as they are.	見開きページ（高さより幅が広い）: {n}。ほかのページはそのままです。
+	API key	API キー
+	Ask a question (Enter sends, Shift+Enter for a new line)	質問を入力（Enter で送信、Shift+Enter で改行）
+	Ask about the open document: a summary, where something is said, what a passage means…	開いている文書について質問できます：要約、どこに何が書かれているか、ある箇所の意味…
+	Assistant	アシスタント
+	Assistant settings	アシスタントの設定
+	Choose a model first (Refresh the list).	まずモデルを選んでください（一覧を更新）。
+	Enter your API key for this AI first.	まずこの AI の API キーを入力してください。
+	Get a key	キーを取得
+	New conversation	新しい会話
+	No models found for this key.	このキーで使えるモデルが見つかりません。
+	Ollama address	Ollama のアドレス
+	Refresh the model list	モデル一覧を更新
+	Remember the keys on this computer	このコンピューターにキーを記憶する
+	Send	送信
+	The AI declined to answer this.	AI が回答を拒否しました。
+	The Assistant needs the desktop app to reach the AI.	アシスタントが AI に接続するにはデスクトップアプリが必要です。
+	The document is too long for this AI: it got the text up to page {n}.	文書がこの AI には長すぎます：{n} ページまでのテキストを受け取りました。
+	These pages have no text (scanned pages need Recognize text first).	これらのページにはテキストがありません（スキャンしたページは先に「テキスト認識」が必要です）。
+	This page	このページ
+	Whole document	文書全体
+	Your question	あなたの質問
+	Local model (Ollama)	ローカルモデル（Ollama）

@@ -2319,3 +2319,25 @@ animation effects	Off	ఆఫ్
 	At the binding (found on each page)	బైండింగ్ వద్ద (ప్రతి పేజీలో గుర్తిస్తుంది)
 	Exactly in the middle	సరిగ్గా మధ్యలో
 	Spreads (pages wider than tall): {n}. The others stay as they are.	తెరిచిన పేజీలు (ఎత్తు కంటే వెడల్పు ఎక్కువ): {n}. మిగతావి అలాగే ఉంటాయి.
+	API key	API కీ
+	Ask a question (Enter sends, Shift+Enter for a new line)	ప్రశ్న అడగండి (Enter పంపుతుంది, Shift+Enter కొత్త పంక్తి)
+	Ask about the open document: a summary, where something is said, what a passage means…	తెరిచిన పత్రం గురించి అడగండి: సారాంశం, ఏది ఎక్కడ చెప్పబడింది, ఒక భాగం అర్థం…
+	Assistant	సహాయకుడు
+	Assistant settings	సహాయకుడి సెట్టింగ్‌లు
+	Choose a model first (Refresh the list).	ముందుగా మోడల్‌ను ఎంచుకోండి (జాబితాను రిఫ్రెష్ చేయండి).
+	Enter your API key for this AI first.	ముందుగా ఈ AI కోసం మీ API కీని నమోదు చేయండి.
+	Get a key	కీని పొందండి
+	New conversation	కొత్త సంభాషణ
+	No models found for this key.	ఈ కీకి మోడల్‌లు కనుగొనబడలేదు.
+	Ollama address	Ollama చిరునామా
+	Refresh the model list	మోడల్ జాబితాను రిఫ్రెష్ చేయి
+	Remember the keys on this computer	ఈ కంప్యూటర్‌లో కీలను గుర్తుంచుకో
+	Send	పంపు
+	The AI declined to answer this.	AI సమాధానం ఇవ్వడానికి నిరాకరించింది.
+	The Assistant needs the desktop app to reach the AI.	AIని చేరుకోవడానికి సహాయకుడికి డెస్క్‌టాప్ యాప్ అవసరం.
+	The document is too long for this AI: it got the text up to page {n}.	ఈ AIకి పత్రం చాలా పొడవుగా ఉంది: అది పేజీ {n} వరకు పాఠాన్ని పొందింది.
+	These pages have no text (scanned pages need Recognize text first).	ఈ పేజీలలో పాఠం లేదు (స్కాన్ చేసిన పేజీలకు ముందుగా పాఠ గుర్తింపు అవసరం).
+	This page	ఈ పేజీ
+	Whole document	పూర్తి పత్రం
+	Your question	మీ ప్రశ్న
+	Local model (Ollama)	స్థానిక మోడల్ (Ollama)

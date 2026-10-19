@@ -2650,3 +2650,25 @@ key	Space	Tarpas
 	At the binding (found on each page)	Ties nugarėle (aptinkama kiekviename puslapyje)
 	Exactly in the middle	Tiksliai per vidurį
 	Spreads (pages wider than tall): {n}. The others stay as they are.	Atvartai (platesni nei aukštesni): {n}. Kiti lieka tokie, kokie yra.
+	API key	API raktas
+	Ask a question (Enter sends, Shift+Enter for a new line)	Užduokite klausimą (Enter siunčia, Shift+Enter nauja eilutė)
+	Ask about the open document: a summary, where something is said, what a passage means…	Klauskite apie atvertą dokumentą: santrauka, kur kas pasakyta, ką reiškia ištrauka…
+	Assistant	Asistentas
+	Assistant settings	Asistento nustatymai
+	Choose a model first (Refresh the list).	Pirmiausia pasirinkite modelį (atnaujinkite sąrašą).
+	Enter your API key for this AI first.	Pirmiausia įveskite savo šio DI API raktą.
+	Get a key	Gauti raktą
+	New conversation	Naujas pokalbis
+	No models found for this key.	Šiam raktui modelių nerasta.
+	Ollama address	Ollama adresas
+	Refresh the model list	Atnaujinti modelių sąrašą
+	Remember the keys on this computer	Įsiminti raktus šiame kompiuteryje
+	Send	Siųsti
+	The AI declined to answer this.	DI atsisakė atsakyti.
+	The Assistant needs the desktop app to reach the AI.	Asistentui reikia darbalaukio programos, kad pasiektų DI.
+	The document is too long for this AI: it got the text up to page {n}.	Dokumentas per ilgas šiam DI: jis gavo tekstą iki {n} puslapio.
+	These pages have no text (scanned pages need Recognize text first).	Šie puslapiai neturi teksto (nuskenuotiems puslapiams pirmiausia reikia teksto atpažinimo).
+	This page	Šis puslapis
+	Whole document	Visas dokumentas
+	Your question	Jūsų klausimas
+	Local model (Ollama)	Vietinis modelis (Ollama)

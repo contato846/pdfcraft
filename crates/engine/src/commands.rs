@@ -283,6 +283,7 @@ pub const COMMANDS: &[CommandSpec] = &[
     c("house.proof", "Proof for the author…", None, None, Security, "stamp"),
     c("house.initials", "Initial every page…", None, None, Annotate, "signature"),
     c("view.read_aloud", "Read aloud from this page", VIEW, None, Document, "mic"),
+    c("view.assistant", "Assistant", VIEW, None, Document, "sparkles"),
     c("view.read_aloud.pause", "Pause or resume reading aloud", VIEW, None, Document, "mic"),
     c("form.field.properties", "Field properties…", None, None, HasFields, "settings-2"),
     c("form.add.text", "Add a text field", None, None, Modification, "text-cursor-input"),

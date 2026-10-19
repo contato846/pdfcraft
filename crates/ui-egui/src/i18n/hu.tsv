@@ -2405,3 +2405,25 @@ animation effects	Off	Ki
 	At the binding (found on each page)	A gerincnél (minden oldalon észlelve)
 	Exactly in the middle	Pontosan középen
 	Spreads (pages wider than tall): {n}. The others stay as they are.	Oldalpárok (szélesebbek, mint magasak): {n}. A többi változatlan marad.
+	API key	API-kulcs
+	Ask a question (Enter sends, Shift+Enter for a new line)	Tegyen fel kérdést (Enter küldi, Shift+Enter új sor)
+	Ask about the open document: a summary, where something is said, what a passage means…	Kérdezzen a megnyitott dokumentumról: összefoglaló, hol szerepel valami, mit jelent egy rész…
+	Assistant	Asszisztens
+	Assistant settings	Asszisztens beállításai
+	Choose a model first (Refresh the list).	Előbb válasszon modellt (frissítse a listát).
+	Enter your API key for this AI first.	Előbb adja meg az MI-hez tartozó API-kulcsát.
+	Get a key	Kulcs igénylése
+	New conversation	Új beszélgetés
+	No models found for this key.	Ehhez a kulcshoz nem található modell.
+	Ollama address	Ollama címe
+	Refresh the model list	Modellista frissítése
+	Remember the keys on this computer	Kulcsok megjegyzése ezen a számítógépen
+	Send	Küldés
+	The AI declined to answer this.	Az MI megtagadta a választ.
+	The Assistant needs the desktop app to reach the AI.	Az Asszisztensnek az asztali alkalmazás kell az MI eléréséhez.
+	The document is too long for this AI: it got the text up to page {n}.	A dokumentum túl hosszú ehhez az MI-hez: a(z) {n}. oldalig kapta meg a szöveget.
+	These pages have no text (scanned pages need Recognize text first).	Ezeken az oldalakon nincs szöveg (a beszkennelt oldalakhoz előbb Szövegfelismerés kell).
+	This page	Ez az oldal
+	Whole document	Teljes dokumentum
+	Your question	Az Ön kérdése
+	Local model (Ollama)	Helyi modell (Ollama)

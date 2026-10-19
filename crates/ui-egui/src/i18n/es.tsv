@@ -2536,3 +2536,25 @@ animation effects	Off	Desactivados
 	At the binding (found on each page)	En el lomo (detectado en cada página)
 	Exactly in the middle	Exactamente en el centro
 	Spreads (pages wider than tall): {n}. The others stay as they are.	Páginas de libro abierto (más anchas que altas): {n}. Las demás quedan como están.
+	API key	Clave de API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Haga una pregunta (Intro envía; Mayús+Intro nueva línea)
+	Ask about the open document: a summary, where something is said, what a passage means…	Pregunte sobre el documento abierto: un resumen, dónde se dice algo, qué significa un pasaje…
+	Assistant	Asistente
+	Assistant settings	Configuración del Asistente
+	Choose a model first (Refresh the list).	Elija primero un modelo (actualice la lista).
+	Enter your API key for this AI first.	Introduzca primero su clave de API de esta IA.
+	Get a key	Obtener una clave
+	New conversation	Nueva conversación
+	No models found for this key.	No se encontraron modelos para esta clave.
+	Ollama address	Dirección de Ollama
+	Refresh the model list	Actualizar la lista de modelos
+	Remember the keys on this computer	Recordar las claves en este equipo
+	Send	Enviar
+	The AI declined to answer this.	La IA se negó a responder.
+	The Assistant needs the desktop app to reach the AI.	El Asistente necesita la aplicación de escritorio para acceder a la IA.
+	The document is too long for this AI: it got the text up to page {n}.	El documento es demasiado largo para esta IA: recibió el texto hasta la página {n}.
+	These pages have no text (scanned pages need Recognize text first).	Estas páginas no tienen texto (las escaneadas necesitan antes Reconocer texto).
+	This page	Esta página
+	Whole document	Documento completo
+	Your question	Su pregunta
+	Local model (Ollama)	Modelo local (Ollama)

@@ -2402,3 +2402,25 @@ animation effects	Off	Kapalı
 	At the binding (found on each page)	Sırttan (her sayfada bulunur)
 	Exactly in the middle	Tam ortadan
 	Spreads (pages wider than tall): {n}. The others stay as they are.	Çift sayfalar (yüksekliğinden geniş): {n}. Diğerleri olduğu gibi kalır.
+	API key	API anahtarı
+	Ask a question (Enter sends, Shift+Enter for a new line)	Bir soru sorun (Enter gönderir, Shift+Enter yeni satır)
+	Ask about the open document: a summary, where something is said, what a passage means…	Açık belge hakkında sorun: bir özet, bir şeyin nerede söylendiği, bir bölümün ne anlama geldiği…
+	Assistant	Asistan
+	Assistant settings	Asistan ayarları
+	Choose a model first (Refresh the list).	Önce bir model seçin (listeyi yenileyin).
+	Enter your API key for this AI first.	Önce bu yapay zekâ için API anahtarınızı girin.
+	Get a key	Anahtar alın
+	New conversation	Yeni konuşma
+	No models found for this key.	Bu anahtar için model bulunamadı.
+	Ollama address	Ollama adresi
+	Refresh the model list	Model listesini yenile
+	Remember the keys on this computer	Anahtarları bu bilgisayarda hatırla
+	Send	Gönder
+	The AI declined to answer this.	Yapay zekâ yanıt vermeyi reddetti.
+	The Assistant needs the desktop app to reach the AI.	Asistanın yapay zekâya ulaşması için masaüstü uygulaması gerekir.
+	The document is too long for this AI: it got the text up to page {n}.	Belge bu yapay zekâ için çok uzun: metni {n}. sayfaya kadar aldı.
+	These pages have no text (scanned pages need Recognize text first).	Bu sayfalarda metin yok (taranmış sayfalar önce Metni tanı gerektirir).
+	This page	Bu sayfa
+	Whole document	Tüm belge
+	Your question	Sorunuz
+	Local model (Ollama)	Yerel model (Ollama)

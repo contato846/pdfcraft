@@ -2480,3 +2480,25 @@ animation effects	Off	Vypnuto
 	At the binding (found on each page)	U hřbetu (zjištěno na každé stránce)
 	Exactly in the middle	Přesně uprostřed
 	Spreads (pages wider than tall): {n}. The others stay as they are.	Dvoustrany (širší než vyšší): {n}. Ostatní zůstanou beze změny.
+	API key	Klíč API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Položte otázku (Enter odešle, Shift+Enter nový řádek)
+	Ask about the open document: a summary, where something is said, what a passage means…	Ptejte se na otevřený dokument: shrnutí, kde se něco píše, co znamená pasáž…
+	Assistant	Asistent
+	Assistant settings	Nastavení asistenta
+	Choose a model first (Refresh the list).	Nejprve vyberte model (aktualizujte seznam).
+	Enter your API key for this AI first.	Nejprve zadejte svůj klíč API pro tuto AI.
+	Get a key	Získat klíč
+	New conversation	Nová konverzace
+	No models found for this key.	Pro tento klíč nebyly nalezeny žádné modely.
+	Ollama address	Adresa Ollama
+	Refresh the model list	Aktualizovat seznam modelů
+	Remember the keys on this computer	Pamatovat si klíče v tomto počítači
+	Send	Odeslat
+	The AI declined to answer this.	AI odmítla odpovědět.
+	The Assistant needs the desktop app to reach the AI.	Asistent potřebuje desktopovou aplikaci, aby se spojil s AI.
+	The document is too long for this AI: it got the text up to page {n}.	Dokument je pro tuto AI příliš dlouhý: dostala text po stránku {n}.
+	These pages have no text (scanned pages need Recognize text first).	Tyto stránky nemají text (naskenované stránky nejprve potřebují Rozpoznat text).
+	This page	Tato stránka
+	Whole document	Celý dokument
+	Your question	Vaše otázka
+	Local model (Ollama)	Místní model (Ollama)

@@ -2386,3 +2386,25 @@ animation effects	Off	Wyłączone
 	At the binding (found on each page)	Przy grzbiecie (wykrytym na każdej stronie)
 	Exactly in the middle	Dokładnie pośrodku
 	Spreads (pages wider than tall): {n}. The others stay as they are.	Rozkładówki (szersze niż wyższe): {n}. Pozostałe zostają bez zmian.
+	API key	Klucz API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Zadaj pytanie (Enter wysyła, Shift+Enter nowa linia)
+	Ask about the open document: a summary, where something is said, what a passage means…	Zapytaj o otwarty dokument: streszczenie, gdzie coś jest powiedziane, co znaczy fragment…
+	Assistant	Asystent
+	Assistant settings	Ustawienia Asystenta
+	Choose a model first (Refresh the list).	Najpierw wybierz model (odśwież listę).
+	Enter your API key for this AI first.	Najpierw wpisz swój klucz API dla tej AI.
+	Get a key	Uzyskaj klucz
+	New conversation	Nowa rozmowa
+	No models found for this key.	Nie znaleziono modeli dla tego klucza.
+	Ollama address	Adres Ollama
+	Refresh the model list	Odśwież listę modeli
+	Remember the keys on this computer	Zapamiętaj klucze na tym komputerze
+	Send	Wyślij
+	The AI declined to answer this.	AI odmówiła odpowiedzi.
+	The Assistant needs the desktop app to reach the AI.	Asystent potrzebuje aplikacji komputerowej, by połączyć się z AI.
+	The document is too long for this AI: it got the text up to page {n}.	Dokument jest za długi dla tej AI: otrzymała tekst do strony {n}.
+	These pages have no text (scanned pages need Recognize text first).	Te strony nie mają tekstu (zeskanowane strony najpierw wymagają Rozpoznawania tekstu).
+	This page	Ta strona
+	Whole document	Cały dokument
+	Your question	Twoje pytanie
+	Local model (Ollama)	Model lokalny (Ollama)

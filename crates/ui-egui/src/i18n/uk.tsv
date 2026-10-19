@@ -2428,3 +2428,25 @@ animation effects	Off	Вимкнено
 	At the binding (found on each page)	По корінцю (знаходиться на кожній сторінці)
 	Exactly in the middle	Точно посередині
 	Spreads (pages wider than tall): {n}. The others stay as they are.	Розвороти (ширші за висоту): {n}. Решта лишаться як є.
+	API key	Ключ API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Поставте запитання (Enter — надіслати, Shift+Enter — новий рядок)
+	Ask about the open document: a summary, where something is said, what a passage means…	Запитайте про відкритий документ: стислий зміст, де що сказано, що означає уривок…
+	Assistant	Помічник
+	Assistant settings	Налаштування помічника
+	Choose a model first (Refresh the list).	Спершу виберіть модель (оновіть список).
+	Enter your API key for this AI first.	Спершу введіть свій ключ API для цього ШІ.
+	Get a key	Отримати ключ
+	New conversation	Нова розмова
+	No models found for this key.	Для цього ключа моделей не знайдено.
+	Ollama address	Адреса Ollama
+	Refresh the model list	Оновити список моделей
+	Remember the keys on this computer	Запам'ятати ключі на цьому комп'ютері
+	Send	Надіслати
+	The AI declined to answer this.	ШІ відмовився відповідати.
+	The Assistant needs the desktop app to reach the AI.	Помічнику потрібен настільний застосунок, щоб звернутися до ШІ.
+	The document is too long for this AI: it got the text up to page {n}.	Документ задовгий для цього ШІ: він отримав текст до сторінки {n}.
+	These pages have no text (scanned pages need Recognize text first).	На цих сторінках немає тексту (для сканованих сторінок спершу потрібно «Розпізнати текст»).
+	This page	Ця сторінка
+	Whole document	Увесь документ
+	Your question	Ваше запитання
+	Local model (Ollama)	Локальна модель (Ollama)

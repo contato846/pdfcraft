@@ -458,6 +458,7 @@ impl PdfCraftApp {
             "house.initials" => self.open_initial_every_page(),
             "page.split_spreads" => self.open_split_spreads(),
             "view.read_aloud" => self.toggle_read_aloud(),
+            "view.assistant" => self.toggle_assistant(),
             "view.read_aloud.pause" => self.pause_read_aloud(),
             "redact.clear" => {
                 self.apply_edit(Edit::ClearRedactions);
