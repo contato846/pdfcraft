@@ -2760,3 +2760,38 @@ theme	Appearance	Išvaizda
 	Whole document	Visas dokumentas
 	Your question	Jūsų klausimas
 	Local model (Ollama)	Vietinis modelis (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	Socialinis DRM
+	DRM Social…	Socialinis DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Licencijuota kopija vienam asmeniui: jo vardas kiekviename puslapyje, nematomas kodas, licencijos puslapis pabaigoje ir apsauga, leidžianti spausdinti, bet ne kopijuoti ar keisti.
+	Licensed to	Licencija suteikta
+	Code	Kodas
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Jūs pasirenkate, kur įrašyti kopiją; slaptažodis laikomas šalia jos, faile, kurio pavadinimas baigiasi _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Simbolio {c} žymėse nupiešti neįmanoma.
+	Create licensed copy…	Sukurti licencijuotą kopiją…
+	The password is in {file}, beside the copy.	Slaptažodis yra faile {file}, šalia kopijos.
+	Couldn't write the password file: {e}	Nepavyko įrašyti slaptažodžio failo: {e}
+	Table of contents to links	Turinys į nuorodas
+	Table of contents to links…	Turinys į nuorodas…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Perskaito turinio įrašus (nuskenuotam dokumentui pirmiau reikia Atpažinti tekstą), suranda kiekvieno įrašo puslapį ir uždeda ant kiekvieno įrašo nuorodą bei žymelę.
+	Table of contents on pages	Turinys puslapiuose
+	The book's page 1 is page	Knygos 1 puslapis yra puslapis
+	Links over the entries	Nuorodos ant įrašų
+	Read again	Perskaityti iš naujo
+	No entries found on these pages.	Šiuose puslapiuose įrašų nerasta.
+	not found	nerasta
+	{placed} of {n} entries have a page.	{placed} iš {n} įrašų turi puslapį.
+	Linked {n} entries of the table of contents.	Nuorodomis paversta turinio įrašų: {n}.
+	Licensed to {name}	Licencija suteikta: {name}
+	personal, non-transferable use	asmeniniam naudojimui, neperleidžiama
+	issued on {date}	išduota {date}
+	This document was issued exclusively for {name}.	Šis dokumentas išduotas išskirtinai {name}.
+	This document is material of {issuer}, issued exclusively for {name}.	Šis dokumentas yra {issuer} medžiaga, išduota išskirtinai {name}.
+	This document, {title}, was issued exclusively for {name}.	Šis dokumentas, {title}, išduotas išskirtinai {name}.
+	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Šis dokumentas, {title}, yra {issuer} medžiaga, išduota išskirtinai {name}.
+	The licence is personal and non-transferable. Printing for one's own use is permitted.	Licencija yra asmeninė ir neperleidžiama. Leidžiama spausdinti asmeniniam naudojimui.
+	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	Draudžiama šį dokumentą visą ar jo dalį bet kokiomis priemonėmis atgaminti, dalytis juo, platinti, skelbti ar perduoti kitiems, taip pat visą ar jo dalį įkelti į dirbtinio intelekto įrankius.
+	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Kiekvienoje kopijoje yra matomas ir nematomas licencijos turėtojo identifikatorius, leidžiantis atsekti jos kilmę.
+	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	Už pažeidimą taikomos autorių teisių įstatymo numatytos sankcijos, nepažeidžiant kitų priemonių.
+	Issued on {date}. Code {code}.	Išduota {date}. Kodas {code}.
+	Licence	Naudojimo licencija

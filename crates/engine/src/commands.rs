@@ -292,6 +292,8 @@ pub const COMMANDS: &[CommandSpec] = &[
     c("redact.sanitize", "Sanitize document…", None, None, Modification, "sparkles"),
     c("house.finish", "Finish publisher file…", None, None, Modification, "file-check"),
     c("house.proof", "Proof for the author…", None, None, Security, "stamp"),
+    c("house.drm_social", "DRM Social…", None, None, Security, "shield-check"),
+    c("house.toc_links", "Table of contents to links…", None, None, Modification, "list"),
     c("house.initials", "Initial every page…", None, None, Annotate, "signature"),
     c("view.read_aloud", "Read aloud from this page", VIEW, None, Document, "mic"),
     c("view.assistant", "Assistant", VIEW, None, Document, "sparkles"),

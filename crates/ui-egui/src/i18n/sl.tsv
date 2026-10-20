@@ -2514,3 +2514,25 @@ animation effects	Off	Izklopljeni
 	Whole document	Cel dokument
 	Your question	Vaše vprašanje
 	Local model (Ollama)	Lokalni model (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	Družbeni DRM
+	DRM Social…	Družbeni DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Licencirana kopija za eno osebo: njeno ime na vsaki strani, nevidna koda, stran z licenco na koncu in zaščita, ki dovoljuje tiskanje, ne pa kopiranja ali spreminjanja.
+	Licensed to	Licencirano za
+	Code	Koda
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Izberete, kam shranite kopijo; geslo je shranjeno poleg nje, v datoteki, katere ime se konča z _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Znaka {c} ni mogoče narisati v oznakah.
+	Create licensed copy…	Ustvari licencirano kopijo…
+	The password is in {file}, beside the copy.	Geslo je v datoteki {file}, poleg kopije.
+	Couldn't write the password file: {e}	Datoteke z geslom ni bilo mogoče zapisati: {e}
+	Table of contents to links	Kazalo v povezave
+	Table of contents to links…	Kazalo v povezave…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Prebere vnose kazala (skenirani dokument najprej potrebuje Prepoznaj besedilo), poišče stran vsakega in na vsak vnos postavi povezavo ter zanj zaznamek.
+	Table of contents on pages	Kazalo na straneh
+	The book's page 1 is page	Stran 1 knjige je stran
+	Links over the entries	Povezave na vnosih
+	Read again	Preberi znova
+	No entries found on these pages.	Na teh straneh ni bilo najdenih vnosov.
+	not found	ni najdeno
+	{placed} of {n} entries have a page.	{placed} od {n} vnosov ima stran.
+	Linked {n} entries of the table of contents.	Povezani vnosi kazala: {n}.

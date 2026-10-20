@@ -2509,3 +2509,25 @@ animation effects	Off	オフ
 	Whole document	文書全体
 	Your question	あなたの質問
 	Local model (Ollama)	ローカルモデル（Ollama）
+# DRM Social and table of contents to links.
+	DRM Social	ソーシャルDRM
+	DRM Social…	ソーシャルDRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	一人のためのライセンス付きコピー:すべてのページにその人の名前、見えないコード、末尾のライセンスページ、そして印刷はできるがコピーや変更はできない保護を付けます。
+	Licensed to	ライセンス先
+	Code	コード
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	コピーの保存先はあなたが選びます。パスワードはその横の、名前が _DRM_social_senha.txt で終わるファイルに保存されます。
+	The character {c} can't be drawn in the marks.	文字 {c} はマークに描画できません。
+	Create licensed copy…	ライセンス付きコピーを作成…
+	The password is in {file}, beside the copy.	パスワードはコピーの横の {file} にあります。
+	Couldn't write the password file: {e}	パスワードファイルを書き込めませんでした: {e}
+	Table of contents to links	目次をリンクに
+	Table of contents to links…	目次をリンクに…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	目次の項目を読み取り(スキャン文書は先に「テキストを認識」が必要)、各項目のページを見つけて、各項目にリンクを、またしおりを付けます。
+	Table of contents on pages	目次のページ
+	The book's page 1 is page	本の1ページ目はこのページ
+	Links over the entries	項目上のリンク
+	Read again	再読み込み
+	No entries found on these pages.	これらのページに項目が見つかりません。
+	not found	見つかりません
+	{placed} of {n} entries have a page.	{n} 項目中 {placed} 項目にページがあります。
+	Linked {n} entries of the table of contents.	目次の {n} 項目をリンクにしました。

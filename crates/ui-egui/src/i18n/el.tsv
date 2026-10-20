@@ -2515,3 +2515,25 @@ animation effects	Off	Ανενεργά
 	Whole document	Ολόκληρο το έγγραφο
 	Your question	Η ερώτησή σας
 	Local model (Ollama)	Τοπικό μοντέλο (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	Κοινωνικό DRM
+	DRM Social…	Κοινωνικό DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Αντίγραφο με άδεια για ένα πρόσωπο: το όνομά του σε κάθε σελίδα, ένας αόρατος κωδικός, μια σελίδα άδειας στο τέλος και προστασία που επιτρέπει την εκτύπωση αλλά όχι την αντιγραφή ή τις αλλαγές.
+	Licensed to	Με άδεια για
+	Code	Κωδικός
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Επιλέγετε πού θα αποθηκευτεί το αντίγραφο· ο κωδικός πρόσβασης φυλάσσεται δίπλα του, σε αρχείο που τελειώνει σε _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Ο χαρακτήρας {c} δεν μπορεί να σχεδιαστεί στις σημάνσεις.
+	Create licensed copy…	Δημιουργία αντιγράφου με άδεια…
+	The password is in {file}, beside the copy.	Ο κωδικός πρόσβασης βρίσκεται στο {file}, δίπλα στο αντίγραφο.
+	Couldn't write the password file: {e}	Δεν ήταν δυνατή η εγγραφή του αρχείου κωδικού πρόσβασης: {e}
+	Table of contents to links	Πίνακας περιεχομένων σε συνδέσμους
+	Table of contents to links…	Πίνακας περιεχομένων σε συνδέσμους…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Διαβάζει τις καταχωρίσεις του πίνακα περιεχομένων (ένα σαρωμένο έγγραφο χρειάζεται πρώτα Αναγνώριση κειμένου), βρίσκει τη σελίδα καθεμιάς και βάζει σύνδεσμο σε κάθε καταχώριση και σελιδοδείκτη γι' αυτήν.
+	Table of contents on pages	Πίνακας περιεχομένων στις σελίδες
+	The book's page 1 is page	Η σελίδα 1 του βιβλίου είναι η σελίδα
+	Links over the entries	Σύνδεσμοι στις καταχωρίσεις
+	Read again	Νέα ανάγνωση
+	No entries found on these pages.	Δεν βρέθηκαν καταχωρίσεις σε αυτές τις σελίδες.
+	not found	δεν βρέθηκε
+	{placed} of {n} entries have a page.	{placed} από {n} καταχωρίσεις έχουν σελίδα.
+	Linked {n} entries of the table of contents.	Καταχωρίσεις του πίνακα περιεχομένων που έγιναν σύνδεσμοι: {n}.

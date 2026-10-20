@@ -37,6 +37,7 @@ pub mod signature_scan;
 pub mod spreads;
 pub mod text_fonts;
 mod text_preview;
+pub mod toc;
 pub mod word_count;
 pub mod xfa;
 

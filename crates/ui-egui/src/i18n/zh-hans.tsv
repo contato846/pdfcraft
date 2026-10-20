@@ -2473,3 +2473,25 @@ animation effects	Off	关
 	Whole document	整个文档
 	Your question	你的问题
 	Local model (Ollama)	本地模型（Ollama）
+# DRM Social and table of contents to links.
+	DRM Social	社会化 DRM
+	DRM Social…	社会化 DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	为一个人制作的授权副本:每页都有其姓名、一个不可见的代码、末尾一页许可说明,以及允许打印但禁止复制和修改的保护。
+	Licensed to	授权给
+	Code	代码
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	由您选择副本的保存位置;密码保存在其旁边,文件名以 _DRM_social_senha.txt 结尾。
+	The character {c} can't be drawn in the marks.	无法在标记中绘制字符 {c}。
+	Create licensed copy…	创建授权副本…
+	The password is in {file}, beside the copy.	密码在副本旁边的 {file} 中。
+	Couldn't write the password file: {e}	无法写入密码文件:{e}
+	Table of contents to links	目录转为链接
+	Table of contents to links…	目录转为链接…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	读取目录条目(扫描件需要先“识别文本”),找到每个条目的页面,并在每个条目上放置链接和书签。
+	Table of contents on pages	目录所在页面
+	The book's page 1 is page	本书第 1 页是第
+	Links over the entries	条目上的链接
+	Read again	重新读取
+	No entries found on these pages.	在这些页面上未找到条目。
+	not found	未找到
+	{placed} of {n} entries have a page.	{n} 个条目中有 {placed} 个找到了页面。
+	Linked {n} entries of the table of contents.	已将目录的 {n} 个条目转为链接。

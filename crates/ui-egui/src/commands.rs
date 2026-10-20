@@ -485,6 +485,8 @@ impl PdfCraftApp {
             "redact.sanitize" => self.dialog = Some(Dialog::Sanitize),
             "house.finish" => self.open_finish_publisher(),
             "house.proof" => self.open_author_proof(),
+            "house.drm_social" => self.open_drm_social(),
+            "house.toc_links" => self.open_toc_links(),
             "house.initials" => self.open_initial_every_page(),
             "page.split_spreads" => self.open_split_spreads(),
             "view.read_aloud" => self.toggle_read_aloud(),

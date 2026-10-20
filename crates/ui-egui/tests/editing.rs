@@ -4828,7 +4828,14 @@ fn files_dropped_on_page_thumbnails_are_inserted_there() {
     h.hover_at(page);
     h.run_steps(2);
     drop_files(&mut h, vec![Dropped("other.pdf", fixture(1))]);
-    h.run_steps(6);
+    // Opening finishes on a later frame; under load it can take a few more.
+    for _ in 0..60 {
+        h.run_steps(1);
+        if h.state().views.len() == 2 {
+            break;
+        }
+        std::thread::sleep(std::time::Duration::from_millis(10));
+    }
     assert_eq!(h.state().views.len(), 2, "dropped on the page, the file opens");
 }
 
@@ -5263,4 +5270,129 @@ fn the_assistant_sends_the_page_and_shows_the_streamed_answer() {
     assert_eq!(turns.len(), 2);
     assert_eq!(turns[1].text, "A página diz Page 1 (p. 1).");
     assert!(h.state().assistant.status.is_none(), "{:?}", h.state().assistant.status);
+}
+
+/// House tools ▸ DRM Social: one step marks every page with the licensee's name, a footer and an
+/// invisible code, adds the licence page and protects the copy (printing allowed, copying and
+/// changes not); saving writes the password beside the copy.
+#[test]
+fn drm_social_makes_a_licensed_copy_and_keeps_its_password_beside_it() {
+    let dir = std::env::temp_dir().join(format!("pdfcraft-drm-{}", std::process::id()));
+    std::fs::create_dir_all(&dir).unwrap();
+    let dest = dir.join("Manual.pdf");
+    let dest_text = dest.to_string_lossy().into_owned();
+    let mut h = harness(2, move |app| app.save_override = Some(dest_text.clone()));
+    let id = h.state().views[0].id;
+    assert!(h.state_mut().execute("house.drm_social"));
+    h.run_steps(3);
+    assert_eq!(h.state().dialog, Some(Dialog::DrmSocial));
+    let name = h.get_by_role_and_label(Role::TextInput, "Licensed to");
+    name.focus();
+    name.type_text("Leitora Exemplo");
+    h.run_steps(2);
+    assert!(h.state().drm_draft.footer().starts_with("Licensed to Leitora Exemplo · "), "{}", h.state().drm_draft.footer());
+    h.get_by_label("Create licensed copy…").click();
+    h.run_steps(4);
+    let doc = h.state().session.get(id).unwrap();
+    assert_eq!(doc.info.pages.len(), 3, "the licence page is added at the end");
+    assert!(doc.text_lines(2).iter().any(|l| l.text.contains("Licence")), "{:?}", doc.text_lines(2));
+    assert!(doc.marks().contains(&pdfcraft_engine::MarkKind::Watermark) && doc.marks().contains(&pdfcraft_engine::MarkKind::HeaderFooter));
+    let code = doc.info_value("Keywords").expect("the code is in the metadata");
+    assert!(code.starts_with("DRM-LEITORA-"), "{code}");
+    for page in 0..3 {
+        assert!(doc.text_lines(page).iter().any(|l| l.text.contains(&code)), "page {page} carries the invisible code");
+    }
+    let security = doc.security_summary().expect("the copy is protected");
+    let bit = |n: u32| security.permissions.bits & (1 << (n - 1)) != 0;
+    assert!(bit(3) && bit(12), "printing, in high quality too");
+    assert!(!bit(4) && !bit(5) && !bit(6), "no changes, no copying, no comments");
+    assert!(bit(10), "screen readers still read it");
+    assert_eq!(doc.path.as_deref(), Some(dest.to_string_lossy().as_ref()), "saved where chosen");
+    let password = std::fs::read_to_string(dir.join("Manual_DRM_social_senha.txt")).expect("the password is beside the copy");
+    assert_eq!(password.chars().count(), 24, "only the password, without a line break: {password:?}");
+    assert_eq!(h.state().drm_password.as_ref().map(|p| p.password.as_str()), Some(password.as_str()));
+    let _ = std::fs::remove_dir_all(&dir);
+}
+
+/// A small book: a cover, a table of contents, then one page per printed page 1–6 (file page n + 1
+/// is printed page n). Chapters one and two have headings; "Notes" has none of its own.
+fn book_with_contents() -> Vec<u8> {
+    let toc = "BT /F1 12 Tf 72 700 Td (Contents) Tj ET \
+               BT /F1 11 Tf 72 660 Td (Introduction . . . . . . . . . . . . . . 1) Tj ET \
+               BT /F1 11 Tf 72 640 Td (Chapter one: the river . . . . . . . 3) Tj ET \
+               BT /F1 11 Tf 90 625 Td (The bridge over it . . . . . . . . 4) Tj ET \
+               BT /F1 11 Tf 72 605 Td (Notes . . . . . . . . . . . . . . . . . 6) Tj ET";
+    let mut contents = vec!["BT /F1 24 Tf 72 700 Td (A Book) Tj ET".to_string(), toc.to_string()];
+    for n in 1..=6 {
+        let heading = match n {
+            1 => "Introduction",
+            3 => "Chapter one: the river",
+            4 => "The bridge over it",
+            _ => "",
+        };
+        contents.push(format!(
+            "BT /F1 16 Tf 72 700 Td ({heading}) Tj ET BT /F1 10 Tf 72 400 Td (Some text of the book.) Tj ET BT /F1 9 Tf 300 40 Td ({n}) Tj ET"
+        ));
+    }
+    let pages = contents.len();
+    let mut objs: Vec<String> = vec!["<< /Type /Catalog /Pages 2 0 R >>".into()];
+    let kids: Vec<String> = (0..pages).map(|i| format!("{} 0 R", 4 + 2 * i)).collect();
+    objs.push(format!("<< /Type /Pages /Kids [{}] /Count {pages} >>", kids.join(" ")));
+    objs.push("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>".into());
+    for (i, c) in contents.iter().enumerate() {
+        objs.push(format!(
+            "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 420 750] /Contents {} 0 R /Resources << /Font << /F1 3 0 R >> >> >>",
+            5 + 2 * i
+        ));
+        objs.push(format!("<< /Length {} >>\nstream\n{c}\nendstream", c.len()));
+    }
+    let mut out = b"%PDF-1.7\n".to_vec();
+    let mut offs = Vec::new();
+    for (i, o) in objs.iter().enumerate() {
+        offs.push(out.len());
+        out.extend_from_slice(format!("{} 0 obj\n{o}\nendobj\n", i + 1).as_bytes());
+    }
+    let x = out.len();
+    out.extend_from_slice(format!("xref\n0 {}\n0000000000 65535 f \n", objs.len() + 1).as_bytes());
+    for o in offs {
+        out.extend_from_slice(format!("{o:010} 00000 n \n").as_bytes());
+    }
+    out.extend_from_slice(format!("trailer\n<< /Size {} /Root 1 0 R >>\nstartxref\n{x}\n%%EOF\n", objs.len() + 1).as_bytes());
+    out
+}
+
+/// House tools ▸ Table of contents to links: the entries of the contents page become links to
+/// their pages and nested bookmarks, in one step; the page without a heading is placed by the
+/// numbering the others agree on.
+#[test]
+fn table_of_contents_becomes_links_and_bookmarks() {
+    let mut h = Harness::builder().with_size(egui::vec2(1400.0, 900.0)).build_eframe(|_cc| {
+        let mut app = PdfCraftApp::new();
+        app.set_option("language", "en").unwrap();
+        app.open_bytes("book.pdf", None, book_with_contents()).expect("opens");
+        app
+    });
+    h.run_steps(4);
+    h.state_mut().views[0].current = 1;
+    assert!(h.state_mut().execute("house.toc_links"));
+    h.run_steps(3);
+    assert_eq!(h.state().dialog, Some(Dialog::TocLinks));
+    let scan = h.state().toc_draft.scan.clone().expect("read");
+    let found: Vec<(&str, usize, Option<usize>)> = scan.entries.iter().map(|e| (e.title.as_str(), e.level, e.target)).collect();
+    assert_eq!(
+        found,
+        [("Introduction", 0, Some(2)), ("Chapter one: the river", 0, Some(4)), ("The bridge over it", 1, Some(5)), ("Notes", 0, Some(7))]
+    );
+    assert_eq!(h.state().toc_draft.page_one, "3", "the book's page 1 is the file's page 3");
+    h.get_by_label("Apply").click();
+    h.run_steps(4);
+    let id = h.state().views[0].id;
+    let doc = h.state().session.get(id).unwrap();
+    assert_eq!(doc.can_undo(), Some("Table of contents to links"));
+    let outline: Vec<(String, Option<usize>, usize)> = doc.info.outline.iter().map(|o| (o.title.clone(), o.page, o.children.len())).collect();
+    assert_eq!(outline, [("Introduction".into(), Some(2), 0), ("Chapter one: the river".into(), Some(4), 1), ("Notes".into(), Some(7), 0)]);
+    assert_eq!(doc.info.outline[1].children[0].page, Some(5));
+    let links: Vec<pdfcraft_engine::LinkAction> = doc.links().iter().filter(|l| l.page == 1).map(|l| l.action.clone()).collect();
+    assert_eq!(links.len(), 4, "a link over each entry");
+    assert!(links.contains(&pdfcraft_engine::LinkAction::Page(7)));
 }

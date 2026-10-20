@@ -2472,3 +2472,25 @@ animation effects	Off	Изключени
 	Whole document	Целият документ
 	Your question	Вашият въпрос
 	Local model (Ollama)	Локален модел (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	Социален DRM
+	DRM Social…	Социален DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Лицензирано копие за един човек: името му на всяка страница, невидим код, страница с лиценз накрая и защита, която позволява печат, но не копиране и промени.
+	Licensed to	Лицензиант
+	Code	Код
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Вие избирате къде да запазите копието; паролата се пази до него, във файл, чието име завършва на _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Знакът {c} не може да се изобрази в маркировките.
+	Create licensed copy…	Създаване на лицензирано копие…
+	The password is in {file}, beside the copy.	Паролата е във файла {file}, до копието.
+	Couldn't write the password file: {e}	Файлът с паролата не можа да бъде записан: {e}
+	Table of contents to links	Съдържание във връзки
+	Table of contents to links…	Съдържание във връзки…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Чете точките на съдържанието (за сканиран документ първо е нужно Разпознаване на текст), намира страницата на всяка и поставя върху всяка точка връзка, а за нея — отметка.
+	Table of contents on pages	Съдържание на страници
+	The book's page 1 is page	Страница 1 на книгата е страница
+	Links over the entries	Връзки върху точките
+	Read again	Прочитане отново
+	No entries found on these pages.	На тези страници не са намерени точки.
+	not found	не е намерено
+	{placed} of {n} entries have a page.	{placed} от {n} точки имат страница.
+	Linked {n} entries of the table of contents.	Точки от съдържанието, превърнати във връзки: {n}.

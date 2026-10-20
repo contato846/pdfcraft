@@ -897,6 +897,31 @@ fn dialogs(app: &mut PdfCraftApp, ctx: &egui::Context) {
                 close = ok || cancel;
                 return;
             }
+            Dialog::TocLinks => {
+                let labels: Vec<String> = app
+                    .active_ids()
+                    .and_then(|(_, id)| app.session.get(id))
+                    .map(|d| d.info.pages.iter().map(|p| p.label.clone()).collect())
+                    .unwrap_or_default();
+                match crate::toc_ui::toc_body(ui, &mut app.toc_draft, &t, &labels) {
+                    Some(crate::toc_ui::TocAction::Rescan) => app.scan_toc(),
+                    Some(crate::toc_ui::TocAction::Apply) => {
+                        redact_now = Some(dialog);
+                        close = true;
+                    }
+                    Some(crate::toc_ui::TocAction::Cancel) => close = true,
+                    None => {}
+                }
+                return;
+            }
+            Dialog::DrmSocial => {
+                let (ok, cancel) = crate::drm_social::drm_body(ui, &mut app.drm_draft, &t);
+                if ok {
+                    redact_now = Some(dialog);
+                }
+                close = ok || cancel;
+                return;
+            }
             Dialog::AuthorProof => {
                 let (ok, cancel) = crate::house::proof_body(ui, &mut app.proof_draft, &t);
                 if ok {
@@ -1364,6 +1389,8 @@ fn dialogs(app: &mut PdfCraftApp, ctx: &egui::Context) {
                 }
             }
         }
+        Some(Dialog::DrmSocial) => app.apply_drm_social(),
+        Some(Dialog::TocLinks) => app.apply_toc_links(),
         Some(Dialog::AuthorProof) => {
             if let Some(edit) = app.author_proof_edit()
                 && app.apply_edit(edit)

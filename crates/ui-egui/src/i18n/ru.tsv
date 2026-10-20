@@ -2423,3 +2423,25 @@ animation effects	Off	Выкл
 	Your question	Ваш вопрос
 	Local model (Ollama)	Локальная модель (Ollama)
 	Model	Модель
+# DRM Social and table of contents to links.
+	DRM Social	Социальный DRM
+	DRM Social…	Социальный DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Лицензионная копия для одного человека: его имя на каждой странице, невидимый код, страница лицензии в конце и защита, которая разрешает печать, но не копирование и не изменения.
+	Licensed to	Лицензиат
+	Code	Код
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Вы выбираете, куда сохранить копию; пароль хранится рядом с ней, в файле, имя которого оканчивается на _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Символ {c} нельзя нарисовать в отметках.
+	Create licensed copy…	Создать лицензионную копию…
+	The password is in {file}, beside the copy.	Пароль находится в файле {file}, рядом с копией.
+	Couldn't write the password file: {e}	Не удалось записать файл с паролем: {e}
+	Table of contents to links	Оглавление в ссылки
+	Table of contents to links…	Оглавление в ссылки…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Читает пункты оглавления (для отсканированного документа сначала нужно Распознать текст), находит страницу каждого и ставит на каждый пункт ссылку, а для него — закладку.
+	Table of contents on pages	Оглавление на страницах
+	The book's page 1 is page	Страница 1 книги — это страница
+	Links over the entries	Ссылки на пунктах
+	Read again	Прочитать снова
+	No entries found on these pages.	На этих страницах пункты не найдены.
+	not found	не найдено
+	{placed} of {n} entries have a page.	Страница есть у {placed} из {n} пунктов.
+	Linked {n} entries of the table of contents.	Пунктов оглавления превращено в ссылки: {n}.

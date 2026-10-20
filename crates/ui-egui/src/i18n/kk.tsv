@@ -2507,3 +2507,25 @@ animation effects	Off	Өшірулі
 	Whole document	Бүкіл құжат
 	Your question	Сіздің сұрағыңыз
 	Local model (Ollama)	Жергілікті модель (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	Әлеуметтік DRM
+	DRM Social…	Әлеуметтік DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Бір адамға арналған лицензиялық көшірме: әр бетте оның аты, көрінбейтін код, соңында лицензия беті және басып шығаруға рұқсат беретін, бірақ көшіруге және өзгертуге рұқсат бермейтін қорғау.
+	Licensed to	Лицензия иесі
+	Code	Код
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Көшірмені қайда сақтауды өзіңіз таңдайсыз; құпиясөз оның жанында, атауы _DRM_social_senha.txt деп аяқталатын файлда сақталады.
+	The character {c} can't be drawn in the marks.	{c} таңбасын белгілерде салу мүмкін емес.
+	Create licensed copy…	Лицензиялық көшірме жасау…
+	The password is in {file}, beside the copy.	Құпиясөз көшірменің жанындағы {file} файлында.
+	Couldn't write the password file: {e}	Құпиясөз файлын жазу мүмкін болмады: {e}
+	Table of contents to links	Мазмұнды сілтемелерге айналдыру
+	Table of contents to links…	Мазмұнды сілтемелерге айналдыру…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Мазмұн жазбаларын оқиды (сканерленген құжатқа алдымен Мәтінді тану керек), әрқайсысының бетін табады және әр жазбаға сілтеме мен бетбелгі қояды.
+	Table of contents on pages	Мазмұн орналасқан беттер
+	The book's page 1 is page	Кітаптың 1-беті — мына бет
+	Links over the entries	Жазбалардағы сілтемелер
+	Read again	Қайта оқу
+	No entries found on these pages.	Бұл беттерде жазба табылмады.
+	not found	табылмады
+	{placed} of {n} entries have a page.	{n} жазбаның {placed} бетінің беті бар.
+	Linked {n} entries of the table of contents.	Мазмұнның {n} жазбасы сілтемеге айналдырылды.

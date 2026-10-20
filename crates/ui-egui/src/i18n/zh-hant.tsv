@@ -2459,3 +2459,25 @@ animation effects	Off	關
 	Whole document	整份文件
 	Your question	你的問題
 	Local model (Ollama)	本機模型（Ollama）
+# DRM Social and table of contents to links.
+	DRM Social	社會化 DRM
+	DRM Social…	社會化 DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	為一個人製作的授權副本:每頁都有其姓名、一個不可見的代碼、末尾一頁授權說明,以及允許列印但禁止複製和修改的保護。
+	Licensed to	授權給
+	Code	代碼
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	由您選擇副本的儲存位置;密碼儲存在其旁邊,檔名以 _DRM_social_senha.txt 結尾。
+	The character {c} can't be drawn in the marks.	無法在標記中繪製字元 {c}。
+	Create licensed copy…	建立授權副本…
+	The password is in {file}, beside the copy.	密碼在副本旁邊的 {file} 中。
+	Couldn't write the password file: {e}	無法寫入密碼檔案:{e}
+	Table of contents to links	目錄轉為連結
+	Table of contents to links…	目錄轉為連結…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	讀取目錄項目(掃描檔需要先「辨識文字」),找到每個項目的頁面,並在每個項目上放置連結和書籤。
+	Table of contents on pages	目錄所在頁面
+	The book's page 1 is page	本書第 1 頁是第
+	Links over the entries	項目上的連結
+	Read again	重新讀取
+	No entries found on these pages.	在這些頁面上找不到項目。
+	not found	找不到
+	{placed} of {n} entries have a page.	{n} 個項目中有 {placed} 個找到了頁面。
+	Linked {n} entries of the table of contents.	已將目錄的 {n} 個項目轉為連結。

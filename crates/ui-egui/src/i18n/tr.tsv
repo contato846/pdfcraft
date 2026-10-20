@@ -2505,3 +2505,25 @@ animation effects	Off	Kapalı
 	Whole document	Tüm belge
 	Your question	Sorunuz
 	Local model (Ollama)	Yerel model (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	Sosyal DRM
+	DRM Social…	Sosyal DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Bir kişiye lisanslı kopya: her sayfada adı, görünmez bir kod, sonda bir lisans sayfası ve yazdırmaya izin veren ama kopyalamaya ve değiştirmeye izin vermeyen bir koruma.
+	Licensed to	Lisans sahibi
+	Code	Kod
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Kopyanın nereye kaydedileceğini siz seçersiniz; parola onun yanında, adı _DRM_social_senha.txt ile biten bir dosyada saklanır.
+	The character {c} can't be drawn in the marks.	{c} karakteri işaretlerde çizilemez.
+	Create licensed copy…	Lisanslı kopya oluştur…
+	The password is in {file}, beside the copy.	Parola, kopyanın yanındaki {file} dosyasında.
+	Couldn't write the password file: {e}	Parola dosyası yazılamadı: {e}
+	Table of contents to links	İçindekileri bağlantıya dönüştür
+	Table of contents to links…	İçindekileri bağlantıya dönüştür…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	İçindekiler tablosunun girişlerini okur (taranmış belge için önce Metni tanı gerekir), her birinin sayfasını bulur ve her girişin üzerine bir bağlantı ile bir yer işareti ekler.
+	Table of contents on pages	İçindekilerin bulunduğu sayfalar
+	The book's page 1 is page	Kitabın 1. sayfası şu sayfa:
+	Links over the entries	Girişlerin üzerinde bağlantılar
+	Read again	Yeniden oku
+	No entries found on these pages.	Bu sayfalarda giriş bulunamadı.
+	not found	bulunamadı
+	{placed} of {n} entries have a page.	{n} girişten {placed} tanesinin sayfası var.
+	Linked {n} entries of the table of contents.	İçindekiler tablosunun {n} girişi bağlantıya dönüştürüldü.

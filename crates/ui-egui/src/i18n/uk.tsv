@@ -2531,3 +2531,25 @@ animation effects	Off	Вимкнено
 	Whole document	Увесь документ
 	Your question	Ваше запитання
 	Local model (Ollama)	Локальна модель (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	Соціальний DRM
+	DRM Social…	Соціальний DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Ліцензована копія для однієї особи: її ім'я на кожній сторінці, невидимий код, сторінка ліцензії наприкінці та захист, що дозволяє друк, але не копіювання і не зміни.
+	Licensed to	Ліцензіат
+	Code	Код
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Ви вибираєте, куди зберегти копію; пароль зберігається поруч із нею, у файлі, назва якого закінчується на _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Символ {c} неможливо намалювати в позначках.
+	Create licensed copy…	Створити ліцензовану копію…
+	The password is in {file}, beside the copy.	Пароль у файлі {file}, поруч із копією.
+	Couldn't write the password file: {e}	Не вдалося записати файл із паролем: {e}
+	Table of contents to links	Зміст у посилання
+	Table of contents to links…	Зміст у посилання…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Читає пункти змісту (для сканованого документа спершу потрібно Розпізнати текст), знаходить сторінку кожного і ставить на кожен пункт посилання, а для нього — закладку.
+	Table of contents on pages	Зміст на сторінках
+	The book's page 1 is page	Сторінка 1 книги — це сторінка
+	Links over the entries	Посилання на пунктах
+	Read again	Прочитати знову
+	No entries found on these pages.	На цих сторінках пунктів не знайдено.
+	not found	не знайдено
+	{placed} of {n} entries have a page.	Сторінку має {placed} з {n} пунктів.
+	Linked {n} entries of the table of contents.	Пунктів змісту перетворено на посилання: {n}.

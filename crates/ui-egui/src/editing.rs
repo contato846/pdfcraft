@@ -777,6 +777,7 @@ impl PdfCraftApp {
                     view.disk_changed = false;
                 }
                 self.notify_fmt("Saved {name}", &[("name", &short_name(dest))]);
+                self.keep_drm_password(id, dest);
                 true
             }
             Err(e) => {

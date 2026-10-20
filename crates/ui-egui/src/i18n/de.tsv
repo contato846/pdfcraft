@@ -2510,3 +2510,38 @@ animation effects	Off	Aus
 	Whole document	Ganzes Dokument
 	Your question	Ihre Frage
 	Local model (Ollama)	Lokales Modell (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	Soziales DRM
+	DRM Social…	Soziales DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Eine lizenzierte Kopie für eine Person: ihr Name auf jeder Seite, ein unsichtbarer Code, eine Lizenzseite am Ende und ein Schutz, der Drucken erlaubt, aber weder Kopieren noch Ändern.
+	Licensed to	Lizenziert für
+	Code	Kennung
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Sie wählen, wo die Kopie gespeichert wird; das Kennwort liegt daneben, in einer Datei, die auf _DRM_social_senha.txt endet.
+	The character {c} can't be drawn in the marks.	Das Zeichen {c} kann in den Markierungen nicht dargestellt werden.
+	Create licensed copy…	Lizenzierte Kopie erstellen…
+	The password is in {file}, beside the copy.	Das Kennwort steht in {file}, neben der Kopie.
+	Couldn't write the password file: {e}	Die Kennwortdatei konnte nicht geschrieben werden: {e}
+	Table of contents to links	Inhaltsverzeichnis zu Links
+	Table of contents to links…	Inhaltsverzeichnis zu Links…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Liest die Einträge des Inhaltsverzeichnisses (ein Scan braucht zuerst Text erkennen), findet die Seite jedes Eintrags und legt über jeden Eintrag einen Link und dazu ein Lesezeichen an.
+	Table of contents on pages	Inhaltsverzeichnis auf den Seiten
+	The book's page 1 is page	Seite 1 des Buches ist Seite
+	Links over the entries	Links über den Einträgen
+	Read again	Erneut lesen
+	No entries found on these pages.	Auf diesen Seiten wurden keine Einträge gefunden.
+	not found	nicht gefunden
+	{placed} of {n} entries have a page.	{placed} von {n} Einträgen haben eine Seite.
+	Linked {n} entries of the table of contents.	{n} Einträge des Inhaltsverzeichnisses verlinkt.
+	Licensed to {name}	Lizenziert für {name}
+	personal, non-transferable use	persönliche, nicht übertragbare Nutzung
+	issued on {date}	ausgestellt am {date}
+	This document was issued exclusively for {name}.	Dieses Dokument wurde ausschließlich für {name} ausgestellt.
+	This document is material of {issuer}, issued exclusively for {name}.	Dieses Dokument ist Material von {issuer}, ausschließlich für {name} ausgestellt.
+	This document, {title}, was issued exclusively for {name}.	Dieses Dokument, {title}, wurde ausschließlich für {name} ausgestellt.
+	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Dieses Dokument, {title}, ist Material von {issuer}, ausschließlich für {name} ausgestellt.
+	The licence is personal and non-transferable. Printing for one's own use is permitted.	Die Lizenz ist persönlich und nicht übertragbar. Das Drucken für den eigenen Gebrauch ist erlaubt.
+	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	Es ist untersagt, dieses Dokument ganz oder teilweise, auf welchem Weg auch immer, zu vervielfältigen, zu teilen, zu verbreiten, zu veröffentlichen oder Dritten zu überlassen sowie es ganz oder teilweise in Werkzeuge der künstlichen Intelligenz hochzuladen.
+	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Jede Kopie trägt eine sichtbare und eine unsichtbare Kennzeichnung des Lizenznehmers, mit der sich ihre Herkunft zurückverfolgen lässt.
+	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	Verstöße unterliegen den Sanktionen des Urheberrechts, unbeschadet weiterer Maßnahmen.
+	Issued on {date}. Code {code}.	Ausgestellt am {date}. Code {code}.
+	Licence	Nutzungslizenz

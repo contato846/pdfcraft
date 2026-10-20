@@ -52,6 +52,7 @@ mod create_ui;
 mod credits;
 mod crop;
 mod drag_pointer;
+pub mod drm_social;
 mod export_ui;
 mod js_ui;
 mod marks_ui;
@@ -62,6 +63,7 @@ mod search_ui;
 mod sign_ui;
 mod stamps_ui;
 mod standards_ui;
+pub mod toc_ui;
 mod zoom_snap;
 /// Header & footer / watermark / background dialog types (tests and automation).
 pub mod marks {
@@ -330,6 +332,10 @@ pub enum Dialog {
     FinishPublisher,
     /// House tools ▸ Proof for the author.
     AuthorProof,
+    /// House tools ▸ DRM Social.
+    DrmSocial,
+    /// House tools ▸ Table of contents to links.
+    TocLinks,
     /// House tools ▸ Initial every page.
     InitialEveryPage,
     /// Pages ▸ Split book spreads.
@@ -818,6 +824,10 @@ pub struct PdfCraftApp {
     pub hidden_draft: HiddenDraft,
     pub finish_draft: house::FinishDraft,
     pub proof_draft: house::ProofDraft,
+    pub drm_draft: drm_social::DrmDraft,
+    pub toc_draft: toc_ui::TocDraft,
+    /// The password of the licensed copy made by DRM Social, written beside it on each save.
+    pub drm_password: Option<drm_social::PendingPassword>,
     pub initials_draft: house::InitialsDraft,
     /// View ▸ Read aloud.
     pub reading: Option<read_aloud::Reading>,
@@ -1106,6 +1116,9 @@ impl PdfCraftApp {
             hidden_draft: HiddenDraft::default(),
             finish_draft: house::FinishDraft::default(),
             proof_draft: house::ProofDraft::default(),
+            drm_draft: drm_social::DrmDraft::default(),
+            toc_draft: toc_ui::TocDraft::default(),
+            drm_password: None,
             initials_draft: house::InitialsDraft::default(),
             reading: None,
             read_prefs: read_aloud::ReadAloudPrefs::default(),
@@ -2551,6 +2564,15 @@ impl PdfCraftApp {
             }
             ("animation_effects", _) => {
                 self.animation_effects = motion::AnimationEffects::parse(value).ok_or("animation_effects must be system, on, or off")?;
+            }
+            ("assistant_provider", _) => {
+                self.assistant.settings.provider = match value {
+                    "claude" => assistant::Provider::Claude,
+                    "openai" => assistant::Provider::OpenAi,
+                    "gemini" => assistant::Provider::Gemini,
+                    "ollama" => assistant::Provider::Ollama,
+                    other => return Err(format!("unknown assistant provider {other}")),
+                }
             }
             ("panel", _) => {
                 self.right = match value {

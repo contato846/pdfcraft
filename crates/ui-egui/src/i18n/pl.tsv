@@ -2485,3 +2485,25 @@ animation effects	Off	Wyłączone
 	Whole document	Cały dokument
 	Your question	Twoje pytanie
 	Local model (Ollama)	Model lokalny (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	Społeczny DRM
+	DRM Social…	Społeczny DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Licencjonowana kopia dla jednej osoby: jej nazwisko na każdej stronie, niewidoczny kod, strona licencji na końcu oraz zabezpieczenie, które pozwala drukować, ale nie kopiować ani zmieniać.
+	Licensed to	Licencja dla
+	Code	Kod
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Wybierasz, gdzie zapisać kopię; hasło jest przechowywane obok niej, w pliku o nazwie kończącej się na _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Znaku {c} nie można narysować w oznaczeniach.
+	Create licensed copy…	Utwórz licencjonowaną kopię…
+	The password is in {file}, beside the copy.	Hasło jest w pliku {file}, obok kopii.
+	Couldn't write the password file: {e}	Nie udało się zapisać pliku z hasłem: {e}
+	Table of contents to links	Spis treści na łącza
+	Table of contents to links…	Spis treści na łącza…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Odczytuje pozycje spisu treści (skan wymaga najpierw Rozpoznaj tekst), znajduje stronę każdej z nich i umieszcza łącze na każdej pozycji oraz zakładkę do niej.
+	Table of contents on pages	Spis treści na stronach
+	The book's page 1 is page	Strona 1 książki to strona
+	Links over the entries	Łącza na pozycjach
+	Read again	Odczytaj ponownie
+	No entries found on these pages.	Na tych stronach nie znaleziono pozycji.
+	not found	nie znaleziono
+	{placed} of {n} entries have a page.	{placed} z {n} pozycji ma stronę.
+	Linked {n} entries of the table of contents.	Połączono pozycje spisu treści: {n}.

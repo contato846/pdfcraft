@@ -2649,3 +2649,38 @@ animation effects	Off	Desactivados
 	Whole document	Documento completo
 	Your question	Su pregunta
 	Local model (Ollama)	Modelo local (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	DRM social
+	DRM Social…	DRM social…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Una copia con licencia para una persona: su nombre en todas las páginas, un código invisible, una página de licencia al final y una protección que permite imprimir pero no copiar ni modificar.
+	Licensed to	Con licencia para
+	Code	Código
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Usted elige dónde guardar la copia; la contraseña se guarda junto a ella, en un archivo que termina en _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	El carácter {c} no se puede dibujar en las marcas.
+	Create licensed copy…	Crear copia con licencia…
+	The password is in {file}, beside the copy.	La contraseña está en {file}, junto a la copia.
+	Couldn't write the password file: {e}	No se pudo escribir el archivo de la contraseña: {e}
+	Table of contents to links	Índice a vínculos
+	Table of contents to links…	Índice a vínculos…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Lee las entradas del índice (un escaneo necesita antes Reconocer texto), encuentra la página de cada una y pone un vínculo sobre cada entrada y un marcador para ella.
+	Table of contents on pages	Índice en las páginas
+	The book's page 1 is page	La página 1 del libro es la página
+	Links over the entries	Vínculos sobre las entradas
+	Read again	Leer de nuevo
+	No entries found on these pages.	No se encontraron entradas en estas páginas.
+	not found	no encontrada
+	{placed} of {n} entries have a page.	{placed} de {n} entradas tienen página.
+	Linked {n} entries of the table of contents.	{n} entradas del índice convertidas en vínculos.
+	Licensed to {name}	Con licencia para {name}
+	personal, non-transferable use	uso personal e intransferible
+	issued on {date}	emitido el {date}
+	This document was issued exclusively for {name}.	Este documento se emitió exclusivamente para {name}.
+	This document is material of {issuer}, issued exclusively for {name}.	Este documento es material de {issuer}, emitido exclusivamente para {name}.
+	This document, {title}, was issued exclusively for {name}.	Este documento, {title}, se emitió exclusivamente para {name}.
+	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Este documento, {title}, es material de {issuer}, emitido exclusivamente para {name}.
+	The licence is personal and non-transferable. Printing for one's own use is permitted.	La licencia es personal e intransferible. Se permite imprimirlo para uso propio.
+	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	Se prohíbe reproducir, compartir, distribuir, publicar o ceder este documento a terceros, total o parcialmente, por cualquier medio, y cargarlo, total o parcialmente, en herramientas de inteligencia artificial.
+	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Cada copia lleva una identificación visible e invisible del licenciatario que permite rastrear su origen.
+	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	La infracción está sujeta a las sanciones de la legislación de derechos de autor, sin perjuicio de otras medidas.
+	Issued on {date}. Code {code}.	Emitido el {date}. Código {code}.
+	Licence	Licencia de uso

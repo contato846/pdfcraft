@@ -2721,3 +2721,38 @@ certificate	SHA-256 digest	Impronta SHA-256
 	Whole document	Intero documento
 	Your question	La tua domanda
 	Local model (Ollama)	Modello locale (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	DRM sociale
+	DRM Social…	DRM sociale…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Una copia concessa in licenza a una persona: il suo nome su ogni pagina, un codice invisibile, una pagina di licenza alla fine e una protezione che consente la stampa ma non la copia né le modifiche.
+	Licensed to	Concesso in licenza a
+	Code	Codice
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Scegli dove salvare la copia; la password viene conservata accanto, in un file che termina con _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Il carattere {c} non può essere disegnato nei contrassegni.
+	Create licensed copy…	Crea copia concessa in licenza…
+	The password is in {file}, beside the copy.	La password è in {file}, accanto alla copia.
+	Couldn't write the password file: {e}	Impossibile scrivere il file della password: {e}
+	Table of contents to links	Sommario in collegamenti
+	Table of contents to links…	Sommario in collegamenti…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Legge le voci del sommario (una scansione richiede prima Riconosci testo), trova la pagina di ciascuna e mette un collegamento su ogni voce e un segnalibro per essa.
+	Table of contents on pages	Sommario alle pagine
+	The book's page 1 is page	La pagina 1 del libro è la pagina
+	Links over the entries	Collegamenti sulle voci
+	Read again	Rileggi
+	No entries found on these pages.	Nessuna voce trovata in queste pagine.
+	not found	non trovata
+	{placed} of {n} entries have a page.	{placed} voci su {n} hanno una pagina.
+	Linked {n} entries of the table of contents.	{n} voci del sommario trasformate in collegamenti.
+	Licensed to {name}	Concesso in licenza a {name}
+	personal, non-transferable use	uso personale e non trasferibile
+	issued on {date}	emesso il {date}
+	This document was issued exclusively for {name}.	Questo documento è stato emesso esclusivamente per {name}.
+	This document is material of {issuer}, issued exclusively for {name}.	Questo documento è materiale di {issuer}, emesso esclusivamente per {name}.
+	This document, {title}, was issued exclusively for {name}.	Questo documento, {title}, è stato emesso esclusivamente per {name}.
+	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Questo documento, {title}, è materiale di {issuer}, emesso esclusivamente per {name}.
+	The licence is personal and non-transferable. Printing for one's own use is permitted.	La licenza è personale e non trasferibile. È consentita la stampa per uso proprio.
+	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	È vietato riprodurre, condividere, distribuire, pubblicare o cedere a terzi questo documento, in tutto o in parte, con qualsiasi mezzo, e caricarlo, in tutto o in parte, in strumenti di intelligenza artificiale.
+	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Ogni copia contiene un'identificazione visibile e invisibile del licenziatario che ne consente di risalire all'origine.
+	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	La violazione è soggetta alle sanzioni previste dalla legge sul diritto d'autore, fatte salve altre misure.
+	Issued on {date}. Code {code}.	Emesso il {date}. Codice {code}.
+	Licence	Licenza d'uso

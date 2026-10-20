@@ -87,6 +87,8 @@ pub static TOOL_GROUPS: &[ToolGroup] = &[
                 items: &[
                     item("Finish publisher file", "file-check", "house.finish", Ready),
                     item("Proof for the author", "stamp", "house.proof", Ready),
+                    item("DRM Social", "shield-check", "house.drm_social", Ready),
+                    item("Table of contents to links", "list", "house.toc_links", Ready),
                     item("Initial every page", "signature", "house.initials", Ready),
                     item("Read aloud from this page", "mic", "view.read_aloud", Ready),
                     item("Assistant", "sparkles", "view.assistant", Ready),

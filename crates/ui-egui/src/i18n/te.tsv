@@ -2418,3 +2418,25 @@ animation effects	Off	ఆఫ్
 	Whole document	పూర్తి పత్రం
 	Your question	మీ ప్రశ్న
 	Local model (Ollama)	స్థానిక మోడల్ (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	సామాజిక DRM
+	DRM Social…	సామాజిక DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	ఒక వ్యక్తి కోసం లైసెన్స్ పొందిన కాపీ: ప్రతి పేజీపై వారి పేరు, కనిపించని కోడ్, చివర లైసెన్స్ పేజీ, ముద్రణకు అనుమతించి కాపీ చేయడం లేదా మార్చడాన్ని అనుమతించని రక్షణ.
+	Licensed to	లైసెన్స్ పొందినవారు
+	Code	కోడ్
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	కాపీని ఎక్కడ సేవ్ చేయాలో మీరు ఎంచుకుంటారు; పాస్‌వర్డ్ దాని పక్కనే, పేరు _DRM_social_senha.txt తో ముగిసే ఫైల్‌లో ఉంటుంది.
+	The character {c} can't be drawn in the marks.	{c} అక్షరాన్ని గుర్తులలో గీయలేము.
+	Create licensed copy…	లైసెన్స్ పొందిన కాపీని సృష్టించండి…
+	The password is in {file}, beside the copy.	పాస్‌వర్డ్ కాపీ పక్కన ఉన్న {file} లో ఉంది.
+	Couldn't write the password file: {e}	పాస్‌వర్డ్ ఫైల్‌ను రాయలేకపోయాం: {e}
+	Table of contents to links	విషయసూచికను లింక్‌లుగా
+	Table of contents to links…	విషయసూచికను లింక్‌లుగా…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	విషయసూచికలోని అంశాలను చదువుతుంది (స్కాన్ చేసిన పత్రానికి ముందుగా వచనాన్ని గుర్తించు అవసరం), ప్రతి అంశం పేజీని కనుగొంటుంది, ప్రతి అంశంపై లింక్‌ను మరియు దానికి బుక్‌మార్క్‌ను ఉంచుతుంది.
+	Table of contents on pages	విషయసూచిక ఉన్న పేజీలు
+	The book's page 1 is page	పుస్తకంలోని 1వ పేజీ ఈ పేజీ
+	Links over the entries	అంశాలపై లింక్‌లు
+	Read again	మళ్లీ చదవండి
+	No entries found on these pages.	ఈ పేజీలలో అంశాలు కనుగొనబడలేదు.
+	not found	కనుగొనబడలేదు
+	{placed} of {n} entries have a page.	{n} అంశాలలో {placed} అంశాలకు పేజీ ఉంది.
+	Linked {n} entries of the table of contents.	విషయసూచికలోని {n} అంశాలు లింక్‌లుగా మార్చబడ్డాయి.

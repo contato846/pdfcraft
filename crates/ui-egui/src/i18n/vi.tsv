@@ -2763,3 +2763,38 @@ key	Space	Space
 	Whole document	Toàn bộ tài liệu
 	Your question	Câu hỏi của bạn
 	Local model (Ollama)	Mô hình cục bộ (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	DRM xã hội
+	DRM Social…	DRM xã hội…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Một bản sao được cấp phép cho một người: tên của họ trên mọi trang, một mã ẩn, một trang giấy phép ở cuối và lớp bảo vệ cho phép in nhưng không cho sao chép hay sửa đổi.
+	Licensed to	Cấp phép cho
+	Code	Mã
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Bạn chọn nơi lưu bản sao; mật khẩu được lưu bên cạnh, trong một tệp có tên kết thúc bằng _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Không thể vẽ ký tự {c} trong các dấu.
+	Create licensed copy…	Tạo bản sao được cấp phép…
+	The password is in {file}, beside the copy.	Mật khẩu nằm trong {file}, bên cạnh bản sao.
+	Couldn't write the password file: {e}	Không thể ghi tệp mật khẩu: {e}
+	Table of contents to links	Mục lục thành liên kết
+	Table of contents to links…	Mục lục thành liên kết…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Đọc các mục của mục lục (bản quét cần Nhận dạng văn bản trước), tìm trang của từng mục, rồi đặt một liên kết lên mỗi mục và một dấu trang cho mục đó.
+	Table of contents on pages	Mục lục ở các trang
+	The book's page 1 is page	Trang 1 của sách là trang
+	Links over the entries	Liên kết trên các mục
+	Read again	Đọc lại
+	No entries found on these pages.	Không tìm thấy mục nào trên các trang này.
+	not found	không tìm thấy
+	{placed} of {n} entries have a page.	{placed} trên {n} mục có trang.
+	Linked {n} entries of the table of contents.	Đã tạo liên kết cho {n} mục của mục lục.
+	Licensed to {name}	Cấp phép cho {name}
+	personal, non-transferable use	sử dụng cá nhân, không được chuyển nhượng
+	issued on {date}	cấp ngày {date}
+	This document was issued exclusively for {name}.	Tài liệu này được cấp riêng cho {name}.
+	This document is material of {issuer}, issued exclusively for {name}.	Tài liệu này là tài liệu của {issuer}, được cấp riêng cho {name}.
+	This document, {title}, was issued exclusively for {name}.	Tài liệu này, {title}, được cấp riêng cho {name}.
+	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Tài liệu này, {title}, là tài liệu của {issuer}, được cấp riêng cho {name}.
+	The licence is personal and non-transferable. Printing for one's own use is permitted.	Giấy phép mang tính cá nhân và không được chuyển nhượng. Được phép in để sử dụng riêng.
+	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	Nghiêm cấm sao chép, chia sẻ, phân phối, công bố hoặc chuyển giao tài liệu này cho người khác, toàn bộ hay một phần, bằng bất kỳ phương tiện nào, và tải tài liệu, toàn bộ hay một phần, lên các công cụ trí tuệ nhân tạo.
+	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Mỗi bản sao mang thông tin nhận dạng hiển thị và ẩn của người được cấp phép, cho phép truy nguyên nguồn gốc.
+	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	Hành vi vi phạm sẽ chịu các chế tài của pháp luật về quyền tác giả, không loại trừ các biện pháp khác.
+	Issued on {date}. Code {code}.	Cấp ngày {date}. Mã {code}.
+	Licence	Giấy phép sử dụng

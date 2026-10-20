@@ -13,6 +13,7 @@
 
 use std::sync::{Arc, Mutex};
 
+use egui::Color32;
 use pdfcraft_engine::DocId;
 use serde_json::{Value, json};
 
@@ -681,10 +682,171 @@ pub enum PanelAction {
 }
 
 /// The panel's body.
+/// How the panel looks with each AI: the colours of that provider's own chat (its page, the
+/// bubble of the user's messages, its send button), in the light or dark theme. Only colours:
+/// no logos or other marks of the providers.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Skin {
+    pub background: Color32,
+    pub border: Color32,
+    pub text: Color32,
+    pub muted: Color32,
+    /// The user's messages; the AI's answers have no bubble (as in all four chats) unless set.
+    pub user_bubble: Color32,
+    pub answer_bubble: Option<Color32>,
+    pub input: Color32,
+    /// The send button and the provider's mark beside its name.
+    pub accent: Color32,
+    pub on_accent: Color32,
+    /// Page citations in answers.
+    pub link: Color32,
+}
+
+impl Skin {
+    pub fn of(provider: Provider, dark: bool) -> Skin {
+        let c = |hex: u32| Color32::from_rgb((hex >> 16) as u8, (hex >> 8) as u8, hex as u8);
+        match (provider, dark) {
+            // Claude: warm paper, ink-brown text, the terracotta of its mark.
+            (Provider::Claude, false) => Skin {
+                background: c(0xFAF9F5),
+                border: c(0xE8E6DC),
+                text: c(0x3D3929),
+                muted: c(0x73726C),
+                user_bubble: c(0xF0EEE6),
+                answer_bubble: None,
+                input: c(0xFFFFFF),
+                accent: c(0xD97757),
+                on_accent: Color32::WHITE,
+                link: c(0xC15F3C),
+            },
+            (Provider::Claude, true) => Skin {
+                background: c(0x262624),
+                border: c(0x3E3E38),
+                text: c(0xEEEDE8),
+                muted: c(0xA6A39A),
+                user_bubble: c(0x141413),
+                answer_bubble: None,
+                input: c(0x30302E),
+                accent: c(0xD97757),
+                on_accent: Color32::WHITE,
+                link: c(0xE0896A),
+            },
+            // ChatGPT: plain white or charcoal, grey bubbles, a black (or white) send button.
+            (Provider::OpenAi, false) => Skin {
+                background: c(0xFFFFFF),
+                border: c(0xE5E5E5),
+                text: c(0x0D0D0D),
+                muted: c(0x5D5D5D),
+                user_bubble: c(0xF4F4F4),
+                answer_bubble: None,
+                input: c(0xFFFFFF),
+                accent: c(0x0D0D0D),
+                on_accent: Color32::WHITE,
+                link: c(0x1A73E8),
+            },
+            (Provider::OpenAi, true) => Skin {
+                background: c(0x212121),
+                border: c(0x3A3A3A),
+                text: c(0xECECEC),
+                muted: c(0xB4B4B4),
+                user_bubble: c(0x303030),
+                answer_bubble: None,
+                input: c(0x303030),
+                accent: c(0xFFFFFF),
+                on_accent: c(0x0D0D0D),
+                link: c(0x7AB7FF),
+            },
+            // Gemini: Google's light blue surfaces and blue accent.
+            (Provider::Gemini, false) => Skin {
+                background: c(0xFFFFFF),
+                border: c(0xDDE3EA),
+                text: c(0x1F1F1F),
+                muted: c(0x444746),
+                user_bubble: c(0xE9EEF6),
+                answer_bubble: None,
+                input: c(0xF0F4F9),
+                accent: c(0x0B57D0),
+                on_accent: Color32::WHITE,
+                link: c(0x0B57D0),
+            },
+            (Provider::Gemini, true) => Skin {
+                background: c(0x131314),
+                border: c(0x444746),
+                text: c(0xE3E3E3),
+                muted: c(0xC4C7C5),
+                user_bubble: c(0x282A2C),
+                answer_bubble: None,
+                input: c(0x1E1F20),
+                accent: c(0xA8C7FA),
+                on_accent: c(0x062E6F),
+                link: c(0xA8C7FA),
+            },
+            // Ollama: black and white.
+            (Provider::Ollama, false) => Skin {
+                background: c(0xFFFFFF),
+                border: c(0xE5E5E5),
+                text: c(0x171717),
+                muted: c(0x737373),
+                user_bubble: c(0xF5F5F5),
+                answer_bubble: None,
+                input: c(0xFFFFFF),
+                accent: c(0x171717),
+                on_accent: Color32::WHITE,
+                link: c(0x2563EB),
+            },
+            (Provider::Ollama, true) => Skin {
+                background: c(0x0A0A0A),
+                border: c(0x333333),
+                text: c(0xF5F5F5),
+                muted: c(0xA3A3A3),
+                user_bubble: c(0x262626),
+                answer_bubble: None,
+                input: c(0x171717),
+                accent: c(0xF5F5F5),
+                on_accent: c(0x0A0A0A),
+                link: c(0x93C5FD),
+            },
+        }
+    }
+}
+
+/// The Assistant panel, dressed as the chosen AI's own chat ([`Skin`]).
 pub(crate) fn panel(ui: &mut egui::Ui, t: &Tokens, a: &mut Assistant, has_transport: bool) -> Option<PanelAction> {
+    let skin = Skin::of(a.settings.provider, ui.visuals().dark_mode);
+    let mut tk = *t;
+    tk.text = skin.text;
+    tk.text_muted = skin.muted;
+    tk.text_faint = skin.muted;
+    tk.field = skin.input;
+    tk.hover = skin.user_bubble;
+    tk.accent = skin.accent;
+    tk.accent_text = skin.link;
+    egui::Frame::new()
+        .fill(skin.background)
+        .stroke(egui::Stroke::new(1.0, skin.border))
+        .corner_radius(egui::CornerRadius::same(10))
+        .inner_margin(egui::Margin::same(10))
+        .show(ui, |ui| {
+            ui.set_width(ui.available_width());
+            ui.set_min_height(ui.available_height() - 4.0);
+            let v = ui.visuals_mut();
+            v.override_text_color = Some(skin.text);
+            v.extreme_bg_color = skin.input;
+            v.widgets.inactive.weak_bg_fill = skin.input;
+            v.widgets.inactive.bg_stroke = egui::Stroke::new(1.0, skin.border);
+            v.widgets.hovered.weak_bg_fill = skin.user_bubble;
+            v.selection.bg_fill = skin.accent.gamma_multiply(0.35);
+            panel_body(ui, &tk, &skin, a, has_transport)
+        })
+        .inner
+}
+
+fn panel_body(ui: &mut egui::Ui, t: &Tokens, skin: &Skin, a: &mut Assistant, has_transport: bool) -> Option<PanelAction> {
     let mut action = None;
     let s = &mut a.settings;
     ui.horizontal(|ui| {
+        let (dot, _) = ui.allocate_exact_size(egui::vec2(12.0, 12.0), egui::Sense::hover());
+        ui.painter().circle_filled(dot.center(), 5.0, skin.accent);
         egui::ComboBox::from_id_salt("assistant-provider").selected_text(tl!(s.provider.label())).width(ui.available_width() - 34.0).show_ui(
             ui,
             |ui| {
@@ -768,7 +930,11 @@ pub(crate) fn panel(ui: &mut egui::Ui, t: &Tokens, a: &mut Assistant, has_transp
                 );
             }
             for turn in &a.turns {
-                let (fill, align) = if turn.user { (t.accent.gamma_multiply(0.14), egui::Align::Max) } else { (t.hover, egui::Align::Min) };
+                let (fill, align) = if turn.user {
+                    (skin.user_bubble, egui::Align::Max)
+                } else {
+                    (skin.answer_bubble.unwrap_or(Color32::TRANSPARENT), egui::Align::Min)
+                };
                 ui.with_layout(egui::Layout::top_down(align), |ui| {
                     egui::Frame::new().fill(fill).corner_radius(egui::CornerRadius::same(8)).inner_margin(egui::Margin::symmetric(10, 7)).show(
                         ui,
@@ -814,7 +980,16 @@ pub(crate) fn panel(ui: &mut egui::Ui, t: &Tokens, a: &mut Assistant, has_transp
             if widgets::pill_button(ui, tl!("Stop"), false).clicked() {
                 action = Some(PanelAction::Stop);
             }
-        } else if (ui.add_enabled_ui(!a.input.trim().is_empty(), |ui| widgets::pill_button(ui, tl!("Send"), true)).inner.clicked() || enter)
+        } else if (ui
+            .add_enabled(
+                !a.input.trim().is_empty(),
+                egui::Button::new(egui::RichText::new(tl!("Send")).color(skin.on_accent).font(crate::theme::medium(12.5)))
+                    .fill(skin.accent)
+                    .corner_radius(egui::CornerRadius::same(14))
+                    .min_size(egui::vec2(64.0, 28.0)),
+            )
+            .clicked()
+            || enter)
             && !a.input.trim().is_empty()
         {
             action = Some(PanelAction::Send);
@@ -869,6 +1044,32 @@ fn cited_pages_ui(ui: &mut egui::Ui, text: &str, t: &Tokens) -> Option<usize> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn each_provider_has_its_own_look_readable_in_both_themes() {
+        let luminance = |c: Color32| {
+            let f = |v: u8| {
+                let v = f32::from(v) / 255.0;
+                if v <= 0.040_45 { v / 12.92 } else { ((v + 0.055) / 1.055).powf(2.4) }
+            };
+            0.2126 * f(c.r()) + 0.7152 * f(c.g()) + 0.0722 * f(c.b())
+        };
+        let contrast = |a: Color32, b: Color32| {
+            let (x, y) = (luminance(a), luminance(b));
+            (x.max(y) + 0.05) / (x.min(y) + 0.05)
+        };
+        for dark in [false, true] {
+            let skins: Vec<Skin> = Provider::ALL.iter().map(|p| Skin::of(*p, dark)).collect();
+            for (i, a) in skins.iter().enumerate() {
+                assert!(contrast(a.text, a.background) >= 7.0, "{:?} dark={dark}: text", Provider::ALL[i]);
+                assert!(contrast(a.text, a.user_bubble) >= 7.0, "{:?} dark={dark}: bubble text", Provider::ALL[i]);
+                assert!(contrast(a.on_accent, a.accent) >= 3.0, "{:?} dark={dark}: send button", Provider::ALL[i]);
+                for b in &skins[i + 1..] {
+                    assert_ne!(a, b, "each AI looks like itself");
+                }
+            }
+        }
+    }
 
     #[test]
     fn each_provider_streams_its_own_way() {

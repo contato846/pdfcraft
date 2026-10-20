@@ -2508,3 +2508,25 @@ animation effects	Off	Ki
 	Whole document	Teljes dokumentum
 	Your question	Az Ön kérdése
 	Local model (Ollama)	Helyi modell (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	Közösségi DRM
+	DRM Social…	Közösségi DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Licencelt másolat egy személy számára: a neve minden oldalon, egy láthatatlan kód, egy licencoldal a végén és olyan védelem, amely engedi a nyomtatást, de a másolást és a módosítást nem.
+	Licensed to	Licencelve:
+	Code	Kód
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Ön választja ki, hová mentse a másolatot; a jelszó mellette lesz, egy _DRM_social_senha.txt végű fájlban.
+	The character {c} can't be drawn in the marks.	A(z) {c} karakter nem rajzolható meg a jelölésekben.
+	Create licensed copy…	Licencelt másolat létrehozása…
+	The password is in {file}, beside the copy.	A jelszó a(z) {file} fájlban van, a másolat mellett.
+	Couldn't write the password file: {e}	A jelszófájl nem írható: {e}
+	Table of contents to links	Tartalomjegyzék hivatkozásokká
+	Table of contents to links…	Tartalomjegyzék hivatkozásokká…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Beolvassa a tartalomjegyzék bejegyzéseit (beolvasott dokumentumhoz előbb Szövegfelismerés kell), megkeresi mindegyik oldalát, és minden bejegyzésre hivatkozást, hozzá pedig könyvjelzőt tesz.
+	Table of contents on pages	Tartalomjegyzék az oldalakon
+	The book's page 1 is page	A könyv 1. oldala ez az oldal:
+	Links over the entries	Hivatkozások a bejegyzéseken
+	Read again	Újraolvasás
+	No entries found on these pages.	Ezeken az oldalakon nem található bejegyzés.
+	not found	nem található
+	{placed} of {n} entries have a page.	{n} bejegyzésből {placed} kapott oldalt.
+	Linked {n} entries of the table of contents.	Hivatkozássá alakított tartalomjegyzék-bejegyzések: {n}.

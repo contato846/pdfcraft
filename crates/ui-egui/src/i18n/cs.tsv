@@ -2583,3 +2583,25 @@ animation effects	Off	Vypnuto
 	Whole document	Celý dokument
 	Your question	Vaše otázka
 	Local model (Ollama)	Místní model (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	Sociální DRM
+	DRM Social…	Sociální DRM…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Licencovaná kopie pro jednu osobu: její jméno na každé stránce, neviditelný kód, licenční stránka na konci a ochrana, která umožňuje tisk, ale ne kopírování ani úpravy.
+	Licensed to	Licencováno pro
+	Code	Kód
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Vyberete, kam kopii uložit; heslo se uloží vedle ní do souboru, jehož název končí na _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Znak {c} nelze ve značkách vykreslit.
+	Create licensed copy…	Vytvořit licencovanou kopii…
+	The password is in {file}, beside the copy.	Heslo je v souboru {file}, vedle kopie.
+	Couldn't write the password file: {e}	Soubor s heslem se nepodařilo zapsat: {e}
+	Table of contents to links	Obsah na odkazy
+	Table of contents to links…	Obsah na odkazy…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Přečte položky obsahu (skenovaný dokument nejprve potřebuje Rozpoznat text), najde stránku každé z nich a vloží na každou položku odkaz a pro ni záložku.
+	Table of contents on pages	Obsah na stránkách
+	The book's page 1 is page	Stránka 1 knihy je stránka
+	Links over the entries	Odkazy na položkách
+	Read again	Přečíst znovu
+	No entries found on these pages.	Na těchto stránkách nebyly nalezeny žádné položky.
+	not found	nenalezeno
+	{placed} of {n} entries have a page.	{placed} z {n} položek má stránku.
+	Linked {n} entries of the table of contents.	Propojené položky obsahu: {n}.

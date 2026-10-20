@@ -2786,3 +2786,25 @@ certificate	Version	الإصدار
 	Whole document	المستند كاملًا
 	Your question	سؤالك
 	Local model (Ollama)	نموذج محلي (Ollama)
+# DRM Social and table of contents to links.
+	DRM Social	إدارة الحقوق الرقمية الاجتماعية
+	DRM Social…	إدارة الحقوق الرقمية الاجتماعية…
+	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	نسخة مرخّصة لشخص واحد: اسمه على كل صفحة، ورمز غير مرئي، وصفحة ترخيص في النهاية، وحماية تسمح بالطباعة لا بالنسخ أو التعديل.
+	Licensed to	مرخّص لـ
+	Code	الرمز
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	تختار مكان حفظ النسخة؛ وتُحفظ كلمة المرور بجانبها في ملف ينتهي اسمه بـ _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	لا يمكن رسم الحرف {c} في العلامات.
+	Create licensed copy…	إنشاء نسخة مرخّصة…
+	The password is in {file}, beside the copy.	كلمة المرور في {file}، بجانب النسخة.
+	Couldn't write the password file: {e}	تعذّرت كتابة ملف كلمة المرور: {e}
+	Table of contents to links	جدول المحتويات إلى روابط
+	Table of contents to links…	جدول المحتويات إلى روابط…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	يقرأ مداخل جدول المحتويات (يحتاج المستند الممسوح ضوئيًا أولًا إلى التعرّف على النص)، ويجد صفحة كل مدخل، ويضع رابطًا على كل مدخل وإشارة مرجعية له.
+	Table of contents on pages	جدول المحتويات في الصفحات
+	The book's page 1 is page	الصفحة 1 من الكتاب هي الصفحة
+	Links over the entries	روابط على المداخل
+	Read again	القراءة مجددًا
+	No entries found on these pages.	لم يُعثر على مداخل في هذه الصفحات.
+	not found	غير موجود
+	{placed} of {n} entries have a page.	{placed} من {n} مداخل لها صفحة.
+	Linked {n} entries of the table of contents.	مداخل جدول المحتويات التي صارت روابط: {n}.
