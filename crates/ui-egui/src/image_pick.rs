@@ -9,7 +9,8 @@ use crate::PdfCraftApp;
 use crate::canvas::{DocView, PageXform};
 use pdfcraft_render::DocInfo;
 
-/// The selected picture: page, index in `page_images` and its box in user space.
+/// The selected picture: page, index in `page_images` and the box it shows in user space (its
+/// visible part: a cropped page or a split spread hides the rest).
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct PickedImage {
     pub page: usize,
@@ -43,8 +44,9 @@ pub(crate) fn page_input(
     let (vx, vy) = xf.screen_to_view(p);
     let u = info_page.view_to_user(vx, vy);
     let at = [f64::from(u[0]), f64::from(u[1])];
-    view.picked_image =
-        doc.page_image_at(page, at).and_then(|index| doc.page_images(page).get(index).map(|i| PickedImage { page, index, rect: i.rect }));
+    view.picked_image = doc
+        .page_image_at(page, at)
+        .and_then(|index| doc.page_images(page).get(index).and_then(|i| i.visible_rect).map(|rect| PickedImage { page, index, rect }));
 }
 
 /// The selected picture's highlight on page `page`.
@@ -159,7 +161,7 @@ impl PdfCraftApp {
             return;
         }
         // The document may have changed since the click: the same picture must still be there.
-        let current = self.session.get(self.views[i].id).and_then(|d| d.page_images(picked.page).get(picked.index).map(|im| im.rect));
+        let current = self.session.get(self.views[i].id).and_then(|d| d.page_images(picked.page).get(picked.index).and_then(|im| im.visible_rect));
         if current == Some(picked.rect) {
             self.copy_page_image_file(picked.page, picked.index);
         } else {

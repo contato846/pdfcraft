@@ -3167,6 +3167,25 @@ trailer << /Root 1 0 R >>
     }
 
     #[test]
+    fn text_outside_the_crop_box_is_not_the_pages() {
+        // One half of a split book spread: the content still draws both halves' text.
+        let pdf = b"%PDF-1.7
+1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj
+2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj
+3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 100 100] /CropBox [0 0 100 100] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >> endobj
+4 0 obj << /Length 64 >> stream
+BT /F1 12 Tf 10 50 Td (Left) Tj 100 0 Td (Right) Tj ET
+endstream endobj
+5 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj
+trailer << /Root 1 0 R >>
+%%EOF";
+        let mut r = PageRenderer::new(Arc::new(pdf.to_vec()), RenderConfig::default());
+        let out = r.render(RenderRequest { page: 0, kind: RequestKind::Text, tile: None, scale: 1.0, tag: 0, ..Default::default() });
+        assert!(out.error.is_none(), "{:?}", out.error);
+        assert_eq!(out.text.expect("text").plain_text(), "Left");
+    }
+
+    #[test]
     fn layer_override_hides_content() {
         let pdf = b"%PDF-1.7
 1 0 obj << /Type /Catalog /Pages 2 0 R /OCProperties << /OCGs [5 0 R] /D << /Order [5 0 R] >> >> >> endobj

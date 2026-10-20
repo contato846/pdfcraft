@@ -4474,6 +4474,31 @@ fn copy_image_finds_the_image_under_a_point_and_decodes_it_at_full_size() {
     assert!(d.page_image_rgba(0, 1).is_err());
 }
 
+/// A split book spread keeps the whole scan on each half; selecting the picture answers only
+/// on the half the page shows, and its box is that half.
+#[test]
+fn a_split_spread_picks_only_the_half_of_the_scan_it_shows() {
+    let mut s = Session::new();
+    let px = image::RgbaImage::from_pixel(40, 20, image::Rgba([200, 200, 200, 255]));
+    let mut png = std::io::Cursor::new(Vec::new());
+    image::DynamicImage::ImageRgba8(px).write_to(&mut png, image::ImageFormat::Png).unwrap();
+    let pic = s.create_from_images(&[("spread.png".into(), png.into_inner())]).unwrap();
+    let id = s.open("spread.pdf", None, pic, None).unwrap();
+    assert_eq!(s.apply_spreads(id, &[crate::spreads::Spread { page: 0, at: 0.5 }]).unwrap(), 1);
+    let d = s.get(id).unwrap();
+    let whole = d.page_images(0)[0].rect;
+    let middle = (whole[0] + whole[2]) / 2.0;
+    let y = (whole[1] + whole[3]) / 2.0;
+    let left = d.page_images(0)[0].visible_rect.unwrap();
+    assert!((left[2] - middle).abs() < 0.5, "the left page shows the left half: {left:?} of {whole:?}");
+    assert_eq!(d.page_image_at(0, [(whole[0] + middle) / 2.0, y]), Some(0));
+    assert_eq!(d.page_image_at(0, [(middle + whole[2]) / 2.0, y]), None, "the hidden right half is not the left page's");
+    let right = d.page_images(1)[0].visible_rect.unwrap();
+    assert!((right[0] - middle).abs() < 0.5, "the right page shows the right half: {right:?}");
+    assert_eq!(d.page_image_at(1, [(middle + whole[2]) / 2.0, y]), Some(0));
+    assert_eq!(d.page_image_at(1, [(whole[0] + middle) / 2.0, y]), None);
+}
+
 /// Copy Image: a JPEG drawn through grouped Form artwork (as Word, InDesign and scanners write
 /// them), with a caption over it and an empty full-page Form on top.
 #[test]

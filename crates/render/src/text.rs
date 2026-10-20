@@ -667,7 +667,18 @@ pub(crate) fn extract_page(pdf: &Pdf, page: usize, settings: &InterpreterSetting
     interpret_page(p, &mut ctx, &mut dev);
     // A replacement the content never closed ends with the page.
     dev.finish();
-    let glyphs = dev.glyphs;
+    // Only text the page shows: a cropped page, or one half of a split book spread, still
+    // carries the whole scan's text layer, and the hidden part must not be selected, searched or
+    // copied. A glyph belongs to the page when its centre is on it.
+    let (pw, ph) = (w, h);
+    let glyphs: Vec<Drawn> = dev
+        .glyphs
+        .into_iter()
+        .filter(|(_, _, g)| {
+            let (cx, cy) = ((g.rect[0] + g.rect[2]) / 2.0, (g.rect[1] + g.rect[3]) / 2.0);
+            !(cx.is_finite() && cy.is_finite()) || ((0.0..=pw).contains(&cx) && (0.0..=ph).contains(&cy))
+        })
+        .collect();
     // Text on a curved path: glyphs that each continue the previous one's line while the
     // direction turns. Each such run is one line.
     let turned = |u: [f64; 2]| u[0].abs().min(u[1].abs()) > DIRECTION_TOLERANCE;
