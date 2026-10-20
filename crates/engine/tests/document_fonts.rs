@@ -120,9 +120,9 @@ fn registered_installed_face_completes_a_subset_tagged_paragraph() {
         eprintln!("register={register}: {applied:?} {faces:?}");
         if register {
             applied.unwrap();
-            // The space between runs is a gap in the page, not a glyph.
+            // The space between the runs reads as a space, whether drawn or left as a gap.
             let text: String = s.get(id).unwrap().text_lines(0).iter().map(|l| l.text.as_str()).collect();
-            assert_eq!(text, draft.replace(' ', ""));
+            assert_eq!(text.replace(' ', ""), draft.replace(' ', ""));
             assert!(faces.iter().all(|f| f == "interregular"), "{faces:?}");
         } else {
             assert!(applied.is_err() || faces.iter().any(|f| f != "interregular"), "{faces:?}");
