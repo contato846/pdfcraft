@@ -9,6 +9,55 @@ use crate::{PdfCraftApp, icons, panels::human_size, widgets};
 
 const RECOMMENDED: [&str; 5] = ["organize", "comment", "form", "edit", "protect"];
 
+/// The house's own routines come first: (command, one-line description, already in the
+/// catalogues as the dialog's own text). Label and icon come from the House tools group.
+const HOUSE_FIRST: [(&str, &str); 6] = [
+    ("house.finish", "Sets the house's document information and removes what other applications left in the file."),
+    ("house.proof", "Marks every page with a watermark and protects the copy against changes and copying."),
+    (
+        "house.drm_social",
+        "A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.",
+    ),
+    (
+        "house.toc_links",
+        "Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.",
+    ),
+    ("page.split_spreads", "Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed."),
+    ("view.assistant", "Ask about the open document: a summary, where something is said, what a passage means…"),
+];
+
+/// What a recommended card does when clicked.
+enum Pick {
+    Group(&'static str),
+    Command(&'static str),
+}
+
+/// One recommended card: icon, title, two lines of description and "Use now".
+fn tool_card(ui: &mut egui::Ui, t: &Tokens, label: &str, icon: &str, color: egui::Color32, blurb: &str) -> egui::Response {
+    let (rect, resp) = ui.allocate_exact_size(vec2(190.0, 104.0), Sense::click());
+    resp.widget_info(|| egui::WidgetInfo::labeled(egui::WidgetType::Button, true, label));
+    let press = theme::Press::track(ui, &resp);
+    card_lift(ui, t, rect, press);
+    let fill = press.fill(t.card, t.hover, t.pressed);
+    ui.painter().rect(rect, CornerRadius::same(10), fill, Stroke::new(1.0, t.divider), egui::StrokeKind::Inside);
+    let body = rect.translate(press.offset());
+    icons::paint(ui, Rect::from_min_size(body.min + vec2(14.0, 14.0), vec2(22.0, 22.0)), icon, 21.0, color);
+    let mut title_job = egui::text::LayoutJob::simple_singleline(label.to_owned(), theme::semibold(13.5), t.text);
+    title_job.wrap = egui::text::TextWrapping { max_width: body.width() - 58.0, max_rows: 1, break_anywhere: true, ..Default::default() };
+    let title = ui.fonts_mut(|f| f.layout_job(title_job));
+    let title_elided = title.elided;
+    ui.painter().galley(body.min + vec2(44.0, 25.0 - title.size().y * 0.5), title, t.text);
+    // Fixed-height cards must leave room for their action in every language.
+    let mut job = egui::text::LayoutJob::simple(blurb.to_owned(), theme::regular(11.5), t.text_muted, body.width() - 28.0);
+    job.wrap.max_rows = 2;
+    let galley = ui.fonts_mut(|f| f.layout_job(job));
+    let blurb_elided = galley.elided;
+    ui.painter().galley(body.min + vec2(14.0, 46.0), galley, t.text_muted);
+    ui.painter().text(body.left_bottom() + vec2(14.0, -14.0), Align2::LEFT_CENTER, tl!("Use now"), theme::medium(12.0), t.accent_text);
+    let resp = if title_elided || blurb_elided { resp.on_hover_text(format!("{label}\n{blurb}")) } else { resp };
+    theme::hand(resp)
+}
+
 /// A soft shadow that rises on hover and settles when the card is pressed.
 fn card_lift(ui: &egui::Ui, t: &Tokens, rect: Rect, press: theme::Press) {
     let lift = press.hover * (1.0 - press.down);
@@ -28,26 +77,6 @@ pub fn show(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     .color(t.text_muted)
                     .font(theme::regular(14.0)),
             );
-            ui.add_space(14.0);
-            egui::Frame::NONE
-                .fill(t.card)
-                .stroke(Stroke::new(1.0, t.border))
-                .corner_radius(CornerRadius::same(12))
-                .inner_margin(egui::Margin::same(14))
-                .show(ui, |ui| {
-                    ui.set_width(ui.available_width());
-                    ui.horizontal(|ui| {
-                        widgets::artcraft_mark(ui, 28.0);
-                        ui.vertical(|ui| {
-                            ui.label(egui::RichText::new(tl!("Join the ArtCraft community")).font(theme::semibold(15.0)));
-                            ui.label(egui::RichText::new(tl!("Get help, share feedback and follow development on Discord.")).color(t.text_muted));
-                        });
-                    });
-                    ui.add_space(8.0);
-                    if let Some(cmd) = widgets::community_links(ui) {
-                        app.execute(cmd);
-                    }
-                });
             ui.add_space(22.0);
 
             egui::Frame::NONE
@@ -61,45 +90,38 @@ pub fn show(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     ui.add_space(10.0);
                     ui.horizontal_wrapped(|ui| {
                         ui.spacing_mut().item_spacing = vec2(14.0, 14.0);
+                        let mut picked = None;
+                        let house = catalog::group("house");
+                        for (command, blurb) in HOUSE_FIRST {
+                            let Some(item) = house.and_then(|g| g.sections.iter().flat_map(|s| s.items).find(|i| i.command == command)) else {
+                                continue;
+                            };
+                            let color = house.map_or(t.icon, |g| egui::Color32::from_rgb(g.hue[0], g.hue[1], g.hue[2]));
+                            if tool_card(ui, &t, tl!(item.label), item.icon, color, tl!(blurb)).clicked() {
+                                picked = Some(Pick::Command(command));
+                            }
+                        }
                         for id in RECOMMENDED {
                             let Some(g) = catalog::group(id) else { continue };
-                            let (rect, resp) = ui.allocate_exact_size(vec2(190.0, 104.0), Sense::click());
-                            resp.widget_info(|| egui::WidgetInfo::labeled(egui::WidgetType::Button, true, tl!(g.label)));
-                            let press = theme::Press::track(ui, &resp);
-                            card_lift(ui, &t, rect, press);
-                            let fill = press.fill(t.card, t.hover, t.pressed);
-                            ui.painter().rect(rect, CornerRadius::same(10), fill, Stroke::new(1.0, t.divider), egui::StrokeKind::Inside);
-                            let body = rect.translate(press.offset());
                             let color = egui::Color32::from_rgb(g.hue[0], g.hue[1], g.hue[2]);
-                            icons::paint(ui, Rect::from_min_size(body.min + vec2(14.0, 14.0), vec2(22.0, 22.0)), g.icon, 21.0, color);
-                            let mut title_job = egui::text::LayoutJob::simple_singleline(tl!(g.label).to_owned(), theme::semibold(13.5), t.text);
-                            title_job.wrap =
-                                egui::text::TextWrapping { max_width: body.width() - 58.0, max_rows: 1, break_anywhere: true, ..Default::default() };
-                            let title = ui.fonts_mut(|f| f.layout_job(title_job));
-                            let title_elided = title.elided;
-                            ui.painter().galley(body.min + vec2(44.0, 25.0 - title.size().y * 0.5), title, t.text);
                             let blurb = g
                                 .sections
                                 .first()
                                 .map(|s| s.items.iter().take(3).map(|i| tl!(i.label)).collect::<Vec<_>>().join(" · "))
                                 .unwrap_or_default();
-                            // Fixed-height cards must leave room for their action in every language.
-                            let mut job = egui::text::LayoutJob::simple(blurb.clone(), theme::regular(11.5), t.text_muted, body.width() - 28.0);
-                            job.wrap.max_rows = 2;
-                            let galley = ui.fonts_mut(|f| f.layout_job(job));
-                            let blurb_elided = galley.elided;
-                            ui.painter().galley(body.min + vec2(14.0, 46.0), galley, t.text_muted);
-                            ui.painter().text(
-                                body.left_bottom() + vec2(14.0, -14.0),
-                                Align2::LEFT_CENTER,
-                                tl!("Use now"),
-                                theme::medium(12.0),
-                                t.accent_text,
-                            );
-                            let resp = if title_elided || blurb_elided { resp.on_hover_text(format!("{}\n{blurb}", tl!(g.label))) } else { resp };
-                            if theme::hand(resp).clicked() {
-                                app.select_tool(g.id);
+                            if tool_card(ui, &t, tl!(g.label), g.icon, color, &blurb).clicked() {
+                                picked = Some(Pick::Group(g.id));
                             }
+                        }
+                        match picked {
+                            Some(Pick::Group(id)) => app.select_tool(id),
+                            // The house tool panel opens so the routine is at hand; with a document
+                            // open, the routine's own dialog opens too.
+                            Some(Pick::Command(cmd)) => {
+                                app.select_tool("house");
+                                app.execute(cmd);
+                            }
+                            None => {}
                         }
                         let (rect, resp) = ui.allocate_exact_size(vec2(170.0, 104.0), Sense::click());
                         resp.widget_info(|| egui::WidgetInfo::labeled(egui::WidgetType::Button, true, tl!("Open file")));
