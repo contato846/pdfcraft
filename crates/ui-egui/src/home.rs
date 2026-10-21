@@ -266,9 +266,15 @@ mod tests {
         let text_shapes: Vec<_> =
             output.shapes.iter().filter_map(|shape| if let egui::Shape::Text(text) = &shape.shape { Some(text) } else { None }).collect();
         let description = text_shapes.iter().find(|text| text.galley.job.text == blurb).unwrap();
+        // The cards wrap onto rows: the action is the nearest one below the description.
         let action = text_shapes
             .iter()
-            .find(|text| text.galley.job.text == crate::i18n::tr(de, "Use now") && (text.pos.x - description.pos.x).abs() < 0.1)
+            .filter(|text| {
+                text.galley.job.text == crate::i18n::tr(de, "Use now")
+                    && (text.pos.x - description.pos.x).abs() < 0.1
+                    && text.pos.y > description.pos.y
+            })
+            .min_by(|a, b| a.pos.y.total_cmp(&b.pos.y))
             .unwrap();
         assert!(description.galley.rows.len() <= 2);
         assert!(
