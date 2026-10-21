@@ -29,9 +29,15 @@ pub struct DrmDraft {
     pub code: String,
     /// DD/MM/YYYY, today by default.
     pub date: String,
-    /// Optional permissions password; a random one when empty.
+    /// The permissions password: 8 letters and digits made when the dialog opens; editable.
     pub password: String,
+    /// The colour of the marks (the name across the page, the footer, the licence title): red
+    /// unless changed.
+    pub color: [f64; 3],
 }
+
+/// The marks' colour until changed: a dark red that reads on paper and on screen.
+pub const DEFAULT_COLOR: [f64; 3] = [0.78, 0.09, 0.09];
 
 /// The password of a licensed copy waiting to be saved: written beside the file each time the
 /// document is saved.
@@ -48,11 +54,12 @@ impl std::fmt::Debug for PendingPassword {
     }
 }
 
-/// A random permissions password from the system's random source: 24 characters of letters and
-/// digits (about 143 bits).
+/// A random permissions password from the system's random source: 8 letters and digits, with
+/// at least one of each, from an alphabet without look-alikes (no 0/O, 1/l/I). About 46 bits:
+/// enough to stop guessing by hand, and the owner keeps it in the file beside the copy anyway.
 pub fn random_password() -> String {
     const ALPHABET: &[u8] = b"ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";
-    let mut bytes = [0u8; 24];
+    let mut bytes = [0u8; 8];
     if getrandom::fill(&mut bytes).is_err() {
         // No system randomness: fall back to the clock, which is still unguessable in practice.
         let nanos = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_nanos()).unwrap_or(0);
@@ -62,7 +69,9 @@ pub fn random_password() -> String {
             *b = (h >> 24) as u8;
         }
     }
-    bytes.iter().map(|b| char::from(ALPHABET[usize::from(*b) % ALPHABET.len()])).collect()
+    let password: String = bytes.iter().map(|b| char::from(ALPHABET[usize::from(*b) % ALPHABET.len()])).collect();
+    // Both kinds, or a mostly-letters password would be weaker than it looks.
+    if password.chars().any(|c| c.is_ascii_digit()) && password.chars().any(|c| c.is_ascii_alphabetic()) { password } else { random_password() }
 }
 
 /// The tracking code for `name`: `DRM-<FIRST NAME>-<4 digits>`, ASCII only.
@@ -177,7 +186,7 @@ impl DrmDraft {
             text: doc_tl("Licence").to_string(),
             bold: true,
             size: 16.0,
-            color: [0.12, 0.22, 0.39],
+            color: self.color,
             ..Default::default()
         };
         edits.push(Edit::AddText { page: n, text: title });
@@ -202,7 +211,7 @@ impl DrmDraft {
         let mark = Watermark {
             text: self.name.trim().to_owned(),
             font_size: 30.0,
-            color: [0.25, 0.35, 0.6],
+            color: self.color,
             opacity: 0.07,
             rotation: 45.0,
             ..Watermark::default()
@@ -213,8 +222,7 @@ impl DrmDraft {
         let at = |size: f64| pdfcraft_engine::added_text_width(&AddedText { text: line.clone(), size, ..Default::default() });
         let room = (w - 2.0 * m).max(36.0);
         let size = if at(6.5) > room { (6.5 * room / at(6.5).max(1.0)).max(3.0) } else { 6.5 };
-        let mut footer =
-            HeaderFooter { font_size: size, color: [0.35, 0.35, 0.35], margins: [m, (m / 2.0).max(14.0), m, m], ..HeaderFooter::default() };
+        let mut footer = HeaderFooter { font_size: size, color: self.color, margins: [m, (m / 2.0).max(14.0), m, m], ..HeaderFooter::default() };
         footer.text[4] = line;
         edits.push(Edit::AddHeaderFooter { pages, settings: footer, replace: false });
         // The invisible code, in each page's own user space (the new page has the first page's size).
@@ -256,7 +264,8 @@ impl PdfCraftApp {
         let Some((_, id)) = self.active_ids() else { return };
         let (y, m, d) = self.session.today();
         let title = self.session.get(id).and_then(|doc| doc.info_value("Title")).unwrap_or_default();
-        self.drm_draft = DrmDraft { date: format!("{d:02}/{m:02}/{y}"), title, ..DrmDraft::default() };
+        self.drm_draft =
+            DrmDraft { date: format!("{d:02}/{m:02}/{y}"), title, password: random_password(), color: DEFAULT_COLOR, ..DrmDraft::default() };
         self.dialog = Some(crate::Dialog::DrmSocial);
     }
 
@@ -321,15 +330,20 @@ pub(crate) fn drm_body(ui: &mut egui::Ui, d: &mut DrmDraft, t: &Tokens) -> (bool
             ui.end_row();
         }
         let l = ui.label(egui::RichText::new(tl!("Permissions password")).color(t.text_muted));
-        ui.add(
-            widgets::line(&mut d.password)
-                .password(true)
-                .hint_text(tl!("Optional"))
-                .desired_width(380.0)
-                .background_color(t.field)
-                .id_salt(("drm", "password")),
-        )
-        .labelled_by(l.id);
+        ui.horizontal(|ui| {
+            ui.add(widgets::line(&mut d.password).desired_width(300.0).background_color(t.field).id_salt(("drm", "password"))).labelled_by(l.id);
+            if ui.button(tl!("New password")).clicked() {
+                d.password = random_password();
+            }
+        });
+        ui.end_row();
+        let l = ui.label(egui::RichText::new(tl!("Colour")).color(t.text_muted));
+        ui.horizontal(|ui| {
+            crate::marks_ui::color_button(ui, &mut d.color).labelled_by(l.id);
+            if d.color != DEFAULT_COLOR && ui.button(tl!("Red")).clicked() {
+                d.color = DEFAULT_COLOR;
+            }
+        });
         ui.end_row();
     });
     ui.add_space(8.0);
@@ -379,8 +393,9 @@ mod tests {
         assert!(code.starts_with("DRM-ANGELA-") && code.len() == "DRM-ANGELA-0000".len(), "{code}");
         assert!(code_for("").starts_with("DRM-"));
         let (a, b) = (random_password(), random_password());
-        assert_eq!(a.chars().count(), 24);
-        assert!(a.chars().all(|c| c.is_ascii_alphanumeric()));
+        assert_eq!(a.chars().count(), 8);
+        assert!(a.chars().all(|c| c.is_ascii_alphanumeric() && !"0O1lI".contains(c)), "{a}");
+        assert!(a.chars().any(|c| c.is_ascii_digit()) && a.chars().any(|c| c.is_ascii_alphabetic()), "{a}");
         assert_ne!(a, b);
     }
 }

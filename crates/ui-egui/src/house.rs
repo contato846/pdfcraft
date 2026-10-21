@@ -36,7 +36,12 @@ pub struct FinishDraft {
     /// Open with the bookmarks panel (offered when the file has bookmarks).
     pub show_bookmarks: bool,
     pub has_bookmarks: bool,
+    /// The document's language (`/Lang`, a BCP 47 tag such as `pt-BR`); empty leaves it as is.
+    pub language: String,
 }
+
+/// The house's language: Brazilian Portuguese, as PDF names it (ISO 32000 `/Lang`, BCP 47).
+pub const HOUSE_LANGUAGE: &str = "pt-BR";
 
 impl PdfCraftApp {
     pub fn open_finish_publisher(&mut self) {
@@ -58,6 +63,7 @@ impl PdfCraftApp {
             strip_private: true,
             show_bookmarks: has_bookmarks,
             has_bookmarks,
+            language: HOUSE_LANGUAGE.to_owned(),
         };
         self.dialog = Some(crate::Dialog::FinishPublisher);
     }
@@ -89,12 +95,19 @@ impl PdfCraftApp {
         ] {
             edits.push(Edit::SetInfo { key: key.to_owned(), value: value.trim().to_owned() });
         }
-        if d.has_bookmarks && d.show_bookmarks {
-            let mut view = doc.initial_view();
-            if view.navigation != Navigation::Bookmarks {
-                view.navigation = Navigation::Bookmarks;
-                edits.push(Edit::SetInitialView(Box::new(view)));
-            }
+        let mut view = doc.initial_view();
+        let mut changed = false;
+        if d.has_bookmarks && d.show_bookmarks && view.navigation != Navigation::Bookmarks {
+            view.navigation = Navigation::Bookmarks;
+            changed = true;
+        }
+        let language = d.language.trim();
+        if !language.is_empty() && view.language.as_deref() != Some(language) {
+            view.language = Some(language.to_owned());
+            changed = true;
+        }
+        if changed {
+            edits.push(Edit::SetInitialView(Box::new(view)));
         }
         Some(Edit::Batch { label: "Finish publisher file".into(), edits })
     }
@@ -115,6 +128,7 @@ pub(crate) fn finish_body(ui: &mut egui::Ui, d: &mut FinishDraft, t: &Tokens) ->
             ("Author", &mut d.author, "author"),
             ("Application", &mut d.creator, "creator"),
             ("PDF producer", &mut d.producer, "producer"),
+            ("Language", &mut d.language, "language"),
         ] {
             let l = ui.label(egui::RichText::new(tl!(label)).color(t.text_muted));
             ui.add(widgets::line(value).desired_width(360.0).background_color(t.field).id_salt(("finish", salt))).labelled_by(l.id);

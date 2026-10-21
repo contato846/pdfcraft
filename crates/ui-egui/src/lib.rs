@@ -2574,6 +2574,12 @@ impl PdfCraftApp {
             ("animation_effects", _) => {
                 self.animation_effects = motion::AnimationEffects::parse(value).ok_or("animation_effects must be system, on, or off")?;
             }
+            // Open a command's dialog or tool, as its menu entry does (screenshots, automation).
+            ("command", _) => {
+                if !self.execute(value) {
+                    return Err(format!("unknown or unavailable command {value}"));
+                }
+            }
             ("assistant_provider", _) => {
                 self.assistant.settings.provider = match value {
                     "claude" => assistant::Provider::Claude,

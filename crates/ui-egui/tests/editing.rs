@@ -5115,6 +5115,8 @@ fn finish_publisher_file_sets_the_metadata_in_one_step() {
     assert_eq!(info(&h, "Creator").as_deref(), Some("Editora Exemplo"));
     assert_eq!(info(&h, "Producer"), None, "no producer");
     assert_eq!(info(&h, "Title").as_deref(), Some("Um livro"), "the title is kept");
+    assert_eq!(h.state().finish_draft.language, "pt-BR", "the house's language comes pre-filled");
+    assert_eq!(h.state().session.get(id).unwrap().initial_view().language.as_deref(), Some("pt-BR"), "the document language is set");
     // One undo brings back what the layout application wrote.
     assert!(h.state_mut().execute("edit.undo"));
     h.run_steps(2);
@@ -5309,7 +5311,8 @@ fn drm_social_makes_a_licensed_copy_and_keeps_its_password_beside_it() {
     assert!(bit(10), "screen readers still read it");
     assert_eq!(doc.path.as_deref(), Some(dest.to_string_lossy().as_ref()), "saved where chosen");
     let password = std::fs::read_to_string(dir.join("Manual_DRM_social_senha.txt")).expect("the password is beside the copy");
-    assert_eq!(password.chars().count(), 24, "only the password, without a line break: {password:?}");
+    assert_eq!(password.chars().count(), 8, "only the password, without a line break: {password:?}");
+    assert_eq!(password, h.state().drm_draft.password, "the password shown in the dialog is the one kept");
     assert_eq!(h.state().drm_password.as_ref().map(|p| p.password.as_str()), Some(password.as_str()));
     let _ = std::fs::remove_dir_all(&dir);
 }

@@ -1,5 +1,5 @@
-//! Community links: the Discord button is one click away everywhere; Help menu, About dialog and
-//! home screen open the ArtCraft and PdfCraft pages.
+//! Community links: the Help menu and the About dialog open Discord and the ArtCraft and PdfCraft
+//! pages. The top bar's button checks for updates instead (this personal build).
 
 use egui_kittest::Harness;
 use egui_kittest::kittest::Queryable;
@@ -18,28 +18,32 @@ fn harness(setup: impl FnOnce(&mut PdfCraftApp) + 'static) -> Harness<'static, P
 }
 
 #[test]
-fn discord_button_in_the_top_bar_opens_discord() {
+fn the_top_bar_button_checks_for_updates() {
+    // Without an update source (tests, the web build) the check opens the releases page.
     let mut h = harness(|_| {});
-    h.get_by_label("Discord").click();
+    assert!(h.query_by_label("Discord").is_none());
+    h.get_by_label("Update").click();
     h.run_steps(2);
-    assert_eq!(h.state().last_opened_url.as_deref(), Some(links::DISCORD));
+    assert_eq!(h.state().last_opened_url.as_deref(), Some(pdfcraft_ui_egui::updates::RELEASES_PAGE));
     assert_eq!(links::DISCORD, "https://discord.gg/artcraft");
 }
 
 #[test]
-fn home_screen_links() {
+fn the_about_dialog_opens_each_community_link() {
     for (label, url) in [
         ("Join our Discord", links::DISCORD),
         ("PdfCraft web page", "https://getartcraft.com/apps/pdfcraft"),
         ("PdfCraft on GitHub", "https://github.com/storytold/pdfcraft"),
         ("ArtCraft website", "https://getartcraft.com"),
     ] {
-        let mut h = harness(|_| {});
-        h.get_by_label("Join the ArtCraft community");
+        let mut h = harness(|app| app.dialog = Some(Dialog::About));
         h.get_by_label(label).click();
         h.run_steps(2);
         assert_eq!(h.state().last_opened_url.as_deref(), Some(url), "{label}");
     }
+    // The home screen no longer carries the community card (this personal build).
+    let h = harness(|_| {});
+    assert!(h.query_by_label("Join the ArtCraft community").is_none());
 }
 
 #[test]

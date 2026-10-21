@@ -115,11 +115,13 @@ const DATE_FORMATS: [&str; 6] = ["<<m/d/yyyy>>", "<<mm/dd/yyyy>>", "<<d/m/yyyy>>
 const BOX_NAMES: [&str; 6] =
     ["Left Header Text", "Center Header Text", "Right Header Text", "Left Footer Text", "Center Footer Text", "Right Footer Text"];
 
-fn color_button(ui: &mut egui::Ui, c: &mut [f64; 3]) {
+pub(crate) fn color_button(ui: &mut egui::Ui, c: &mut [f64; 3]) -> egui::Response {
     let mut f = c.map(|v| v as f32);
-    if egui::color_picker::color_edit_button_rgb(ui, &mut f).changed() {
+    let r = egui::color_picker::color_edit_button_rgb(ui, &mut f);
+    if r.changed() {
         *c = f.map(f64::from);
     }
+    r
 }
 
 /// A schematic of the current page with the marks laid out (no rendering needed).
