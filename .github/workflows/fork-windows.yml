@@ -27,6 +27,8 @@ jobs:
         run: cargo build --release -p pdfcraft --locked
         env:
           PDFCRAFT_REQUIRE_WINRES: "1"
+          # The build knows its commit, so it can tell a newer release from itself (self-update).
+          PDFCRAFT_BUILD_SHA: ${{ github.sha }}
 
       - name: Package portable zip
         shell: pwsh

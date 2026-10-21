@@ -2795,3 +2795,15 @@ theme	Appearance	Išvaizda
 	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	Už pažeidimą taikomos autorių teisių įstatymo numatytos sankcijos, nepažeidžiant kitų priemonių.
 	Issued on {date}. Code {code}.	Išduota {date}. Kodas {code}.
 	Licence	Naudojimo licencija
+# The portable build updates itself.
+	A new version is available ({v}).	Yra nauja versija ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Atnaujinti dabar ją atsisiunčia ir pakeičia programą vietoje; jūsų nustatymai lieka.
+	Downloading the new version… {mb} MB	Atsisiunčiama nauja versija… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Nauja versija paruošta. „PdfCraft“ užsidarys ir vėl atsidarys jau kaip nauja versija.
+	Couldn't update: {e}	Nepavyko atnaujinti: {e}
+	All releases are listed at {page}.	Visos versijos išvardytos {page}.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Paleidžiant „PdfCraft“ patikrina „GitHub“, ar yra nauja versija. Niekas neatsisiunčiama, kol nepasirenkate Atnaujinti dabar.
+	Restart now	Paleisti iš naujo dabar
+	Update now	Atnaujinti dabar
+	Release page	Versijos puslapis
+	save or close your documents first	pirmiau įrašykite arba užverkite dokumentus

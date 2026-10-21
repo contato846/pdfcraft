@@ -2495,3 +2495,15 @@ animation effects	Off	关
 	not found	未找到
 	{placed} of {n} entries have a page.	{n} 个条目中有 {placed} 个找到了页面。
 	Linked {n} entries of the table of contents.	已将目录的 {n} 个条目转为链接。
+# The portable build updates itself.
+	A new version is available ({v}).	有新版本可用({v})。
+	Update now downloads it and swaps the program in place; your settings stay.	“立即更新”会下载并就地替换程序;您的设置保持不变。
+	Downloading the new version… {mb} MB	正在下载新版本… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	新版本已就绪。PdfCraft 将关闭并以新版本重新打开。
+	Couldn't update: {e}	无法更新:{e}
+	All releases are listed at {page}.	所有版本列于 {page}。
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	PdfCraft 启动时在 GitHub 检查是否有新版本。在您选择“立即更新”之前不会下载任何内容。
+	Restart now	立即重启
+	Update now	立即更新
+	Release page	版本页面
+	save or close your documents first	请先保存或关闭您的文档

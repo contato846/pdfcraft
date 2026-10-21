@@ -2798,3 +2798,15 @@ key	Space	Space
 	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	Hành vi vi phạm sẽ chịu các chế tài của pháp luật về quyền tác giả, không loại trừ các biện pháp khác.
 	Issued on {date}. Code {code}.	Cấp ngày {date}. Mã {code}.
 	Licence	Giấy phép sử dụng
+# The portable build updates itself.
+	A new version is available ({v}).	Đã có phiên bản mới ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Cập nhật ngay sẽ tải về và thay chương trình tại chỗ; cài đặt của bạn được giữ nguyên.
+	Downloading the new version… {mb} MB	Đang tải phiên bản mới… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Phiên bản mới đã sẵn sàng. PdfCraft sẽ đóng và mở lại với phiên bản mới.
+	Couldn't update: {e}	Không thể cập nhật: {e}
+	All releases are listed at {page}.	Mọi phiên bản được liệt kê tại {page}.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Kiểm tra trên GitHub xem có phiên bản mới khi PdfCraft khởi động. Không tải gì về cho đến khi bạn chọn Cập nhật ngay.
+	Restart now	Khởi động lại ngay
+	Update now	Cập nhật ngay
+	Release page	Trang phiên bản
+	save or close your documents first	hãy lưu hoặc đóng tài liệu trước

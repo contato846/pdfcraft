@@ -2544,3 +2544,15 @@ animation effects	Off	Désactivés
 	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	Toute violation expose son auteur aux sanctions prévues par le droit d'auteur, sans préjudice d'autres mesures.
 	Issued on {date}. Code {code}.	Émis le {date}. Code {code}.
 	Licence	Licence d'utilisation
+# The portable build updates itself.
+	A new version is available ({v}).	Une nouvelle version est disponible ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Mettre à jour maintenant la télécharge et remplace le programme sur place ; vos réglages sont conservés.
+	Downloading the new version… {mb} MB	Téléchargement de la nouvelle version… {mb} Mo
+	The new version is ready. PdfCraft will close and open again as the new version.	La nouvelle version est prête. PdfCraft va se fermer et se rouvrir dans la nouvelle version.
+	Couldn't update: {e}	Impossible de mettre à jour : {e}
+	All releases are listed at {page}.	Toutes les versions sont listées sur {page}.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Vérifie sur GitHub s'il existe une nouvelle version au démarrage de PdfCraft. Rien n'est téléchargé avant que vous choisissiez Mettre à jour maintenant.
+	Restart now	Redémarrer maintenant
+	Update now	Mettre à jour maintenant
+	Release page	Page de la version
+	save or close your documents first	enregistrez ou fermez d'abord vos documents

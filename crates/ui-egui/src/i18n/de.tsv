@@ -2545,3 +2545,15 @@ animation effects	Off	Aus
 	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	Verstöße unterliegen den Sanktionen des Urheberrechts, unbeschadet weiterer Maßnahmen.
 	Issued on {date}. Code {code}.	Ausgestellt am {date}. Code {code}.
 	Licence	Nutzungslizenz
+# The portable build updates itself.
+	A new version is available ({v}).	Eine neue Version ist verfügbar ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Jetzt aktualisieren lädt sie herunter und tauscht das Programm an Ort und Stelle aus; Ihre Einstellungen bleiben.
+	Downloading the new version… {mb} MB	Die neue Version wird heruntergeladen… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Die neue Version ist bereit. PdfCraft wird geschlossen und als neue Version wieder geöffnet.
+	Couldn't update: {e}	Aktualisierung fehlgeschlagen: {e}
+	All releases are listed at {page}.	Alle Versionen sind unter {page} aufgeführt.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Prüft beim Start von PdfCraft auf GitHub, ob es eine neue Version gibt. Nichts wird heruntergeladen, bis Sie Jetzt aktualisieren wählen.
+	Restart now	Jetzt neu starten
+	Update now	Jetzt aktualisieren
+	Release page	Seite der Version
+	save or close your documents first	speichern oder schließen Sie zuerst Ihre Dokumente

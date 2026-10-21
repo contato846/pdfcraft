@@ -45,6 +45,7 @@ mod updates;
 #[cfg(test)]
 #[path = "windows_manifest.rs"]
 mod windows_manifest;
+mod zipread;
 
 /// Freedesktop app id: the `.desktop` file name and the hicolor icon name.
 const APP_ID: &str = "ai.storyteller.pdfcraft";
@@ -392,6 +393,11 @@ fn app_creator<'a>(
             app.motion.source = Some(motion::source());
         }
         app.update_source = Some(std::sync::Arc::new(updates::latest_release));
+        // The portable build updates itself (only when it knows which commit it was built from).
+        app.build_sha = option_env!("PDFCRAFT_BUILD_SHA");
+        app.update_installer = Some(std::sync::Arc::new(updates::install));
+        app.update_apply = Some(std::sync::Arc::new(updates::apply));
+        updates::remove_old_program();
         app.ai_transport = Some(std::sync::Arc::new(ai::call));
         app.printer_source = Some(pdfcraft_ui_egui::system_printers());
         app.os_key_store_ids = cfg!(any(target_os = "macos", target_os = "windows"));

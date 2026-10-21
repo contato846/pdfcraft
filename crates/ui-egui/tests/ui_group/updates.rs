@@ -9,7 +9,9 @@ use pdfcraft_ui_egui::updates::{Release, UpdateSource, is_newer};
 
 fn source(answer: Result<&str, &str>) -> UpdateSource {
     let answer = answer.map(str::to_string).map_err(str::to_string);
-    Arc::new(move || answer.clone().map(|v| Release { url: format!("https://github.com/storytold/pdfcraft/releases/tag/{v}"), version: v }))
+    Arc::new(move || {
+        answer.clone().map(|v| Release { asset: None, url: format!("https://github.com/storytold/pdfcraft/releases/tag/{v}"), version: v })
+    })
 }
 
 fn harness(answer: Result<&str, &str>) -> Harness<'static, PdfCraftApp> {
@@ -89,7 +91,7 @@ fn nothing_is_asked_until_the_user_checks() {
         let counted = counted.clone();
         app.update_source = Some(Arc::new(move || {
             counted.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
-            Ok(Release { version: "v99.0.0".into(), url: "https://github.com/storytold/pdfcraft/releases/tag/v99.0.0".into() })
+            Ok(Release { version: "v99.0.0".into(), url: "https://github.com/storytold/pdfcraft/releases/tag/v99.0.0".into(), asset: None })
         }));
         app
     });
@@ -100,4 +102,67 @@ fn nothing_is_asked_until_the_user_checks() {
     settle(&mut h);
     assert_eq!(calls.load(std::sync::atomic::Ordering::SeqCst), 1);
     h.get_by_label_contains("PdfCraft 99.0.0 is available");
+}
+
+/// The portable build (one that knows its commit and can install): a release of another build
+/// opens the dialog at start; Update now stages it and Restart now swaps it in. The same build
+/// again says nothing.
+#[test]
+fn the_portable_build_updates_itself_from_a_release_of_another_commit() {
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    let installs = Arc::new(AtomicUsize::new(0));
+    let applies = Arc::new(AtomicUsize::new(0));
+    let harness = |tag: &'static str, installs: Arc<AtomicUsize>, applies: Arc<AtomicUsize>| {
+        Harness::builder().with_size(egui::vec2(1200.0, 800.0)).build_eframe(move |_cc| {
+            let mut app = PdfCraftApp::new();
+            app.set_option("language", "en").unwrap();
+            app.build_sha = Some("c30002f0aca1ded9067d04ddabe19a777c76ff3a");
+            app.update_source = Some(Arc::new(move || {
+                Ok(Release {
+                    version: tag.into(),
+                    url: format!("https://github.com/contato846/pdfcraft/releases/tag/{tag}"),
+                    asset: Some(format!(
+                        "https://github.com/contato846/pdfcraft/releases/download/{tag}/pdfcraft-fontes-livres-windows-x64-portable.zip"
+                    )),
+                })
+            }));
+            let installs = installs.clone();
+            app.update_installer = Some(Arc::new(move |asset: &str, progress: &mut dyn FnMut(u64)| {
+                assert!(asset.ends_with("portable.zip"));
+                progress(2_000_000);
+                installs.fetch_add(1, Ordering::SeqCst);
+                Ok(())
+            }));
+            let applies = applies.clone();
+            app.update_apply = Some(Arc::new(move || {
+                applies.fetch_add(1, Ordering::SeqCst);
+                Ok(())
+            }));
+            app
+        })
+    };
+    let wait_for = |h: &mut Harness<'static, PdfCraftApp>, text: &str| {
+        let deadline = std::time::Instant::now() + std::time::Duration::from_secs(30);
+        while h.query_by_label_contains(text).is_none() {
+            assert!(std::time::Instant::now() < deadline, "timed out waiting for {text:?}");
+            std::thread::sleep(std::time::Duration::from_millis(5));
+            h.run_steps(2);
+        }
+    };
+    let mut h = harness("fontes-livres-26c762b", installs.clone(), applies.clone());
+    wait_for(&mut h, "A new version is available (fontes-livres-26c762b)");
+    h.get_by_label("Update now").click();
+    wait_for(&mut h, "The new version is ready");
+    assert_eq!(installs.load(Ordering::SeqCst), 1);
+    h.get_by_label("Restart now").click();
+    h.run_steps(3);
+    assert_eq!(applies.load(Ordering::SeqCst), 1);
+
+    // The release of this very build: nothing to say.
+    let mut h = harness("fontes-livres-c30002f", installs.clone(), applies.clone());
+    settle(&mut h);
+    std::thread::sleep(std::time::Duration::from_millis(100));
+    h.run_steps(4);
+    assert!(h.query_by_label_contains("is available").is_none());
+    assert!(h.query_by_label("Update now").is_none());
 }

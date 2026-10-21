@@ -2527,3 +2527,15 @@ animation effects	Off	Kapalı
 	not found	bulunamadı
 	{placed} of {n} entries have a page.	{n} girişten {placed} tanesinin sayfası var.
 	Linked {n} entries of the table of contents.	İçindekiler tablosunun {n} girişi bağlantıya dönüştürüldü.
+# The portable build updates itself.
+	A new version is available ({v}).	Yeni bir sürüm var ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Şimdi güncelle onu indirir ve programı yerinde değiştirir; ayarlarınız korunur.
+	Downloading the new version… {mb} MB	Yeni sürüm indiriliyor… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Yeni sürüm hazır. PdfCraft kapanıp yeni sürüm olarak yeniden açılacak.
+	Couldn't update: {e}	Güncellenemedi: {e}
+	All releases are listed at {page}.	Tüm sürümler {page} adresinde listelenir.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	PdfCraft açılırken GitHub'da yeni sürüm olup olmadığını denetler. Şimdi güncelle'yi seçene kadar hiçbir şey indirilmez.
+	Restart now	Şimdi yeniden başlat
+	Update now	Şimdi güncelle
+	Release page	Sürüm sayfası
+	save or close your documents first	önce belgelerinizi kaydedin veya kapatın

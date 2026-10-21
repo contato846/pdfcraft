@@ -2529,3 +2529,15 @@ animation effects	Off	Өшірулі
 	not found	табылмады
 	{placed} of {n} entries have a page.	{n} жазбаның {placed} бетінің беті бар.
 	Linked {n} entries of the table of contents.	Мазмұнның {n} жазбасы сілтемеге айналдырылды.
+# The portable build updates itself.
+	A new version is available ({v}).	Жаңа нұсқа бар ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	«Қазір жаңарту» оны жүктеп алып, бағдарламаны орнында ауыстырады; параметрлеріңіз сақталады.
+	Downloading the new version… {mb} MB	Жаңа нұсқа жүктелуде… {mb} МБ
+	The new version is ready. PdfCraft will close and open again as the new version.	Жаңа нұсқа дайын. PdfCraft жабылып, жаңа нұсқа ретінде қайта ашылады.
+	Couldn't update: {e}	Жаңарту мүмкін болмады: {e}
+	All releases are listed at {page}.	Барлық нұсқалар {page} бетінде тізілген.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	PdfCraft іске қосылғанда GitHub-тан жаңа нұсқа бар-жоғын тексереді. «Қазір жаңарту» таңдалғанша ештеңе жүктелмейді.
+	Restart now	Қазір қайта іске қосу
+	Update now	Қазір жаңарту
+	Release page	Нұсқа беті
+	save or close your documents first	алдымен құжаттарыңызды сақтаңыз немесе жабыңыз

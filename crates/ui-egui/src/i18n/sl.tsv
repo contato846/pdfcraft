@@ -2536,3 +2536,15 @@ animation effects	Off	Izklopljeni
 	not found	ni najdeno
 	{placed} of {n} entries have a page.	{placed} od {n} vnosov ima stran.
 	Linked {n} entries of the table of contents.	Povezani vnosi kazala: {n}.
+# The portable build updates itself.
+	A new version is available ({v}).	Na voljo je nova različica ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Posodobi zdaj jo prenese in zamenja program na mestu; vaše nastavitve ostanejo.
+	Downloading the new version… {mb} MB	Prenašanje nove različice… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Nova različica je pripravljena. PdfCraft se bo zaprl in znova odprl kot nova različica.
+	Couldn't update: {e}	Posodobitev ni uspela: {e}
+	All releases are listed at {page}.	Vse različice so navedene na {page}.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Ob zagonu PdfCraft na GitHubu preveri, ali obstaja nova različica. Nič se ne prenese, dokler ne izberete Posodobi zdaj.
+	Restart now	Znova zaženi zdaj
+	Update now	Posodobi zdaj
+	Release page	Stran različice
+	save or close your documents first	najprej shranite ali zaprite dokumente

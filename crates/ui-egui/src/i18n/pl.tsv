@@ -2507,3 +2507,15 @@ animation effects	Off	Wyłączone
 	not found	nie znaleziono
 	{placed} of {n} entries have a page.	{placed} z {n} pozycji ma stronę.
 	Linked {n} entries of the table of contents.	Połączono pozycje spisu treści: {n}.
+# The portable build updates itself.
+	A new version is available ({v}).	Dostępna jest nowa wersja ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Aktualizuj teraz pobiera ją i podmienia program na miejscu; ustawienia zostają.
+	Downloading the new version… {mb} MB	Pobieranie nowej wersji… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Nowa wersja jest gotowa. PdfCraft zamknie się i otworzy ponownie już w nowej wersji.
+	Couldn't update: {e}	Nie udało się zaktualizować: {e}
+	All releases are listed at {page}.	Wszystkie wersje są wymienione na {page}.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Przy uruchomieniu PdfCraft sprawdza w GitHub, czy jest nowa wersja. Nic nie jest pobierane, dopóki nie wybierzesz Aktualizuj teraz.
+	Restart now	Uruchom ponownie teraz
+	Update now	Aktualizuj teraz
+	Release page	Strona wersji
+	save or close your documents first	najpierw zapisz lub zamknij dokumenty

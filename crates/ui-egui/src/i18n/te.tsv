@@ -2440,3 +2440,15 @@ animation effects	Off	ఆఫ్
 	not found	కనుగొనబడలేదు
 	{placed} of {n} entries have a page.	{n} అంశాలలో {placed} అంశాలకు పేజీ ఉంది.
 	Linked {n} entries of the table of contents.	విషయసూచికలోని {n} అంశాలు లింక్‌లుగా మార్చబడ్డాయి.
+# The portable build updates itself.
+	A new version is available ({v}).	కొత్త వెర్షన్ అందుబాటులో ఉంది ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	ఇప్పుడే అప్‌డేట్ చేయి దాన్ని డౌన్‌లోడ్ చేసి ప్రోగ్రామ్‌ను అక్కడే మారుస్తుంది; మీ సెట్టింగ్‌లు అలాగే ఉంటాయి.
+	Downloading the new version… {mb} MB	కొత్త వెర్షన్ డౌన్‌లోడ్ అవుతోంది… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	కొత్త వెర్షన్ సిద్ధంగా ఉంది. PdfCraft మూసివేయబడి కొత్త వెర్షన్‌గా మళ్లీ తెరుచుకుంటుంది.
+	Couldn't update: {e}	అప్‌డేట్ చేయలేకపోయాం: {e}
+	All releases are listed at {page}.	అన్ని వెర్షన్‌లు {page} లో ఉన్నాయి.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	PdfCraft ప్రారంభమైనప్పుడు GitHub లో కొత్త వెర్షన్ ఉందో లేదో తనిఖీ చేస్తుంది. మీరు ఇప్పుడే అప్‌డేట్ చేయి ఎంచుకునే వరకు ఏదీ డౌన్‌లోడ్ కాదు.
+	Restart now	ఇప్పుడే పునఃప్రారంభించు
+	Update now	ఇప్పుడే అప్‌డేట్ చేయి
+	Release page	వెర్షన్ పేజీ
+	save or close your documents first	ముందుగా మీ పత్రాలను సేవ్ చేయండి లేదా మూసివేయండి

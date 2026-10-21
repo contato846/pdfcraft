@@ -2530,3 +2530,15 @@ animation effects	Off	Ki
 	not found	nem található
 	{placed} of {n} entries have a page.	{n} bejegyzésből {placed} kapott oldalt.
 	Linked {n} entries of the table of contents.	Hivatkozássá alakított tartalomjegyzék-bejegyzések: {n}.
+# The portable build updates itself.
+	A new version is available ({v}).	Új verzió érhető el ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	A Frissítés most letölti, és helyben kicseréli a programot; a beállításai megmaradnak.
+	Downloading the new version… {mb} MB	Az új verzió letöltése… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Az új verzió készen áll. A PdfCraft bezárul, és már az új verzióként nyílik meg újra.
+	Couldn't update: {e}	Nem sikerült frissíteni: {e}
+	All releases are listed at {page}.	Minden verzió itt található: {page}.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	A PdfCraft indulásakor ellenőrzi a GitHubon, van-e új verzió. Semmi nem töltődik le, amíg nem választja a Frissítés most lehetőséget.
+	Restart now	Újraindítás most
+	Update now	Frissítés most
+	Release page	A verzió oldala
+	save or close your documents first	előbb mentse vagy zárja be a dokumentumait

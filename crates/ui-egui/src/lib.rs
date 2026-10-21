@@ -576,6 +576,12 @@ pub struct PdfCraftApp {
     pub dialog: Option<Dialog>,
     /// How to ask for the latest release (the desktop app sets it; see `updates`).
     pub update_source: Option<updates::UpdateSource>,
+    /// Downloads and stages a release (the desktop portable build); none: no self-update.
+    pub update_installer: Option<updates::UpdateInstaller>,
+    /// Swaps the staged program in and starts it.
+    pub update_apply: Option<updates::UpdateApply>,
+    /// The commit this program was built from, when the build knows it (`PDFCRAFT_BUILD_SHA`).
+    pub build_sha: Option<&'static str>,
     pub(crate) updates: updates::Updates,
     /// Lists the Print dialog's printers in the background (the desktop app sets it; see
     /// [`PrinterSource`]).
@@ -968,6 +974,9 @@ impl PdfCraftApp {
             fill_text_size: fill_sign::TEXT_SIZE,
             dialog: None,
             update_source: None,
+            update_installer: None,
+            update_apply: None,
+            build_sha: None,
             updates: updates::Updates::default(),
             printer_source: None,
             print_tasks: print_ui::PrintTasks::default(),
@@ -3155,6 +3164,7 @@ impl eframe::App for PdfCraftApp {
                 report(dirty);
             }
         }
+        self.check_for_updates_at_start();
         self.poll_updates();
         self.poll_print();
         // Shortcuts deferred last frame: the text field has taken that frame's typing since.

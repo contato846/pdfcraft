@@ -2605,3 +2605,15 @@ animation effects	Off	Vypnuto
 	not found	nenalezeno
 	{placed} of {n} entries have a page.	{placed} z {n} položek má stránku.
 	Linked {n} entries of the table of contents.	Propojené položky obsahu: {n}.
+# The portable build updates itself.
+	A new version is available ({v}).	Je k dispozici nová verze ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Aktualizovat nyní ji stáhne a vymění program na místě; vaše nastavení zůstanou.
+	Downloading the new version… {mb} MB	Stahuje se nová verze… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Nová verze je připravena. PdfCraft se zavře a znovu otevře už jako nová verze.
+	Couldn't update: {e}	Aktualizace se nezdařila: {e}
+	All releases are listed at {page}.	Všechny verze jsou uvedeny na {page}.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Při spuštění PdfCraft zkontroluje na GitHubu, zda existuje nová verze. Nic se nestahuje, dokud nezvolíte Aktualizovat nyní.
+	Restart now	Restartovat nyní
+	Update now	Aktualizovat nyní
+	Release page	Stránka verze
+	save or close your documents first	nejprve uložte nebo zavřete své dokumenty

@@ -2494,3 +2494,15 @@ animation effects	Off	Изключени
 	not found	не е намерено
 	{placed} of {n} entries have a page.	{placed} от {n} точки имат страница.
 	Linked {n} entries of the table of contents.	Точки от съдържанието, превърнати във връзки: {n}.
+# The portable build updates itself.
+	A new version is available ({v}).	Налична е нова версия ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	„Обновяване сега“ я изтегля и подменя програмата на място; настройките ви остават.
+	Downloading the new version… {mb} MB	Изтегляне на новата версия… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Новата версия е готова. PdfCraft ще се затвори и ще се отвори отново вече като новата версия.
+	Couldn't update: {e}	Обновяването не успя: {e}
+	All releases are listed at {page}.	Всички версии са изброени на {page}.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	При стартиране PdfCraft проверява в GitHub дали има нова версия. Нищо не се изтегля, докато не изберете „Обновяване сега“.
+	Restart now	Рестартиране сега
+	Update now	Обновяване сега
+	Release page	Страница на версията
+	save or close your documents first	първо запазете или затворете документите си

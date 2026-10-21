@@ -3943,6 +3943,7 @@ dependencies = [
  "craft-quit",
  "eframe",
  "egui",
+ "flate2",
  "fmv-macos-events",
  "log",
  "pdfcraft-engine",

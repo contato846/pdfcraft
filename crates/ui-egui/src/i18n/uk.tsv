@@ -2553,3 +2553,15 @@ animation effects	Off	Вимкнено
 	not found	не знайдено
 	{placed} of {n} entries have a page.	Сторінку має {placed} з {n} пунктів.
 	Linked {n} entries of the table of contents.	Пунктів змісту перетворено на посилання: {n}.
+# The portable build updates itself.
+	A new version is available ({v}).	Доступна нова версія ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	«Оновити зараз» завантажить її та замінить програму на місці; ваші налаштування збережуться.
+	Downloading the new version… {mb} MB	Завантаження нової версії… {mb} МБ
+	The new version is ready. PdfCraft will close and open again as the new version.	Нова версія готова. PdfCraft закриється й відкриється знову вже новою версією.
+	Couldn't update: {e}	Не вдалося оновити: {e}
+	All releases are listed at {page}.	Усі версії перелічено на {page}.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Під час запуску PdfCraft перевіряє на GitHub, чи є нова версія. Нічого не завантажується, доки ви не виберете «Оновити зараз».
+	Restart now	Перезапустити зараз
+	Update now	Оновити зараз
+	Release page	Сторінка версії
+	save or close your documents first	спочатку збережіть або закрийте документи

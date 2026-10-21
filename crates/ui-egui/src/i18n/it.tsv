@@ -2756,3 +2756,15 @@ certificate	SHA-256 digest	Impronta SHA-256
 	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	La violazione è soggetta alle sanzioni previste dalla legge sul diritto d'autore, fatte salve altre misure.
 	Issued on {date}. Code {code}.	Emesso il {date}. Codice {code}.
 	Licence	Licenza d'uso
+# The portable build updates itself.
+	A new version is available ({v}).	È disponibile una nuova versione ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Aggiorna ora la scarica e sostituisce il programma sul posto; le impostazioni restano.
+	Downloading the new version… {mb} MB	Download della nuova versione… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	La nuova versione è pronta. PdfCraft si chiuderà e si riaprirà già nella nuova versione.
+	Couldn't update: {e}	Impossibile aggiornare: {e}
+	All releases are listed at {page}.	Tutte le versioni sono elencate in {page}.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	All'avvio di PdfCraft controlla su GitHub se c'è una nuova versione. Non viene scaricato nulla finché non scegli Aggiorna ora.
+	Restart now	Riavvia ora
+	Update now	Aggiorna ora
+	Release page	Pagina della versione
+	save or close your documents first	salva o chiudi prima i tuoi documenti

@@ -2531,3 +2531,15 @@ animation effects	Off	オフ
 	not found	見つかりません
 	{placed} of {n} entries have a page.	{n} 項目中 {placed} 項目にページがあります。
 	Linked {n} entries of the table of contents.	目次の {n} 項目をリンクにしました。
+# The portable build updates itself.
+	A new version is available ({v}).	新しいバージョンがあります({v})。
+	Update now downloads it and swaps the program in place; your settings stay.	「今すぐ更新」はそれをダウンロードし、プログラムをその場で入れ替えます。設定はそのまま残ります。
+	Downloading the new version… {mb} MB	新しいバージョンをダウンロード中… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	新しいバージョンの準備ができました。PdfCraft は終了し、新しいバージョンとして再び開きます。
+	Couldn't update: {e}	更新できませんでした: {e}
+	All releases are listed at {page}.	すべてのバージョンは {page} に一覧されています。
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	PdfCraft の起動時に GitHub で新しいバージョンを確認します。「今すぐ更新」を選ぶまで何もダウンロードしません。
+	Restart now	今すぐ再起動
+	Update now	今すぐ更新
+	Release page	バージョンのページ
+	save or close your documents first	先に文書を保存するか閉じてください

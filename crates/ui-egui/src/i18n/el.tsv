@@ -2537,3 +2537,15 @@ animation effects	Off	Ανενεργά
 	not found	δεν βρέθηκε
 	{placed} of {n} entries have a page.	{placed} από {n} καταχωρίσεις έχουν σελίδα.
 	Linked {n} entries of the table of contents.	Καταχωρίσεις του πίνακα περιεχομένων που έγιναν σύνδεσμοι: {n}.
+# The portable build updates itself.
+	A new version is available ({v}).	Υπάρχει διαθέσιμη νέα έκδοση ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Η Ενημέρωση τώρα την κατεβάζει και αντικαθιστά το πρόγραμμα επιτόπου· οι ρυθμίσεις σας διατηρούνται.
+	Downloading the new version… {mb} MB	Λήψη της νέας έκδοσης… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Η νέα έκδοση είναι έτοιμη. Το PdfCraft θα κλείσει και θα ανοίξει ξανά ως η νέα έκδοση.
+	Couldn't update: {e}	Δεν ήταν δυνατή η ενημέρωση: {e}
+	All releases are listed at {page}.	Όλες οι εκδόσεις παρατίθενται στο {page}.
+	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Ελέγχει στο GitHub για νέα έκδοση κατά την εκκίνηση του PdfCraft. Τίποτα δεν κατεβαίνει μέχρι να επιλέξετε Ενημέρωση τώρα.
+	Restart now	Επανεκκίνηση τώρα
+	Update now	Ενημέρωση τώρα
+	Release page	Σελίδα έκδοσης
+	save or close your documents first	αποθηκεύστε ή κλείστε πρώτα τα έγγραφά σας
