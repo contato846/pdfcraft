@@ -2808,3 +2808,5 @@ theme	Appearance	Išvaizda
 	Release page	Versijos puslapis
 	save or close your documents first	pirmiau įrašykite arba užverkite dokumentus
 	New password	Naujas slaptažodis
+	Trust the ICP-Brasil root certificates	Pasitikėti ICP-Brasil šakniniais sertifikatais
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Parašai, sukurti Brazilijos e-CPF ir e-CNPJ sertifikatais, tada patvirtinami nepridedant kiekvienos įstaigos rankiniu būdu.

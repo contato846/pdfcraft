@@ -2366,6 +2366,7 @@ impl PdfCraftApp {
             "comments_panel_closed": self.comments_panel_closed,
             "right_panel_closed": self.right_panel_closed,
         });
+        v["trust_builtin_roots"] = serde_json::json!(self.session.builtin_roots());
         // Outside the macro, which is at its recursion limit.
         v["bar_items"] = serde_json::json!(self.bar_items);
         v["assistant"] = self.assistant.settings.to_json();
@@ -2534,6 +2535,9 @@ impl PdfCraftApp {
         self.custom_actions = actions_ui::decode(&v["actions"]);
         if let Some(on) = v["javascript"].as_bool() {
             self.session.set_javascript(on);
+        }
+        if let Some(on) = v["trust_builtin_roots"].as_bool() {
+            self.session.set_builtin_roots(on);
         }
         if let Ok(pems) = serde_json::from_value::<Vec<String>>(v["trusted"].clone()) {
             let certs = pems.iter().filter_map(|p| pdfcraft_engine::sign::x509::load_certificates(p.as_bytes()).ok()).flatten().collect();

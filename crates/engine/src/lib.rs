@@ -2950,8 +2950,14 @@ pub struct Session {
     /// injected time AS local time and zeroes the zone, so injecting only it leaves either the
     /// local dates or the UTC ones wrong by the zone's offset.
     utc_offset: Option<fn() -> i64>,
-    /// Certificates trusted for signing (Acrobat: Trusted Certificates).
+    /// Certificates trusted for signing: the user's list plus, unless turned off, the
+    /// built-in roots ([`pdfcraft_sign::roots`]). What validation reads.
     trust: Arc<TrustStore>,
+    /// The user's own trusted certificates (Acrobat: Trusted Certificates), kept apart so the
+    /// built-in roots are never saved with them or shown as theirs.
+    user_trust: Vec<pdfcraft_sign::Certificate>,
+    /// Preferences ▸ Signatures ▸ trust the built-in roots, inverted (on by default).
+    builtin_roots_off: bool,
     /// Preferences ▸ JavaScript ▸ Enable Acrobat JavaScript, inverted (on by default).
     js_off: bool,
     /// Preferences ▸ Date format, when not the default (see [`dates`]).
@@ -3279,7 +3285,9 @@ fn signatures_of(cos: &pdfcraft_cos::Document, bytes: &[u8], trust: &TrustStore,
 
 impl Session {
     pub fn new() -> Self {
-        Self::default()
+        let mut s = Self::default();
+        s.rebuild_trust();
+        s
     }
 
     /// Use a fixed clock (tests) instead of the system time.
@@ -4851,13 +4859,42 @@ impl Session {
 
     /// The certificates trusted for signing.
     pub fn trusted_certificates(&self) -> &[pdfcraft_sign::Certificate] {
-        &self.trust.certs
+        &self.user_trust
+    }
+
+    /// Whether the built-in roots (ICP-Brasil) are trusted.
+    pub fn builtin_roots(&self) -> bool {
+        !self.builtin_roots_off
+    }
+
+    /// Trust the built-in roots or not, revalidating every open document.
+    pub fn set_builtin_roots(&mut self, on: bool) {
+        if self.builtin_roots_off == !on {
+            return;
+        }
+        self.builtin_roots_off = !on;
+        self.rebuild_trust();
     }
 
     /// Replace the trusted certificates, revalidate every open document's signatures,
     /// and rebuild its display copy and renderer to match (working file untouched,
     /// generation/dirty unchanged: trust alone is not an edit).
     pub fn set_trusted_certificates(&mut self, certs: Vec<pdfcraft_sign::Certificate>) {
+        self.user_trust = certs;
+        self.rebuild_trust();
+    }
+
+    /// The trust store validation reads, from the user's list and the built-in roots, then
+    /// every open document revalidated against it.
+    fn rebuild_trust(&mut self) {
+        let mut certs = self.user_trust.clone();
+        if !self.builtin_roots_off {
+            for root in pdfcraft_sign::roots::builtin() {
+                if !certs.iter().any(|c| c.raw == root.raw) {
+                    certs.push(root);
+                }
+            }
+        }
         self.trust = Arc::new(TrustStore { certs });
         for doc in &mut self.docs {
             doc.trust = self.trust.clone();

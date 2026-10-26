@@ -2458,3 +2458,5 @@ animation effects	Off	Выкл
 	Release page	Страница версии
 	save or close your documents first	сначала сохраните или закройте документы
 	New password	Новый пароль
+	Trust the ICP-Brasil root certificates	Доверять корневым сертификатам ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Подписи бразильскими сертификатами e-CPF и e-CNPJ тогда проверяются без ручного добавления каждого центра.

@@ -2811,3 +2811,5 @@ key	Space	Space
 	Release page	Trang phiên bản
 	save or close your documents first	hãy lưu hoặc đóng tài liệu trước
 	New password	Mật khẩu mới
+	Trust the ICP-Brasil root certificates	Tin cậy chứng chỉ gốc ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Khi đó chữ ký bằng chứng chỉ e-CPF và e-CNPJ của Brazil được xác thực mà không cần thêm từng tổ chức cấp bằng tay.

@@ -2821,3 +2821,5 @@ certificate	Version	الإصدار
 	Release page	صفحة الإصدار
 	save or close your documents first	احفظ مستنداتك أو أغلقها أولًا
 	New password	كلمة مرور جديدة
+	Trust the ICP-Brasil root certificates	الوثوق بشهادات الجذر لـ ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	عندئذٍ يتم التحقق من التواقيع المُنشأة بشهادات e-CPF وe-CNPJ البرازيلية دون إضافة كل جهة إصدار يدويًا.

@@ -18,6 +18,7 @@ pub mod keys;
 pub mod pdf;
 pub mod pkcs12;
 pub mod revocation;
+pub mod roots;
 mod rsa_pad;
 pub mod timestamp;
 #[cfg(target_os = "windows")]

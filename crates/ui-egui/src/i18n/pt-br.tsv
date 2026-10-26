@@ -2571,3 +2571,5 @@ animation effects	Off	Desativados
 	Release page	Página da versão
 	save or close your documents first	salve ou feche os seus documentos antes
 	New password	Nova senha
+	Trust the ICP-Brasil root certificates	Confiar nos certificados raiz da ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Assinaturas feitas com certificados e-CPF e e-CNPJ passam a ser validadas sem precisar adicionar cada autoridade à mão.

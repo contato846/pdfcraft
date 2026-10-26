@@ -2453,3 +2453,5 @@ animation effects	Off	ఆఫ్
 	Release page	వెర్షన్ పేజీ
 	save or close your documents first	ముందుగా మీ పత్రాలను సేవ్ చేయండి లేదా మూసివేయండి
 	New password	కొత్త పాస్‌వర్డ్
+	Trust the ICP-Brasil root certificates	ICP-Brasil రూట్ సర్టిఫికెట్‌లను విశ్వసించు
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	అప్పుడు బ్రెజిలియన్ e-CPF, e-CNPJ సర్టిఫికెట్‌లతో చేసిన సంతకాలు ప్రతి అధికార సంస్థను చేతితో జోడించకుండానే ధృవీకరించబడతాయి.

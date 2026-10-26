@@ -2544,3 +2544,5 @@ animation effects	Off	オフ
 	Release page	バージョンのページ
 	save or close your documents first	先に文書を保存するか閉じてください
 	New password	新しいパスワード
+	Trust the ICP-Brasil root certificates	ICP-Brasil のルート証明書を信頼する
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	ブラジルの e-CPF・e-CNPJ 証明書による署名を、認証局を一つずつ追加しなくても検証できます。

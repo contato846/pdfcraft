@@ -2540,3 +2540,5 @@ animation effects	Off	Kapalı
 	Release page	Sürüm sayfası
 	save or close your documents first	önce belgelerinizi kaydedin veya kapatın
 	New password	Yeni parola
+	Trust the ICP-Brasil root certificates	ICP-Brasil kök sertifikalarına güven
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Brezilya e-CPF ve e-CNPJ sertifikalarıyla atılan imzalar her yetkiliyi elle eklemeden doğrulanır.

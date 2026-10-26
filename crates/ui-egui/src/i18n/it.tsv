@@ -2769,3 +2769,5 @@ certificate	SHA-256 digest	Impronta SHA-256
 	Release page	Pagina della versione
 	save or close your documents first	salva o chiudi prima i tuoi documenti
 	New password	Nuova password
+	Trust the ICP-Brasil root certificates	Considera attendibili i certificati radice ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Le firme fatte con certificati brasiliani e-CPF ed e-CNPJ vengono così convalidate senza aggiungere a mano ogni autorità.

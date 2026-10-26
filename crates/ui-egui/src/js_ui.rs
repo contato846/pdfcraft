@@ -475,6 +475,20 @@ pub(crate) fn preferences_body(ui: &mut egui::Ui, app: &mut PdfCraftApp, t: &Tok
         egui::RichText::new(tl!("Text, marks and signatures become part of the page. Other comments stay editable.")).small().color(t.text_muted),
     );
     ui.add_space(8.0);
+    ui.label(egui::RichText::new(tl!("Signatures")).font(theme::semibold(13.0)));
+    let mut roots = app.session.builtin_roots();
+    if ui.add(widgets::checkbox(&mut roots, tl!("Trust the ICP-Brasil root certificates"))).changed() {
+        app.session.set_builtin_roots(roots);
+        for view in &mut app.views {
+            view.invalidate_content();
+        }
+    }
+    ui.label(
+        egui::RichText::new(tl!("Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand."))
+            .small()
+            .color(t.text_muted),
+    );
+    ui.add_space(8.0);
     date_format(ui, app, t);
     ui.add_space(8.0);
     ui.label(egui::RichText::new("JavaScript").font(theme::semibold(13.0)));

@@ -2508,3 +2508,5 @@ animation effects	Off	关
 	Release page	版本页面
 	save or close your documents first	请先保存或关闭您的文档
 	New password	新密码
+	Trust the ICP-Brasil root certificates	信任 ICP-Brasil 根证书
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	使用巴西 e-CPF 和 e-CNPJ 证书的签名无需逐一手动添加颁发机构即可验证。

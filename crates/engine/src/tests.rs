@@ -2898,6 +2898,31 @@ fn reading_colors_set_and_invalidated() {
 }
 
 #[test]
+fn built_in_roots_stay_out_of_the_users_list_and_turn_off_without_losing_it() {
+    let p12 = std::fs::read(concat!(env!("CARGO_MANIFEST_DIR"), "/../sign/tests/data/ec-p256.p12")).unwrap();
+    let digital_id = sign::pkcs12::open(&p12, "test").unwrap();
+    let mut s = Session::new().with_clock(|| 1_800_000_000);
+    assert!(s.builtin_roots(), "on by default");
+    assert!(s.trusted_certificates().is_empty(), "the built-in roots are not the user's");
+    let id = s.open("fixture.pdf", None, Arc::new(fixture(2)), None).unwrap();
+    let opts = SignOptions { page: 1, rect: Some([20.0, 20.0, 180.0, 60.0]), ..SignOptions::default() };
+    let signed = s.sign(id, &digital_id, opts).unwrap();
+    s.mark_signed(id, signed, None).unwrap();
+    s.set_trusted_certificates(vec![digital_id.certificate.clone()]);
+    assert_eq!(s.get(id).unwrap().signatures[0].status, SignatureStatus::Valid);
+    // Turning the built-in roots off keeps the user's own trust, and revalidates.
+    s.set_builtin_roots(false);
+    assert!(!s.builtin_roots());
+    assert_eq!(s.trusted_certificates().len(), 1);
+    assert_eq!(s.get(id).unwrap().signatures[0].status, SignatureStatus::Valid);
+    s.set_trusted_certificates(Vec::new());
+    assert_eq!(s.get(id).unwrap().signatures[0].status, SignatureStatus::Unknown);
+    s.set_builtin_roots(true);
+    assert!(s.trusted_certificates().is_empty());
+    assert_eq!(s.trust.certs.len(), sign::roots::builtin().len(), "validation reads the built-in roots");
+}
+
+#[test]
 fn signing_saving_trusting_and_commenting_afterwards() {
     let p12 = std::fs::read(concat!(env!("CARGO_MANIFEST_DIR"), "/../sign/tests/data/ec-p256.p12")).unwrap();
     let digital_id = sign::pkcs12::open(&p12, "test").unwrap();
