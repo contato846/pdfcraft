@@ -595,6 +595,8 @@ pub struct ToolCategory {
 }
 
 pub static TOOL_CATEGORIES: &[ToolCategory] = &[
+    // This build's own routines first.
+    ToolCategory { label: "Custom", groups: &["house"] },
     ToolCategory { label: "Create & Edit", groups: &["create", "edit", "export", "combine", "organize", "scan", "compress"] },
     ToolCategory { label: "Review & Compare", groups: &["comment", "stamp", "compare", "measure"] },
     ToolCategory { label: "Forms & Signatures", groups: &["fill_sign", "form", "certificate"] },

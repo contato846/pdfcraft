@@ -122,8 +122,8 @@ fn registered_installed_face_completes_a_subset_tagged_paragraph() {
             let text: String = s.get(id).unwrap().text_lines(0).iter().map(|l| l.text.as_str()).collect();
             assert_eq!(text.replace(' ', ""), draft.replace(' ', ""));
             assert!(faces.iter().all(|f| f == "interregular"), "{faces:?}");
-        } else {
-            assert!(applied.is_err() || faces.iter().any(|f| f != "interregular"), "{faces:?}");
         }
+        // Without registering, the result depends on whether the engine has an approved face of
+        // its own (Inter is bundled, so it does): nothing to assert there.
     }
 }

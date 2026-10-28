@@ -889,14 +889,14 @@ fn panel_body(ui: &mut egui::Ui, t: &Tokens, skin: &Skin, a: &mut Assistant, has
                         widgets::line(model).desired_width(ui.available_width() - 34.0).background_color(t.field).id_salt(("ai-model", p.index())),
                     );
                 } else {
-                    craft_ui::ComboBox::from_id_salt(("ai-models", p.index())).selected_text(model.as_str()).width(ui.available_width() - 34.0).show_ui(
-                        ui,
-                        |ui| {
+                    craft_ui::ComboBox::from_id_salt(("ai-models", p.index()))
+                        .selected_text(model.as_str())
+                        .width(ui.available_width() - 34.0)
+                        .show_ui(ui, |ui| {
                             for m in list {
                                 ui.selectable_value(model, m.clone(), m);
                             }
-                        },
-                    );
+                        });
                 }
                 let fetching = a.fetch.is_some();
                 if ui
