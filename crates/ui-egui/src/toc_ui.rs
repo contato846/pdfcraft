@@ -71,7 +71,7 @@ pub fn toc_edit(entries: &[TocEntry], links: bool, bookmarks: bool, top_level: u
             };
             let mut path = parent.clone();
             path.push(index);
-            edits.push(Edit::AddBookmark { parent, index, title: e.title.clone(), page: target });
+            edits.push(Edit::AddBookmark { parent, index, title: e.title.clone(), page: target, left: None, top: None });
             stack.push((e.level, path, 0));
         }
     }
@@ -224,7 +224,7 @@ mod tests {
         let marks: Vec<(Vec<usize>, usize, String, usize)> = edits
             .iter()
             .filter_map(|e| match e {
-                Edit::AddBookmark { parent, index, title, page } => Some((parent.clone(), *index, title.clone(), *page)),
+                Edit::AddBookmark { parent, index, title, page, .. } => Some((parent.clone(), *index, title.clone(), *page)),
                 _ => None,
             })
             .collect();

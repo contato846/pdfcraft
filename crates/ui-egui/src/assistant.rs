@@ -847,7 +847,7 @@ fn panel_body(ui: &mut egui::Ui, t: &Tokens, skin: &Skin, a: &mut Assistant, has
     ui.horizontal(|ui| {
         let (dot, _) = ui.allocate_exact_size(egui::vec2(12.0, 12.0), egui::Sense::hover());
         ui.painter().circle_filled(dot.center(), 5.0, skin.accent);
-        egui::ComboBox::from_id_salt("assistant-provider").selected_text(tl!(s.provider.label())).width(ui.available_width() - 34.0).show_ui(
+        craft_ui::ComboBox::from_id_salt("assistant-provider").selected_text(tl!(s.provider.label())).width(ui.available_width() - 34.0).show_ui(
             ui,
             |ui| {
                 for p in Provider::ALL {
@@ -889,7 +889,7 @@ fn panel_body(ui: &mut egui::Ui, t: &Tokens, skin: &Skin, a: &mut Assistant, has
                         widgets::line(model).desired_width(ui.available_width() - 34.0).background_color(t.field).id_salt(("ai-model", p.index())),
                     );
                 } else {
-                    egui::ComboBox::from_id_salt(("ai-models", p.index())).selected_text(model.as_str()).width(ui.available_width() - 34.0).show_ui(
+                    craft_ui::ComboBox::from_id_salt(("ai-models", p.index())).selected_text(model.as_str()).width(ui.available_width() - 34.0).show_ui(
                         ui,
                         |ui| {
                             for m in list {

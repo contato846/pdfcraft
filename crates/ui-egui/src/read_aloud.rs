@@ -198,9 +198,10 @@ pub(crate) fn bar(ctx: &egui::Context, app: &mut PdfCraftApp) {
     let page = r.page;
     let (mut pause, mut stop) = (false, false);
     let voices = pdfcraft_platform::speech::Speaker::voices();
-    egui::Area::new(egui::Id::new("read-aloud-bar")).order(egui::Order::Foreground).anchor(egui::Align2::CENTER_BOTTOM, egui::vec2(0.0, -24.0)).show(
-        ctx,
-        |ui| {
+    egui::Area::new(egui::Id::unique("read-aloud-bar"))
+        .order(egui::Order::Foreground)
+        .anchor(egui::Align2::CENTER_BOTTOM, egui::vec2(0.0, -24.0))
+        .show(ctx, |ui| {
             egui::Frame::popup(ui.style()).corner_radius(egui::CornerRadius::same(8)).inner_margin(egui::Margin::symmetric(12, 8)).show(ui, |ui| {
                 ui.horizontal(|ui| {
                     ui.label(egui::RichText::new(crate::i18n::fmt(tl!("Reading page {n}"), &[("n", &(page + 1).to_string())])).color(t.text));
@@ -219,7 +220,7 @@ pub(crate) fn bar(ctx: &egui::Context, app: &mut PdfCraftApp) {
                         .as_deref()
                         .and_then(|id| voices.iter().find(|v| v.id == id))
                         .map_or_else(|| tl!("Default voice").to_string(), |v| v.name.clone());
-                    egui::ComboBox::from_id_salt("read-aloud-voice").selected_text(current).width(220.0).show_ui(ui, |ui| {
+                    craft_ui::ComboBox::from_id_salt("read-aloud-voice").selected_text(current).width(220.0).show_ui(ui, |ui| {
                         for v in &voices {
                             ui.selectable_value(&mut app.read_prefs.voice, Some(v.id.clone()), format!("{} ({})", v.name, v.language));
                         }
@@ -228,8 +229,7 @@ pub(crate) fn bar(ctx: &egui::Context, app: &mut PdfCraftApp) {
                     ui.add(egui::Slider::new(&mut app.read_prefs.rate, pdfcraft_platform::speech::RATES).step_by(0.1).suffix("×"));
                 });
             });
-        },
-    );
+        });
     if pause {
         app.pause_read_aloud();
     }
