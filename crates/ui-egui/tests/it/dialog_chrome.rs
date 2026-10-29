@@ -121,11 +121,13 @@ fn document_properties_values_line_up_and_long_fields_wrap() {
     // The fields reach the card's padding instead of stopping short of it.
     assert!(card.right() - title.right() <= 24.0, "title field {title:?} in {card:?}");
     // Plain values start where the fields' text does.
-    for value in ["doc.pdf", "demo-pdf"] {
-        // The file name is also the document tab's label.
-        let v = h.query_all_by_label(value).map(|n| n.rect()).find(|r| card.contains_rect(*r)).unwrap_or_else(|| panic!("{value} in the dialog"));
-        assert!((v.left() - (title.left() + 10.0)).abs() <= 1.0, "{value} at {v:?}, title field {title:?}");
-    }
+    // This build edits Application (Creator) as a field, like Title: its value is a field's.
+    let app_field = h.get_by_role_and_label(Role::TextInput, "Application");
+    assert_eq!(app_field.value().as_deref(), Some("demo-pdf"));
+    // The file name is also the document tab's label.
+    let value = "doc.pdf";
+    let v = h.query_all_by_label(value).map(|n| n.rect()).find(|r| card.contains_rect(*r)).unwrap_or_else(|| panic!("{value} in the dialog"));
+    assert!((v.left() - (title.left() + 10.0)).abs() <= 1.0, "{value} at {v:?}, title field {title:?}");
     // A long subject wraps onto a second line rather than running past the field's edge.
     let subject = h.get_by_role_and_label(Role::MultilineTextInput, "Subject").rect();
     assert!(subject.height() > title.height() + 8.0, "subject field {subject:?}, title field {title:?}");

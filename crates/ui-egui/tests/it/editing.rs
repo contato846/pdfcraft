@@ -6121,7 +6121,7 @@ fn metadata_application_and_producer_are_editable() {
 /// and removes tools, and the choice survives a restart.
 #[test]
 fn the_mode_bar_offers_metadata_certificate_and_chosen_tools() {
-    let mut h = harness(1, |_| {});
+    let mut h = harness(1, PdfCraftApp::use_default_bar_items);
     // The mode bar is the strip at the top; the tools panel may name the same tools.
     let on_bar = |h: &Harness<'static, PdfCraftApp>, label: &str| {
         let row = h.get_all_by_label("All tools").map(|n| n.rect().center().y).fold(f32::MAX, f32::min);
@@ -6498,6 +6498,7 @@ fn read_mode_shortcut_applies_the_open_paragraph() {
 fn finish_publisher_file_sets_the_metadata_in_one_step() {
     use pdfcraft_engine::Edit;
     let mut h = harness(1, |app| {
+        app.use_default_bar_items();
         assert!(app.apply_edit(Edit::Batch {
             label: "setup".into(),
             edits: vec![

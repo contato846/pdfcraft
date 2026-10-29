@@ -22,7 +22,7 @@ fn the_top_bar_button_checks_for_updates() {
     // Without an update source (tests, the web build) the check opens the releases page.
     let mut h = harness(|_| {});
     assert!(h.query_by_label("Discord").is_none());
-    h.get_by_label("Update").click();
+    h.get_by_label("Get updates").click();
     h.run_steps(2);
     assert_eq!(h.state().last_opened_url.as_deref(), Some(pdfcraft_ui_egui::updates::RELEASES_PAGE));
     assert_eq!(links::DISCORD, "https://discord.gg/artcraft");
@@ -44,19 +44,6 @@ fn the_about_dialog_opens_each_community_link() {
     // The home screen no longer carries the community card (this personal build).
     let h = harness(|_| {});
     assert!(h.query_by_label("Join the ArtCraft community").is_none());
-}
-
-#[test]
-fn home_community_card_closes_for_this_run() {
-    let mut h = harness(|_| {});
-    h.get_by_label("Join the ArtCraft community");
-    h.get_by_label("Close").click();
-    h.run_steps(2);
-    assert!(h.state().community_card_closed);
-    assert!(h.query_by_label("Join the ArtCraft community").is_none());
-    assert!(h.query_by_label("Join our Discord").is_none());
-    // Not remembered: a fresh app shows the card again.
-    assert!(!PdfCraftApp::new().community_card_closed);
 }
 
 #[test]

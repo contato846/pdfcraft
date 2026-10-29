@@ -90,7 +90,8 @@ impl PdfCraftApp {
             all_tools_tab: (None, false),
             recent: Vec::new(),
             reopen_last_session: false,
-            bar_items: chrome::default_bar_items(),
+            // Empty for tests and embedders; the desktop app adds its own (`use_default_bar_items`).
+            bar_items: Vec::new(),
             restore_last_view: true,
             last_views: Vec::new(),
             last_session: Default::default(),

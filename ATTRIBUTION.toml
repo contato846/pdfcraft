@@ -2507,7 +2507,7 @@ licence_file = "vendor/hayro-cmap/assets/LICENSE.txt"
 kind = "data"
 adobe_data = true
 usage = "Character-code mapping tables required to read CJK PDFs. Non-visual data, allowed by AGENTS.md §1.1"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[bundled]]
 crate = "hayro-interpret"
@@ -2520,7 +2520,7 @@ licence = "MIT OR Apache-2.0"
 kind = "data"
 adobe_data = true
 usage = "Glyph widths and encodings for non-embedded standard fonts. Non-visual data, allowed by AGENTS.md §1.1"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "PlayfairDisplay[wght].ttf"
@@ -2533,7 +2533,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "566be814f8e96e93dfa16101331557eb6b5467e9e03f627c0910fe93ca12300e"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "PlayfairDisplay-Italic[wght].ttf"
@@ -2546,7 +2546,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "566be814f8e96e93dfa16101331557eb6b5467e9e03f627c0910fe93ca12300e"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "EBGaramond[wght].ttf"
@@ -2559,7 +2559,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "EBGaramond-Italic[wght].ttf"
@@ -2572,7 +2572,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "GreatVibes-Regular.ttf"
@@ -2585,7 +2585,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "61093a21f5e63dedf54222b3c09997e54c0fe43e3851d21386e02ddcbc246d49"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "STIXTwoMath-Regular.ttf"
@@ -2598,7 +2598,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "0c8825913b60d858aacdb33c4ca6660a7d64b0d6464702efbb19313f5765861a"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "Amiri-Regular.ttf"
@@ -2611,7 +2611,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "72de68e5954f4fdd24702292ef5a32f003ca960ec9330dc86e5eefb5dffb9b22"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "NotoSansHebrew[wdth,wght].ttf"
@@ -2624,7 +2624,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "9b9fe028b5ba74d231659a1bbaf0ed09b11e759d1ca6a070999e16d151616b47"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "NotoSansDevanagari[wdth,wght].ttf"
@@ -2637,7 +2637,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "a216f6f8d85c7228093e0ee5e258d9d377e6671f68acb4db1930b29583d0f331"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "NotoSansThai[wdth,wght].ttf"
@@ -2650,7 +2650,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "2e98fd23a52d253db8612cd5942c8f2ff4111b21d2367050fdca91d8ccc374a0"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "NotoSansArmenian[wdth,wght].ttf"
@@ -2663,7 +2663,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "0468358b316f69f405b55cadf8a8314e16e3610b8feaad96772bd5d968112d02"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "NotoSansGeorgian[wdth,wght].ttf"
@@ -2676,7 +2676,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "8c02263c5d73d40544f9ed91e30c4e947407057a3cc430d7b786189aeceff6df"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "NotoSansTamil[wdth,wght].ttf"
@@ -2689,7 +2689,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "f8ff8ce7d0a81bf8d5e121c635ef027250c531f2fd37d5988b8dd6e45f19d7f1"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "CharisSIL-Regular.ttf"
@@ -2702,7 +2702,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "0acda775b4dedaf980821f590206a692779ee495170018ee2b9caf1c50fc136a"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "ZCOOLXiaoWei-Regular.ttf"
@@ -2715,7 +2715,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "ShipporiMincho-Regular.ttf"
@@ -2728,7 +2728,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "41fba056279be5f45ff9a99e44b7b53897b42732f5806d8e666e0ab49ac6bd38"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "GowunBatang-Regular.ttf"
@@ -2741,7 +2741,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "49a57cc769fa9affd6eefb9070a61e3d3f6b757c97cafb15848bc6d1c81acc78"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "NotoColorEmoji-Regular.ttf"
@@ -2754,7 +2754,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "ac564676d10054a8445923dfc2dfb13c042d97888bd27c1b6ec6dfe89a9d8d62"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "Inter[opsz,wght].ttf"
@@ -2767,7 +2767,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[fetched]]
 file = "Inter-Italic[opsz,wght].ttf"
@@ -2780,7 +2780,7 @@ licence_url = "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be2725
 licence_sha256 = "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
 kind = "font"
 usage = "Showcase PDF (cargo xtask demo-pdf)"
-sha256 = "f225e0b044875b8fa6375b6b5ad935f0d99fcc1ad03ecf9f0baae2cedbfca4d2"
+sha256 = "ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46"
 
 [[asset]]
 path = "docs/brand/artcraft-logo-white.png"

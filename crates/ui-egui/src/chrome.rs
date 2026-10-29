@@ -70,7 +70,7 @@ pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     app.combine_tab.focused = false;
                 }
                 // Reserve the three icon buttons, Update and their gaps outside the scrolling tabs.
-                let controls_width = ui.fonts_mut(|f| f.layout_no_wrap(tl!("Update").into(), theme::medium(13.0), t.text).size().x)
+                let controls_width = ui.fonts_mut(|f| f.layout_no_wrap(tl!("Get updates").into(), theme::medium(13.0), t.text).size().x)
                     + 3.0 * button
                     + 54.0
                     + window_controls::width(&controls.right);
@@ -310,7 +310,7 @@ pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                         app.dialog = Some(Dialog::Shortcuts);
                     }
                     // One click to a new version, from anywhere in the app (Discord stays in Help).
-                    if widgets::ghost_button_sized(ui, "cloud", tl!("Update"), tab_h).on_hover_text(tl!("Check for updates")).clicked() {
+                    if widgets::ghost_button_sized(ui, "cloud", tl!("Get updates"), tab_h).on_hover_text(tl!("Check for updates")).clicked() {
                         app.execute("help.check_updates");
                     }
                 });
@@ -556,6 +556,14 @@ pub fn mode_bar(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
 
 /// Mode bar items besides the workspaces, in the order the context menu offers them.
 const BAR_EXTRAS: [(&str, &str); 3] = [("house", "House tools"), ("metadata", "Edit metadata"), ("certificate", "Use a certificate")];
+
+impl PdfCraftApp {
+    /// The desktop app's mode bar before anyone changes it: house tools, Edit metadata and Use a
+    /// certificate. Saved settings, read afterwards, replace it.
+    pub fn use_default_bar_items(&mut self) {
+        self.bar_items = default_bar_items();
+    }
+}
 
 /// What the mode bar shows before anyone changes it.
 pub(crate) fn default_bar_items() -> Vec<String> {

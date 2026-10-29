@@ -172,6 +172,8 @@ const THEMES: &[&str] = &["view.theme.system", "view.theme.light", "view.theme.d
 const PANES: &[&str] = &["view.side_panel", "view.tools_pane"];
 const PANE_COMMANDS: &[&str] = &["comment.list", "form.fields", "ui.dock.reset"];
 const MODES: &[&str] = &["view.full_screen", "view.read_mode"];
+/// This build's reading aids: Read aloud and the Assistant.
+const READING: &[&str] = &["view.read_aloud", "view.read_aloud.pause", "view.assistant"];
 const PAGES: &[&str] = &[
     "page.organize",
     SEP,
@@ -180,6 +182,7 @@ const PAGES: &[&str] = &[
     "page.replace",
     "page.extract",
     "page.split",
+    "page.split_spreads",
     "page.duplicate",
     "page.delete",
     SEP,
@@ -354,6 +357,7 @@ impl PdfCraftApp {
         view.extend(list(PANE_COMMANDS, &mut used));
         view.push(Node::Separator);
         view.extend(list(MODES, &mut used));
+        view.extend(list(READING, &mut used));
         view.push(Node::submenu(tl!("Display theme"), list(THEMES, &mut used)));
         view.push(Node::Separator);
         view.push(Node::submenu(tl!("Tools"), self.tools_menu(&used)));
@@ -432,6 +436,11 @@ impl PdfCraftApp {
                         let actions: &[&'static str] = if tool.actions.is_empty() { std::slice::from_ref(&tool.command) } else { tool.actions };
                         for &id in actions {
                             if commands::command(id).is_none() || used.contains(&id) || seen.contains(&id) {
+                                continue;
+                            }
+                            // This build's own group repeats a few everyday tools as shortcuts:
+                            // in the menu they stay under their own group only.
+                            if group.id == "house" && listed_elsewhere(id) {
                                 continue;
                             }
                             seen.push(id);
@@ -633,6 +642,11 @@ fn param_index(command: &CommandRef) -> Option<usize> {
 fn panel(command: &CommandRef) -> Option<RightPanel> {
     let name = command.params.get("panel").and_then(serde_json::Value::as_str)?;
     PANELS.iter().find(|(_, n, _)| *n == name).map(|(p, ..)| *p)
+}
+
+/// Whether a group other than this build's own lists `id`.
+fn listed_elsewhere(id: &str) -> bool {
+    TOOL_GROUPS.iter().filter(|g| g.id != "house").flat_map(|g| g.sections).flat_map(|s| s.items).any(|t| t.command == id || t.actions.contains(&id))
 }
 
 #[cfg(test)]
