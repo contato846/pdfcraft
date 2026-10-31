@@ -764,8 +764,6 @@
 	You have version {c}. Download the new version from its release page.	현재 버전은 {c}입니다. 릴리스 페이지에서 새 버전을 다운로드하세요.
 	PdfCraft {c} is up to date.	PdfCraft {c}은(는) 최신 버전입니다.
 	Couldn't check for updates: {e}	업데이트를 확인할 수 없습니다: {e}
-	You have version {c}. All releases are listed at {page}.	현재 버전은 {c}입니다. 모든 릴리스는 {page}에 표시됩니다.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	GitHub에 최신 릴리스를 요청합니다. 어떤 것도 자동으로 다운로드하거나 설치하지 않습니다.
 	Download	다운로드
 	Later	나중에
 	none	없음

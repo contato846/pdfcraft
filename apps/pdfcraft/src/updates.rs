@@ -11,6 +11,15 @@ use pdfcraft_ui_egui::updates::{RELEASES_PAGE, Release};
 /// check never found an update.
 const RELEASES: &str = "https://api.github.com/repos/contato846/pdfcraft/releases?per_page=20";
 
+// What the check says when it fails. Fixed English sentences, so the dialog shows them in the
+// interface language (its catalogs have them); the details go to the log.
+const UNREACHABLE: &str = "couldn't reach the update server; check the internet connection";
+const UNEXPECTED: &str = "the update server didn't answer as expected";
+const LIMITED_MINUTES: &str = "the update server is limiting checks for now; try again in a few minutes";
+const LIMITED_HALF_HOUR: &str = "the update server is limiting checks for now; try again in about half an hour";
+const LIMITED_HOUR: &str = "the update server is limiting checks for now; try again in about an hour";
+const LIMITED: &str = "the update server is limiting checks for now; try again later";
+
 /// The tags this fork's builds carry (`fontes-livres-<commit>`).
 const TAG_PREFIX: &str = "fontes-livres-";
 
@@ -41,16 +50,23 @@ pub fn latest_release() -> Result<Release, String> {
         .http_status_as_error(false)
         .build()
         .call()
-        .map_err(|e| format!("couldn't reach GitHub ({e})"))?;
+        .map_err(|e| {
+            log::warn!("update check: {e}");
+            UNREACHABLE.to_string()
+        })?;
     let status = response.status().as_u16();
     if status == 403 {
         let reset = response.headers().get("x-ratelimit-reset").and_then(|v| v.to_str().ok());
-        return Err(rate_limited(reset, now_unix()));
+        return Err(rate_limited(reset, now_unix()).into());
     }
     if !(200..300).contains(&status) {
-        return Err(format!("couldn't reach GitHub (http status: {status})"));
+        log::warn!("update check: http status {status}");
+        return Err(UNEXPECTED.into());
     }
-    let body = response.body_mut().with_config().limit(1 << 20).read_to_string().map_err(|e| format!("unreadable answer ({e})"))?;
+    let body = response.body_mut().with_config().limit(1 << 20).read_to_string().map_err(|e| {
+        log::warn!("update check: {e}");
+        UNEXPECTED.to_string()
+    })?;
     parse_list(&body)
 }
 
@@ -82,20 +98,18 @@ fn now_unix() -> u64 {
     std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0)
 }
 
-/// What to tell the user when GitHub answers 403: its anonymous quota (60 checks an hour,
-/// shared by everyone behind the same address) ran out. `reset` is the `x-ratelimit-reset`
-/// header, the Unix time the quota refills; `now` is the current Unix time. Anything
-/// surprising (no header, not a number, already past) falls back to asking for patience.
-fn rate_limited(reset: Option<&str>, now: u64) -> String {
-    const FALLBACK: &str = "GitHub is limiting update checks for now (shared hourly quota); try again later";
+/// What to tell the user when the update server answers 403: its anonymous quota (60 checks an
+/// hour, shared by everyone behind the same address) ran out. `reset` is the `x-ratelimit-reset`
+/// header, the Unix time the quota refills; `now` is the current Unix time. The wait is said
+/// roughly (a few minutes, half an hour, an hour), in a fixed sentence the dialog translates;
+/// anything surprising (no header, not a number, already past) asks for patience.
+fn rate_limited(reset: Option<&str>, now: u64) -> &'static str {
     let wait = reset.and_then(|r| r.trim().parse::<u64>().ok()).and_then(|reset| reset.checked_sub(now)).filter(|&wait| wait > 0);
     match wait {
-        Some(wait) => {
-            let minutes = wait.div_ceil(60).max(1);
-            let plural = if minutes == 1 { "" } else { "s" };
-            format!("GitHub is limiting update checks for now (shared hourly quota); try again in about {minutes} minute{plural}")
-        }
-        None => FALLBACK.into(),
+        Some(w) if w <= 10 * 60 => LIMITED_MINUTES,
+        Some(w) if w <= 40 * 60 => LIMITED_HALF_HOUR,
+        Some(_) => LIMITED_HOUR,
+        None => LIMITED,
     }
 }
 
@@ -263,21 +277,17 @@ mod tests {
 
     #[test]
     fn rate_limit_messages_name_the_wait() {
-        let limited = "GitHub is limiting update checks for now (shared hourly quota); try again in about 20 minutes";
-        assert_eq!(rate_limited(Some("1800001200"), 1800000000), limited);
-        // Rounds up: 61 seconds out reads as 2 minutes.
-        assert_eq!(
-            rate_limited(Some("1800000061"), 1800000000),
-            "GitHub is limiting update checks for now (shared hourly quota); try again in about 2 minutes"
-        );
-        assert_eq!(
-            rate_limited(Some("1800000060"), 1800000000),
-            "GitHub is limiting update checks for now (shared hourly quota); try again in about 1 minute"
-        );
+        assert_eq!(rate_limited(Some("1800000061"), 1800000000), LIMITED_MINUTES);
+        assert_eq!(rate_limited(Some("1800000600"), 1800000000), LIMITED_MINUTES);
+        assert_eq!(rate_limited(Some("1800001200"), 1800000000), LIMITED_HALF_HOUR);
+        assert_eq!(rate_limited(Some("1800003600"), 1800000000), LIMITED_HOUR);
         // No header, not a number, or already past: ask for patience instead of a time.
-        let later = "GitHub is limiting update checks for now (shared hourly quota); try again later";
         for bad in [None, Some(""), Some("soon"), Some("1799999999"), Some("1800000000")] {
-            assert_eq!(rate_limited(bad, 1800000000), later);
+            assert_eq!(rate_limited(bad, 1800000000), LIMITED);
+        }
+        // The word GitHub is never shown.
+        for m in [UNREACHABLE, UNEXPECTED, LIMITED_MINUTES, LIMITED_HALF_HOUR, LIMITED_HOUR, LIMITED] {
+            assert!(!m.to_lowercase().contains("github"), "{m}");
         }
     }
 

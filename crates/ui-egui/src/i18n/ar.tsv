@@ -821,8 +821,6 @@
 	You have version {c}. Download the new version from its release page.	لديك الإصدار {c}. نزّل الإصدار الجديد من صفحة إصداره.
 	PdfCraft {c} is up to date.	PdfCraft {c} محدَّث.
 	Couldn't check for updates: {e}	تعذّر التحقق من التحديثات: {e}
-	You have version {c}. All releases are listed at {page}.	لديك الإصدار {c}. كل الإصدارات مدرجة في {page}.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	يسأل GitHub عن أحدث إصدار. لا يُنزَّل أو يُثبَّت شيء تلقائيًا.
 	Download	تنزيل
 	Later	لاحقًا
 	none	لا شيء
@@ -2877,8 +2875,6 @@ certificate	Version	الإصدار
 	Downloading the new version… {mb} MB	جارٍ تنزيل الإصدار الجديد… {mb} م.ب
 	The new version is ready. PdfCraft will close and open again as the new version.	الإصدار الجديد جاهز. سيُغلق PdfCraft ويُفتح مجددًا بالإصدار الجديد.
 	Couldn't update: {e}	تعذّر التحديث: {e}
-	All releases are listed at {page}.	جميع الإصدارات مدرجة في {page}.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	يتحقق من GitHub من وجود إصدار جديد عند بدء PdfCraft. لا يُنزَّل شيء حتى تختار «التحديث الآن».
 	Restart now	إعادة التشغيل الآن
 	Update now	التحديث الآن
 	Release page	صفحة الإصدار

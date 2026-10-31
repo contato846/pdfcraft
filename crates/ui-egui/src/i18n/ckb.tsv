@@ -791,8 +791,6 @@
 	You have version {c}. Download the new version from its release page.	وەشانی {c} هەیە. وەشانە نوێیەکە لە پەڕەی وەشانەکەیەوە دابگرە.
 	PdfCraft {c} is up to date.	PdfCraft {c} نوێکراوەتەوە.
 	Couldn't check for updates: {e}	پشکنین بۆ نوێکردنەوە نەکرا: {e}
-	You have version {c}. All releases are listed at {page}.	وەشانی {c} هەیە. هەموو وەشانەکان لە {page} پێڕست کراون.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	لە GitHub دەپرسێت بۆ نوێترین وەشان. هیچ شتێک بە شێوەی خۆکار داگیر ناکرێت یان دادەمەزرێنرێت.
 	Download	داگرتن
 	Later	دواتر
 	none	هیچ

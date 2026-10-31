@@ -279,7 +279,6 @@
 	Applies to {n} pages	Berlaku untuk {n} halaman
 	Apply redactions	Terapkan penyensoran
 	Apply scale	Terapkan skala
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	Meminta rilis terbaru dari GitHub. Tidak ada yang diunduh atau dipasang secara otomatis.
 	At most	Paling banyak
 	Attachments	Lampiran
 	Attachments Panel and Page	Panel Lampiran dan Halaman
@@ -1270,7 +1269,6 @@
 	XFA form: its fields and its XFA data are kept in step, so other viewers show what you fill in.	Formulir XFA: kolom dan data XFA-nya dijaga tetap sinkron, sehingga penampil lain menampilkan yang Anda isi.
 	You are about to apply 1 redaction mark. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Anda akan menerapkan 1 tanda sensor. Teks, gambar, dan gambar-gambar di bawah tanda tersebut, serta komentar dan kolom formulir yang bertumpang tindih dengannya, akan dihapus permanen.
 	You are about to apply {n} redaction marks. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Anda akan menerapkan {n} tanda sensor. Teks, gambar, dan gambar-gambar di bawah tanda tersebut, serta komentar dan kolom formulir yang bertumpang tindih dengannya, akan dihapus permanen.
-	You have version {c}. All releases are listed at {page}.	Anda memiliki versi {c}. Semua rilis tercantum di {page}.
 	You have version {c}. Download the new version from its release page.	Anda memiliki versi {c}. Unduh versi baru dari halaman rilisnya.
 	Your changes will be lost if you don't save them.	Perubahan Anda akan hilang jika tidak Anda simpan.
 	ZIP	ZIP

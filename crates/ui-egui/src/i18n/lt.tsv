@@ -289,7 +289,6 @@
 	Applies to {n} pages	Taikoma {n} puslapiams
 	Apply redactions	Pašalinti pažymėtą konfidencialią informaciją
 	Apply scale	Taikyti mastelį
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	„GitHub“ tikrinama, ar yra naujausia laida. Nieko automatiškai neatsisiunčiama ir neįdiegiama.
 	At most	Daugiausia
 	Attachments	Priedai
 	Attachments Panel and Page	Priedų skydelis ir puslapis
@@ -1330,7 +1329,6 @@
 	XFA form: its fields and its XFA data are kept in step, so other viewers show what you fill in.	XFA forma: jos laukai ir XFA duomenys sinchronizuojami, todėl kitose žiūryklėse rodoma tai, ką įvedate.
 	You are about to apply 1 redaction mark. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Ketinate pritaikyti 1 šalinimo žymą. Po žymomis esantis tekstas, paveikslėliai ir brėžiniai, taip pat su jomis persidengiantys komentarai ir formos laukai bus pašalinti visam laikui.
 	You are about to apply {n} redaction marks. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Ketinate pritaikyti šalinimo žymų: {n}. Po žymomis esantis tekstas, paveikslėliai ir brėžiniai, taip pat su jomis persidengiantys komentarai ir formos laukai bus pašalinti visam laikui.
-	You have version {c}. All releases are listed at {page}.	Turite versiją {c}. Visos laidos išvardytos čia: {page}.
 	You have version {c}. Download the new version from its release page.	Turite versiją {c}. Atsisiųskite naują versiją iš jos laidos puslapio.
 	Your changes will be lost if you don't save them.	Jei pakeitimų neįrašysite, jie bus prarasti.
 	ZIP	ZIP
@@ -2879,8 +2877,6 @@ theme	Appearance	Išvaizda
 	Downloading the new version… {mb} MB	Atsisiunčiama nauja versija… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	Nauja versija paruošta. „PdfCraft“ užsidarys ir vėl atsidarys jau kaip nauja versija.
 	Couldn't update: {e}	Nepavyko atnaujinti: {e}
-	All releases are listed at {page}.	Visos versijos išvardytos {page}.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Paleidžiant „PdfCraft“ patikrina „GitHub“, ar yra nauja versija. Niekas neatsisiunčiama, kol nepasirenkate Atnaujinti dabar.
 	Restart now	Paleisti iš naujo dabar
 	Update now	Atnaujinti dabar
 	Release page	Versijos puslapis

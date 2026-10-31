@@ -815,8 +815,6 @@
 	You have version {c}. Download the new version from its release page.	Tienes la versión {c}. Descarga la nueva versión desde su página de publicación.
 	PdfCraft {c} is up to date.	PdfCraft {c} está actualizado.
 	Couldn't check for updates: {e}	No se pudieron buscar actualizaciones: {e}
-	You have version {c}. All releases are listed at {page}.	Tienes la versión {c}. Todas las versiones aparecen en {page}.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	Consulta a GitHub cuál es la última versión. No se descarga ni se instala nada automáticamente.
 	Download	Descargar
 	Later	Más tarde
 	none	ninguno
@@ -2777,8 +2775,6 @@ animation effects	Off	Desactivados
 	Downloading the new version… {mb} MB	Descargando la nueva versión… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	La nueva versión está lista. PdfCraft se cerrará y volverá a abrirse ya como la nueva versión.
 	Couldn't update: {e}	No se pudo actualizar: {e}
-	All releases are listed at {page}.	Todas las versiones están en {page}.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Comprueba en GitHub si hay una versión nueva cuando PdfCraft se inicia. No se descarga nada hasta que elija Actualizar ahora.
 	Restart now	Reiniciar ahora
 	Update now	Actualizar ahora
 	Release page	Página de la versión
@@ -3013,3 +3009,13 @@ theme	Appearance	Aspecto
 	Choose at least one mark.	Elige al menos una marca.
 	The licence is personal and non-transferable. Printing is not permitted.	La licencia es personal e intransferible. No se permite la impresión.
 	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Una copia con licencia para una persona: su nombre en las páginas, un código invisible, una página de licencia al final y protección contra copia y cambios.
+	couldn't reach the update server; check the internet connection	no se pudo acceder al servidor de actualizaciones; comprueba la conexión a internet
+	the update server didn't answer as expected	el servidor de actualizaciones no respondió como se esperaba
+	the update server is limiting checks for now; try again in a few minutes	el servidor de actualizaciones está limitando las consultas por ahora; inténtalo de nuevo en unos minutos
+	the update server is limiting checks for now; try again in about half an hour	el servidor de actualizaciones está limitando las consultas por ahora; inténtalo de nuevo en una media hora
+	the update server is limiting checks for now; try again in about an hour	el servidor de actualizaciones está limitando las consultas por ahora; inténtalo de nuevo en una hora
+	the update server is limiting checks for now; try again later	el servidor de actualizaciones está limitando las consultas por ahora; inténtalo más tarde
+	All versions are on the release page.	Todas las versiones están en la página de versiones.
+	You have version {c}. All versions are on the release page.	Tienes la versión {c}. Todas las versiones están en la página de versiones.
+	Looks for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Busca una versión nueva al abrir PdfCraft. No se descarga nada hasta que elijas Actualizar ahora.
+	Looks for the latest version. Nothing is downloaded or installed automatically.	Busca la versión más reciente. No se descarga ni se instala nada automáticamente.

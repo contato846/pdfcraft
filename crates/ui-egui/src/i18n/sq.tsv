@@ -231,7 +231,6 @@
 	Arrow	Shigjetë
 	ArtCraft website	Faqja e internetit e ArtCraft
 	Ask about this document	Pyet për këtë dokument
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	I kërkon GitHub-it versionin më të fundit. Asgjë nuk shkarkohet ose instalohet automatikisht.
 	Associated with content	E lidhur me përmbajtjen
 	At least one signature has problems.	Të paktën një nënshkrim ka probleme.
 	At least one signature is invalid.	Të paktën një nënshkrim është i pavlefshëm.
@@ -1991,7 +1990,6 @@
 	You are about to apply 1 redaction mark. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Jeni gati të zbatoni 1 shenjë redaktimi. Teksti, imazhet dhe vizatimet nën shenjat, si dhe komentet dhe fushat e formularit që mbivendosen me to, hiqen përgjithmonë.
 	You are about to apply {n} redaction marks. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Jeni gati të zbatoni {n} shenja redaktimi. Teksti, imazhet dhe vizatimet nën shenjat, si dhe komentet dhe fushat e formularit që mbivendosen me to, hiqen përgjithmonë.
 	You can pin up to {n} folders. Unpin one first.	Mund të fiksoni deri në {n} dosje. Hiqni fiksimin e njërës më parë.
-	You have version {c}. All releases are listed at {page}.	Keni versionin {c}. Të gjitha botimet janë të listuara te {page}.
 	You have version {c}. Download the new version from its release page.	Keni versionin {c}. Shkarkoni versionin e ri nga faqja e botimit.
 	Your changes will be lost if you don't save them.	Ndryshimet tuaja do të humbasin nëse nuk i ruani.
 	Your name	Emri juaj

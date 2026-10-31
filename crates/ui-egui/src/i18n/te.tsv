@@ -796,8 +796,6 @@ comment menu	Edit	సవరించు
 	You have version {c}. Download the new version from its release page.	మీ వద్ద వెర్షన్ {c} ఉంది. కొత్త వెర్షన్‌ను దాని విడుదల పేజీ నుండి డౌన్‌లోడ్ చేసుకోండి.
 	PdfCraft {c} is up to date.	PdfCraft {c} తాజా వెర్షన్.
 	Couldn't check for updates: {e}	అప్‌డేట్‌ల కోసం తనిఖీ చేయడం సాధ్యం కాలేదు: {e}
-	You have version {c}. All releases are listed at {page}.	మీ వద్ద వెర్షన్ {c} ఉంది. అన్ని విడుదలల జాబితా: {page}.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	తాజా విడుదల గురించి GitHubను అడుగుతుంది. ఏదీ ఆటోమేటిక్‌గా డౌన్‌లోడ్ లేదా ఇన్‌స్టాల్ చేయబడదు.
 	Download	డౌన్‌లోడ్ చేయి
 	Later	తర్వాత
 	none	ఏదీ లేదు
@@ -2509,8 +2507,6 @@ animation effects	Off	ఆఫ్
 	Downloading the new version… {mb} MB	కొత్త వెర్షన్ డౌన్‌లోడ్ అవుతోంది… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	కొత్త వెర్షన్ సిద్ధంగా ఉంది. PdfCraft మూసివేయబడి కొత్త వెర్షన్‌గా మళ్లీ తెరుచుకుంటుంది.
 	Couldn't update: {e}	అప్‌డేట్ చేయలేకపోయాం: {e}
-	All releases are listed at {page}.	అన్ని వెర్షన్‌లు {page} లో ఉన్నాయి.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	PdfCraft ప్రారంభమైనప్పుడు GitHub లో కొత్త వెర్షన్ ఉందో లేదో తనిఖీ చేస్తుంది. మీరు ఇప్పుడే అప్‌డేట్ చేయి ఎంచుకునే వరకు ఏదీ డౌన్‌లోడ్ కాదు.
 	Restart now	ఇప్పుడే పునఃప్రారంభించు
 	Update now	ఇప్పుడే అప్‌డేట్ చేయి
 	Release page	వెర్షన్ పేజీ

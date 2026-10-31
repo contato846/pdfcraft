@@ -286,7 +286,6 @@
 	Applies to {n} pages	Gjelder {n} sider
 	Apply redactions	Bruk sladdinger
 	Apply scale	Bruk skala
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	Spør GitHub om den nyeste utgivelsen. Ingenting lastes ned eller installeres automatisk.
 	At most	Høyst
 	Attachments	Vedlegg
 	Attachments Panel and Page	Vedleggspanel og side
@@ -1281,7 +1280,6 @@
 	XFA form: its fields and its XFA data are kept in step, so other viewers show what you fill in.	XFA-skjema: feltene og XFA-dataene holdes i takt, så andre visere viser det du fyller inn.
 	You are about to apply 1 redaction mark. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Du er i ferd med å bruke 1 sladdemarkering. Tekst, bilder og tegninger under markeringene, og kommentarer og skjemafelt som overlapper dem, fjernes permanent.
 	You are about to apply {n} redaction marks. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Du er i ferd med å bruke {n} sladdemarkeringer. Tekst, bilder og tegninger under markeringene, og kommentarer og skjemafelt som overlapper dem, fjernes permanent.
-	You have version {c}. All releases are listed at {page}.	Du har versjon {c}. Alle utgivelser er listet på {page}.
 	You have version {c}. Download the new version from its release page.	Du har versjon {c}. Last ned den nye versjonen fra utgivelsessiden.
 	Your changes will be lost if you don't save them.	Endringene dine går tapt hvis du ikke lagrer dem.
 	ZIP	ZIP

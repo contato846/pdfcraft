@@ -290,10 +290,8 @@ pub(crate) fn dialog(app: &mut PdfCraftApp, ctx: &egui::Context) {
                 ui.label(egui::RichText::new(tl!("The new version is ready. PdfCraft will close and open again as the new version.")).strong());
             }
             (Install::Failed(e), _) => {
-                ui.label(crate::i18n::fmt(tl!("Couldn't update: {e}"), &[("e", e)]));
-                ui.label(
-                    egui::RichText::new(crate::i18n::fmt(tl!("All releases are listed at {page}."), &[("page", RELEASES_PAGE)])).color(t.text_muted),
-                );
+                ui.label(crate::i18n::fmt(tl!("Couldn't update: {e}"), &[("e", tl!(e.as_str()))]));
+                ui.label(egui::RichText::new(tl!("All versions are on the release page.")).color(t.text_muted));
                 if let Some(r) = &installable {
                     download = Some(r.url.clone());
                 }
@@ -331,22 +329,20 @@ pub(crate) fn dialog(app: &mut PdfCraftApp, ctx: &egui::Context) {
                     ui.label(crate::i18n::fmt(tl!("PdfCraft {c} is up to date."), &[("c", current)]));
                 }
                 Check::Done(Err(e)) => {
-                    ui.label(crate::i18n::fmt(tl!("Couldn't check for updates: {e}"), &[("e", &e.to_string())]));
+                    let e = e.to_string();
+                    ui.label(crate::i18n::fmt(tl!("Couldn't check for updates: {e}"), &[("e", tl!(e.as_str()))]));
                     ui.label(
-                        egui::RichText::new(crate::i18n::fmt(
-                            tl!("You have version {c}. All releases are listed at {page}."),
-                            &[("c", current), ("page", RELEASES_PAGE)],
-                        ))
-                        .color(t.text_muted),
+                        egui::RichText::new(crate::i18n::fmt(tl!("You have version {c}. All versions are on the release page."), &[("c", current)]))
+                            .color(t.text_muted),
                     );
                 }
             },
         }
         ui.add_space(10.0);
         let note = if app.update_installer.is_some() {
-            tl!("Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.")
+            tl!("Looks for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.")
         } else {
-            tl!("Asks GitHub for the latest release. Nothing is downloaded or installed automatically.")
+            tl!("Looks for the latest version. Nothing is downloaded or installed automatically.")
         };
         ui.label(egui::RichText::new(note).color(t.text_muted).small());
         ui.add_space(12.0);

@@ -815,8 +815,6 @@
 	You have version {c}. Download the new version from its release page.	У вас версия {c}. Скачайте новую версию со страницы релизов.
 	PdfCraft {c} is up to date.	У вас последняя версия PdfCraft {c}.
 	Couldn't check for updates: {e}	Не удалось проверить обновления: {e}
-	You have version {c}. All releases are listed at {page}.	У вас версия {c}. Все релизы перечислены на {page}.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	Запрашивает у GitHub последний релиз. Ничего не скачивается и не устанавливается автоматически.
 	Download	Скачать
 	Later	Позже
 	none	нет
@@ -2514,8 +2512,6 @@ animation effects	Off	Выкл
 	Downloading the new version… {mb} MB	Загрузка новой версии… {mb} МБ
 	The new version is ready. PdfCraft will close and open again as the new version.	Новая версия готова. PdfCraft закроется и откроется снова уже новой версией.
 	Couldn't update: {e}	Не удалось обновить: {e}
-	All releases are listed at {page}.	Все версии перечислены на {page}.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	При запуске PdfCraft проверяет на GitHub, есть ли новая версия. Ничего не скачивается, пока вы не выберете «Обновить сейчас».
 	Restart now	Перезапустить сейчас
 	Update now	Обновить сейчас
 	Release page	Страница версии

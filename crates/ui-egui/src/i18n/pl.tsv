@@ -814,8 +814,6 @@
 	You have version {c}. Download the new version from its release page.	Masz wersję {c}. Pobierz nową wersję ze strony wydania.
 	PdfCraft {c} is up to date.	PdfCraft {c} jest aktualny.
 	Couldn't check for updates: {e}	Nie można sprawdzić aktualizacji: {e}
-	You have version {c}. All releases are listed at {page}.	Masz wersję {c}. Wszystkie wydania są dostępne na {page}.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	Sprawdza najnowsze wydanie na GitHubie. Nic nie jest pobierane ani instalowane automatycznie.
 	Download	Pobierz
 	Later	Później
 	none	brak
@@ -2576,8 +2574,6 @@ animation effects	Off	Wyłączone
 	Downloading the new version… {mb} MB	Pobieranie nowej wersji… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	Nowa wersja jest gotowa. PdfCraft zamknie się i otworzy ponownie już w nowej wersji.
 	Couldn't update: {e}	Nie udało się zaktualizować: {e}
-	All releases are listed at {page}.	Wszystkie wersje są wymienione na {page}.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Przy uruchomieniu PdfCraft sprawdza w GitHub, czy jest nowa wersja. Nic nie jest pobierane, dopóki nie wybierzesz Aktualizuj teraz.
 	Restart now	Uruchom ponownie teraz
 	Update now	Aktualizuj teraz
 	Release page	Strona wersji

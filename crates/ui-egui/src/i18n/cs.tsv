@@ -900,8 +900,6 @@ key	Space	Mezerník
 	You have version {c}. Download the new version from its release page.	Máte verzi {c}. Novou verzi si stáhněte z její stránky s vydáním.
 	PdfCraft {c} is up to date.	PdfCraft {c} je aktuální.
 	Couldn't check for updates: {e}	Aktualizace nelze zkontrolovat: {e}
-	You have version {c}. All releases are listed at {page}.	Máte verzi {c}. Všechna vydání najdete na {page}.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	Zjistí na GitHubu nejnovější vydání. Nic se automaticky nestahuje ani neinstaluje.
 	Download	Stáhnout
 	Later	Později
 	none	žádná
@@ -2674,8 +2672,6 @@ animation effects	Off	Vypnuto
 	Downloading the new version… {mb} MB	Stahuje se nová verze… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	Nová verze je připravena. PdfCraft se zavře a znovu otevře už jako nová verze.
 	Couldn't update: {e}	Aktualizace se nezdařila: {e}
-	All releases are listed at {page}.	Všechny verze jsou uvedeny na {page}.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Při spuštění PdfCraft zkontroluje na GitHubu, zda existuje nová verze. Nic se nestahuje, dokud nezvolíte Aktualizovat nyní.
 	Restart now	Restartovat nyní
 	Update now	Aktualizovat nyní
 	Release page	Stránka verze

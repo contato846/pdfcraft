@@ -792,8 +792,6 @@
 	You have version {c}. Download the new version from its release page.	A jelenlegi verzió: {c}. Töltsd le az újat a kiadási oldaláról.
 	PdfCraft {c} is up to date.	A PdfCraft {c} naprakész.
 	Couldn't check for updates: {e}	A frissítések keresése nem sikerült: {e}
-	You have version {c}. All releases are listed at {page}.	A jelenlegi verzió: {c}. Minden kiadás itt található: {page}.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	A GitHubtól kéri le a legújabb kiadást. Semmi sem töltődik le vagy települ automatikusan.
 	Download	Letöltés
 	Later	Később
 	none	nincs
@@ -2599,8 +2597,6 @@ animation effects	Off	Ki
 	Downloading the new version… {mb} MB	Az új verzió letöltése… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	Az új verzió készen áll. A PdfCraft bezárul, és már az új verzióként nyílik meg újra.
 	Couldn't update: {e}	Nem sikerült frissíteni: {e}
-	All releases are listed at {page}.	Minden verzió itt található: {page}.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	A PdfCraft indulásakor ellenőrzi a GitHubon, van-e új verzió. Semmi nem töltődik le, amíg nem választja a Frissítés most lehetőséget.
 	Restart now	Újraindítás most
 	Update now	Frissítés most
 	Release page	A verzió oldala

@@ -237,7 +237,6 @@
 	Arrow	Puščica
 	ArtCraft website	Spletna stran ArtCraft
 	Ask about this document	Vprašaj o tem dokumentu
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	Vpraša GitHub za najnovejšo izdajo. Ničesar se ne prenese ali namesti samodejno.
 	Associated with content	Povezano z vsebino
 	At least one signature has problems.	Vsaj en podpis ima težave.
 	At least one signature is invalid.	Vsaj en podpis je neveljaven.
@@ -2046,7 +2045,6 @@
 	You are about to apply 1 redaction mark. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Uveljavili boste 1 oznako za počrnitev. Besedilo, slike in risbe pod oznakami ter komentarji in polja obrazca, ki se z njimi prekrivajo, bodo trajno odstranjeni.
 	You are about to apply {n} redaction marks. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Uveljavili boste oznake za počrnitev: {n}. Besedilo, slike in risbe pod oznakami ter komentarji in polja obrazca, ki se z njimi prekrivajo, bodo trajno odstranjeni.
 	You can pin up to {n} folders. Unpin one first.	Pripnete lahko do {n} map. Najprej eno odpnite.
-	You have version {c}. All releases are listed at {page}.	Imate različico {c}. Vse izdaje so navedene na {page}.
 	You have version {c}. Download the new version from its release page.	Imate različico {c}. Novo različico prenesite z njene strani izdaje.
 	Your changes will be lost if you don't save them.	Vaše spremembe bodo izgubljene, če jih ne shranite.
 	Your name	Vaše ime
@@ -2605,8 +2603,6 @@ animation effects	Off	Izklopljeni
 	Downloading the new version… {mb} MB	Prenašanje nove različice… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	Nova različica je pripravljena. PdfCraft se bo zaprl in znova odprl kot nova različica.
 	Couldn't update: {e}	Posodobitev ni uspela: {e}
-	All releases are listed at {page}.	Vse različice so navedene na {page}.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Ob zagonu PdfCraft na GitHubu preveri, ali obstaja nova različica. Nič se ne prenese, dokler ne izberete Posodobi zdaj.
 	Restart now	Znova zaženi zdaj
 	Update now	Posodobi zdaj
 	Release page	Stran različice

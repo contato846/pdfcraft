@@ -777,8 +777,6 @@
 	You have version {c}. Download the new version from its release page.	{c} sürümüne sahipsiniz. Yeni sürümü sürüm sayfasından indirin.
 	PdfCraft {c} is up to date.	PdfCraft {c} güncel.
 	Couldn't check for updates: {e}	Güncellemeler denetlenemedi: {e}
-	You have version {c}. All releases are listed at {page}.	{c} sürümüne sahipsiniz. Tüm sürümler {page} adresinde listelenmiştir.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	En son sürüm için GitHub'ı sorgular. Hiçbir şey otomatik olarak indirilmez veya kurulmaz.
 	Download	İndir
 	Later	Daha sonra
 	none	yok
@@ -2596,8 +2594,6 @@ animation effects	Off	Kapalı
 	Downloading the new version… {mb} MB	Yeni sürüm indiriliyor… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	Yeni sürüm hazır. PdfCraft kapanıp yeni sürüm olarak yeniden açılacak.
 	Couldn't update: {e}	Güncellenemedi: {e}
-	All releases are listed at {page}.	Tüm sürümler {page} adresinde listelenir.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	PdfCraft açılırken GitHub'da yeni sürüm olup olmadığını denetler. Şimdi güncelle'yi seçene kadar hiçbir şey indirilmez.
 	Restart now	Şimdi yeniden başlat
 	Update now	Şimdi güncelle
 	Release page	Sürüm sayfası

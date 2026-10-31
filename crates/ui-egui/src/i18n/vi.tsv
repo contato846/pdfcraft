@@ -287,7 +287,6 @@ theme	Appearance	Giao diện
 	Applies to {n} pages	Áp dụng cho {n} trang
 	Apply redactions	Xóa vĩnh viễn nội dung đã đánh dấu
 	Apply scale	Áp dụng tỷ lệ
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	Hỏi GitHub về bản phát hành mới nhất. Không có gì được tải xuống hoặc cài đặt tự động.
 	At most	Tối đa
 	Attachments	Tệp đính kèm
 	Attachments Panel and Page	Bảng Tệp đính kèm và trang
@@ -1319,7 +1318,6 @@ theme	Appearance	Giao diện
 	XFA form: its fields and its XFA data are kept in step, so other viewers show what you fill in.	Biểu mẫu XFA: các trường và dữ liệu XFA của nó được giữ đồng bộ, nên các trình xem khác hiển thị những gì bạn điền.
 	You are about to apply 1 redaction mark. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Bạn sắp áp dụng 1 dấu xóa. Văn bản, hình ảnh và bản vẽ nằm dưới các dấu, cũng như bình luận và trường biểu mẫu chồng lên chúng, sẽ bị xóa vĩnh viễn.
 	You are about to apply {n} redaction marks. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Bạn sắp áp dụng {n} dấu xóa. Văn bản, hình ảnh và bản vẽ nằm dưới các dấu, cũng như bình luận và trường biểu mẫu chồng lên chúng, sẽ bị xóa vĩnh viễn.
-	You have version {c}. All releases are listed at {page}.	Bạn đang dùng phiên bản {c}. Tất cả các bản phát hành được liệt kê tại {page}.
 	You have version {c}. Download the new version from its release page.	Bạn đang dùng phiên bản {c}. Hãy tải phiên bản mới từ trang phát hành của nó.
 	Your changes will be lost if you don't save them.	Các thay đổi của bạn sẽ bị mất nếu bạn không lưu.
 	ZIP	ZIP
@@ -2888,8 +2886,6 @@ key	Space	Space
 	Downloading the new version… {mb} MB	Đang tải phiên bản mới… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	Phiên bản mới đã sẵn sàng. PdfCraft sẽ đóng và mở lại với phiên bản mới.
 	Couldn't update: {e}	Không thể cập nhật: {e}
-	All releases are listed at {page}.	Mọi phiên bản được liệt kê tại {page}.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Kiểm tra trên GitHub xem có phiên bản mới khi PdfCraft khởi động. Không tải gì về cho đến khi bạn chọn Cập nhật ngay.
 	Restart now	Khởi động lại ngay
 	Update now	Cập nhật ngay
 	Release page	Trang phiên bản

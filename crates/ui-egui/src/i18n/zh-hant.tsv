@@ -443,8 +443,6 @@
 	You have version {c}. Download the new version from its release page.	目前版本為 {c}。請從其釋出頁面下載新版本。
 	PdfCraft {c} is up to date.	PdfCraft {c} 已是最新。
 	Couldn't check for updates: {e}	無法檢驗更新：{e}
-	You have version {c}. All releases are listed at {page}.	目前版本為 {c}。所有版本列在 {page}。
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	向 GitHub 搜尋最新版本。不會自動下載或安裝任何內容。
 	Download	下載
 	Later	稍後
 	none	無
@@ -2550,8 +2548,6 @@ animation effects	Off	關
 	Downloading the new version… {mb} MB	正在下載新版本… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	新版本已就緒。PdfCraft 將關閉並以新版本重新開啟。
 	Couldn't update: {e}	無法更新:{e}
-	All releases are listed at {page}.	所有版本列於 {page}。
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	PdfCraft 啟動時在 GitHub 檢查是否有新版本。在您選擇「立即更新」之前不會下載任何內容。
 	Restart now	立即重新啟動
 	Update now	立即更新
 	Release page	版本頁面

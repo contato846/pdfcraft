@@ -287,7 +287,6 @@
 	Applies to {n} pages	Se aplică la {n} pagini
 	Apply redactions	Aplicare anonimizări
 	Apply scale	Aplicare scară
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	Întreabă GitHub care este cea mai nouă versiune. Nimic nu se descarcă sau se instalează automat.
 	At most	Cel mult
 	Attachments	Atașamente
 	Attachments Panel and Page	Panoul Atașamente și pagina
@@ -1279,7 +1278,6 @@
 	XFA form: its fields and its XFA data are kept in step, so other viewers show what you fill in.	Formular XFA: câmpurile și datele XFA sunt sincronizate, ca alte vizualizatoare să arate ce completați.
 	You are about to apply 1 redaction mark. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Urmează să aplicați 1 marcaj de anonimizare. Textul, imaginile și desenele de sub marcaje, precum și comentariile și câmpurile de formular care se suprapun cu ele, se elimină definitiv.
 	You are about to apply {n} redaction marks. Text, images and drawings under the marks, and comments and form fields that overlap them, are removed permanently.	Urmează să aplicați {n} marcaje de anonimizare. Textul, imaginile și desenele de sub marcaje, precum și comentariile și câmpurile de formular care se suprapun cu ele, se elimină definitiv.
-	You have version {c}. All releases are listed at {page}.	Aveți versiunea {c}. Toate versiunile sunt listate la {page}.
 	You have version {c}. Download the new version from its release page.	Aveți versiunea {c}. Descărcați versiunea nouă de pe pagina ei de lansare.
 	Your changes will be lost if you don't save them.	Modificările se vor pierde dacă nu le salvați.
 	ZIP	ZIP

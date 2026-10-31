@@ -822,8 +822,6 @@
 	You have version {c}. Download the new version from its release page.	現在のバージョンは {c} です。リリースページから新しいバージョンをダウンロードしてください。
 	PdfCraft {c} is up to date.	PdfCraft {c} は最新です。
 	Couldn't check for updates: {e}	アップデートを確認できませんでした: {e}
-	You have version {c}. All releases are listed at {page}.	現在のバージョンは {c} です。すべてのリリースは {page} に掲載されています。
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	GitHub で最新リリースを確認します。自動でダウンロードやインストールは行いません。
 	Download	ダウンロード
 	Later	後で
 	none	なし
@@ -2600,8 +2598,6 @@ animation effects	Off	オフ
 	Downloading the new version… {mb} MB	新しいバージョンをダウンロード中… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	新しいバージョンの準備ができました。PdfCraft は終了し、新しいバージョンとして再び開きます。
 	Couldn't update: {e}	更新できませんでした: {e}
-	All releases are listed at {page}.	すべてのバージョンは {page} に一覧されています。
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	PdfCraft の起動時に GitHub で新しいバージョンを確認します。「今すぐ更新」を選ぶまで何もダウンロードしません。
 	Restart now	今すぐ再起動
 	Update now	今すぐ更新
 	Release page	バージョンのページ

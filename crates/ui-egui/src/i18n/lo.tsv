@@ -790,8 +790,6 @@
 	You have version {c}. Download the new version from its release page.	ທ່ານກຳລັງໃຊ້ເວີຊັນ {c}. ດາວໂຫຼດເວີຊັນໃໝ່ໄດ້ຈາກໜ້າ release.
 	PdfCraft {c} is up to date.	PdfCraft {c} ເປັນເວີຊັນລ່າສຸດແລ້ວ.
 	Couldn't check for updates: {e}	ບໍ່ສາມາດກວດສອບການອັບເດດໄດ້: {e}
-	You have version {c}. All releases are listed at {page}.	ທ່ານກຳລັງໃຊ້ເວີຊັນ {c}. ລາຍການ release ທັງໝົດແມ່ນສະແດງຢູ່ທີ່ {page}.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	ກວດສອບລຸ້ນລ່າສຸດຈາກ GitHub. ຈະບໍ່ມີການດາວໂຫຼດ ຫຼື ຕິດຕັ້ງໂດຍອັດຕະໂນມັດ.
 	Download	ດາວໂຫຼດ
 	Later	ພາຍຫຼັງ
 	none	ບໍ່ມີ

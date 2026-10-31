@@ -72,10 +72,15 @@ fn an_up_to_date_or_failed_check_says_so() {
     h.get_by_label_contains("is up to date");
     assert!(h.query_by_label("Download").is_none());
 
-    let mut h = harness(Err("couldn't reach GitHub"));
+    let mut h = harness(Err("couldn't reach the update server; check the internet connection"));
     h.state_mut().execute("help.check_updates");
     settle(&mut h);
-    h.get_by_label_contains("Couldn't check for updates: couldn't reach GitHub");
+    h.get_by_label_contains("Couldn't check for updates: couldn't reach the update server");
+    // In Portuguese the reason is translated too, and no message names the host.
+    h.state_mut().set_option("language", "pt-br").unwrap();
+    settle(&mut h);
+    h.get_by_label_contains("não foi possível acessar o servidor de atualizações");
+    assert!(h.query_by_label_contains("GitHub").is_none());
 }
 
 #[test]

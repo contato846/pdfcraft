@@ -399,8 +399,6 @@
 	You have version {c}. Download the new version from its release page.	Έχετε την έκδοση {c}. Κάντε λήψη της νέας έκδοσης από τη σελίδα εκδόσεών της.
 	PdfCraft {c} is up to date.	Το PdfCraft {c} είναι ενημερωμένο.
 	Couldn't check for updates: {e}	Δεν ήταν δυνατός ο έλεγχος για ενημερώσεις: {e}
-	You have version {c}. All releases are listed at {page}.	Έχετε την έκδοση {c}. Όλες οι εκδόσεις βρίσκονται στη διεύθυνση {page}.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	Αναζητά την τελευταία έκδοση στο GitHub. Δεν γίνεται αυτόματα λήψη ή εγκατάσταση.
 	Later	Αργότερα
 	none	κανένα
 	Declared conformance: {shown}	Δηλωμένη συμμόρφωση: {shown}
@@ -2606,8 +2604,6 @@ animation effects	Off	Ανενεργά
 	Downloading the new version… {mb} MB	Λήψη της νέας έκδοσης… {mb} MB
 	The new version is ready. PdfCraft will close and open again as the new version.	Η νέα έκδοση είναι έτοιμη. Το PdfCraft θα κλείσει και θα ανοίξει ξανά ως η νέα έκδοση.
 	Couldn't update: {e}	Δεν ήταν δυνατή η ενημέρωση: {e}
-	All releases are listed at {page}.	Όλες οι εκδόσεις παρατίθενται στο {page}.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Ελέγχει στο GitHub για νέα έκδοση κατά την εκκίνηση του PdfCraft. Τίποτα δεν κατεβαίνει μέχρι να επιλέξετε Ενημέρωση τώρα.
 	Restart now	Επανεκκίνηση τώρα
 	Update now	Ενημέρωση τώρα
 	Release page	Σελίδα έκδοσης

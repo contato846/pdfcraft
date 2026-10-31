@@ -778,8 +778,6 @@
 	You have version {c}. Download the new version from its release page.	Сізде {c} нұсқасы бар. Жаңа нұсқаны шығарылым бетінен жүктеп алыңыз.
 	PdfCraft {c} is up to date.	PdfCraft {c} нұсқасы ең соңғы.
 	Couldn't check for updates: {e}	Жаңартуларды тексеру мүмкін болмады: {e}
-	You have version {c}. All releases are listed at {page}.	Сізде {c} нұсқасы бар. Барлық шығарылымдар {page} бетінде көрсетілген.
-	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	GitHub-тан соңғы шығарылымды сұрайды. Ештеңе автоматты түрде жүктелмейді немесе орнатылмайды.
 	Download	Жүктеп алу
 	Later	Кейінірек
 	none	жоқ
@@ -2598,8 +2596,6 @@ animation effects	Off	Өшірулі
 	Downloading the new version… {mb} MB	Жаңа нұсқа жүктелуде… {mb} МБ
 	The new version is ready. PdfCraft will close and open again as the new version.	Жаңа нұсқа дайын. PdfCraft жабылып, жаңа нұсқа ретінде қайта ашылады.
 	Couldn't update: {e}	Жаңарту мүмкін болмады: {e}
-	All releases are listed at {page}.	Барлық нұсқалар {page} бетінде тізілген.
-	Checks GitHub for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	PdfCraft іске қосылғанда GitHub-тан жаңа нұсқа бар-жоғын тексереді. «Қазір жаңарту» таңдалғанша ештеңе жүктелмейді.
 	Restart now	Қазір қайта іске қосу
 	Update now	Қазір жаңарту
 	Release page	Нұсқа беті
