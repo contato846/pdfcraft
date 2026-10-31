@@ -2539,7 +2539,6 @@ animation effects	Off	Изключени
 # DRM Social and table of contents to links.
 	DRM Social	Социален DRM
 	DRM Social…	Социален DRM…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Лицензирано копие за един човек: името му на всяка страница, невидим код, страница с лиценз накрая и защита, която позволява печат, но не копиране и промени.
 	Licensed to	Лицензиант
 	Code	Код
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Вие избирате къде да запазите копието; паролата се пази до него, във файл, чието име завършва на _DRM_social_senha.txt.
@@ -2633,3 +2632,11 @@ animation effects	Off	Изключени
 	Extract the selected pages…	Извличане на избраните страници…
 	Delete the selected pages	Изтриване на избраните страници
 	Get updates	Актуализирай
+	Marks	Маркировки
+	Header line	Ред в горния колонтитул
+	Footer line	Ред в долния колонтитул
+	Name across the page	Име по диагонал
+	Allow printing	Разрешаване на печат
+	Choose at least one mark.	Изберете поне една маркировка.
+	The licence is personal and non-transferable. Printing is not permitted.	Лицензът е личен и непрехвърлим. Отпечатването не е разрешено.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Лицензирано копие за един човек: името му на страниците, невидим код, страница с лиценз в края и защита от копиране и промени.

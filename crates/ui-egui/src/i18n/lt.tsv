@@ -2842,7 +2842,6 @@ theme	Appearance	Išvaizda
 # DRM Social and table of contents to links.
 	DRM Social	Socialinis DRM
 	DRM Social…	Socialinis DRM…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Licencijuota kopija vienam asmeniui: jo vardas kiekviename puslapyje, nematomas kodas, licencijos puslapis pabaigoje ir apsauga, leidžianti spausdinti, bet ne kopijuoti ar keisti.
 	Licensed to	Licencija suteikta
 	Code	Kodas
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Jūs pasirenkate, kur įrašyti kopiją; slaptažodis laikomas šalia jos, faile, kurio pavadinimas baigiasi _DRM_social_senha.txt.
@@ -2944,3 +2943,11 @@ theme	Appearance	Išvaizda
 	Extract the selected pages…	Išskleisti pasirinktus puslapius…
 	Delete the selected pages	Ištrinti pasirinktus puslapius
 	Get updates	Atnaujinti
+	Marks	Žymos
+	Header line	Eilutė antraštėje
+	Footer line	Eilutė poraštėje
+	Name across the page	Vardas įstrižai
+	Allow printing	Leisti spausdinti
+	Choose at least one mark.	Pasirinkite bent vieną žymą.
+	The licence is personal and non-transferable. Printing is not permitted.	Licencija yra asmeninė ir neperduodama. Spausdinti neleidžiama.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Licencijuota kopija vienam asmeniui: jo vardas puslapiuose, nematomas kodas, licencijos puslapis pabaigoje ir apsauga nuo kopijavimo bei pakeitimų.

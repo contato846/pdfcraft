@@ -2526,7 +2526,6 @@ animation effects	Off	關
 # DRM Social and table of contents to links.
 	DRM Social	社會化 DRM
 	DRM Social…	社會化 DRM…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	為一個人製作的授權副本:每頁都有其姓名、一個不可見的代碼、末尾一頁授權說明,以及允許列印但禁止複製和修改的保護。
 	Licensed to	授權給
 	Code	代碼
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	由您選擇副本的儲存位置;密碼儲存在其旁邊,檔名以 _DRM_social_senha.txt 結尾。
@@ -2620,3 +2619,11 @@ animation effects	Off	關
 	Extract the selected pages…	擷取所選頁面…
 	Delete the selected pages	刪除所選頁面
 	Get updates	更新
+	Marks	標記
+	Header line	頁首行
+	Footer line	頁尾行
+	Name across the page	斜向姓名
+	Allow printing	允許列印
+	Choose at least one mark.	請至少選擇一種標記。
+	The licence is personal and non-transferable. Printing is not permitted.	授權僅限個人使用，不得轉讓。不允許列印。
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	為一個人製作的授權副本：頁面上的姓名、隱形代碼、結尾的授權頁，以及防止複製和變更的保護。

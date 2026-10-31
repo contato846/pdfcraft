@@ -2576,7 +2576,6 @@ animation effects	Off	オフ
 # DRM Social and table of contents to links.
 	DRM Social	ソーシャルDRM
 	DRM Social…	ソーシャルDRM…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	一人のためのライセンス付きコピー:すべてのページにその人の名前、見えないコード、末尾のライセンスページ、そして印刷はできるがコピーや変更はできない保護を付けます。
 	Licensed to	ライセンス先
 	Code	コード
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	コピーの保存先はあなたが選びます。パスワードはその横の、名前が _DRM_social_senha.txt で終わるファイルに保存されます。
@@ -2670,3 +2669,11 @@ animation effects	Off	オフ
 	Extract the selected pages…	選択したページを抽出…
 	Delete the selected pages	選択したページを削除
 	Get updates	更新
+	Marks	マーク
+	Header line	ヘッダーの行
+	Footer line	フッターの行
+	Name across the page	斜めの名前
+	Allow printing	印刷を許可
+	Choose at least one mark.	マークを1つ以上選んでください。
+	The licence is personal and non-transferable. Printing is not permitted.	ライセンスは個人用で譲渡できません。印刷は許可されていません。
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	1人のためのライセンス付きコピー:各ページの名前、不可視のコード、末尾のライセンスページ、コピーと変更からの保護。

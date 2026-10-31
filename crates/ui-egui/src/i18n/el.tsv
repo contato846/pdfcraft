@@ -2582,7 +2582,6 @@ animation effects	Off	Ανενεργά
 # DRM Social and table of contents to links.
 	DRM Social	Κοινωνικό DRM
 	DRM Social…	Κοινωνικό DRM…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Αντίγραφο με άδεια για ένα πρόσωπο: το όνομά του σε κάθε σελίδα, ένας αόρατος κωδικός, μια σελίδα άδειας στο τέλος και προστασία που επιτρέπει την εκτύπωση αλλά όχι την αντιγραφή ή τις αλλαγές.
 	Licensed to	Με άδεια για
 	Code	Κωδικός
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Επιλέγετε πού θα αποθηκευτεί το αντίγραφο· ο κωδικός πρόσβασης φυλάσσεται δίπλα του, σε αρχείο που τελειώνει σε _DRM_social_senha.txt.
@@ -2676,3 +2675,11 @@ animation effects	Off	Ανενεργά
 	Extract the selected pages…	Εξαγωγή των επιλεγμένων σελίδων…
 	Delete the selected pages	Διαγραφή των επιλεγμένων σελίδων
 	Get updates	Ενημέρωση
+	Marks	Σημάνσεις
+	Header line	Γραμμή στην κεφαλίδα
+	Footer line	Γραμμή στο υποσέλιδο
+	Name across the page	Όνομα διαγώνια
+	Allow printing	Να επιτρέπεται η εκτύπωση
+	Choose at least one mark.	Επιλέξτε τουλάχιστον μία σήμανση.
+	The licence is personal and non-transferable. Printing is not permitted.	Η άδεια είναι προσωπική και αμεταβίβαστη. Η εκτύπωση δεν επιτρέπεται.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Ένα αδειοδοτημένο αντίγραφο για ένα άτομο: το όνομά του στις σελίδες, ένας αόρατος κωδικός, μια σελίδα άδειας στο τέλος και προστασία από αντιγραφή και αλλαγές.

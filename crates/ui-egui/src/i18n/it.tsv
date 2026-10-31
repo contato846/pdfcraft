@@ -2788,7 +2788,6 @@ certificate	SHA-256 digest	Impronta SHA-256
 # DRM Social and table of contents to links.
 	DRM Social	DRM sociale
 	DRM Social…	DRM sociale…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Una copia concessa in licenza a una persona: il suo nome su ogni pagina, un codice invisibile, una pagina di licenza alla fine e una protezione che consente la stampa ma non la copia né le modifiche.
 	Licensed to	Concesso in licenza a
 	Code	Codice
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Scegli dove salvare la copia; la password viene conservata accanto, in un file che termina con _DRM_social_senha.txt.
@@ -2915,3 +2914,11 @@ certificate	SHA-256 digest	Impronta SHA-256
 	Extract the selected pages…	Estrai le pagine selezionate…
 	Delete the selected pages	Elimina le pagine selezionate
 	Get updates	Aggiorna
+	Marks	Marcature
+	Header line	Riga di intestazione
+	Footer line	Riga a piè di pagina
+	Name across the page	Nome in diagonale
+	Allow printing	Consenti la stampa
+	Choose at least one mark.	Scegli almeno una marcatura.
+	The licence is personal and non-transferable. Printing is not permitted.	La licenza è personale e non trasferibile. La stampa non è consentita.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Una copia con licenza per una persona: il suo nome sulle pagine, un codice invisibile, una pagina di licenza alla fine e protezione contro copia e modifiche.

@@ -2575,7 +2575,6 @@ animation effects	Off	Ki
 # DRM Social and table of contents to links.
 	DRM Social	Közösségi DRM
 	DRM Social…	Közösségi DRM…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Licencelt másolat egy személy számára: a neve minden oldalon, egy láthatatlan kód, egy licencoldal a végén és olyan védelem, amely engedi a nyomtatást, de a másolást és a módosítást nem.
 	Licensed to	Licencelve:
 	Code	Kód
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Ön választja ki, hová mentse a másolatot; a jelszó mellette lesz, egy _DRM_social_senha.txt végű fájlban.
@@ -2669,3 +2668,11 @@ animation effects	Off	Ki
 	Extract the selected pages…	A kijelölt oldalak kibontása…
 	Delete the selected pages	A kijelölt oldalak törlése
 	Get updates	Frissítés
+	Marks	Jelölések
+	Header line	Sor az élőfejben
+	Footer line	Sor az élőlábban
+	Name across the page	Név átlósan
+	Allow printing	Nyomtatás engedélyezése
+	Choose at least one mark.	Válasszon legalább egy jelölést.
+	The licence is personal and non-transferable. Printing is not permitted.	A licenc személyes és át nem ruházható. A nyomtatás nem engedélyezett.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Licencelt példány egy személynek: a neve az oldalakon, egy láthatatlan kód, egy licencoldal a végén, és védelem a másolás és a módosítás ellen.

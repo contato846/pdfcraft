@@ -2574,7 +2574,6 @@ animation effects	Off	Өшірулі
 # DRM Social and table of contents to links.
 	DRM Social	Әлеуметтік DRM
 	DRM Social…	Әлеуметтік DRM…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Бір адамға арналған лицензиялық көшірме: әр бетте оның аты, көрінбейтін код, соңында лицензия беті және басып шығаруға рұқсат беретін, бірақ көшіруге және өзгертуге рұқсат бермейтін қорғау.
 	Licensed to	Лицензия иесі
 	Code	Код
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Көшірмені қайда сақтауды өзіңіз таңдайсыз; құпиясөз оның жанында, атауы _DRM_social_senha.txt деп аяқталатын файлда сақталады.
@@ -2668,3 +2667,11 @@ animation effects	Off	Өшірулі
 	Extract the selected pages…	Таңдалған беттерді шығарып алу…
 	Delete the selected pages	Таңдалған беттерді жою
 	Get updates	Жаңарту
+	Marks	Белгілер
+	Header line	Жоғарғы колонтитулдағы жол
+	Footer line	Төменгі колонтитулдағы жол
+	Name across the page	Атауы диагональ бойынша
+	Allow printing	Басып шығаруға рұқсат беру
+	Choose at least one mark.	Кемінде бір белгіні таңдаңыз.
+	The licence is personal and non-transferable. Printing is not permitted.	Лицензия жеке және басқаға берілмейді. Басып шығаруға рұқсат етілмейді.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Бір адамға арналған лицензиялық көшірме: беттердегі оның аты, көрінбейтін код, соңындағы лицензия беті және көшіру мен өзгертуден қорғау.

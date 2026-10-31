@@ -2485,7 +2485,6 @@ animation effects	Off	ఆఫ్
 # DRM Social and table of contents to links.
 	DRM Social	సామాజిక DRM
 	DRM Social…	సామాజిక DRM…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	ఒక వ్యక్తి కోసం లైసెన్స్ పొందిన కాపీ: ప్రతి పేజీపై వారి పేరు, కనిపించని కోడ్, చివర లైసెన్స్ పేజీ, ముద్రణకు అనుమతించి కాపీ చేయడం లేదా మార్చడాన్ని అనుమతించని రక్షణ.
 	Licensed to	లైసెన్స్ పొందినవారు
 	Code	కోడ్
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	కాపీని ఎక్కడ సేవ్ చేయాలో మీరు ఎంచుకుంటారు; పాస్‌వర్డ్ దాని పక్కనే, పేరు _DRM_social_senha.txt తో ముగిసే ఫైల్‌లో ఉంటుంది.
@@ -2579,3 +2578,11 @@ animation effects	Off	ఆఫ్
 	Extract the selected pages…	ఎంచుకున్న పేజీలను సంగ్రహించు…
 	Delete the selected pages	ఎంచుకున్న పేజీలను తొలగించు
 	Get updates	అప్‌డేట్ చేయి
+	Marks	గుర్తులు
+	Header line	హెడర్‌లో లైన్
+	Footer line	ఫుటర్‌లో లైన్
+	Name across the page	వికర్ణంగా పేరు
+	Allow printing	ముద్రణకు అనుమతించు
+	Choose at least one mark.	కనీసం ఒక గుర్తును ఎంచుకోండి.
+	The licence is personal and non-transferable. Printing is not permitted.	లైసెన్స్ వ్యక్తిగతమైనది, బదిలీ చేయలేనిది. ముద్రణకు అనుమతి లేదు.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	ఒక వ్యక్తి కోసం లైసెన్స్ పొందిన ప్రతి: పేజీలపై వారి పేరు, కనిపించని కోడ్, చివర లైసెన్స్ పేజీ, కాపీ మరియు మార్పుల నుండి రక్షణ.

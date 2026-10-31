@@ -2572,7 +2572,6 @@ animation effects	Off	Kapalı
 # DRM Social and table of contents to links.
 	DRM Social	Sosyal DRM
 	DRM Social…	Sosyal DRM…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Bir kişiye lisanslı kopya: her sayfada adı, görünmez bir kod, sonda bir lisans sayfası ve yazdırmaya izin veren ama kopyalamaya ve değiştirmeye izin vermeyen bir koruma.
 	Licensed to	Lisans sahibi
 	Code	Kod
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Kopyanın nereye kaydedileceğini siz seçersiniz; parola onun yanında, adı _DRM_social_senha.txt ile biten bir dosyada saklanır.
@@ -2666,3 +2665,11 @@ animation effects	Off	Kapalı
 	Extract the selected pages…	Seçili sayfaları ayıkla…
 	Delete the selected pages	Seçili sayfaları sil
 	Get updates	Güncelle
+	Marks	İşaretler
+	Header line	Üst bilgi satırı
+	Footer line	Alt bilgi satırı
+	Name across the page	Çapraz ad
+	Allow printing	Yazdırmaya izin ver
+	Choose at least one mark.	En az bir işaret seçin.
+	The licence is personal and non-transferable. Printing is not permitted.	Lisans kişiseldir ve devredilemez. Yazdırmaya izin verilmez.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Bir kişi için lisanslı kopya: sayfalarda adı, görünmez bir kod, sonda bir lisans sayfası ve kopyalamaya ve değişikliklere karşı koruma.

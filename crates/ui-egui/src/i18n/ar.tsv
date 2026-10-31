@@ -2853,7 +2853,6 @@ certificate	Version	الإصدار
 # DRM Social and table of contents to links.
 	DRM Social	إدارة الحقوق الرقمية الاجتماعية
 	DRM Social…	إدارة الحقوق الرقمية الاجتماعية…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	نسخة مرخّصة لشخص واحد: اسمه على كل صفحة، ورمز غير مرئي، وصفحة ترخيص في النهاية، وحماية تسمح بالطباعة لا بالنسخ أو التعديل.
 	Licensed to	مرخّص لـ
 	Code	الرمز
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	تختار مكان حفظ النسخة؛ وتُحفظ كلمة المرور بجانبها في ملف ينتهي اسمه بـ _DRM_social_senha.txt.
@@ -2946,3 +2945,11 @@ certificate	Version	الإصدار
 	Extract the selected pages…	استخراج الصفحات المحددة…
 	Delete the selected pages	حذف الصفحات المحددة
 	Get updates	تحديث
+	Marks	العلامات
+	Header line	سطر في الترويسة
+	Footer line	سطر في التذييل
+	Name across the page	الاسم قطريًا
+	Allow printing	السماح بالطباعة
+	Choose at least one mark.	اختر علامة واحدة على الأقل.
+	The licence is personal and non-transferable. Printing is not permitted.	الترخيص شخصي وغير قابل للتحويل. الطباعة غير مسموح بها.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	نسخة مرخصة لشخص واحد: اسمه على الصفحات، ورمز غير مرئي، وصفحة ترخيص في النهاية، وحماية من النسخ والتعديل.

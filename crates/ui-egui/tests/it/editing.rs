@@ -6728,6 +6728,100 @@ fn drm_social_makes_a_licensed_copy_and_keeps_its_password_beside_it() {
     let _ = std::fs::remove_dir_all(&dir);
 }
 
+/// A letterhead's coloured bar at the foot of the page (20–50 pt up): DRM Social's footer line
+/// goes on the paper just above it, not across it.
+#[test]
+fn drm_social_footer_clears_a_letterhead_bar() {
+    let content = "0.3 0.5 0.85 rg 0 20 300 30 re f BT /F1 12 Tf 40 300 Td (Roteiro) Tj ET";
+    let objs = [
+        "<< /Type /Catalog /Pages 2 0 R >>".to_string(),
+        "<< /Type /Pages /Kids [3 0 R] /Count 1 >>".to_string(),
+        "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 300 400] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>".to_string(),
+        format!("<< /Length {} >>\nstream\n{content}\nendstream", content.len()),
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>".to_string(),
+    ];
+    let mut pdf = b"%PDF-1.7\n".to_vec();
+    let mut offs = Vec::new();
+    for (i, o) in objs.iter().enumerate() {
+        offs.push(pdf.len());
+        pdf.extend_from_slice(format!("{} 0 obj\n{o}\nendobj\n", i + 1).as_bytes());
+    }
+    let x = pdf.len();
+    pdf.extend_from_slice(format!("xref\n0 {}\n0000000000 65535 f \n", objs.len() + 1).as_bytes());
+    for o in offs {
+        pdf.extend_from_slice(format!("{o:010} 00000 n \n").as_bytes());
+    }
+    pdf.extend_from_slice(format!("trailer\n<< /Size {} /Root 1 0 R >>\nstartxref\n{x}\n%%EOF\n", objs.len() + 1).as_bytes());
+    let dir = std::env::temp_dir().join(format!("pdfcraft-drm-bar-{}", std::process::id()));
+    std::fs::create_dir_all(&dir).unwrap();
+    let dest = dir.join("Timbrado.pdf").to_string_lossy().into_owned();
+    let mut h = Harness::builder().with_size(egui::vec2(1400.0, 900.0)).build_eframe(move |_cc| {
+        let mut app = PdfCraftApp::new();
+        app.set_option("language", "en").unwrap();
+        app.save_override = Some(dest.clone());
+        app.open_bytes("timbrado.pdf", None, pdf.clone()).expect("opens");
+        app
+    });
+    h.run_steps(3);
+    let id = h.state().views[0].id;
+    assert!(h.state_mut().execute("house.drm_social"));
+    h.run_steps(3);
+    let name = h.get_by_role_and_label(Role::TextInput, "Licensed to");
+    name.focus();
+    name.type_text("Leitora Exemplo");
+    h.run_steps(2);
+    h.get_by_label("Create licensed copy…").click();
+    h.run_steps(4);
+    let bottom = h.state().drm_draft.footer_bottom.expect("measured");
+    assert!((54.0..=56.0).contains(&bottom), "just above the bar: {bottom}");
+    let doc = h.state().session.get(id).unwrap();
+    // The footer line, not the name across the page (a tall, turned box).
+    let line = doc
+        .text_lines(0)
+        .into_iter()
+        .find(|l| l.text.contains("Licensed to Leitora Exemplo") && l.rect[3] - l.rect[1] < 12.0)
+        .expect("the footer line");
+    // About a millimetre of paper between the bar (top at 50 pt) and the lowest descender.
+    assert!(line.rect[1] >= 52.5 && line.rect[1] < 60.0, "on the paper above the bar: {:?}", line.rect);
+    let _ = std::fs::remove_dir_all(&dir);
+}
+
+/// DRM Social with the line as a header only, no name across the page and printing refused.
+#[test]
+fn drm_social_marks_as_chosen_and_can_refuse_printing() {
+    let dir = std::env::temp_dir().join(format!("pdfcraft-drm-choice-{}", std::process::id()));
+    std::fs::create_dir_all(&dir).unwrap();
+    let dest = dir.join("Roteiro.pdf").to_string_lossy().into_owned();
+    let mut h = harness(1, move |app| app.save_override = Some(dest.clone()));
+    let id = h.state().views[0].id;
+    assert!(h.state_mut().execute("house.drm_social"));
+    h.run_steps(3);
+    let d = &h.state().drm_draft;
+    assert!(d.in_footer && d.diagonal && !d.in_header && d.allow_printing, "footer, diagonal and printing unless changed");
+    let name = h.get_by_role_and_label(Role::TextInput, "Licensed to");
+    name.focus();
+    name.type_text("Leitora Exemplo");
+    h.run_steps(2);
+    for label in ["Header line", "Footer line", "Name across the page", "Allow printing"] {
+        h.get_by_role_and_label(Role::CheckBox, label).click();
+        h.run_steps(1);
+    }
+    let d = &h.state().drm_draft;
+    assert!(d.in_header && !d.in_footer && !d.diagonal && !d.allow_printing);
+    h.get_by_label("Create licensed copy…").click();
+    h.run_steps(4);
+    let doc = h.state().session.get(id).unwrap();
+    assert!(doc.marks().contains(&pdfcraft_engine::MarkKind::HeaderFooter));
+    assert!(!doc.marks().contains(&pdfcraft_engine::MarkKind::Watermark), "no name across the page");
+    let top = doc.text_lines(0).iter().filter(|l| l.text.contains("Leitora Exemplo")).map(|l| l.rect[1]).fold(f64::MIN, f64::max);
+    let page_h = f64::from(doc.info.pages[0].height);
+    assert!(top > page_h * 0.85, "the line is at the top of the page: {top} of {page_h}");
+    assert!(doc.text_lines(1).iter().any(|l| l.text.contains("Printing is not permitted")), "the licence says so");
+    let security = doc.security_summary().expect("protected");
+    assert_eq!(security.permissions.bits & (1 << 2), 0, "printing refused");
+    let _ = std::fs::remove_dir_all(&dir);
+}
+
 /// A small book: a cover, a table of contents, then one page per printed page 1–6 (file page n + 1
 /// is printed page n). Chapters one and two have headings; "Notes" has none of its own.
 fn book_with_contents() -> Vec<u8> {

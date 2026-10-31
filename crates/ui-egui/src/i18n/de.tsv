@@ -2577,7 +2577,6 @@ animation effects	Off	Aus
 # DRM Social and table of contents to links.
 	DRM Social	Soziales DRM
 	DRM Social…	Soziales DRM…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Eine lizenzierte Kopie für eine Person: ihr Name auf jeder Seite, ein unsichtbarer Code, eine Lizenzseite am Ende und ein Schutz, der Drucken erlaubt, aber weder Kopieren noch Ändern.
 	Licensed to	Lizenziert für
 	Code	Kennung
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Sie wählen, wo die Kopie gespeichert wird; das Kennwort liegt daneben, in einer Datei, die auf _DRM_social_senha.txt endet.
@@ -2684,3 +2683,11 @@ animation effects	Off	Aus
 	Extract the selected pages…	Ausgewählte Seiten extrahieren…
 	Delete the selected pages	Ausgewählte Seiten löschen
 	Get updates	Aktualisieren
+	Marks	Markierungen
+	Header line	Kopfzeile
+	Footer line	Fußzeile
+	Name across the page	Name diagonal
+	Allow printing	Drucken erlauben
+	Choose at least one mark.	Wählen Sie mindestens eine Markierung.
+	The licence is personal and non-transferable. Printing is not permitted.	Die Lizenz ist persönlich und nicht übertragbar. Drucken ist nicht erlaubt.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Eine lizenzierte Kopie für eine Person: ihr Name auf den Seiten, ein unsichtbarer Code, eine Lizenzseite am Ende und Schutz vor Kopieren und Änderungen.

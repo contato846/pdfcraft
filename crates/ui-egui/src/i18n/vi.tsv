@@ -2851,7 +2851,6 @@ key	Space	Space
 # DRM Social and table of contents to links.
 	DRM Social	DRM xã hội
 	DRM Social…	DRM xã hội…
-	A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes.	Một bản sao được cấp phép cho một người: tên của họ trên mọi trang, một mã ẩn, một trang giấy phép ở cuối và lớp bảo vệ cho phép in nhưng không cho sao chép hay sửa đổi.
 	Licensed to	Cấp phép cho
 	Code	Mã
 	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Bạn chọn nơi lưu bản sao; mật khẩu được lưu bên cạnh, trong một tệp có tên kết thúc bằng _DRM_social_senha.txt.
@@ -2951,3 +2950,11 @@ key	Space	Space
 	Extract the selected pages…	Trích xuất các trang đã chọn…
 	Delete the selected pages	Xóa các trang đã chọn
 	Get updates	Cập nhật
+	Marks	Dấu
+	Header line	Dòng ở đầu trang
+	Footer line	Dòng ở chân trang
+	Name across the page	Tên chéo trang
+	Allow printing	Cho phép in
+	Choose at least one mark.	Hãy chọn ít nhất một dấu.
+	The licence is personal and non-transferable. Printing is not permitted.	Giấy phép là cá nhân và không thể chuyển nhượng. Không được phép in.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Một bản sao có giấy phép cho một người: tên của họ trên các trang, một mã ẩn, một trang giấy phép ở cuối và bảo vệ chống sao chép và thay đổi.

@@ -1,10 +1,12 @@
 //! House tools ▸ DRM Social: a licensed copy of the open document for one person.
 //!
 //! It is "social" protection: it does not stop a determined person, it makes the copy traceable
-//! and states the terms on it. Every page gets the licensee's name diagonally (very faint) and a
-//! footer line naming them; each page also carries an invisible code (an invisible text layer)
-//! that the document's metadata repeats; a licence page closes the document; and the copy is
-//! encrypted (AES-256) with printing allowed and copying, extraction and changes refused.
+//! and states the terms on it. Every page gets, as chosen, the licensee's name diagonally (very
+//! faint), a footer line naming them and the same line as a header; the lines sit on the first
+//! blank band from the page edge, clear of a letterhead's bar or logo. Each page also carries an
+//! invisible code (an invisible text layer) that the document's metadata repeats; a licence page
+//! closes the document; and the copy is encrypted (AES-256), copying, extraction and changes
+//! refused, printing allowed unless unticked.
 //!
 //! The permissions password is kept beside the saved copy, in `<file>_DRM_social_senha.txt`
 //! (only the password, no label and no line break), so the owner can lift the protection later.
@@ -17,7 +19,7 @@ use crate::theme::Tokens;
 use crate::widgets;
 
 /// The DRM Social dialog.
-#[derive(Clone, Debug, Default, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct DrmDraft {
     /// Who the copy is licensed to (required).
     pub name: String,
@@ -34,6 +36,82 @@ pub struct DrmDraft {
     /// The colour of the marks (the name across the page, the footer, the licence title): red
     /// unless changed.
     pub color: [f64; 3],
+    /// Where the licensee's line goes: the top of each page, the bottom, and the name across the
+    /// page, in any combination (at least one). Footer and diagonal unless changed.
+    pub in_header: bool,
+    pub in_footer: bool,
+    pub diagonal: bool,
+    /// The protection lets the copy be printed (on unless unticked).
+    pub allow_printing: bool,
+    /// The distance of the header line from the top edge and of the footer line from the bottom
+    /// edge, in points, measured from the pages ([`clear_offset`]) before applying; `None` uses
+    /// the default distance.
+    pub header_top: Option<f64>,
+    pub footer_bottom: Option<f64>,
+}
+
+impl Default for DrmDraft {
+    fn default() -> Self {
+        Self {
+            name: String::new(),
+            title: String::new(),
+            issuer: String::new(),
+            code: String::new(),
+            date: String::new(),
+            password: String::new(),
+            color: DEFAULT_COLOR,
+            in_header: false,
+            in_footer: true,
+            diagonal: true,
+            allow_printing: true,
+            header_top: None,
+            footer_bottom: None,
+        }
+    }
+}
+
+/// A rendered page: premultiplied RGBA, `width` × `height` pixels, `scale` pixels per point.
+#[derive(Clone, Copy)]
+pub struct Raster<'a> {
+    pub rgba: &'a [u8],
+    pub width: usize,
+    pub height: usize,
+    pub scale: f64,
+}
+
+/// How far from a page edge (in points) a line of `height` points can sit on blank paper: the
+/// first offset from `start` up to `limit` where the band it takes, with a little air around it,
+/// is white in the page. Measured from the bottom edge, or the top one when `from_top`. `start`
+/// when nothing in reach is blank, so a full-bleed page keeps the default position.
+pub fn clear_offset(page: Raster<'_>, from_top: bool, start: f64, height: f64, limit: f64) -> f64 {
+    let Raster { rgba, width, height: height_px, scale } = page;
+    // About a millimetre of paper between the line and whatever is drawn next to it.
+    const AIR: f64 = 3.0;
+    let blank_row = |y: usize| {
+        rgba.get(y.saturating_mul(width).saturating_mul(4)..(y + 1).saturating_mul(width).saturating_mul(4)).is_none_or(|row| {
+            row.chunks_exact(4).all(|p| {
+                let a = p.get(3).copied().unwrap_or(0);
+                // Premultiplied: transparent is the paper; otherwise every channel near full.
+                a < 16 || p.iter().take(3).all(|c| u32::from(*c) * 255 >= 236 * u32::from(a))
+            })
+        })
+    };
+    let rows = |off: f64| {
+        let (near, far) = ((off - AIR).max(0.0), off + height + AIR);
+        let (a, b) = ((near * scale).floor() as usize, (far * scale).ceil() as usize);
+        (a..b.min(height_px)).map(move |r| if from_top { r } else { height_px.saturating_sub(1).saturating_sub(r) })
+    };
+    if !(scale.is_finite() && scale > 0.0) || width == 0 || height_px == 0 {
+        return start;
+    }
+    let mut off = start;
+    while off <= limit {
+        if rows(off).all(blank_row) {
+            return off;
+        }
+        off += 0.5;
+    }
+    start
 }
 
 /// The marks' colour until changed: a dark red that reads on paper and on screen.
@@ -155,7 +233,11 @@ impl DrmDraft {
         };
         vec![
             first,
-            doc_tl("The licence is personal and non-transferable. Printing for one's own use is permitted.").to_string(),
+            if self.allow_printing {
+                doc_tl("The licence is personal and non-transferable. Printing for one's own use is permitted.").to_string()
+            } else {
+                doc_tl("The licence is personal and non-transferable. Printing is not permitted.").to_string()
+            },
             doc_tl("It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.").to_string(),
             doc_tl("Each copy carries a visible and an invisible identification of the licensee that traces its origin.").to_string(),
             doc_tl("Infringement is subject to the penalties of copyright law, without prejudice to other measures.").to_string(),
@@ -216,15 +298,26 @@ impl DrmDraft {
             rotation: 45.0,
             ..Watermark::default()
         };
-        edits.push(Edit::AddWatermark { pages: pages.clone(), settings: mark, replace: false, file: None });
+        if self.diagonal {
+            edits.push(Edit::AddWatermark { pages: pages.clone(), settings: mark, replace: false, file: None });
+        }
         // 6.5 pt, smaller when the line would not fit across the page.
         let line = self.footer();
         let at = |size: f64| pdfcraft_engine::added_text_width(&AddedText { text: line.clone(), size, ..Default::default() });
         let room = (w - 2.0 * m).max(36.0);
         let size = if at(6.5) > room { (6.5 * room / at(6.5).max(1.0)).max(3.0) } else { 6.5 };
-        let mut footer = HeaderFooter { font_size: size, color: self.color, margins: [m, (m / 2.0).max(14.0), m, m], ..HeaderFooter::default() };
-        footer.text[4] = line;
-        edits.push(Edit::AddHeaderFooter { pages, settings: footer, replace: false });
+        let edge = (m / 2.0).max(14.0);
+        let margins = [self.header_top.unwrap_or(edge), self.footer_bottom.unwrap_or(edge), m, m];
+        let mut lines = HeaderFooter { font_size: size, color: self.color, margins, ..HeaderFooter::default() };
+        if self.in_header {
+            lines.text[1] = line.clone();
+        }
+        if self.in_footer {
+            lines.text[4] = line;
+        }
+        if self.in_header || self.in_footer {
+            edits.push(Edit::AddHeaderFooter { pages, settings: lines, replace: false });
+        }
         // The invisible code, in each page's own user space (the new page has the first page's size).
         let hidden = format!("{} {}", self.code.trim(), self.date.trim());
         for page in 0..=n {
@@ -249,7 +342,7 @@ impl DrmDraft {
         edits.push(Edit::SetInfo { key: "Keywords".into(), value: self.code.trim().to_owned() });
         edits.push(Edit::Protect(Protection {
             permissions_password: Some(password.to_owned()),
-            printing: Printing::High,
+            printing: if self.allow_printing { Printing::High } else { Printing::None },
             changes: Changes::None,
             copy: false,
             accessibility: true,
@@ -264,8 +357,7 @@ impl PdfCraftApp {
         let Some((_, id)) = self.active_ids() else { return };
         let (y, m, d) = self.session.today();
         let title = self.session.get(id).and_then(|doc| doc.info_value("Title")).unwrap_or_default();
-        self.drm_draft =
-            DrmDraft { date: format!("{d:02}/{m:02}/{y}"), title, password: random_password(), color: DEFAULT_COLOR, ..DrmDraft::default() };
+        self.drm_draft = DrmDraft { date: format!("{d:02}/{m:02}/{y}"), title, password: random_password(), ..DrmDraft::default() };
         self.dialog = Some(crate::Dialog::DrmSocial);
     }
 
@@ -277,12 +369,50 @@ impl PdfCraftApp {
             self.drm_draft.code = code_for(&self.drm_draft.name);
         }
         let password = if self.drm_draft.password.trim().is_empty() { random_password() } else { self.drm_draft.password.trim().to_owned() };
+        self.place_drm_lines(id);
         let Some(edit) = self.session.get(id).and_then(|doc| self.drm_draft.edit(&doc.info, &password)) else { return };
         if !self.apply_edit(edit) {
             return;
         }
         self.drm_password = Some(PendingPassword { doc: id, password });
         self.save_view(index, crate::editing::SaveTarget::As);
+    }
+
+    /// Where the header and footer lines go: the first blank band from each edge, so they don't
+    /// run into a letterhead's bar or logo. Measured on the first pages (a template repeats).
+    fn place_drm_lines(&mut self, id: pdfcraft_engine::DocId) {
+        let d = &mut self.drm_draft;
+        (d.header_top, d.footer_bottom) = (None, None);
+        let Some(doc) = self.session.get(id) else { return };
+        let Some(first) = doc.info.pages.first() else { return };
+        let (w, h) = (f64::from(first.width.max(72.0)), f64::from(first.height.max(72.0)));
+        let m = (w.min(h) * 0.12).clamp(18.0, 72.0);
+        let edge = (m / 2.0).max(14.0);
+        // The header and footer are placed by their baseline; the band the line takes reaches a
+        // descender below it and a little over the cap height above it, at the usual 6.5 pt.
+        let descent = 6.5 * 0.25;
+        let line = 6.5 * 1.3;
+        let limit = h * 0.22;
+        let config = pdfcraft_render::RenderConfig { password: doc.password.as_deref().map(std::sync::Arc::from), ..Default::default() };
+        let mut renderer = pdfcraft_render::PageRenderer::new(doc.display.clone(), config);
+        let scale = 2.0_f32;
+        let (mut top, mut bottom) = (edge, edge);
+        for page in 0..doc.info.pages.len().min(3) {
+            let out = renderer.render(pdfcraft_render::RenderRequest { page, scale, ..Default::default() });
+            if out.error.is_some() {
+                continue;
+            }
+            let (pw, ph) = (out.width as usize, out.height as usize);
+            let s = f64::from(scale);
+            if d.in_header {
+                top = top.max(clear_offset(Raster { rgba: &out.rgba, width: pw, height: ph, scale: s }, true, edge, line, limit));
+            }
+            if d.in_footer {
+                bottom = bottom
+                    .max(clear_offset(Raster { rgba: &out.rgba, width: pw, height: ph, scale: s }, false, edge - descent, line, limit) + descent);
+            }
+        }
+        (d.header_top, d.footer_bottom) = (Some(top), Some(bottom));
     }
 
     /// After document `id` was written to `dest`: keep the password of its licensed copy beside it.
@@ -307,7 +437,7 @@ pub(crate) fn drm_body(ui: &mut egui::Ui, d: &mut DrmDraft, t: &Tokens) -> (bool
     ui.add_space(4.0);
     ui.label(
         egui::RichText::new(tl!(
-            "A licensed copy for one person: their name on every page, an invisible code, a licence page at the end, and protection that allows printing but not copying or changes."
+            "A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes."
         ))
         .color(t.text_muted),
     );
@@ -337,6 +467,16 @@ pub(crate) fn drm_body(ui: &mut egui::Ui, d: &mut DrmDraft, t: &Tokens) -> (bool
             }
         });
         ui.end_row();
+        ui.label(egui::RichText::new(tl!("Marks")).color(t.text_muted));
+        ui.horizontal(|ui| {
+            ui.add(widgets::checkbox(&mut d.in_header, tl!("Header line")));
+            ui.add(widgets::checkbox(&mut d.in_footer, tl!("Footer line")));
+            ui.add(widgets::checkbox(&mut d.diagonal, tl!("Name across the page")));
+        });
+        ui.end_row();
+        ui.label("");
+        ui.add(widgets::checkbox(&mut d.allow_printing, tl!("Allow printing")));
+        ui.end_row();
         let l = ui.label(egui::RichText::new(tl!("Colour")).color(t.text_muted));
         ui.horizontal(|ui| {
             crate::marks_ui::color_button(ui, &mut d.color).labelled_by(l.id);
@@ -355,6 +495,11 @@ pub(crate) fn drm_body(ui: &mut egui::Ui, d: &mut DrmDraft, t: &Tokens) -> (bool
             .color(t.text_faint),
     );
     let undrawable = d.first_undrawable();
+    let marked = d.in_header || d.in_footer || d.diagonal;
+    if !marked {
+        ui.add_space(4.0);
+        ui.label(egui::RichText::new(tl!("Choose at least one mark.")).small().color(egui::Color32::from_rgb(0xC6, 0x28, 0x28)));
+    }
     if let Some(c) = undrawable {
         ui.add_space(4.0);
         ui.label(
@@ -366,7 +511,7 @@ pub(crate) fn drm_body(ui: &mut egui::Ui, d: &mut DrmDraft, t: &Tokens) -> (bool
     ui.add_space(12.0);
     let (mut create, mut cancel) = (false, false);
     ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
-        let ready = !d.name.trim().is_empty() && undrawable.is_none();
+        let ready = !d.name.trim().is_empty() && undrawable.is_none() && marked;
         if ui.add_enabled_ui(ready, |ui| widgets::pill_button(ui, tl!("Create licensed copy…"), true)).inner.clicked() {
             create = true;
         }
@@ -380,6 +525,42 @@ pub(crate) fn drm_body(ui: &mut egui::Ui, d: &mut DrmDraft, t: &Tokens) -> (bool
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// A white page, `w` × `h` points at 1 px per point, with a dark band from `from` to `to`
+    /// points above the bottom edge (a letterhead's bar).
+    fn page_with_bar(w: usize, h: usize, from: usize, to: usize) -> Vec<u8> {
+        let mut px = vec![255u8; w * h * 4];
+        for y in (h - to)..(h - from) {
+            for x in 10..w - 10 {
+                let i = (y * w + x) * 4;
+                px[i..i + 3].copy_from_slice(&[70, 120, 200]);
+            }
+        }
+        px
+    }
+
+    #[test]
+    fn the_footer_line_rises_just_clear_of_a_bar_at_the_foot_of_the_page() {
+        let (w, h) = (120, 300);
+        let line = 6.5 * 1.3;
+        // A bar from 20 to 50 pt: the line's band (with 3 pt of air) starts above it.
+        let px = page_with_bar(w, h, 20, 50);
+        let off = clear_offset(Raster { rgba: &px, width: w, height: h, scale: 1.0 }, false, 18.0, line, 66.0);
+        assert!((53.0..=53.5).contains(&off), "{off}");
+        // The same bar at the top, read from the top edge.
+        let mut flipped = vec![0u8; px.len()];
+        for y in 0..h {
+            flipped[y * w * 4..(y + 1) * w * 4].copy_from_slice(&px[(h - 1 - y) * w * 4..(h - y) * w * 4]);
+        }
+        assert!((53.0..=53.5).contains(&clear_offset(Raster { rgba: &flipped, width: w, height: h, scale: 1.0 }, true, 18.0, line, 66.0)));
+        // A blank foot keeps the usual place; a bar out of reach does too.
+        assert_eq!(clear_offset(Raster { rgba: &vec![255u8; w * h * 4], width: w, height: h, scale: 1.0 }, false, 18.0, line, 66.0), 18.0);
+        assert_eq!(clear_offset(Raster { rgba: &page_with_bar(w, h, 0, 200), width: w, height: h, scale: 1.0 }, false, 18.0, line, 66.0), 18.0);
+        // Transparent paper counts as blank; nothing to read gives the start.
+        assert_eq!(clear_offset(Raster { rgba: &vec![0u8; w * h * 4], width: w, height: h, scale: 1.0 }, false, 18.0, line, 66.0), 18.0);
+        assert_eq!(clear_offset(Raster { rgba: &[], width: 0, height: 0, scale: 1.0 }, false, 18.0, line, 66.0), 18.0);
+        assert_eq!(clear_offset(Raster { rgba: &px, width: w, height: h, scale: f64::NAN }, false, 18.0, line, 66.0), 18.0);
+    }
 
     #[test]
     fn the_password_file_sits_beside_the_copy() {
