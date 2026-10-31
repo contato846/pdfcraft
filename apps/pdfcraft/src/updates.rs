@@ -6,7 +6,13 @@ use std::time::Duration;
 
 use pdfcraft_ui_egui::updates::{RELEASES_PAGE, Release};
 
-const LATEST: &str = "https://api.github.com/repos/contato846/pdfcraft/releases/latest";
+/// The fork's releases, newest first. Not `releases/latest`: GitHub leaves pre-releases out of
+/// that one, and every build of this fork was published as one, so it answered 404 and the
+/// check never found an update.
+const RELEASES: &str = "https://api.github.com/repos/contato846/pdfcraft/releases?per_page=20";
+
+/// The tags this fork's builds carry (`fontes-livres-<commit>`).
+const TAG_PREFIX: &str = "fontes-livres-";
 
 /// Where a release's downloads live; only an asset under it is ever fetched.
 const DOWNLOADS: &str = "https://github.com/contato846/pdfcraft/releases/download/";
@@ -26,7 +32,7 @@ pub fn latest_release() -> Result<Release, String> {
         .build()
         .new_agent();
     let mut response = agent
-        .get(LATEST)
+        .get(RELEASES)
         .header("Accept", "application/vnd.github+json")
         .header("User-Agent", concat!("PdfCraft/", env!("CARGO_PKG_VERSION")))
         // Read error statuses ourselves: a 403 from GitHub usually means its anonymous
@@ -45,7 +51,20 @@ pub fn latest_release() -> Result<Release, String> {
         return Err(format!("couldn't reach GitHub (http status: {status})"));
     }
     let body = response.body_mut().with_config().limit(1 << 20).read_to_string().map_err(|e| format!("unreadable answer ({e})"))?;
-    parse(&body)
+    parse_list(&body)
+}
+
+/// The newest published build of this fork in a list of releases (newest first): drafts and
+/// other tags are skipped; a pre-release counts.
+fn parse_list(body: &str) -> Result<Release, String> {
+    let v: serde_json::Value = serde_json::from_str(body).map_err(|e| format!("unreadable answer ({e})"))?;
+    let newest = v
+        .as_array()
+        .ok_or("no release found")?
+        .iter()
+        .find(|r| !r["draft"].as_bool().unwrap_or(false) && r["tag_name"].as_str().is_some_and(|t| t.starts_with(TAG_PREFIX)))
+        .ok_or("no release found")?;
+    parse_value(newest)
 }
 
 /// The certificate authorities the operating system trusts.
@@ -80,8 +99,14 @@ fn rate_limited(reset: Option<&str>, now: u64) -> String {
     }
 }
 
+#[cfg(test)]
 fn parse(body: &str) -> Result<Release, String> {
     let v: serde_json::Value = serde_json::from_str(body).map_err(|e| format!("unreadable answer ({e})"))?;
+    parse_value(&v)
+}
+
+/// One release from GitHub's answer.
+fn parse_value(v: &serde_json::Value) -> Result<Release, String> {
     let version = v["tag_name"].as_str().filter(|t| !t.is_empty() && t.len() <= 64).ok_or("no release found")?.to_string();
     let url = v["html_url"]
         .as_str()
@@ -184,6 +209,27 @@ mod tests {
     use super::*;
 
     #[test]
+    fn the_newest_build_of_the_fork_is_found_in_the_release_list() {
+        let rel = |tag: &str, draft: bool, pre: bool| {
+            format!(
+                r#"{{"tag_name":"{tag}","draft":{draft},"prerelease":{pre},"html_url":"https://github.com/contato846/pdfcraft/releases/tag/{tag}"}}"#
+            )
+        };
+        // Pre-releases count (every build so far is one); a draft and another tag don't.
+        let list = format!(
+            "[{},{},{},{}]",
+            rel("fontes-livres-aaaaaaa", true, false),
+            rel("v9.0.0", false, false),
+            rel("fontes-livres-f933f24", false, true),
+            rel("fontes-livres-72d3746", false, true)
+        );
+        assert_eq!(parse_list(&list).unwrap().version, "fontes-livres-f933f24");
+        assert!(parse_list("[]").is_err());
+        assert!(parse_list(r#"{"message":"Not Found"}"#).is_err(), "what releases/latest answered");
+        assert!(parse_list("<html>").is_err());
+    }
+
+    #[test]
     fn answers_are_read_and_only_our_release_pages_are_offered() {
         let r = parse(r#"{"tag_name":"v0.2.0","html_url":"https://github.com/contato846/pdfcraft/releases/tag/v0.2.0"}"#).unwrap();
         assert_eq!(r, Release { version: "v0.2.0".into(), url: "https://github.com/contato846/pdfcraft/releases/tag/v0.2.0".into(), asset: None });
@@ -240,7 +286,7 @@ mod tests {
     #[ignore = "needs network access"]
     fn github_answers_with_the_latest_release() {
         let r = latest_release().unwrap();
-        assert!(pdfcraft_ui_egui::updates::is_newer(&r.version, "0.0.0"), "{r:?}");
+        assert!(r.version.starts_with(TAG_PREFIX), "{r:?}");
         assert!(r.url.starts_with(RELEASES_PAGE), "{r:?}");
     }
 }

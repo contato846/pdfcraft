@@ -51,6 +51,6 @@ jobs:
         run: |
           $tag = "fontes-livres-$(git rev-parse --short HEAD)"
           gh release create $tag dist/pdfcraft-fontes-livres-windows-x64-portable.zip `
-            --repo $env:GITHUB_REPOSITORY --target $env:GITHUB_SHA --prerelease `
+            --repo $env:GITHUB_REPOSITORY --target $env:GITHUB_SHA --latest `
             --title "PdfCraft com fontes instaladas ($tag)" `
             --notes "Compilação própria, sem assinatura digital. Aceita qualquer fonte instalada cujo fabricante permita embutir para edição (fsType)."
