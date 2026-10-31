@@ -593,7 +593,8 @@ fn bar_item(app: &mut PdfCraftApp, ui: &mut egui::Ui, item: &str) {
     };
     let active = group.is_some_and(|g| app.left == crate::LeftPanel::Tool(g))
         || (item == "metadata" && app.dialog == Some(Dialog::Properties(PropsTab::Description)));
-    let tab = widgets::mode_tab(ui, tl!(label), active);
+    // House tools is a house icon on the bar: the word took room from the workspaces.
+    let tab = if item == "house" { widgets::mode_tab_icon(ui, "house", tl!(label), active) } else { widgets::mode_tab(ui, tl!(label), active) };
     if tab.clicked() {
         match group {
             Some(g) => app.select_tool(g),

@@ -133,6 +133,29 @@ pub fn mode_tab(ui: &mut egui::Ui, label: &str, active: bool) -> Response {
     theme::hand(resp)
 }
 
+/// A mode bar tab drawn as an icon alone: `label` is its name for screen readers and its tooltip.
+pub fn mode_tab_icon(ui: &mut egui::Ui, icon: &str, label: &str, active: bool) -> Response {
+    let t = Tokens::get(ui.ctx());
+    let (rect, resp) = ui.allocate_exact_size(vec2(40.0, 48.0), Sense::click());
+    resp.widget_info(|| egui::WidgetInfo::selected(egui::Role::Button, ui.is_enabled(), active, label));
+    let press = theme::Press::track(ui, &resp);
+    let well = rect.shrink2(vec2(2.0, 9.0));
+    if active {
+        if press.down > 0.01 {
+            ui.painter().rect_filled(well, CornerRadius::same(6), t.pressed.gamma_multiply(press.down));
+        }
+    } else {
+        press.wash(ui, well, 6, false);
+    }
+    let body = rect.translate(press.offset());
+    crate::icons::paint(ui, Rect::from_center_size(body.center(), vec2(20.0, 20.0)), icon, 19.0, if active { t.text } else { t.text_muted });
+    if active {
+        let r = Rect::from_min_max(rect.left_bottom() + vec2(8.0, -2.0), rect.right_bottom() - vec2(8.0, 0.0));
+        ui.painter().rect_filled(r, CornerRadius { nw: 1, ne: 1, sw: 0, se: 0 }, t.accent);
+    }
+    theme::hand(resp).on_hover_text(label)
+}
+
 /// Rounded pill button; `primary` fills with the accent.
 pub fn pill_button(ui: &mut egui::Ui, label: &str, primary: bool) -> Response {
     pill_button_marked(ui, label, primary, false)

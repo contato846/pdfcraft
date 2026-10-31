@@ -33,6 +33,8 @@ fn main() -> Result<(), String> {
     }
     let mut harness = Harness::builder().with_size(size).with_pixels_per_point(scale).build_eframe(move |_cc| {
         let mut app = PdfCraftApp::new();
+        // The mode bar as the desktop app starts it.
+        app.use_default_bar_items();
         if let Some(f) = &file {
             let bytes = std::fs::read(f).unwrap_or_default();
             let name = std::path::Path::new(f).file_name().map(|n| n.to_string_lossy().into_owned()).unwrap_or_default();
