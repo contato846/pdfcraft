@@ -69,12 +69,11 @@ pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     app.active = None;
                     app.combine_tab.focused = false;
                 }
+                document_buttons(app, ui, button);
                 // Reserve the three icon buttons, Update, the search and their gaps outside the
                 // scrolling tabs.
-                let controls_width = ui.fonts_mut(|f| f.layout_no_wrap(tl!("Get updates").into(), theme::medium(13.0), t.text).size().x)
-                    + 3.0 * button
-                    + 54.0
-                    + window_controls::width(&controls.right);
+                let update_text = ui.fonts_mut(|f| f.layout_no_wrap(tl!("Get updates").into(), theme::medium(13.0), t.text).size().x);
+                let controls_width = update_text + 3.0 * button + 54.0 + window_controls::width(&controls.right);
                 // Open stays in sight after the tabs: its icon, text and padding, and the gaps around it.
                 let open_width = ui.fonts_mut(|f| f.layout_no_wrap(tl!("Open").into(), theme::medium(13.0), t.text).size().x) + 38.0 + 12.0;
                 // Tabs shrink to share the strip (names end in "…") and scroll only once they reach
@@ -89,13 +88,16 @@ pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     natural.push(tab_natural_width(ui, &t, tl!("Combine files")));
                 }
                 let gap = ui.spacing().item_spacing.x;
-                // The search is a box while the tabs fit beside it at full width, otherwise its
-                // magnifier alone: the open documents come first.
+                // The search is a box and Update has its word while the tabs fit beside them at full
+                // width; on a crowded strip both are their icons alone: the open documents come first.
                 let tabs_natural: f32 = natural.iter().map(|w| w + gap).sum();
                 let room = ui.available_width() - controls_width - open_width;
-                let search_box = room - tabs_natural >= SEARCH_WIDTH + 10.0;
-                let search_width = if search_box { SEARCH_WIDTH + 10.0 } else { button + 4.0 };
-                let mut tabs_width = (room - search_width).max(0.0);
+                let roomy = room - tabs_natural >= SEARCH_WIDTH + 6.0 + gap;
+                // The search takes its width, the 6 pt before it and one item gap; a bare Update
+                // gives back its word and padding (38 pt) less an icon button.
+                let search_width = if roomy { SEARCH_WIDTH } else { button } + 6.0 + gap;
+                let update_saved = if roomy { 0.0 } else { (update_text + 38.0 - button).max(0.0) };
+                let mut tabs_width = (room - search_width + update_saved).max(0.0);
                 let overflow = tabs_overflow(&natural, tabs_width, gap, TAB_MIN_WIDTH);
                 if overflow {
                     tabs_width = (tabs_width - 2.0 * (TAB_ARROW + gap)).max(0.0);
@@ -317,13 +319,18 @@ pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                         app.dialog = Some(Dialog::Shortcuts);
                     }
                     // One click to a new version, from anywhere in the app (Discord stays in Help).
-                    if widgets::ghost_button_sized(ui, "cloud", tl!("Get updates"), tab_h).on_hover_text(tl!("Check for updates")).clicked() {
+                    let update = if roomy {
+                        widgets::ghost_button_sized(ui, "cloud", tl!("Get updates"), tab_h).on_hover_text(tl!("Check for updates"))
+                    } else {
+                        icons::button(ui, "cloud", button, false, tl!("Get updates"))
+                    };
+                    if update.clicked() {
                         app.execute("help.check_updates");
                     }
                     // Find tools and commands, beside Update: on the top strip it leaves the mode
                     // bar's room to the workspaces.
                     ui.add_space(6.0);
-                    let search = if search_box {
+                    let search = if roomy {
                         widgets::search_box(ui, tl!("Find tools and commands"), SEARCH_WIDTH)
                     } else {
                         icons::button(ui, "search", button, false, tl!("Find tools and commands"))
@@ -334,6 +341,32 @@ pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                 });
             });
         });
+}
+
+/// Save, Document properties and Print, left to right: on the top strip after Home, so they
+/// stay in reach from any workspace. Off while no document is shown.
+fn document_buttons(app: &mut PdfCraftApp, ui: &mut egui::Ui, size: f32) {
+    let has_doc = app.active.is_some();
+    ui.add_enabled_ui(has_doc, |ui| {
+        let tip = crate::commands::command_tip(ui.ctx(), tl!("Save ({key})"), "file.save");
+        if icons::button(ui, "save", size, false, &tip).clicked() {
+            app.run_command("file.save");
+        }
+        let tip = crate::commands::command_tip(ui.ctx(), tl!("Document properties ({key})"), "file.properties");
+        if icons::button(ui, "info", size, false, &tip).clicked() {
+            app.dialog = Some(Dialog::Properties(PropsTab::Description));
+        }
+        let tip = crate::commands::command_tip(ui.ctx(), tl!("Print ({key})"), "print.dialog");
+        // A document that forbids printing says so here, before the dialog (#2669).
+        let may_print = !has_doc || pdfcraft_engine::commands::command("print.dialog").is_some_and(|c| app.command_enabled(c));
+        let mut print = ui.add_enabled_ui(may_print, |ui| icons::button(ui, "printer", size, false, &tip)).inner;
+        if !may_print {
+            print = print.on_disabled_hover_text(crate::print_refused());
+        }
+        if print.clicked() {
+            app.run_command("print.dialog");
+        }
+    });
 }
 
 /// The width of Find tools and commands on the top strip.
@@ -543,31 +576,6 @@ pub fn mode_bar(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                 for item in app.bar_items.clone().iter().filter(|i| i.starts_with("tool:")) {
                     bar_item(app, ui, item);
                 }
-                ui.with_layout(Layout::right_to_left(Align::Center), |ui| {
-                    ui.spacing_mut().item_spacing.x = 4.0;
-                    let has_doc = app.active.is_some();
-                    ui.add_enabled_ui(has_doc, |ui| {
-                        let tip = crate::commands::command_tip(ui.ctx(), tl!("Print ({key})"), "print.dialog");
-                        // A document that forbids printing says so here, before the dialog (#2669).
-                        let may_print = !has_doc || pdfcraft_engine::commands::command("print.dialog").is_some_and(|c| app.command_enabled(c));
-                        let mut print = ui.add_enabled_ui(may_print, |ui| icons::button(ui, "printer", 32.0, false, &tip)).inner;
-                        if !may_print {
-                            print = print.on_disabled_hover_text(crate::print_refused());
-                        }
-                        if print.clicked() {
-                            app.run_command("print.dialog");
-                        }
-                        // Laid out from the right: Save, Document properties, Print read left to right.
-                        let tip = crate::commands::command_tip(ui.ctx(), tl!("Document properties ({key})"), "file.properties");
-                        if icons::button(ui, "info", 32.0, false, &tip).clicked() {
-                            app.dialog = Some(Dialog::Properties(PropsTab::Description));
-                        }
-                        let tip = crate::commands::command_tip(ui.ctx(), tl!("Save ({key})"), "file.save");
-                        if icons::button(ui, "save", 32.0, false, &tip).clicked() {
-                            app.run_command("file.save");
-                        }
-                    });
-                });
             });
         });
 }
