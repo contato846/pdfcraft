@@ -69,14 +69,14 @@ pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     app.active = None;
                     app.combine_tab.focused = false;
                 }
-                // Reserve the three icon buttons, Update and their gaps outside the scrolling tabs.
+                // Reserve the three icon buttons, Update, the search and their gaps outside the
+                // scrolling tabs.
                 let controls_width = ui.fonts_mut(|f| f.layout_no_wrap(tl!("Get updates").into(), theme::medium(13.0), t.text).size().x)
                     + 3.0 * button
                     + 54.0
                     + window_controls::width(&controls.right);
                 // Open stays in sight after the tabs: its icon, text and padding, and the gaps around it.
                 let open_width = ui.fonts_mut(|f| f.layout_no_wrap(tl!("Open").into(), theme::medium(13.0), t.text).size().x) + 38.0 + 12.0;
-                let mut tabs_width = (ui.available_width() - controls_width - open_width).max(0.0);
                 // Tabs shrink to share the strip (names end in "…") and scroll only once they reach
                 // their narrowest; then arrows either side say so and step through them.
                 let mut natural: Vec<f32> = Vec::with_capacity(app.views.len() + 1);
@@ -89,6 +89,13 @@ pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     natural.push(tab_natural_width(ui, &t, tl!("Combine files")));
                 }
                 let gap = ui.spacing().item_spacing.x;
+                // The search is a box while the tabs fit beside it at full width, otherwise its
+                // magnifier alone: the open documents come first.
+                let tabs_natural: f32 = natural.iter().map(|w| w + gap).sum();
+                let room = ui.available_width() - controls_width - open_width;
+                let search_box = room - tabs_natural >= SEARCH_WIDTH + 10.0;
+                let search_width = if search_box { SEARCH_WIDTH + 10.0 } else { button + 4.0 };
+                let mut tabs_width = (room - search_width).max(0.0);
                 let overflow = tabs_overflow(&natural, tabs_width, gap, TAB_MIN_WIDTH);
                 if overflow {
                     tabs_width = (tabs_width - 2.0 * (TAB_ARROW + gap)).max(0.0);
@@ -313,10 +320,24 @@ pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     if widgets::ghost_button_sized(ui, "cloud", tl!("Get updates"), tab_h).on_hover_text(tl!("Check for updates")).clicked() {
                         app.execute("help.check_updates");
                     }
+                    // Find tools and commands, beside Update: on the top strip it leaves the mode
+                    // bar's room to the workspaces.
+                    ui.add_space(6.0);
+                    let search = if search_box {
+                        widgets::search_box(ui, tl!("Find tools and commands"), SEARCH_WIDTH)
+                    } else {
+                        icons::button(ui, "search", button, false, tl!("Find tools and commands"))
+                    };
+                    if search.clicked() {
+                        app.palette_open = true;
+                    }
                 });
             });
         });
 }
+
+/// The width of Find tools and commands on the top strip.
+const SEARCH_WIDTH: f32 = 240.0;
 
 /// The right-click menu on the title bar's theme button.
 fn appearance_menu(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
@@ -536,19 +557,16 @@ pub fn mode_bar(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                         if print.clicked() {
                             app.run_command("print.dialog");
                         }
-                        let tip = crate::commands::command_tip(ui.ctx(), tl!("Save ({key})"), "file.save");
-                        if icons::button(ui, "save", 32.0, false, &tip).clicked() {
-                            app.run_command("file.save");
-                        }
+                        // Laid out from the right: Save, Document properties, Print read left to right.
                         let tip = crate::commands::command_tip(ui.ctx(), tl!("Document properties ({key})"), "file.properties");
                         if icons::button(ui, "info", 32.0, false, &tip).clicked() {
                             app.dialog = Some(Dialog::Properties(PropsTab::Description));
                         }
+                        let tip = crate::commands::command_tip(ui.ctx(), tl!("Save ({key})"), "file.save");
+                        if icons::button(ui, "save", 32.0, false, &tip).clicked() {
+                            app.run_command("file.save");
+                        }
                     });
-                    ui.add_space(8.0);
-                    if widgets::search_box(ui, tl!("Find tools and commands"), 260.0).clicked() {
-                        app.palette_open = true;
-                    }
                 });
             });
         });
