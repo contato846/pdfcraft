@@ -160,14 +160,35 @@ pub fn install(asset: &str, progress: &mut dyn FnMut(u64)) -> Result<(), String>
     let agent = ureq::Agent::config_builder()
         .timeout_connect(Some(Duration::from_secs(20)))
         .timeout_recv_response(Some(Duration::from_secs(60)))
+        // Redirects are followed below, by hand: the release download answers with a redirect
+        // whose (chunked) body the automatic following failed to read, so every update stopped
+        // there with "chunk expected crlf".
+        .max_redirects(0)
+        .http_status_as_error(false)
         .tls_config(ureq::tls::TlsConfig::builder().root_certs(os_roots()?).build())
         .build()
         .new_agent();
-    let response = agent
-        .get(asset)
-        .header("User-Agent", concat!("PdfCraft/", env!("CARGO_PKG_VERSION")))
-        .call()
-        .map_err(|e| format!("couldn't download the new version ({e})"))?;
+    let mut url = asset.to_owned();
+    let mut hops = 0;
+    let response = loop {
+        let response = agent
+            .get(&url)
+            .header("User-Agent", concat!("PdfCraft/", env!("CARGO_PKG_VERSION")))
+            .call()
+            .map_err(|e| format!("couldn't download the new version ({e})"))?;
+        let status = response.status().as_u16();
+        if (200..300).contains(&status) {
+            break response;
+        }
+        let location = response.headers().get("location").and_then(|v| v.to_str().ok()).map(str::to_owned);
+        match location {
+            Some(next) if (300..400).contains(&status) && hops < 5 && trusted_download(&next) => {
+                hops += 1;
+                url = next;
+            }
+            _ => return Err(format!("couldn't download the new version (http status: {status})")),
+        }
+    };
     let mut reader = response.into_body().into_reader().take(MAX_DOWNLOAD + 1);
     let mut zip = Vec::new();
     let mut chunk = [0u8; 64 << 10];
@@ -188,6 +209,13 @@ pub fn install(asset: &str, progress: &mut dyn FnMut(u64)) -> Result<(), String>
     }
     std::fs::write(&new, &exe).map_err(|e| format!("couldn't write {} ({e})", new.display()))?;
     Ok(())
+}
+
+/// Where a release download may lead: GitHub and its file servers, over https only.
+fn trusted_download(url: &str) -> bool {
+    let Some(rest) = url.strip_prefix("https://") else { return false };
+    let host = rest.split(['/', '?', '#']).next().unwrap_or_default().to_ascii_lowercase();
+    !host.contains(['@', ':']) && (host == "github.com" || host.ends_with(".githubusercontent.com"))
 }
 
 /// Put the staged program in the running one's place and start it. On Windows a running
@@ -221,6 +249,23 @@ pub fn remove_old_program() {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn downloads_follow_only_github_redirects() {
+        assert!(trusted_download("https://release-assets.githubusercontent.com/github-production-release-asset/1/x?sp=r"));
+        assert!(trusted_download("https://objects.githubusercontent.com/x"));
+        assert!(trusted_download("https://github.com/contato846/pdfcraft/releases/download/t/x.zip"));
+        for bad in [
+            "http://objects.githubusercontent.com/x",
+            "https://githubusercontent.com.evil.example/x",
+            "https://evil.example/?h=github.com",
+            "https://user@objects.githubusercontent.com/x",
+            "https://objects.githubusercontent.com:444/x",
+            "ftp://github.com/x",
+        ] {
+            assert!(!trusted_download(bad), "{bad}");
+        }
+    }
 
     #[test]
     fn the_newest_build_of_the_fork_is_found_in_the_release_list() {
@@ -289,6 +334,19 @@ mod tests {
         for m in [UNREACHABLE, UNEXPECTED, LIMITED_MINUTES, LIMITED_HALF_HOUR, LIMITED_HOUR, LIMITED] {
             assert!(!m.to_lowercase().contains("github"), "{m}");
         }
+    }
+
+    /// Live: downloads a published build and stages it (`cargo test -p pdfcraft -- --ignored`).
+    #[test]
+    #[ignore = "needs network access"]
+    fn a_published_build_downloads_and_stages() {
+        let url = "https://github.com/contato846/pdfcraft/releases/download/fontes-livres-419070d/pdfcraft-fontes-livres-windows-x64-portable.zip";
+        let mut got = 0;
+        install(url, &mut |n| got = n).unwrap();
+        let (_, new, _) = exe_paths().unwrap();
+        let staged = std::fs::read(&new).unwrap();
+        let _ = std::fs::remove_file(&new);
+        assert!(staged.starts_with(b"MZ") && got > 1 << 20, "{got}");
     }
 
     /// Live: asks GitHub over TLS with the OS's roots (`cargo test -p pdfcraft -- --ignored`).
