@@ -1,0 +1,141 @@
+# This build's own interface strings (es), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	Editar metadatos
+	Add tools and controls	Añadir herramientas y controles
+	Reset to default	Restablecer valores predeterminados
+	House tools	Casa
+	Everyday tools	Herramientas cotidianas
+	Finish publisher file	Cerrar archivo editorial
+	Finish publisher file…	Cerrar archivo editorial…
+	Sets the house's document information and removes what other applications left in the file.	Escribe la información del documento según el estándar de la casa y elimina lo que otras aplicaciones dejaron en el archivo.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Eliminar los metadatos XMP de otras aplicaciones (historial de InDesign, identificadores del documento, metadatos de imágenes)
+	Remove the private data of other applications	Eliminar los datos privados de otras aplicaciones
+	Open with the bookmarks panel	Abrir con el panel de marcadores
+	File finished. Save to write the changes into it.	Archivo cerrado. Guarde para escribir los cambios en él.
+	PROOF	PRUEBA
+	Proof for the author	Prueba para el autor
+	Proof for the author…	Prueba para el autor…
+	Marks every page with a watermark and protects the copy against changes and copying.	Marca todas las páginas con una marca de agua y protege la copia contra cambios y copia.
+	Let the author comment on the proof	Permitir que el autor comente la prueba
+	Use Save As for the proof, so the original stays unprotected.	Use Guardar como para la prueba, para que el original siga sin protección.
+	Proof ready. Use Save As to keep the original unprotected.	Prueba lista. Use Guardar como para mantener el original sin protección.
+	Initial every page	Rubricar todas las páginas
+	Initial every page…	Rubricar todas las páginas…
+	Puts your saved initials at the same place on each page.	Coloca sus iniciales guardadas en el mismo lugar de cada página.
+	Create your initials first.	Cree primero sus iniciales.
+	Create initials	Crear iniciales
+	Bottom right corner	Esquina inferior derecha
+	Bottom left corner	Esquina inferior izquierda
+	Right margin, middle	Margen derecho, en el centro
+	Distance from the edges	Distancia de los bordes
+	Leave out the last page	Dejar fuera la última página
+	Then sign the last page	Después, firmar la última página
+	Pages to initial: {n}	Páginas para rubricar: {n}
+	Initialled {n} pages.	{n} páginas rubricadas.
+	Portuguese (Brazil)	Portugués (Brasil)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows no tiene reconocimiento de texto para este idioma. Agréguelo en Configuración > Hora e idioma > Idioma y región, con su reconocimiento óptico de caracteres.
+	Read aloud from this page	Leer en voz alta desde esta página
+	Pause or resume reading aloud	Pausar o reanudar la lectura en voz alta
+	Read aloud uses the voices of Windows.	La lectura en voz alta usa las voces de Windows.
+	Finished reading aloud.	Lectura en voz alta terminada.
+	Reading page {n}	Leyendo la página {n}
+	Resume	Reanudar
+	Pause	Pausar
+	Stop	Detener
+	Default voice	Voz predeterminada
+	Speed	Velocidad
+	Split book spreads	Dividir páginas de libro abierto
+	Split book spreads…	Dividir páginas de libro abierto…
+	Finding the binding… page {n} of {total}	Buscando el lomo… página {n} de {total}
+	No page here is a book spread (wider than tall).	Ninguna página aquí es de libro abierto (más ancha que alta).
+	Split {n} spreads into {pages} pages.	{n} páginas de libro abierto divididas en {pages} páginas.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Cada página escaneada con el libro abierto se convierte en dos, primero la izquierda. El escaneo en sí no se recorta ni se recomprime.
+	At the binding (found on each page)	En el lomo (detectado en cada página)
+	Exactly in the middle	Exactamente en el centro
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Páginas de libro abierto (más anchas que altas): {n}. Las demás quedan como están.
+	API key	Clave de API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Haga una pregunta (Intro envía; Mayús+Intro nueva línea)
+	Ask about the open document: a summary, where something is said, what a passage means…	Pregunte sobre el documento abierto: un resumen, dónde se dice algo, qué significa un pasaje…
+	Assistant	Asistente
+	Assistant settings	Configuración del Asistente
+	Choose a model first (Refresh the list).	Elija primero un modelo (actualice la lista).
+	Enter your API key for this AI first.	Introduzca primero su clave de API de esta IA.
+	Get a key	Obtener una clave
+	New conversation	Nueva conversación
+	No models found for this key.	No se encontraron modelos para esta clave.
+	Ollama address	Dirección de Ollama
+	Refresh the model list	Actualizar la lista de modelos
+	Remember the keys on this computer	Recordar las claves en este equipo
+	Send	Enviar
+	The AI declined to answer this.	La IA se negó a responder.
+	The Assistant needs the desktop app to reach the AI.	El Asistente necesita la aplicación de escritorio para acceder a la IA.
+	The document is too long for this AI: it got the text up to page {n}.	El documento es demasiado largo para esta IA: recibió el texto hasta la página {n}.
+	These pages have no text (scanned pages need Recognize text first).	Estas páginas no tienen texto (las escaneadas necesitan antes Reconocer texto).
+	This page	Esta página
+	Whole document	Documento completo
+	Your question	Su pregunta
+	Local model (Ollama)	Modelo local (Ollama)
+	DRM Social	DRM social
+	DRM Social…	DRM social…
+	Licensed to	Con licencia para
+	Code	Código
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Usted elige dónde guardar la copia; la contraseña se guarda junto a ella, en un archivo que termina en _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	El carácter {c} no se puede dibujar en las marcas.
+	Create licensed copy…	Crear copia con licencia…
+	The password is in {file}, beside the copy.	La contraseña está en {file}, junto a la copia.
+	Couldn't write the password file: {e}	No se pudo escribir el archivo de la contraseña: {e}
+	Table of contents to links	Índice a vínculos
+	Table of contents to links…	Índice a vínculos…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Lee las entradas del índice (un escaneo necesita antes Reconocer texto), encuentra la página de cada una y pone un vínculo sobre cada entrada y un marcador para ella.
+	Table of contents on pages	Índice en las páginas
+	The book's page 1 is page	La página 1 del libro es la página
+	Links over the entries	Vínculos sobre las entradas
+	Read again	Leer de nuevo
+	No entries found on these pages.	No se encontraron entradas en estas páginas.
+	not found	no encontrada
+	{placed} of {n} entries have a page.	{placed} de {n} entradas tienen página.
+	Linked {n} entries of the table of contents.	{n} entradas del índice convertidas en vínculos.
+	Licensed to {name}	Con licencia para {name}
+	personal, non-transferable use	uso personal e intransferible
+	issued on {date}	emitido el {date}
+	This document was issued exclusively for {name}.	Este documento se emitió exclusivamente para {name}.
+	This document is material of {issuer}, issued exclusively for {name}.	Este documento es material de {issuer}, emitido exclusivamente para {name}.
+	This document, {title}, was issued exclusively for {name}.	Este documento, {title}, se emitió exclusivamente para {name}.
+	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Este documento, {title}, es material de {issuer}, emitido exclusivamente para {name}.
+	The licence is personal and non-transferable. Printing for one's own use is permitted.	La licencia es personal e intransferible. Se permite imprimirlo para uso propio.
+	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	Se prohíbe reproducir, compartir, distribuir, publicar o ceder este documento a terceros, total o parcialmente, por cualquier medio, y cargarlo, total o parcialmente, en herramientas de inteligencia artificial.
+	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Cada copia lleva una identificación visible e invisible del licenciatario que permite rastrear su origen.
+	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	La infracción está sujeta a las sanciones de la legislación de derechos de autor, sin perjuicio de otras medidas.
+	Issued on {date}. Code {code}.	Emitido el {date}. Código {code}.
+	Licence	Licencia de uso
+	A new version is available ({v}).	Hay una nueva versión disponible ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Actualizar ahora la descarga y reemplaza el programa en su lugar; su configuración se conserva.
+	Downloading the new version… {mb} MB	Descargando la nueva versión… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	La nueva versión está lista. PdfCraft se cerrará y volverá a abrirse ya como la nueva versión.
+	Couldn't update: {e}	No se pudo actualizar: {e}
+	Restart now	Reiniciar ahora
+	Update now	Actualizar ahora
+	Release page	Página de la versión
+	save or close your documents first	guarde o cierre sus documentos antes
+	New password	Nueva contraseña
+	Trust the ICP-Brasil root certificates	Confiar en los certificados raíz de ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Las firmas hechas con certificados brasileños e-CPF y e-CNPJ se validan sin añadir cada autoridad a mano.
+	Get updates	Actualizar
+	Marks	Marcas
+	Header line	Línea en el encabezado
+	Footer line	Línea en el pie de página
+	Name across the page	Nombre en diagonal
+	Allow printing	Permitir impresión
+	Choose at least one mark.	Elige al menos una marca.
+	The licence is personal and non-transferable. Printing is not permitted.	La licencia es personal e intransferible. No se permite la impresión.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Una copia con licencia para una persona: su nombre en las páginas, un código invisible, una página de licencia al final y protección contra copia y cambios.
+	couldn't reach the update server; check the internet connection	no se pudo acceder al servidor de actualizaciones; comprueba la conexión a internet
+	the update server didn't answer as expected	el servidor de actualizaciones no respondió como se esperaba
+	the update server is limiting checks for now; try again in a few minutes	el servidor de actualizaciones está limitando las consultas por ahora; inténtalo de nuevo en unos minutos
+	the update server is limiting checks for now; try again in about half an hour	el servidor de actualizaciones está limitando las consultas por ahora; inténtalo de nuevo en una media hora
+	the update server is limiting checks for now; try again in about an hour	el servidor de actualizaciones está limitando las consultas por ahora; inténtalo de nuevo en una hora
+	the update server is limiting checks for now; try again later	el servidor de actualizaciones está limitando las consultas por ahora; inténtalo más tarde
+	All versions are on the release page.	Todas las versiones están en la página de versiones.
+	You have version {c}. All versions are on the release page.	Tienes la versión {c}. Todas las versiones están en la página de versiones.
+	Looks for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Busca una versión nueva al abrir PdfCraft. No se descarga nada hasta que elijas Actualizar ahora.
+	Looks for the latest version. Nothing is downloaded or installed automatically.	Busca la versión más reciente. No se descarga ni se instala nada automáticamente.

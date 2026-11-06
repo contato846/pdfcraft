@@ -1,0 +1,118 @@
+# This build's own interface strings (pl), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	Edytuj metadane
+	Add tools and controls	Dodaj narzędzia i elementy sterujące
+	Reset to default	Przywróć domyślne
+	House tools	Dom
+	Everyday tools	Narzędzia codzienne
+	Finish publisher file	Zakończ plik wydawnictwa
+	Finish publisher file…	Zakończ plik wydawnictwa…
+	Sets the house's document information and removes what other applications left in the file.	Ustawia informacje o dokumencie według standardu domu i usuwa to, co inne aplikacje zostawiły w pliku.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Usuń metadane XMP innych aplikacji (historia InDesign, identyfikatory dokumentu, metadane obrazów)
+	Remove the private data of other applications	Usuń prywatne dane innych aplikacji
+	Open with the bookmarks panel	Otwórz z panelem zakładek
+	File finished. Save to write the changes into it.	Plik zakończony. Zapisz, aby zapisać w nim zmiany.
+	PROOF	KOREKTA
+	Proof for the author	Korekta dla autora
+	Proof for the author…	Korekta dla autora…
+	Marks every page with a watermark and protects the copy against changes and copying.	Oznacza każdą stronę znakiem wodnym i chroni kopię przed zmianami i kopiowaniem.
+	Let the author comment on the proof	Pozwól autorowi komentować korektę
+	Use Save As for the proof, so the original stays unprotected.	Zapisz korektę przez Zapisz jako, aby oryginał pozostał niechroniony.
+	Proof ready. Use Save As to keep the original unprotected.	Korekta gotowa. Użyj Zapisz jako, aby oryginał pozostał niechroniony.
+	Initial every page	Parafuj wszystkie strony
+	Initial every page…	Parafuj wszystkie strony…
+	Puts your saved initials at the same place on each page.	Umieszcza zapisaną parafę w tym samym miejscu każdej strony.
+	Create your initials first.	Najpierw utwórz parafę.
+	Create initials	Utwórz parafę
+	Bottom right corner	Prawy dolny róg
+	Bottom left corner	Lewy dolny róg
+	Right margin, middle	Prawy margines, środek
+	Distance from the edges	Odległość od krawędzi
+	Leave out the last page	Pomiń ostatnią stronę
+	Then sign the last page	Potem podpisz ostatnią stronę
+	Pages to initial: {n}	Strony do parafowania: {n}
+	Initialled {n} pages.	Sparafowano stron: {n}.
+	Portuguese (Brazil)	Portugalski (Brazylia)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	System Windows nie ma rozpoznawania tekstu dla tego języka. Dodaj go w Ustawienia > Czas i język > Język i region, z optycznym rozpoznawaniem znaków.
+	Read aloud from this page	Czytaj na głos od tej strony
+	Pause or resume reading aloud	Wstrzymaj lub wznów czytanie na głos
+	Read aloud uses the voices of Windows.	Czytanie na głos korzysta z głosów systemu Windows.
+	Finished reading aloud.	Zakończono czytanie na głos.
+	Reading page {n}	Czytanie strony {n}
+	Resume	Wznów
+	Pause	Wstrzymaj
+	Stop	Zatrzymaj
+	Default voice	Domyślny głos
+	Speed	Szybkość
+	Split book spreads	Podziel rozkładówki książki
+	Split book spreads…	Podziel rozkładówki książki…
+	Finding the binding… page {n} of {total}	Szukanie grzbietu… strona {n} z {total}
+	No page here is a book spread (wider than tall).	Żadna strona tutaj nie jest rozkładówką (szersza niż wyższa).
+	Split {n} spreads into {pages} pages.	Podzielono rozkładówek: {n}, stron: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Każda strona zeskanowana przy otwartej książce staje się dwiema, najpierw lewa. Sam skan nie jest przycinany ani ponownie kompresowany.
+	At the binding (found on each page)	Przy grzbiecie (wykrytym na każdej stronie)
+	Exactly in the middle	Dokładnie pośrodku
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Rozkładówki (szersze niż wyższe): {n}. Pozostałe zostają bez zmian.
+	API key	Klucz API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Zadaj pytanie (Enter wysyła, Shift+Enter nowa linia)
+	Ask about the open document: a summary, where something is said, what a passage means…	Zapytaj o otwarty dokument: streszczenie, gdzie coś jest powiedziane, co znaczy fragment…
+	Assistant	Asystent
+	Assistant settings	Ustawienia Asystenta
+	Choose a model first (Refresh the list).	Najpierw wybierz model (odśwież listę).
+	Enter your API key for this AI first.	Najpierw wpisz swój klucz API dla tej AI.
+	Get a key	Uzyskaj klucz
+	New conversation	Nowa rozmowa
+	No models found for this key.	Nie znaleziono modeli dla tego klucza.
+	Ollama address	Adres Ollama
+	Refresh the model list	Odśwież listę modeli
+	Remember the keys on this computer	Zapamiętaj klucze na tym komputerze
+	Send	Wyślij
+	The AI declined to answer this.	AI odmówiła odpowiedzi.
+	The Assistant needs the desktop app to reach the AI.	Asystent potrzebuje aplikacji komputerowej, by połączyć się z AI.
+	The document is too long for this AI: it got the text up to page {n}.	Dokument jest za długi dla tej AI: otrzymała tekst do strony {n}.
+	These pages have no text (scanned pages need Recognize text first).	Te strony nie mają tekstu (zeskanowane strony najpierw wymagają Rozpoznawania tekstu).
+	This page	Ta strona
+	Whole document	Cały dokument
+	Your question	Twoje pytanie
+	Local model (Ollama)	Model lokalny (Ollama)
+	DRM Social	Społeczny DRM
+	DRM Social…	Społeczny DRM…
+	Licensed to	Licencja dla
+	Code	Kod
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Wybierasz, gdzie zapisać kopię; hasło jest przechowywane obok niej, w pliku o nazwie kończącej się na _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Znaku {c} nie można narysować w oznaczeniach.
+	Create licensed copy…	Utwórz licencjonowaną kopię…
+	The password is in {file}, beside the copy.	Hasło jest w pliku {file}, obok kopii.
+	Couldn't write the password file: {e}	Nie udało się zapisać pliku z hasłem: {e}
+	Table of contents to links	Spis treści na łącza
+	Table of contents to links…	Spis treści na łącza…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Odczytuje pozycje spisu treści (skan wymaga najpierw Rozpoznaj tekst), znajduje stronę każdej z nich i umieszcza łącze na każdej pozycji oraz zakładkę do niej.
+	Table of contents on pages	Spis treści na stronach
+	The book's page 1 is page	Strona 1 książki to strona
+	Links over the entries	Łącza na pozycjach
+	Read again	Odczytaj ponownie
+	No entries found on these pages.	Na tych stronach nie znaleziono pozycji.
+	not found	nie znaleziono
+	{placed} of {n} entries have a page.	{placed} z {n} pozycji ma stronę.
+	Linked {n} entries of the table of contents.	Połączono pozycje spisu treści: {n}.
+	A new version is available ({v}).	Dostępna jest nowa wersja ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Aktualizuj teraz pobiera ją i podmienia program na miejscu; ustawienia zostają.
+	Downloading the new version… {mb} MB	Pobieranie nowej wersji… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Nowa wersja jest gotowa. PdfCraft zamknie się i otworzy ponownie już w nowej wersji.
+	Couldn't update: {e}	Nie udało się zaktualizować: {e}
+	Restart now	Uruchom ponownie teraz
+	Update now	Aktualizuj teraz
+	Release page	Strona wersji
+	save or close your documents first	najpierw zapisz lub zamknij dokumenty
+	New password	Nowe hasło
+	Trust the ICP-Brasil root certificates	Ufaj certyfikatom głównym ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Podpisy złożone brazylijskimi certyfikatami e-CPF i e-CNPJ są wtedy weryfikowane bez ręcznego dodawania każdego urzędu.
+	Get updates	Aktualizuj
+	Marks	Oznaczenia
+	Header line	Wiersz w nagłówku
+	Footer line	Wiersz w stopce
+	Name across the page	Imię po przekątnej
+	Allow printing	Zezwalaj na drukowanie
+	Choose at least one mark.	Wybierz co najmniej jedno oznaczenie.
+	The licence is personal and non-transferable. Printing is not permitted.	Licencja jest osobista i nieprzenoszalna. Drukowanie nie jest dozwolone.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Licencjonowana kopia dla jednej osoby: jej imię na stronach, niewidoczny kod, strona licencji na końcu i ochrona przed kopiowaniem i zmianami.

@@ -1,0 +1,118 @@
+# This build's own interface strings (hu), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	Metaadatok szerkesztése
+	Add tools and controls	Eszközök és vezérlők hozzáadása
+	Reset to default	Alapértelmezés visszaállítása
+	House tools	Ház
+	Everyday tools	Mindennapi eszközök
+	Finish publisher file	Kiadói fájl lezárása
+	Finish publisher file…	Kiadói fájl lezárása…
+	Sets the house's document information and removes what other applications left in the file.	Beállítja a dokumentum adatait a ház szabványa szerint, és eltávolítja, amit más alkalmazások a fájlban hagytak.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Más alkalmazások XMP-metaadatainak eltávolítása (InDesign-előzmények, dokumentumazonosítók, képmetaadatok)
+	Remove the private data of other applications	Más alkalmazások privát adatainak eltávolítása
+	Open with the bookmarks panel	Megnyitás a könyvjelzők panellel
+	File finished. Save to write the changes into it.	A fájl lezárva. Mentse a változtatások beírásához.
+	PROOF	KORREKTÚRA
+	Proof for the author	Korrektúra a szerzőnek
+	Proof for the author…	Korrektúra a szerzőnek…
+	Marks every page with a watermark and protects the copy against changes and copying.	Minden oldalt vízjellel lát el, és védi a másolatot a módosítás és másolás ellen.
+	Let the author comment on the proof	A szerző megjegyzéseket fűzhet a korrektúrához
+	Use Save As for the proof, so the original stays unprotected.	A korrektúrát a Mentés másként paranccsal mentse, hogy az eredeti védelem nélkül maradjon.
+	Proof ready. Use Save As to keep the original unprotected.	A korrektúra kész. A Mentés másként paranccsal az eredeti védelem nélkül marad.
+	Initial every page	Minden oldal szignálása
+	Initial every page…	Minden oldal szignálása…
+	Puts your saved initials at the same place on each page.	A mentett kézjegyét minden oldalon ugyanoda teszi.
+	Create your initials first.	Előbb hozza létre a kézjegyét.
+	Create initials	Kézjegy létrehozása
+	Bottom right corner	Jobb alsó sarok
+	Bottom left corner	Bal alsó sarok
+	Right margin, middle	Jobb margó, középen
+	Distance from the edges	Távolság a szélektől
+	Leave out the last page	Az utolsó oldal kihagyása
+	Then sign the last page	Utána az utolsó oldal aláírása
+	Pages to initial: {n}	Szignálandó oldalak: {n}
+	Initialled {n} pages.	{n} oldal szignálva.
+	Portuguese (Brazil)	Portugál (Brazília)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	A Windowsban nincs szövegfelismerés ehhez a nyelvhez. Adja hozzá a Gépház > Idő és nyelv > Nyelv és régió helyen, optikai karakterfelismeréssel.
+	Read aloud from this page	Felolvasás ettől az oldaltól
+	Pause or resume reading aloud	Felolvasás szüneteltetése vagy folytatása
+	Read aloud uses the voices of Windows.	A felolvasás a Windows hangjait használja.
+	Finished reading aloud.	A felolvasás befejeződött.
+	Reading page {n}	{n}. oldal felolvasása
+	Resume	Folytatás
+	Pause	Szünet
+	Stop	Leállítás
+	Default voice	Alapértelmezett hang
+	Speed	Sebesség
+	Split book spreads	Könyvoldalpárok szétválasztása
+	Split book spreads…	Könyvoldalpárok szétválasztása…
+	Finding the binding… page {n} of {total}	A gerinc keresése… {n}. oldal / {total}
+	No page here is a book spread (wider than tall).	Itt egyik oldal sem oldalpár (szélesebb, mint magas).
+	Split {n} spreads into {pages} pages.	{n} oldalpár szétválasztva {pages} oldalra.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	A nyitott könyvvel szkennelt oldalakból két oldal lesz, előbb a bal. Magát a szkennelt képet nem vágja és nem tömöríti újra.
+	At the binding (found on each page)	A gerincnél (minden oldalon észlelve)
+	Exactly in the middle	Pontosan középen
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Oldalpárok (szélesebbek, mint magasak): {n}. A többi változatlan marad.
+	API key	API-kulcs
+	Ask a question (Enter sends, Shift+Enter for a new line)	Tegyen fel kérdést (Enter küldi, Shift+Enter új sor)
+	Ask about the open document: a summary, where something is said, what a passage means…	Kérdezzen a megnyitott dokumentumról: összefoglaló, hol szerepel valami, mit jelent egy rész…
+	Assistant	Asszisztens
+	Assistant settings	Asszisztens beállításai
+	Choose a model first (Refresh the list).	Előbb válasszon modellt (frissítse a listát).
+	Enter your API key for this AI first.	Előbb adja meg az MI-hez tartozó API-kulcsát.
+	Get a key	Kulcs igénylése
+	New conversation	Új beszélgetés
+	No models found for this key.	Ehhez a kulcshoz nem található modell.
+	Ollama address	Ollama címe
+	Refresh the model list	Modellista frissítése
+	Remember the keys on this computer	Kulcsok megjegyzése ezen a számítógépen
+	Send	Küldés
+	The AI declined to answer this.	Az MI megtagadta a választ.
+	The Assistant needs the desktop app to reach the AI.	Az Asszisztensnek az asztali alkalmazás kell az MI eléréséhez.
+	The document is too long for this AI: it got the text up to page {n}.	A dokumentum túl hosszú ehhez az MI-hez: a(z) {n}. oldalig kapta meg a szöveget.
+	These pages have no text (scanned pages need Recognize text first).	Ezeken az oldalakon nincs szöveg (a beszkennelt oldalakhoz előbb Szövegfelismerés kell).
+	This page	Ez az oldal
+	Whole document	Teljes dokumentum
+	Your question	Az Ön kérdése
+	Local model (Ollama)	Helyi modell (Ollama)
+	DRM Social	Közösségi DRM
+	DRM Social…	Közösségi DRM…
+	Licensed to	Licencelve:
+	Code	Kód
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Ön választja ki, hová mentse a másolatot; a jelszó mellette lesz, egy _DRM_social_senha.txt végű fájlban.
+	The character {c} can't be drawn in the marks.	A(z) {c} karakter nem rajzolható meg a jelölésekben.
+	Create licensed copy…	Licencelt másolat létrehozása…
+	The password is in {file}, beside the copy.	A jelszó a(z) {file} fájlban van, a másolat mellett.
+	Couldn't write the password file: {e}	A jelszófájl nem írható: {e}
+	Table of contents to links	Tartalomjegyzék hivatkozásokká
+	Table of contents to links…	Tartalomjegyzék hivatkozásokká…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Beolvassa a tartalomjegyzék bejegyzéseit (beolvasott dokumentumhoz előbb Szövegfelismerés kell), megkeresi mindegyik oldalát, és minden bejegyzésre hivatkozást, hozzá pedig könyvjelzőt tesz.
+	Table of contents on pages	Tartalomjegyzék az oldalakon
+	The book's page 1 is page	A könyv 1. oldala ez az oldal:
+	Links over the entries	Hivatkozások a bejegyzéseken
+	Read again	Újraolvasás
+	No entries found on these pages.	Ezeken az oldalakon nem található bejegyzés.
+	not found	nem található
+	{placed} of {n} entries have a page.	{n} bejegyzésből {placed} kapott oldalt.
+	Linked {n} entries of the table of contents.	Hivatkozássá alakított tartalomjegyzék-bejegyzések: {n}.
+	A new version is available ({v}).	Új verzió érhető el ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	A Frissítés most letölti, és helyben kicseréli a programot; a beállításai megmaradnak.
+	Downloading the new version… {mb} MB	Az új verzió letöltése… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Az új verzió készen áll. A PdfCraft bezárul, és már az új verzióként nyílik meg újra.
+	Couldn't update: {e}	Nem sikerült frissíteni: {e}
+	Restart now	Újraindítás most
+	Update now	Frissítés most
+	Release page	A verzió oldala
+	save or close your documents first	előbb mentse vagy zárja be a dokumentumait
+	New password	Új jelszó
+	Trust the ICP-Brasil root certificates	Az ICP-Brasil gyökértanúsítványainak megbízása
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	A brazil e-CPF és e-CNPJ tanúsítványokkal készült aláírások így minden hitelesítő kézi hozzáadása nélkül érvényesülnek.
+	Get updates	Frissítés
+	Marks	Jelölések
+	Header line	Sor az élőfejben
+	Footer line	Sor az élőlábban
+	Name across the page	Név átlósan
+	Allow printing	Nyomtatás engedélyezése
+	Choose at least one mark.	Válasszon legalább egy jelölést.
+	The licence is personal and non-transferable. Printing is not permitted.	A licenc személyes és át nem ruházható. A nyomtatás nem engedélyezett.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Licencelt példány egy személynek: a neve az oldalakon, egy láthatatlan kód, egy licencoldal a végén, és védelem a másolás és a módosítás ellen.

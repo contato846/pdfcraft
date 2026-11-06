@@ -1,0 +1,118 @@
+# This build's own interface strings (kk), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	Метадеректерді өңдеу
+	Add tools and controls	Құралдар мен басқару элементтерін қосу
+	Reset to default	Әдепкіге қайтару
+	House tools	Үй
+	Everyday tools	Күнделікті құралдар
+	Finish publisher file	Баспа файлын аяқтау
+	Finish publisher file…	Баспа файлын аяқтау…
+	Sets the house's document information and removes what other applications left in the file.	Құжат мәліметтерін үй стандартына сай орнатады және басқа қолданбалар файлда қалдырғанын жояды.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Басқа қолданбалардың XMP метадеректерін жою (InDesign тарихы, құжат идентификаторлары, сурет метадеректері)
+	Remove the private data of other applications	Басқа қолданбалардың жеке деректерін жою
+	Open with the bookmarks panel	Бетбелгілер панелімен ашу
+	File finished. Save to write the changes into it.	Файл аяқталды. Өзгерістерді жазу үшін сақтаңыз.
+	PROOF	КОРРЕКТУРА
+	Proof for the author	Авторға арналған корректура
+	Proof for the author…	Авторға арналған корректура…
+	Marks every page with a watermark and protects the copy against changes and copying.	Әр бетке су белгісін қояды және көшірмені өзгертуден және көшіруден қорғайды.
+	Let the author comment on the proof	Авторға корректураға пікір қалдыруға рұқсат ету
+	Use Save As for the proof, so the original stays unprotected.	Түпнұсқа қорғаусыз қалуы үшін корректураны «Басқаша сақтау» арқылы сақтаңыз.
+	Proof ready. Use Save As to keep the original unprotected.	Корректура дайын. Түпнұсқаны қорғаусыз қалдыру үшін «Басқаша сақтау» пайдаланыңыз.
+	Initial every page	Барлық беттерге қолтаңба қою
+	Initial every page…	Барлық беттерге қолтаңба қою…
+	Puts your saved initials at the same place on each page.	Сақталған инициалдарыңызды әр беттің бір орнына қояды.
+	Create your initials first.	Алдымен инициалдарыңызды жасаңыз.
+	Create initials	Инициалдар жасау
+	Bottom right corner	Төменгі оң жақ бұрыш
+	Bottom left corner	Төменгі сол жақ бұрыш
+	Right margin, middle	Оң жақ жиек, ортасында
+	Distance from the edges	Шеттерден қашықтық
+	Leave out the last page	Соңғы бетті қоспау
+	Then sign the last page	Содан кейін соңғы бетке қол қою
+	Pages to initial: {n}	Қолтаңба қойылатын беттер: {n}
+	Initialled {n} pages.	{n} бетке қолтаңба қойылды.
+	Portuguese (Brazil)	Португал тілі (Бразилия)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows жүйесінде бұл тілге мәтінді тану жоқ. Оны Параметрлер > Уақыт және тіл > Тіл және аймақ бөлімінде таңбаларды оптикалық танумен бірге қосыңыз.
+	Read aloud from this page	Осы беттен бастап дауыстап оқу
+	Pause or resume reading aloud	Дауыстап оқуды кідірту немесе жалғастыру
+	Read aloud uses the voices of Windows.	Дауыстап оқу Windows дауыстарын пайдаланады.
+	Finished reading aloud.	Дауыстап оқу аяқталды.
+	Reading page {n}	{n}-бет оқылуда
+	Resume	Жалғастыру
+	Pause	Кідірту
+	Stop	Тоқтату
+	Default voice	Әдепкі дауыс
+	Speed	Жылдамдық
+	Split book spreads	Кітаптың жайылған беттерін бөлу
+	Split book spreads…	Кітаптың жайылған беттерін бөлу…
+	Finding the binding… page {n} of {total}	Түптеме ізделуде… {total} беттің {n}-і
+	No page here is a book spread (wider than tall).	Мұнда жайылған бет жоқ (биіктігінен ені үлкен).
+	Split {n} spreads into {pages} pages.	{n} жайылған бет {pages} бетке бөлінді.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Кітап ашық күйде сканерленген әр бет екі бетке айналады, алдымен сол жағы. Сканердің өзі кесілмейді және қайта сығылмайды.
+	At the binding (found on each page)	Түптемеден (әр бетте анықталады)
+	Exactly in the middle	Дәл ортасынан
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Жайылған беттер (биіктігінен ені үлкен): {n}. Басқалары өзгеріссіз қалады.
+	API key	API кілті
+	Ask a question (Enter sends, Shift+Enter for a new line)	Сұрақ қойыңыз (Enter жібереді, Shift+Enter жаңа жол)
+	Ask about the open document: a summary, where something is said, what a passage means…	Ашық құжат туралы сұраңыз: қысқаша мазмұны, бірдеңе қай жерде айтылған, үзінді нені білдіреді…
+	Assistant	Көмекші
+	Assistant settings	Көмекші параметрлері
+	Choose a model first (Refresh the list).	Алдымен модельді таңдаңыз (тізімді жаңартыңыз).
+	Enter your API key for this AI first.	Алдымен осы ЖИ-ге арналған API кілтін енгізіңіз.
+	Get a key	Кілт алу
+	New conversation	Жаңа әңгіме
+	No models found for this key.	Бұл кілтке модельдер табылмады.
+	Ollama address	Ollama мекенжайы
+	Refresh the model list	Модельдер тізімін жаңарту
+	Remember the keys on this computer	Кілттерді осы компьютерде есте сақтау
+	Send	Жіберу
+	The AI declined to answer this.	ЖИ жауап беруден бас тартты.
+	The Assistant needs the desktop app to reach the AI.	Көмекшіге ЖИ-ге қосылу үшін жұмыс үстелі қолданбасы қажет.
+	The document is too long for this AI: it got the text up to page {n}.	Құжат бұл ЖИ үшін тым ұзын: ол мәтінді {n}-бетке дейін алды.
+	These pages have no text (scanned pages need Recognize text first).	Бұл беттерде мәтін жоқ (сканерленген беттерге алдымен мәтінді тану қажет).
+	This page	Осы бет
+	Whole document	Бүкіл құжат
+	Your question	Сіздің сұрағыңыз
+	Local model (Ollama)	Жергілікті модель (Ollama)
+	DRM Social	Әлеуметтік DRM
+	DRM Social…	Әлеуметтік DRM…
+	Licensed to	Лицензия иесі
+	Code	Код
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Көшірмені қайда сақтауды өзіңіз таңдайсыз; құпиясөз оның жанында, атауы _DRM_social_senha.txt деп аяқталатын файлда сақталады.
+	The character {c} can't be drawn in the marks.	{c} таңбасын белгілерде салу мүмкін емес.
+	Create licensed copy…	Лицензиялық көшірме жасау…
+	The password is in {file}, beside the copy.	Құпиясөз көшірменің жанындағы {file} файлында.
+	Couldn't write the password file: {e}	Құпиясөз файлын жазу мүмкін болмады: {e}
+	Table of contents to links	Мазмұнды сілтемелерге айналдыру
+	Table of contents to links…	Мазмұнды сілтемелерге айналдыру…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Мазмұн жазбаларын оқиды (сканерленген құжатқа алдымен Мәтінді тану керек), әрқайсысының бетін табады және әр жазбаға сілтеме мен бетбелгі қояды.
+	Table of contents on pages	Мазмұн орналасқан беттер
+	The book's page 1 is page	Кітаптың 1-беті — мына бет
+	Links over the entries	Жазбалардағы сілтемелер
+	Read again	Қайта оқу
+	No entries found on these pages.	Бұл беттерде жазба табылмады.
+	not found	табылмады
+	{placed} of {n} entries have a page.	{n} жазбаның {placed} бетінің беті бар.
+	Linked {n} entries of the table of contents.	Мазмұнның {n} жазбасы сілтемеге айналдырылды.
+	A new version is available ({v}).	Жаңа нұсқа бар ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	«Қазір жаңарту» оны жүктеп алып, бағдарламаны орнында ауыстырады; параметрлеріңіз сақталады.
+	Downloading the new version… {mb} MB	Жаңа нұсқа жүктелуде… {mb} МБ
+	The new version is ready. PdfCraft will close and open again as the new version.	Жаңа нұсқа дайын. PdfCraft жабылып, жаңа нұсқа ретінде қайта ашылады.
+	Couldn't update: {e}	Жаңарту мүмкін болмады: {e}
+	Restart now	Қазір қайта іске қосу
+	Update now	Қазір жаңарту
+	Release page	Нұсқа беті
+	save or close your documents first	алдымен құжаттарыңызды сақтаңыз немесе жабыңыз
+	New password	Жаңа құпиясөз
+	Trust the ICP-Brasil root certificates	ICP-Brasil түбірлік сертификаттарына сену
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Бразилиялық e-CPF және e-CNPJ сертификаттарымен жасалған қолтаңбалар әр орталықты қолмен қоспай тексеріледі.
+	Get updates	Жаңарту
+	Marks	Белгілер
+	Header line	Жоғарғы колонтитулдағы жол
+	Footer line	Төменгі колонтитулдағы жол
+	Name across the page	Атауы диагональ бойынша
+	Allow printing	Басып шығаруға рұқсат беру
+	Choose at least one mark.	Кемінде бір белгіні таңдаңыз.
+	The licence is personal and non-transferable. Printing is not permitted.	Лицензия жеке және басқаға берілмейді. Басып шығаруға рұқсат етілмейді.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Бір адамға арналған лицензиялық көшірме: беттердегі оның аты, көрінбейтін код, соңындағы лицензия беті және көшіру мен өзгертуден қорғау.

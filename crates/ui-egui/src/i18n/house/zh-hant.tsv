@@ -1,0 +1,118 @@
+# This build's own interface strings (zh-hant), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	編輯中繼資料
+	Add tools and controls	新增工具和控制項
+	Reset to default	還原為預設值
+	House tools	自家工具
+	Everyday tools	日常工具
+	Finish publisher file	完成出版社檔案
+	Finish publisher file…	完成出版社檔案…
+	Sets the house's document information and removes what other applications left in the file.	依本社標準設定文件資訊，並移除其他應用程式留在檔案中的內容。
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	移除其他應用程式的 XMP 中繼資料（InDesign 記錄、文件 ID、影像中繼資料）
+	Remove the private data of other applications	移除其他應用程式的私人資料
+	Open with the bookmarks panel	開啟時顯示書籤面板
+	File finished. Save to write the changes into it.	檔案已完成。儲存以將變更寫入檔案。
+	PROOF	校樣
+	Proof for the author	作者校樣
+	Proof for the author…	作者校樣…
+	Marks every page with a watermark and protects the copy against changes and copying.	為每頁加上浮水印，並保護副本不被修改和複製。
+	Let the author comment on the proof	允許作者對校樣加上註解
+	Use Save As for the proof, so the original stays unprotected.	請用「另存新檔」儲存校樣，讓原件保持未受保護。
+	Proof ready. Use Save As to keep the original unprotected.	校樣已就緒。使用「另存新檔」讓原件保持未受保護。
+	Initial every page	在所有頁面上簽署姓名縮寫
+	Initial every page…	在所有頁面上簽署姓名縮寫…
+	Puts your saved initials at the same place on each page.	將您儲存的姓名縮寫放在每頁的相同位置。
+	Create your initials first.	請先建立姓名縮寫。
+	Create initials	建立姓名縮寫
+	Bottom right corner	右下角
+	Bottom left corner	左下角
+	Right margin, middle	右邊界中央
+	Distance from the edges	與邊緣的距離
+	Leave out the last page	不包括最後一頁
+	Then sign the last page	然後在最後一頁簽名
+	Pages to initial: {n}	要簽署的頁數：{n}
+	Initialled {n} pages.	已在 {n} 頁簽署姓名縮寫。
+	Portuguese (Brazil)	葡萄牙文（巴西）
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows 沒有此語言的文字辨識。請在「設定 > 時間與語言 > 語言與地區」中新增該語言及其光學字元辨識功能。
+	Read aloud from this page	從此頁開始朗讀
+	Pause or resume reading aloud	暫停或繼續朗讀
+	Read aloud uses the voices of Windows.	朗讀使用 Windows 的語音。
+	Finished reading aloud.	朗讀已完成。
+	Reading page {n}	正在朗讀第 {n} 頁
+	Resume	繼續
+	Pause	暫停
+	Stop	停止
+	Default voice	預設語音
+	Speed	速度
+	Split book spreads	拆分書本跨頁
+	Split book spreads…	拆分書本跨頁…
+	Finding the binding… page {n} of {total}	正在尋找書脊… 第 {n} 頁，共 {total} 頁
+	No page here is a book spread (wider than tall).	這裡沒有跨頁（寬度大於高度的頁面）。
+	Split {n} spreads into {pages} pages.	已將 {n} 個跨頁拆分為 {pages} 頁。
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	書本攤開掃描的每一頁都會變成兩頁，左頁在前。掃描影像本身不會被裁切或重新壓縮。
+	At the binding (found on each page)	在書脊處（逐頁偵測）
+	Exactly in the middle	正好在中間
+	Spreads (pages wider than tall): {n}. The others stay as they are.	跨頁（寬度大於高度）：{n}。其他頁面保持不變。
+	API key	API 金鑰
+	Ask a question (Enter sends, Shift+Enter for a new line)	提出問題（Enter 傳送，Shift+Enter 換行）
+	Ask about the open document: a summary, where something is said, what a passage means…	就開啟的文件提問：摘要、某處說了什麼、某段話的含義…
+	Assistant	助理
+	Assistant settings	助理設定
+	Choose a model first (Refresh the list).	請先選擇模型（重新整理清單）。
+	Enter your API key for this AI first.	請先輸入此 AI 的 API 金鑰。
+	Get a key	取得金鑰
+	New conversation	新對話
+	No models found for this key.	找不到此金鑰可用的模型。
+	Ollama address	Ollama 位址
+	Refresh the model list	重新整理模型清單
+	Remember the keys on this computer	在此電腦上記住金鑰
+	Send	傳送
+	The AI declined to answer this.	AI 拒絕回答。
+	The Assistant needs the desktop app to reach the AI.	助理需要桌面應用程式才能連線到 AI。
+	The document is too long for this AI: it got the text up to page {n}.	文件對此 AI 來說太長：它收到了第 {n} 頁之前的文字。
+	These pages have no text (scanned pages need Recognize text first).	這些頁面沒有文字（掃描頁面需先進行文字辨識）。
+	This page	此頁
+	Whole document	整份文件
+	Your question	你的問題
+	Local model (Ollama)	本機模型（Ollama）
+	DRM Social	社會化 DRM
+	DRM Social…	社會化 DRM…
+	Licensed to	授權給
+	Code	代碼
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	由您選擇副本的儲存位置;密碼儲存在其旁邊,檔名以 _DRM_social_senha.txt 結尾。
+	The character {c} can't be drawn in the marks.	無法在標記中繪製字元 {c}。
+	Create licensed copy…	建立授權副本…
+	The password is in {file}, beside the copy.	密碼在副本旁邊的 {file} 中。
+	Couldn't write the password file: {e}	無法寫入密碼檔案:{e}
+	Table of contents to links	目錄轉為連結
+	Table of contents to links…	目錄轉為連結…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	讀取目錄項目(掃描檔需要先「辨識文字」),找到每個項目的頁面,並在每個項目上放置連結和書籤。
+	Table of contents on pages	目錄所在頁面
+	The book's page 1 is page	本書第 1 頁是第
+	Links over the entries	項目上的連結
+	Read again	重新讀取
+	No entries found on these pages.	在這些頁面上找不到項目。
+	not found	找不到
+	{placed} of {n} entries have a page.	{n} 個項目中有 {placed} 個找到了頁面。
+	Linked {n} entries of the table of contents.	已將目錄的 {n} 個項目轉為連結。
+	A new version is available ({v}).	有新版本可用({v})。
+	Update now downloads it and swaps the program in place; your settings stay.	「立即更新」會下載並就地取代程式;您的設定保持不變。
+	Downloading the new version… {mb} MB	正在下載新版本… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	新版本已就緒。PdfCraft 將關閉並以新版本重新開啟。
+	Couldn't update: {e}	無法更新:{e}
+	Restart now	立即重新啟動
+	Update now	立即更新
+	Release page	版本頁面
+	save or close your documents first	請先儲存或關閉您的文件
+	New password	新密碼
+	Trust the ICP-Brasil root certificates	信任 ICP-Brasil 根憑證
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	使用巴西 e-CPF 與 e-CNPJ 憑證的簽章無需逐一手動新增發證機構即可驗證。
+	Get updates	更新
+	Marks	標記
+	Header line	頁首行
+	Footer line	頁尾行
+	Name across the page	斜向姓名
+	Allow printing	允許列印
+	Choose at least one mark.	請至少選擇一種標記。
+	The licence is personal and non-transferable. Printing is not permitted.	授權僅限個人使用，不得轉讓。不允許列印。
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	為一個人製作的授權副本：頁面上的姓名、隱形代碼、結尾的授權頁，以及防止複製和變更的保護。

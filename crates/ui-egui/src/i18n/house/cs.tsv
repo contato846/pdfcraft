@@ -1,0 +1,118 @@
+# This build's own interface strings (cs), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	Upravit metadata
+	Add tools and controls	Přidat nástroje a ovládací prvky
+	Reset to default	Obnovit výchozí
+	House tools	Dům
+	Everyday tools	Každodenní nástroje
+	Finish publisher file	Dokončit soubor nakladatelství
+	Finish publisher file…	Dokončit soubor nakladatelství…
+	Sets the house's document information and removes what other applications left in the file.	Nastaví informace o dokumentu podle domácího standardu a odstraní, co v souboru zanechaly jiné aplikace.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Odstranit metadata XMP jiných aplikací (historie InDesignu, ID dokumentu, metadata obrázků)
+	Remove the private data of other applications	Odstranit soukromá data jiných aplikací
+	Open with the bookmarks panel	Otevřít s panelem záložek
+	File finished. Save to write the changes into it.	Soubor dokončen. Uložením do něj zapíšete změny.
+	PROOF	KOREKTURA
+	Proof for the author	Korektura pro autora
+	Proof for the author…	Korektura pro autora…
+	Marks every page with a watermark and protects the copy against changes and copying.	Označí každou stránku vodoznakem a chrání kopii před změnami a kopírováním.
+	Let the author comment on the proof	Povolit autorovi komentovat korekturu
+	Use Save As for the proof, so the original stays unprotected.	Korekturu uložte pomocí Uložit jako, aby originál zůstal nechráněný.
+	Proof ready. Use Save As to keep the original unprotected.	Korektura je hotová. Pomocí Uložit jako ponecháte originál nechráněný.
+	Initial every page	Parafovat všechny stránky
+	Initial every page…	Parafovat všechny stránky…
+	Puts your saved initials at the same place on each page.	Umístí uloženou parafu na stejné místo každé stránky.
+	Create your initials first.	Nejprve si vytvořte parafu.
+	Create initials	Vytvořit parafu
+	Bottom right corner	Pravý dolní roh
+	Bottom left corner	Levý dolní roh
+	Right margin, middle	Pravý okraj, uprostřed
+	Distance from the edges	Vzdálenost od okrajů
+	Leave out the last page	Vynechat poslední stránku
+	Then sign the last page	Potom podepsat poslední stránku
+	Pages to initial: {n}	Stránky k parafování: {n}
+	Initialled {n} pages.	Parafováno stránek: {n}.
+	Portuguese (Brazil)	Portugalština (Brazílie)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows nemá pro tento jazyk rozpoznávání textu. Přidejte ho v Nastavení > Čas a jazyk > Jazyk a oblast i s optickým rozpoznáváním znaků.
+	Read aloud from this page	Číst nahlas od této stránky
+	Pause or resume reading aloud	Pozastavit nebo obnovit čtení nahlas
+	Read aloud uses the voices of Windows.	Čtení nahlas používá hlasy Windows.
+	Finished reading aloud.	Čtení nahlas dokončeno.
+	Reading page {n}	Čte se stránka {n}
+	Resume	Pokračovat
+	Pause	Pozastavit
+	Stop	Zastavit
+	Default voice	Výchozí hlas
+	Speed	Rychlost
+	Split book spreads	Rozdělit dvoustrany knihy
+	Split book spreads…	Rozdělit dvoustrany knihy…
+	Finding the binding… page {n} of {total}	Hledá se hřbet… stránka {n} z {total}
+	No page here is a book spread (wider than tall).	Žádná stránka zde není dvoustrana (širší než vyšší).
+	Split {n} spreads into {pages} pages.	Rozděleno dvoustran: {n}, vzniklo stránek: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Každá stránka naskenovaná s otevřenou knihou se změní na dvě, nejprve levá. Samotný sken se neořezává ani znovu nekomprimuje.
+	At the binding (found on each page)	U hřbetu (zjištěno na každé stránce)
+	Exactly in the middle	Přesně uprostřed
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Dvoustrany (širší než vyšší): {n}. Ostatní zůstanou beze změny.
+	API key	Klíč API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Položte otázku (Enter odešle, Shift+Enter nový řádek)
+	Ask about the open document: a summary, where something is said, what a passage means…	Ptejte se na otevřený dokument: shrnutí, kde se něco píše, co znamená pasáž…
+	Assistant	Asistent
+	Assistant settings	Nastavení asistenta
+	Choose a model first (Refresh the list).	Nejprve vyberte model (aktualizujte seznam).
+	Enter your API key for this AI first.	Nejprve zadejte svůj klíč API pro tuto AI.
+	Get a key	Získat klíč
+	New conversation	Nová konverzace
+	No models found for this key.	Pro tento klíč nebyly nalezeny žádné modely.
+	Ollama address	Adresa Ollama
+	Refresh the model list	Aktualizovat seznam modelů
+	Remember the keys on this computer	Pamatovat si klíče v tomto počítači
+	Send	Odeslat
+	The AI declined to answer this.	AI odmítla odpovědět.
+	The Assistant needs the desktop app to reach the AI.	Asistent potřebuje desktopovou aplikaci, aby se spojil s AI.
+	The document is too long for this AI: it got the text up to page {n}.	Dokument je pro tuto AI příliš dlouhý: dostala text po stránku {n}.
+	These pages have no text (scanned pages need Recognize text first).	Tyto stránky nemají text (naskenované stránky nejprve potřebují Rozpoznat text).
+	This page	Tato stránka
+	Whole document	Celý dokument
+	Your question	Vaše otázka
+	Local model (Ollama)	Místní model (Ollama)
+	DRM Social	Sociální DRM
+	DRM Social…	Sociální DRM…
+	Licensed to	Licencováno pro
+	Code	Kód
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Vyberete, kam kopii uložit; heslo se uloží vedle ní do souboru, jehož název končí na _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Znak {c} nelze ve značkách vykreslit.
+	Create licensed copy…	Vytvořit licencovanou kopii…
+	The password is in {file}, beside the copy.	Heslo je v souboru {file}, vedle kopie.
+	Couldn't write the password file: {e}	Soubor s heslem se nepodařilo zapsat: {e}
+	Table of contents to links	Obsah na odkazy
+	Table of contents to links…	Obsah na odkazy…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Přečte položky obsahu (skenovaný dokument nejprve potřebuje Rozpoznat text), najde stránku každé z nich a vloží na každou položku odkaz a pro ni záložku.
+	Table of contents on pages	Obsah na stránkách
+	The book's page 1 is page	Stránka 1 knihy je stránka
+	Links over the entries	Odkazy na položkách
+	Read again	Přečíst znovu
+	No entries found on these pages.	Na těchto stránkách nebyly nalezeny žádné položky.
+	not found	nenalezeno
+	{placed} of {n} entries have a page.	{placed} z {n} položek má stránku.
+	Linked {n} entries of the table of contents.	Propojené položky obsahu: {n}.
+	A new version is available ({v}).	Je k dispozici nová verze ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Aktualizovat nyní ji stáhne a vymění program na místě; vaše nastavení zůstanou.
+	Downloading the new version… {mb} MB	Stahuje se nová verze… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Nová verze je připravena. PdfCraft se zavře a znovu otevře už jako nová verze.
+	Couldn't update: {e}	Aktualizace se nezdařila: {e}
+	Restart now	Restartovat nyní
+	Update now	Aktualizovat nyní
+	Release page	Stránka verze
+	save or close your documents first	nejprve uložte nebo zavřete své dokumenty
+	New password	Nové heslo
+	Trust the ICP-Brasil root certificates	Důvěřovat kořenovým certifikátům ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Podpisy brazilskými certifikáty e-CPF a e-CNPJ se pak ověří bez ručního přidávání každé autority.
+	Get updates	Aktualizovat
+	Marks	Značky
+	Header line	Řádek v záhlaví
+	Footer line	Řádek v zápatí
+	Name across the page	Jméno úhlopříčně
+	Allow printing	Povolit tisk
+	Choose at least one mark.	Zvolte alespoň jednu značku.
+	The licence is personal and non-transferable. Printing is not permitted.	Licence je osobní a nepřenosná. Tisk není povolen.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Licencovaná kopie pro jednu osobu: její jméno na stránkách, neviditelný kód, licenční stránka na konci a ochrana proti kopírování a změnám.

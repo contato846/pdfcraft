@@ -20,5 +20,9 @@ thiserror.workspace = true
 # Windows' own recogniser (Windows.Media.Ocr): Portuguese, English and the other installed languages.
 windows = { version = "0.62", features = ["Foundation", "Foundation_Collections", "Globalization", "Graphics_Imaging", "Media_Ocr", "Storage_Streams"] }
 
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+# The page image is handed to the external tesseract process as a PNG.
+png = "0.18"
+
 [dev-dependencies]
 tempfile = "3.27"

@@ -1,0 +1,118 @@
+# This build's own interface strings (uk), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	Редагувати метадані
+	Add tools and controls	Додати інструменти й елементи керування
+	Reset to default	Скинути до типових
+	House tools	Дім
+	Everyday tools	Повсякденні інструменти
+	Finish publisher file	Завершити файл видавництва
+	Finish publisher file…	Завершити файл видавництва…
+	Sets the house's document information and removes what other applications left in the file.	Задає відомості про документ за стандартом дому й вилучає те, що залишили у файлі інші програми.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Вилучити метадані XMP інших програм (історія InDesign, ідентифікатори документа, метадані зображень)
+	Remove the private data of other applications	Вилучити приватні дані інших програм
+	Open with the bookmarks panel	Відкривати з панеллю закладок
+	File finished. Save to write the changes into it.	Файл завершено. Збережіть, щоб записати до нього зміни.
+	PROOF	КОРЕКТУРА
+	Proof for the author	Коректура для автора
+	Proof for the author…	Коректура для автора…
+	Marks every page with a watermark and protects the copy against changes and copying.	Ставить водяний знак на кожній сторінці й захищає копію від змін і копіювання.
+	Let the author comment on the proof	Дозволити авторові коментувати коректуру
+	Use Save As for the proof, so the original stays unprotected.	Збережіть коректуру через «Зберегти як», щоб оригінал лишився без захисту.
+	Proof ready. Use Save As to keep the original unprotected.	Коректура готова. Скористайтеся «Зберегти як», щоб оригінал лишився без захисту.
+	Initial every page	Парафувати всі сторінки
+	Initial every page…	Парафувати всі сторінки…
+	Puts your saved initials at the same place on each page.	Ставить збережені ініціали в те саме місце кожної сторінки.
+	Create your initials first.	Спершу створіть ініціали.
+	Create initials	Створити ініціали
+	Bottom right corner	Правий нижній кут
+	Bottom left corner	Лівий нижній кут
+	Right margin, middle	Праве поле, посередині
+	Distance from the edges	Відстань від країв
+	Leave out the last page	Пропустити останню сторінку
+	Then sign the last page	Потім підписати останню сторінку
+	Pages to initial: {n}	Сторінок для парафування: {n}
+	Initialled {n} pages.	Парафовано сторінок: {n}.
+	Portuguese (Brazil)	Португальська (Бразилія)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	У Windows немає розпізнавання тексту для цієї мови. Додайте її в розділі «Параметри > Час і мова > Мова й регіон» разом з оптичним розпізнаванням символів.
+	Read aloud from this page	Читати вголос із цієї сторінки
+	Pause or resume reading aloud	Призупинити або продовжити читання вголос
+	Read aloud uses the voices of Windows.	Читання вголос використовує голоси Windows.
+	Finished reading aloud.	Читання вголос завершено.
+	Reading page {n}	Читається сторінка {n}
+	Resume	Продовжити
+	Pause	Пауза
+	Stop	Зупинити
+	Default voice	Типовий голос
+	Speed	Швидкість
+	Split book spreads	Розділити розвороти книги
+	Split book spreads…	Розділити розвороти книги…
+	Finding the binding… page {n} of {total}	Пошук корінця… сторінка {n} з {total}
+	No page here is a book spread (wider than tall).	Тут немає розворотів (сторінок, ширших за висоту).
+	Split {n} spreads into {pages} pages.	Розділено розворотів: {n}, отримано сторінок: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Кожна сторінка, відсканована з розгорнутої книги, стає двома, спершу ліва. Сам скан не обрізається й не перестискається.
+	At the binding (found on each page)	По корінцю (знаходиться на кожній сторінці)
+	Exactly in the middle	Точно посередині
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Розвороти (ширші за висоту): {n}. Решта лишаться як є.
+	API key	Ключ API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Поставте запитання (Enter — надіслати, Shift+Enter — новий рядок)
+	Ask about the open document: a summary, where something is said, what a passage means…	Запитайте про відкритий документ: стислий зміст, де що сказано, що означає уривок…
+	Assistant	Помічник
+	Assistant settings	Налаштування помічника
+	Choose a model first (Refresh the list).	Спершу виберіть модель (оновіть список).
+	Enter your API key for this AI first.	Спершу введіть свій ключ API для цього ШІ.
+	Get a key	Отримати ключ
+	New conversation	Нова розмова
+	No models found for this key.	Для цього ключа моделей не знайдено.
+	Ollama address	Адреса Ollama
+	Refresh the model list	Оновити список моделей
+	Remember the keys on this computer	Запам'ятати ключі на цьому комп'ютері
+	Send	Надіслати
+	The AI declined to answer this.	ШІ відмовився відповідати.
+	The Assistant needs the desktop app to reach the AI.	Помічнику потрібен настільний застосунок, щоб звернутися до ШІ.
+	The document is too long for this AI: it got the text up to page {n}.	Документ задовгий для цього ШІ: він отримав текст до сторінки {n}.
+	These pages have no text (scanned pages need Recognize text first).	На цих сторінках немає тексту (для сканованих сторінок спершу потрібно «Розпізнати текст»).
+	This page	Ця сторінка
+	Whole document	Увесь документ
+	Your question	Ваше запитання
+	Local model (Ollama)	Локальна модель (Ollama)
+	DRM Social	Соціальний DRM
+	DRM Social…	Соціальний DRM…
+	Licensed to	Ліцензіат
+	Code	Код
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Ви вибираєте, куди зберегти копію; пароль зберігається поруч із нею, у файлі, назва якого закінчується на _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Символ {c} неможливо намалювати в позначках.
+	Create licensed copy…	Створити ліцензовану копію…
+	The password is in {file}, beside the copy.	Пароль у файлі {file}, поруч із копією.
+	Couldn't write the password file: {e}	Не вдалося записати файл із паролем: {e}
+	Table of contents to links	Зміст у посилання
+	Table of contents to links…	Зміст у посилання…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Читає пункти змісту (для сканованого документа спершу потрібно Розпізнати текст), знаходить сторінку кожного і ставить на кожен пункт посилання, а для нього — закладку.
+	Table of contents on pages	Зміст на сторінках
+	The book's page 1 is page	Сторінка 1 книги — це сторінка
+	Links over the entries	Посилання на пунктах
+	Read again	Прочитати знову
+	No entries found on these pages.	На цих сторінках пунктів не знайдено.
+	not found	не знайдено
+	{placed} of {n} entries have a page.	Сторінку має {placed} з {n} пунктів.
+	Linked {n} entries of the table of contents.	Пунктів змісту перетворено на посилання: {n}.
+	A new version is available ({v}).	Доступна нова версія ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	«Оновити зараз» завантажить її та замінить програму на місці; ваші налаштування збережуться.
+	Downloading the new version… {mb} MB	Завантаження нової версії… {mb} МБ
+	The new version is ready. PdfCraft will close and open again as the new version.	Нова версія готова. PdfCraft закриється й відкриється знову вже новою версією.
+	Couldn't update: {e}	Не вдалося оновити: {e}
+	Restart now	Перезапустити зараз
+	Update now	Оновити зараз
+	Release page	Сторінка версії
+	save or close your documents first	спочатку збережіть або закрийте документи
+	New password	Новий пароль
+	Trust the ICP-Brasil root certificates	Довіряти кореневим сертифікатам ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Підписи бразильськими сертифікатами e-CPF і e-CNPJ тоді перевіряються без ручного додавання кожного центру.
+	Get updates	Оновити
+	Marks	Позначки
+	Header line	Рядок у верхньому колонтитулі
+	Footer line	Рядок у нижньому колонтитулі
+	Name across the page	Ім'я по діагоналі
+	Allow printing	Дозволити друк
+	Choose at least one mark.	Виберіть принаймні одну позначку.
+	The licence is personal and non-transferable. Printing is not permitted.	Ліцензія особиста й не підлягає передаванню. Друк не дозволено.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Ліцензійна копія для однієї особи: її ім'я на сторінках, невидимий код, сторінка ліцензії наприкінці та захист від копіювання і змін.

@@ -9,7 +9,7 @@ use windows::Media::Ocr::OcrEngine;
 use windows::Storage::Streams::DataWriter;
 use windows::core::HSTRING;
 
-use crate::{Line, OcrError, Word};
+use crate::{Line, OcrError, OcrImage, RecognizeOptions, Recognizer, Word};
 
 /// Largest image this module hands to Windows when it can't ask: Windows has accepted at least
 /// this since Windows 10 (its `MaxImageDimension` is the real limit, read at run time).
@@ -18,6 +18,9 @@ const FALLBACK_MAX_DIMENSION: u32 = 2600;
 /// Cap on the pixels this accepts (RGBA bytes = 4 × this): a page at 600 dpi on A3 is about
 /// 70 Mpx; anything far beyond is not a page.
 const MAX_PIXELS: u64 = 200_000_000;
+
+/// The engine's name in settings, tools and [`Word::source`].
+pub const ID: &str = "windows";
 
 fn err(e: windows::core::Error) -> OcrError {
     OcrError::Recognize(e.message())
@@ -93,12 +96,35 @@ impl WinOcr {
                     continue;
                 }
                 let r = word.BoundingRect().map_err(err)?;
-                words.push(Word { text, rect: [r.X * f, r.Y * f, (r.X + r.Width) * f, (r.Y + r.Height) * f] });
+                words.push(Word::new(text, [r.X * f, r.Y * f, (r.X + r.Width) * f, (r.Y + r.Height) * f], ID));
             }
             if !words.is_empty() {
                 out.push(Line { words });
             }
         }
         Ok(out)
+    }
+}
+
+/// Windows' recogniser as an engine: it reads in the language the settings ask for (a BCP-47 tag
+/// such as "pt-BR"; a bare "pt" or "en" works too) when Windows has OCR for it.
+pub struct WindowsRecognizer;
+
+impl Recognizer for WindowsRecognizer {
+    fn id(&self) -> &'static str {
+        ID
+    }
+
+    fn available(&self) -> bool {
+        OcrEngine::AvailableRecognizerLanguages().is_ok_and(|l| l.Size().is_ok_and(|n| n > 0))
+    }
+
+    fn languages(&self) -> Vec<(String, String)> {
+        let Ok(list) = OcrEngine::AvailableRecognizerLanguages() else { return Vec::new() };
+        list.into_iter().filter_map(|l| Some((l.LanguageTag().ok()?.to_string(), l.DisplayName().ok()?.to_string()))).collect()
+    }
+
+    fn recognize(&self, image: &OcrImage, options: &RecognizeOptions) -> Result<Vec<Line>, OcrError> {
+        WinOcr::new(&options.language)?.recognize(image.rgba(), image.width(), image.height())
     }
 }

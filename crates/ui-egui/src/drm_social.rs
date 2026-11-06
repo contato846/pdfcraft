@@ -329,6 +329,8 @@ impl DrmDraft {
                 origin: [x0 + 20.0, y0 + ph / 2.0],
                 across: [hidden.chars().count() as f64 * 2.0, 0.0],
                 up: [0.0, 4.0],
+                confidence: None,
+                source: "drm-social".into(),
             }];
             edits.push(Edit::AddOcrText { page, words });
         }

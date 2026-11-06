@@ -135,7 +135,8 @@ impl PdfCraftApp {
             return;
         }
         self.updates.checked_at_start = true;
-        if self.update_installer.is_none() || self.build_sha.is_none() {
+        // Preferences ▸ Check for updates when PdfCraft starts.
+        if !self.update_check_at_start || self.update_installer.is_none() || self.build_sha.is_none() {
             return;
         }
         self.updates.quiet = true;

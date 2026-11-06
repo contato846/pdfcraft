@@ -1,0 +1,141 @@
+# This build's own interface strings (pt-br), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	Editar metadados
+	Add tools and controls	Adicionar ferramentas e controles
+	Reset to default	Restaurar o padrão
+	House tools	Personalizado
+	Everyday tools	Ferramentas do dia a dia
+	Finish publisher file	Fechar arquivo editora
+	Finish publisher file…	Fechar arquivo editora…
+	Sets the house's document information and removes what other applications left in the file.	Grava as informações do documento no padrão da casa e remove o que outros aplicativos deixaram no arquivo.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Remover os metadados XMP de outros aplicativos (histórico do InDesign, identificadores do documento, metadados das imagens)
+	Remove the private data of other applications	Remover os dados privados de outros aplicativos
+	Open with the bookmarks panel	Abrir com o painel de marcadores
+	File finished. Save to write the changes into it.	Arquivo fechado. Salve para gravar as alterações nele.
+	PROOF	PROVA
+	Proof for the author	Prova para o autor
+	Proof for the author…	Prova para o autor…
+	Marks every page with a watermark and protects the copy against changes and copying.	Marca todas as páginas com uma marca d'água e protege a cópia contra alterações e cópia.
+	Let the author comment on the proof	Permitir que o autor comente a prova
+	Use Save As for the proof, so the original stays unprotected.	Use Salvar como para a prova, para que o original continue sem proteção.
+	Proof ready. Use Save As to keep the original unprotected.	Prova pronta. Use Salvar como para manter o original sem proteção.
+	Initial every page	Rubricar todas as páginas
+	Initial every page…	Rubricar todas as páginas…
+	Puts your saved initials at the same place on each page.	Coloca a sua rubrica salva no mesmo lugar de cada página.
+	Create your initials first.	Crie primeiro a sua rubrica.
+	Create initials	Criar rubrica
+	Bottom right corner	Canto inferior direito
+	Bottom left corner	Canto inferior esquerdo
+	Right margin, middle	Margem direita, no meio
+	Distance from the edges	Distância das bordas
+	Leave out the last page	Deixar de fora a última página
+	Then sign the last page	Depois, assinar a última página
+	Pages to initial: {n}	Páginas a rubricar: {n}
+	Initialled {n} pages.	{n} páginas rubricadas.
+	Portuguese (Brazil)	Português (Brasil)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	O Windows não tem reconhecimento de texto para este idioma. Adicione-o em Configurações > Hora e idioma > Idioma e região, com o reconhecimento óptico de caracteres.
+	Read aloud from this page	Ler em voz alta a partir desta página
+	Pause or resume reading aloud	Pausar ou retomar a leitura em voz alta
+	Read aloud uses the voices of Windows.	A leitura em voz alta usa as vozes do Windows.
+	Finished reading aloud.	Leitura em voz alta concluída.
+	Reading page {n}	Lendo a página {n}
+	Resume	Retomar
+	Pause	Pausar
+	Stop	Parar
+	Default voice	Voz padrão
+	Speed	Velocidade
+	Split book spreads	Dividir páginas de livro aberto
+	Split book spreads…	Dividir páginas de livro aberto…
+	Finding the binding… page {n} of {total}	Procurando a lombada… página {n} de {total}
+	No page here is a book spread (wider than tall).	Nenhuma página aqui é de livro aberto (mais larga que alta).
+	Split {n} spreads into {pages} pages.	{n} páginas de livro aberto divididas em {pages} páginas.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Cada página digitalizada com o livro aberto vira duas, a da esquerda primeiro. A digitalização em si não é recortada nem recomprimida.
+	At the binding (found on each page)	Na lombada (detectada em cada página)
+	Exactly in the middle	Exatamente ao meio
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Páginas de livro aberto (mais largas que altas): {n}. As outras ficam como estão.
+	API key	Chave de API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Faça uma pergunta (Enter envia; Shift+Enter quebra a linha)
+	Ask about the open document: a summary, where something is said, what a passage means…	Pergunte sobre o documento aberto: um resumo, onde algo é dito, o que um trecho significa…
+	Assistant	Assistente
+	Assistant settings	Configurações do Assistente
+	Choose a model first (Refresh the list).	Escolha primeiro um modelo (atualize a lista).
+	Enter your API key for this AI first.	Informe primeiro a sua chave de API desta IA.
+	Get a key	Obter uma chave
+	New conversation	Nova conversa
+	No models found for this key.	Nenhum modelo encontrado para esta chave.
+	Ollama address	Endereço do Ollama
+	Refresh the model list	Atualizar a lista de modelos
+	Remember the keys on this computer	Lembrar as chaves neste computador
+	Send	Enviar
+	The AI declined to answer this.	A IA se recusou a responder.
+	The Assistant needs the desktop app to reach the AI.	O Assistente precisa do aplicativo de computador para acessar a IA.
+	The document is too long for this AI: it got the text up to page {n}.	O documento é longo demais para esta IA: ela recebeu o texto até a página {n}.
+	These pages have no text (scanned pages need Recognize text first).	Estas páginas não têm texto (páginas digitalizadas precisam antes de Reconhecer texto).
+	This page	Esta página
+	Whole document	Documento inteiro
+	Your question	Sua pergunta
+	Local model (Ollama)	Modelo local (Ollama)
+	DRM Social	DRM Social
+	DRM Social…	DRM Social…
+	Licensed to	Licenciado a
+	Code	Código
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Você escolhe onde salvar a cópia; a senha fica ao lado dela, num arquivo terminado em _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	O caractere {c} não pode ser desenhado nas marcas.
+	Create licensed copy…	Criar cópia licenciada…
+	The password is in {file}, beside the copy.	A senha está em {file}, ao lado da cópia.
+	Couldn't write the password file: {e}	Não foi possível gravar o arquivo da senha: {e}
+	Table of contents to links	Sumário em links
+	Table of contents to links…	Sumário em links…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Lê as entradas do sumário (uma digitalização precisa antes de Reconhecer texto), encontra a página de cada uma e põe um link sobre cada entrada e um marcador para ela.
+	Table of contents on pages	Sumário nas páginas
+	The book's page 1 is page	A página 1 do livro é a página
+	Links over the entries	Links sobre as entradas
+	Read again	Ler de novo
+	No entries found on these pages.	Nenhuma entrada encontrada nestas páginas.
+	not found	não encontrada
+	{placed} of {n} entries have a page.	{placed} de {n} entradas têm página.
+	Linked {n} entries of the table of contents.	{n} entradas do sumário viraram links.
+	Licensed to {name}	Licenciado a {name}
+	personal, non-transferable use	uso pessoal e intransferível
+	issued on {date}	emitido em {date}
+	This document was issued exclusively for {name}.	Este documento foi emitido exclusivamente para {name}.
+	This document is material of {issuer}, issued exclusively for {name}.	Este documento é material de {issuer}, emitido exclusivamente para {name}.
+	This document, {title}, was issued exclusively for {name}.	Este documento, {title}, foi emitido exclusivamente para {name}.
+	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Este documento, {title}, é material de {issuer}, emitido exclusivamente para {name}.
+	The licence is personal and non-transferable. Printing for one's own use is permitted.	A licença é pessoal e intransferível. É permitida a impressão para uso próprio.
+	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	É vedado reproduzir, compartilhar, distribuir, publicar ou ceder este documento a terceiros, no todo ou em parte, por qualquer meio, e carregá-lo, total ou parcialmente, em ferramentas de inteligência artificial.
+	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Cada cópia contém identificação do licenciado, visível e invisível, que permite rastrear a sua origem.
+	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	A violação sujeita o infrator às sanções da Lei nº 9.610, de 19 de fevereiro de 1998 (Lei de Direitos Autorais), sem prejuízo das demais medidas cabíveis.
+	Issued on {date}. Code {code}.	Emitido em {date}. Código {code}.
+	Licence	Licença de uso
+	A new version is available ({v}).	Há uma nova versão disponível ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Atualizar agora baixa a versão e troca o programa no lugar; as suas configurações ficam.
+	Downloading the new version… {mb} MB	Baixando a nova versão… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	A nova versão está pronta. O PdfCraft vai fechar e abrir de novo já na nova versão.
+	Couldn't update: {e}	Não foi possível atualizar: {e}
+	Restart now	Reiniciar agora
+	Update now	Atualizar agora
+	Release page	Página da versão
+	save or close your documents first	salve ou feche os seus documentos antes
+	New password	Nova senha
+	Trust the ICP-Brasil root certificates	Confiar nos certificados raiz da ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Assinaturas feitas com certificados e-CPF e e-CNPJ passam a ser validadas sem precisar adicionar cada autoridade à mão.
+	Get updates	Atualizar
+	Marks	Marcas
+	Header line	Linha no cabeçalho
+	Footer line	Linha no rodapé
+	Name across the page	Nome na diagonal
+	Allow printing	Autorizar impressão
+	Choose at least one mark.	Escolha ao menos uma marca.
+	The licence is personal and non-transferable. Printing is not permitted.	A licença é pessoal e intransferível. Não é permitida a impressão.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Uma cópia licenciada para uma pessoa: o nome dela nas páginas, um código invisível, uma página de licença no final e proteção contra cópia e alterações.
+	couldn't reach the update server; check the internet connection	não foi possível acessar o servidor de atualizações; verifique a conexão com a internet
+	the update server didn't answer as expected	o servidor de atualizações não respondeu como esperado
+	the update server is limiting checks for now; try again in a few minutes	o servidor de atualizações está limitando as consultas no momento; tente de novo em alguns minutos
+	the update server is limiting checks for now; try again in about half an hour	o servidor de atualizações está limitando as consultas no momento; tente de novo em cerca de meia hora
+	the update server is limiting checks for now; try again in about an hour	o servidor de atualizações está limitando as consultas no momento; tente de novo em cerca de uma hora
+	the update server is limiting checks for now; try again later	o servidor de atualizações está limitando as consultas no momento; tente de novo mais tarde
+	All versions are on the release page.	Todas as versões ficam na página de versões.
+	You have version {c}. All versions are on the release page.	Você tem a versão {c}. Todas as versões ficam na página de versões.
+	Looks for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Procura uma versão nova quando o PdfCraft abre. Nada é baixado até você escolher Atualizar agora.
+	Looks for the latest version. Nothing is downloaded or installed automatically.	Procura a versão mais recente. Nada é baixado nem instalado automaticamente.

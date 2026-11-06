@@ -1,0 +1,131 @@
+# This build's own interface strings (vi), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	Sửa siêu dữ liệu
+	Add tools and controls	Thêm công cụ và điều khiển
+	Reset to default	Đặt lại mặc định
+	House tools	Công cụ riêng
+	Everyday tools	Công cụ hằng ngày
+	Finish publisher file	Hoàn tất tệp nhà xuất bản
+	Finish publisher file…	Hoàn tất tệp nhà xuất bản…
+	Sets the house's document information and removes what other applications left in the file.	Ghi thông tin tài liệu theo chuẩn riêng và xóa những gì các ứng dụng khác để lại trong tệp.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Xóa siêu dữ liệu XMP của các ứng dụng khác (lịch sử InDesign, mã định danh tài liệu, siêu dữ liệu ảnh)
+	Remove the private data of other applications	Xóa dữ liệu riêng của các ứng dụng khác
+	Open with the bookmarks panel	Mở kèm bảng dấu trang
+	File finished. Save to write the changes into it.	Đã hoàn tất tệp. Hãy lưu để ghi các thay đổi vào tệp.
+	PROOF	BẢN IN THỬ
+	Proof for the author	Bản in thử cho tác giả
+	Proof for the author…	Bản in thử cho tác giả…
+	Marks every page with a watermark and protects the copy against changes and copying.	Đóng hình mờ lên mọi trang và bảo vệ bản sao khỏi bị sửa đổi và sao chép.
+	Let the author comment on the proof	Cho phép tác giả bình luận trên bản in thử
+	Use Save As for the proof, so the original stays unprotected.	Hãy dùng Lưu thành cho bản in thử để bản gốc không bị bảo vệ.
+	Proof ready. Use Save As to keep the original unprotected.	Bản in thử đã sẵn sàng. Hãy dùng Lưu thành để bản gốc không bị bảo vệ.
+	Initial every page	Ký tắt mọi trang
+	Initial every page…	Ký tắt mọi trang…
+	Puts your saved initials at the same place on each page.	Đặt chữ ký tắt đã lưu của bạn vào cùng một vị trí trên mỗi trang.
+	Create your initials first.	Hãy tạo chữ ký tắt trước.
+	Create initials	Tạo chữ ký tắt
+	Bottom right corner	Góc dưới bên phải
+	Bottom left corner	Góc dưới bên trái
+	Right margin, middle	Lề phải, ở giữa
+	Distance from the edges	Khoảng cách tới mép
+	Leave out the last page	Bỏ qua trang cuối
+	Then sign the last page	Sau đó ký trang cuối
+	Pages to initial: {n}	Số trang cần ký tắt: {n}
+	Initialled {n} pages.	Đã ký tắt {n} trang.
+	Portuguese (Brazil)	Tiếng Bồ Đào Nha (Brazil)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows chưa có tính năng nhận dạng văn bản cho ngôn ngữ này. Hãy thêm trong Cài đặt > Thời gian & ngôn ngữ > Ngôn ngữ & vùng, kèm nhận dạng ký tự quang học.
+	Read aloud from this page	Đọc to từ trang này
+	Pause or resume reading aloud	Tạm dừng hoặc tiếp tục đọc to
+	Read aloud uses the voices of Windows.	Tính năng đọc to dùng giọng đọc của Windows.
+	Finished reading aloud.	Đã đọc to xong.
+	Reading page {n}	Đang đọc trang {n}
+	Resume	Tiếp tục
+	Pause	Tạm dừng
+	Stop	Dừng
+	Default voice	Giọng mặc định
+	Speed	Tốc độ
+	Split book spreads	Tách trang sách mở
+	Split book spreads…	Tách trang sách mở…
+	Finding the binding… page {n} of {total}	Đang tìm gáy sách… trang {n} / {total}
+	No page here is a book spread (wider than tall).	Không có trang nào là trang sách mở (rộng hơn cao).
+	Split {n} spreads into {pages} pages.	Đã tách {n} trang sách mở thành {pages} trang.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Mỗi trang quét khi sách mở trở thành hai trang, trang trái trước. Bản quét không bị cắt hay nén lại.
+	At the binding (found on each page)	Tại gáy sách (tìm trên từng trang)
+	Exactly in the middle	Chính giữa
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Trang sách mở (rộng hơn cao): {n}. Các trang khác giữ nguyên.
+	API key	Khóa API
+	Ask a question (Enter sends, Shift+Enter for a new line)	Đặt câu hỏi (Enter để gửi, Shift+Enter để xuống dòng)
+	Ask about the open document: a summary, where something is said, what a passage means…	Hỏi về tài liệu đang mở: tóm tắt, chỗ nào nói gì, một đoạn có nghĩa là gì…
+	Assistant	Trợ lý
+	Assistant settings	Cài đặt Trợ lý
+	Choose a model first (Refresh the list).	Hãy chọn mô hình trước (làm mới danh sách).
+	Enter your API key for this AI first.	Hãy nhập khóa API cho AI này trước.
+	Get a key	Lấy khóa
+	New conversation	Cuộc trò chuyện mới
+	No models found for this key.	Không tìm thấy mô hình nào cho khóa này.
+	Ollama address	Địa chỉ Ollama
+	Refresh the model list	Làm mới danh sách mô hình
+	Remember the keys on this computer	Ghi nhớ khóa trên máy tính này
+	Send	Gửi
+	The AI declined to answer this.	AI đã từ chối trả lời.
+	The Assistant needs the desktop app to reach the AI.	Trợ lý cần ứng dụng máy tính để kết nối với AI.
+	The document is too long for this AI: it got the text up to page {n}.	Tài liệu quá dài đối với AI này: AI nhận được văn bản đến trang {n}.
+	These pages have no text (scanned pages need Recognize text first).	Các trang này không có văn bản (trang quét cần Nhận dạng văn bản trước).
+	This page	Trang này
+	Whole document	Toàn bộ tài liệu
+	Your question	Câu hỏi của bạn
+	Local model (Ollama)	Mô hình cục bộ (Ollama)
+	DRM Social	DRM xã hội
+	DRM Social…	DRM xã hội…
+	Licensed to	Cấp phép cho
+	Code	Mã
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Bạn chọn nơi lưu bản sao; mật khẩu được lưu bên cạnh, trong một tệp có tên kết thúc bằng _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Không thể vẽ ký tự {c} trong các dấu.
+	Create licensed copy…	Tạo bản sao được cấp phép…
+	The password is in {file}, beside the copy.	Mật khẩu nằm trong {file}, bên cạnh bản sao.
+	Couldn't write the password file: {e}	Không thể ghi tệp mật khẩu: {e}
+	Table of contents to links	Mục lục thành liên kết
+	Table of contents to links…	Mục lục thành liên kết…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Đọc các mục của mục lục (bản quét cần Nhận dạng văn bản trước), tìm trang của từng mục, rồi đặt một liên kết lên mỗi mục và một dấu trang cho mục đó.
+	Table of contents on pages	Mục lục ở các trang
+	The book's page 1 is page	Trang 1 của sách là trang
+	Links over the entries	Liên kết trên các mục
+	Read again	Đọc lại
+	No entries found on these pages.	Không tìm thấy mục nào trên các trang này.
+	not found	không tìm thấy
+	{placed} of {n} entries have a page.	{placed} trên {n} mục có trang.
+	Linked {n} entries of the table of contents.	Đã tạo liên kết cho {n} mục của mục lục.
+	Licensed to {name}	Cấp phép cho {name}
+	personal, non-transferable use	sử dụng cá nhân, không được chuyển nhượng
+	issued on {date}	cấp ngày {date}
+	This document was issued exclusively for {name}.	Tài liệu này được cấp riêng cho {name}.
+	This document is material of {issuer}, issued exclusively for {name}.	Tài liệu này là tài liệu của {issuer}, được cấp riêng cho {name}.
+	This document, {title}, was issued exclusively for {name}.	Tài liệu này, {title}, được cấp riêng cho {name}.
+	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Tài liệu này, {title}, là tài liệu của {issuer}, được cấp riêng cho {name}.
+	The licence is personal and non-transferable. Printing for one's own use is permitted.	Giấy phép mang tính cá nhân và không được chuyển nhượng. Được phép in để sử dụng riêng.
+	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	Nghiêm cấm sao chép, chia sẻ, phân phối, công bố hoặc chuyển giao tài liệu này cho người khác, toàn bộ hay một phần, bằng bất kỳ phương tiện nào, và tải tài liệu, toàn bộ hay một phần, lên các công cụ trí tuệ nhân tạo.
+	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Mỗi bản sao mang thông tin nhận dạng hiển thị và ẩn của người được cấp phép, cho phép truy nguyên nguồn gốc.
+	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	Hành vi vi phạm sẽ chịu các chế tài của pháp luật về quyền tác giả, không loại trừ các biện pháp khác.
+	Issued on {date}. Code {code}.	Cấp ngày {date}. Mã {code}.
+	Licence	Giấy phép sử dụng
+	A new version is available ({v}).	Đã có phiên bản mới ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Cập nhật ngay sẽ tải về và thay chương trình tại chỗ; cài đặt của bạn được giữ nguyên.
+	Downloading the new version… {mb} MB	Đang tải phiên bản mới… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Phiên bản mới đã sẵn sàng. PdfCraft sẽ đóng và mở lại với phiên bản mới.
+	Couldn't update: {e}	Không thể cập nhật: {e}
+	Restart now	Khởi động lại ngay
+	Update now	Cập nhật ngay
+	Release page	Trang phiên bản
+	save or close your documents first	hãy lưu hoặc đóng tài liệu trước
+	New password	Mật khẩu mới
+	Trust the ICP-Brasil root certificates	Tin cậy chứng chỉ gốc ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Khi đó chữ ký bằng chứng chỉ e-CPF và e-CNPJ của Brazil được xác thực mà không cần thêm từng tổ chức cấp bằng tay.
+	Get updates	Cập nhật
+	Marks	Dấu
+	Header line	Dòng ở đầu trang
+	Footer line	Dòng ở chân trang
+	Name across the page	Tên chéo trang
+	Allow printing	Cho phép in
+	Choose at least one mark.	Hãy chọn ít nhất một dấu.
+	The licence is personal and non-transferable. Printing is not permitted.	Giấy phép là cá nhân và không thể chuyển nhượng. Không được phép in.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Một bản sao có giấy phép cho một người: tên của họ trên các trang, một mã ẩn, một trang giấy phép ở cuối và bảo vệ chống sao chép và thay đổi.

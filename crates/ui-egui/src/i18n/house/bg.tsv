@@ -1,0 +1,118 @@
+# This build's own interface strings (bg), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	Редактиране на метаданни
+	Add tools and controls	Добавяне на инструменти и контроли
+	Reset to default	Връщане към стандартните
+	House tools	Дом
+	Everyday tools	Ежедневни инструменти
+	Finish publisher file	Завършване на файл на издателството
+	Finish publisher file…	Завършване на файл на издателството…
+	Sets the house's document information and removes what other applications left in the file.	Задава информацията за документа по стандарта на дома и премахва оставеното във файла от други приложения.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Премахване на XMP метаданните на други приложения (история на InDesign, идентификатори на документа, метаданни на изображенията)
+	Remove the private data of other applications	Премахване на личните данни на други приложения
+	Open with the bookmarks panel	Отваряне с панела с отметки
+	File finished. Save to write the changes into it.	Файлът е завършен. Запишете, за да внесете промените в него.
+	PROOF	КОРЕКТУРА
+	Proof for the author	Коректура за автора
+	Proof for the author…	Коректура за автора…
+	Marks every page with a watermark and protects the copy against changes and copying.	Поставя воден знак на всяка страница и защитава копието от промени и копиране.
+	Let the author comment on the proof	Разрешаване на автора да коментира коректурата
+	Use Save As for the proof, so the original stays unprotected.	Запишете коректурата със „Запиши като“, за да остане оригиналът без защита.
+	Proof ready. Use Save As to keep the original unprotected.	Коректурата е готова. Използвайте „Запиши като“, за да остане оригиналът без защита.
+	Initial every page	Парафиране на всички страници
+	Initial every page…	Парафиране на всички страници…
+	Puts your saved initials at the same place on each page.	Поставя запазените ви инициали на едно и също място на всяка страница.
+	Create your initials first.	Първо създайте инициалите си.
+	Create initials	Създаване на инициали
+	Bottom right corner	Долен десен ъгъл
+	Bottom left corner	Долен ляв ъгъл
+	Right margin, middle	Дясно поле, в средата
+	Distance from the edges	Разстояние от краищата
+	Leave out the last page	Без последната страница
+	Then sign the last page	След това подписване на последната страница
+	Pages to initial: {n}	Страници за парафиране: {n}
+	Initialled {n} pages.	Парафирани страници: {n}.
+	Portuguese (Brazil)	Португалски (Бразилия)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows няма разпознаване на текст за този език. Добавете го от Настройки > Час и език > Език и регион, с оптичното разпознаване на знаци.
+	Read aloud from this page	Четене на глас от тази страница
+	Pause or resume reading aloud	Пауза или продължаване на четенето на глас
+	Read aloud uses the voices of Windows.	Четенето на глас използва гласовете на Windows.
+	Finished reading aloud.	Четенето на глас приключи.
+	Reading page {n}	Четене на страница {n}
+	Resume	Продължаване
+	Pause	Пауза
+	Stop	Спиране
+	Default voice	Глас по подразбиране
+	Speed	Скорост
+	Split book spreads	Разделяне на разтвори на книга
+	Split book spreads…	Разделяне на разтвори на книга…
+	Finding the binding… page {n} of {total}	Търсене на гръбчето… страница {n} от {total}
+	No page here is a book spread (wider than tall).	Тук няма разтвори (страници, по-широки, отколкото високи).
+	Split {n} spreads into {pages} pages.	Разделени разтвори: {n}, получени страници: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Всяка страница, сканирана при отворена книга, става две, първо лявата. Самото сканиране не се изрязва и не се компресира отново.
+	At the binding (found on each page)	При гръбчето (откривано на всяка страница)
+	Exactly in the middle	Точно по средата
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Разтвори (по-широки, отколкото високи): {n}. Останалите остават както са.
+	API key	API ключ
+	Ask a question (Enter sends, Shift+Enter for a new line)	Задайте въпрос (Enter изпраща, Shift+Enter нов ред)
+	Ask about the open document: a summary, where something is said, what a passage means…	Попитайте за отворения документ: резюме, къде какво е казано, какво означава пасаж…
+	Assistant	Асистент
+	Assistant settings	Настройки на асистента
+	Choose a model first (Refresh the list).	Първо изберете модел (обновете списъка).
+	Enter your API key for this AI first.	Първо въведете своя API ключ за този ИИ.
+	Get a key	Вземете ключ
+	New conversation	Нов разговор
+	No models found for this key.	Не са намерени модели за този ключ.
+	Ollama address	Адрес на Ollama
+	Refresh the model list	Обновяване на списъка с модели
+	Remember the keys on this computer	Запомняне на ключовете на този компютър
+	Send	Изпращане
+	The AI declined to answer this.	ИИ отказа да отговори.
+	The Assistant needs the desktop app to reach the AI.	Асистентът се нуждае от настолното приложение, за да достигне до ИИ.
+	The document is too long for this AI: it got the text up to page {n}.	Документът е твърде дълъг за този ИИ: той получи текста до страница {n}.
+	These pages have no text (scanned pages need Recognize text first).	Тези страници нямат текст (сканираните страници първо се нуждаят от Разпознаване на текст).
+	This page	Тази страница
+	Whole document	Целият документ
+	Your question	Вашият въпрос
+	Local model (Ollama)	Локален модел (Ollama)
+	DRM Social	Социален DRM
+	DRM Social…	Социален DRM…
+	Licensed to	Лицензиант
+	Code	Код
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Вие избирате къде да запазите копието; паролата се пази до него, във файл, чието име завършва на _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Знакът {c} не може да се изобрази в маркировките.
+	Create licensed copy…	Създаване на лицензирано копие…
+	The password is in {file}, beside the copy.	Паролата е във файла {file}, до копието.
+	Couldn't write the password file: {e}	Файлът с паролата не можа да бъде записан: {e}
+	Table of contents to links	Съдържание във връзки
+	Table of contents to links…	Съдържание във връзки…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Чете точките на съдържанието (за сканиран документ първо е нужно Разпознаване на текст), намира страницата на всяка и поставя върху всяка точка връзка, а за нея — отметка.
+	Table of contents on pages	Съдържание на страници
+	The book's page 1 is page	Страница 1 на книгата е страница
+	Links over the entries	Връзки върху точките
+	Read again	Прочитане отново
+	No entries found on these pages.	На тези страници не са намерени точки.
+	not found	не е намерено
+	{placed} of {n} entries have a page.	{placed} от {n} точки имат страница.
+	Linked {n} entries of the table of contents.	Точки от съдържанието, превърнати във връзки: {n}.
+	A new version is available ({v}).	Налична е нова версия ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	„Обновяване сега“ я изтегля и подменя програмата на място; настройките ви остават.
+	Downloading the new version… {mb} MB	Изтегляне на новата версия… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Новата версия е готова. PdfCraft ще се затвори и ще се отвори отново вече като новата версия.
+	Couldn't update: {e}	Обновяването не успя: {e}
+	Restart now	Рестартиране сега
+	Update now	Обновяване сега
+	Release page	Страница на версията
+	save or close your documents first	първо запазете или затворете документите си
+	New password	Нова парола
+	Trust the ICP-Brasil root certificates	Доверяване на коренните сертификати на ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Тогава подписите с бразилски сертификати e-CPF и e-CNPJ се валидират, без всеки орган да се добавя ръчно.
+	Get updates	Актуализирай
+	Marks	Маркировки
+	Header line	Ред в горния колонтитул
+	Footer line	Ред в долния колонтитул
+	Name across the page	Име по диагонал
+	Allow printing	Разрешаване на печат
+	Choose at least one mark.	Изберете поне една маркировка.
+	The licence is personal and non-transferable. Printing is not permitted.	Лицензът е личен и непрехвърлим. Отпечатването не е разрешено.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Лицензирано копие за един човек: името му на страниците, невидим код, страница с лиценз в края и защита от копиране и промени.

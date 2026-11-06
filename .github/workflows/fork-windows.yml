@@ -23,9 +23,20 @@ jobs:
 
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
 
+      # The interface translations live in storytold/craft-i18n, at the commit craft-i18n.rev pins;
+      # without them the build is English only (this build's own strings are in the repository).
+      - name: Fetch the interface translations
+        shell: pwsh
+        run: |
+          $rev = (Get-Content craft-i18n.rev -Raw).Trim()
+          git clone --quiet https://github.com/storytold/craft-i18n ../craft-i18n
+          git -C ../craft-i18n checkout --quiet $rev
+
       - name: Build
         run: cargo build --release -p pdfcraft --locked
         env:
+          CRAFT_I18N_DIR: ${{ github.workspace }}/../craft-i18n
+          CRAFT_I18N_REQUIRED: "1"
           PDFCRAFT_REQUIRE_WINRES: "1"
           # The build knows its commit, so it can tell a newer release from itself (self-update).
           PDFCRAFT_BUILD_SHA: ${{ github.sha }}

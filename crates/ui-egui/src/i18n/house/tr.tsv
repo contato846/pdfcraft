@@ -1,0 +1,118 @@
+# This build's own interface strings (tr), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	Meta verileri düzenle
+	Add tools and controls	Araç ve denetim ekle
+	Reset to default	Varsayılana sıfırla
+	House tools	Ev
+	Everyday tools	Günlük araçlar
+	Finish publisher file	Yayınevi dosyasını tamamla
+	Finish publisher file…	Yayınevi dosyasını tamamla…
+	Sets the house's document information and removes what other applications left in the file.	Belge bilgilerini evin standardına göre ayarlar ve diğer uygulamaların dosyada bıraktıklarını kaldırır.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Diğer uygulamaların XMP meta verilerini kaldır (InDesign geçmişi, belge kimlikleri, görüntü meta verileri)
+	Remove the private data of other applications	Diğer uygulamaların özel verilerini kaldır
+	Open with the bookmarks panel	Yer imleri paneliyle aç
+	File finished. Save to write the changes into it.	Dosya tamamlandı. Değişiklikleri yazmak için kaydedin.
+	PROOF	PROVA
+	Proof for the author	Yazar için prova
+	Proof for the author…	Yazar için prova…
+	Marks every page with a watermark and protects the copy against changes and copying.	Her sayfayı filigranla işaretler ve kopyayı değişikliğe ve kopyalamaya karşı korur.
+	Let the author comment on the proof	Yazarın provaya yorum yapmasına izin ver
+	Use Save As for the proof, so the original stays unprotected.	Orijinal korumasız kalsın diye provayı Farklı Kaydet ile kaydedin.
+	Proof ready. Use Save As to keep the original unprotected.	Prova hazır. Orijinali korumasız tutmak için Farklı Kaydet'i kullanın.
+	Initial every page	Tüm sayfaları paraf et
+	Initial every page…	Tüm sayfaları paraf et…
+	Puts your saved initials at the same place on each page.	Kayıtlı parafınızı her sayfada aynı yere koyar.
+	Create your initials first.	Önce parafınızı oluşturun.
+	Create initials	Paraf oluştur
+	Bottom right corner	Sağ alt köşe
+	Bottom left corner	Sol alt köşe
+	Right margin, middle	Sağ kenar boşluğu, ortada
+	Distance from the edges	Kenarlardan uzaklık
+	Leave out the last page	Son sayfayı dışarıda bırak
+	Then sign the last page	Ardından son sayfayı imzala
+	Pages to initial: {n}	Paraflanacak sayfalar: {n}
+	Initialled {n} pages.	{n} sayfa paraflandı.
+	Portuguese (Brazil)	Portekizce (Brezilya)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	Windows'ta bu dil için metin tanıma yok. Ayarlar > Saat ve dil > Dil ve bölge bölümünden optik karakter tanıma özelliğiyle ekleyin.
+	Read aloud from this page	Bu sayfadan itibaren sesli oku
+	Pause or resume reading aloud	Sesli okumayı duraklat veya sürdür
+	Read aloud uses the voices of Windows.	Sesli okuma Windows seslerini kullanır.
+	Finished reading aloud.	Sesli okuma bitti.
+	Reading page {n}	{n}. sayfa okunuyor
+	Resume	Sürdür
+	Pause	Duraklat
+	Stop	Durdur
+	Default voice	Varsayılan ses
+	Speed	Hız
+	Split book spreads	Kitap çift sayfalarını böl
+	Split book spreads…	Kitap çift sayfalarını böl…
+	Finding the binding… page {n} of {total}	Sırt aranıyor… sayfa {n} / {total}
+	No page here is a book spread (wider than tall).	Buradaki hiçbir sayfa çift sayfa değil (yüksekliğinden geniş).
+	Split {n} spreads into {pages} pages.	{n} çift sayfa {pages} sayfaya bölündü.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Kitap açıkken taranan her sayfa iki sayfa olur, önce soldaki. Taramanın kendisi kırpılmaz veya yeniden sıkıştırılmaz.
+	At the binding (found on each page)	Sırttan (her sayfada bulunur)
+	Exactly in the middle	Tam ortadan
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Çift sayfalar (yüksekliğinden geniş): {n}. Diğerleri olduğu gibi kalır.
+	API key	API anahtarı
+	Ask a question (Enter sends, Shift+Enter for a new line)	Bir soru sorun (Enter gönderir, Shift+Enter yeni satır)
+	Ask about the open document: a summary, where something is said, what a passage means…	Açık belge hakkında sorun: bir özet, bir şeyin nerede söylendiği, bir bölümün ne anlama geldiği…
+	Assistant	Asistan
+	Assistant settings	Asistan ayarları
+	Choose a model first (Refresh the list).	Önce bir model seçin (listeyi yenileyin).
+	Enter your API key for this AI first.	Önce bu yapay zekâ için API anahtarınızı girin.
+	Get a key	Anahtar alın
+	New conversation	Yeni konuşma
+	No models found for this key.	Bu anahtar için model bulunamadı.
+	Ollama address	Ollama adresi
+	Refresh the model list	Model listesini yenile
+	Remember the keys on this computer	Anahtarları bu bilgisayarda hatırla
+	Send	Gönder
+	The AI declined to answer this.	Yapay zekâ yanıt vermeyi reddetti.
+	The Assistant needs the desktop app to reach the AI.	Asistanın yapay zekâya ulaşması için masaüstü uygulaması gerekir.
+	The document is too long for this AI: it got the text up to page {n}.	Belge bu yapay zekâ için çok uzun: metni {n}. sayfaya kadar aldı.
+	These pages have no text (scanned pages need Recognize text first).	Bu sayfalarda metin yok (taranmış sayfalar önce Metni tanı gerektirir).
+	This page	Bu sayfa
+	Whole document	Tüm belge
+	Your question	Sorunuz
+	Local model (Ollama)	Yerel model (Ollama)
+	DRM Social	Sosyal DRM
+	DRM Social…	Sosyal DRM…
+	Licensed to	Lisans sahibi
+	Code	Kod
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Kopyanın nereye kaydedileceğini siz seçersiniz; parola onun yanında, adı _DRM_social_senha.txt ile biten bir dosyada saklanır.
+	The character {c} can't be drawn in the marks.	{c} karakteri işaretlerde çizilemez.
+	Create licensed copy…	Lisanslı kopya oluştur…
+	The password is in {file}, beside the copy.	Parola, kopyanın yanındaki {file} dosyasında.
+	Couldn't write the password file: {e}	Parola dosyası yazılamadı: {e}
+	Table of contents to links	İçindekileri bağlantıya dönüştür
+	Table of contents to links…	İçindekileri bağlantıya dönüştür…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	İçindekiler tablosunun girişlerini okur (taranmış belge için önce Metni tanı gerekir), her birinin sayfasını bulur ve her girişin üzerine bir bağlantı ile bir yer işareti ekler.
+	Table of contents on pages	İçindekilerin bulunduğu sayfalar
+	The book's page 1 is page	Kitabın 1. sayfası şu sayfa:
+	Links over the entries	Girişlerin üzerinde bağlantılar
+	Read again	Yeniden oku
+	No entries found on these pages.	Bu sayfalarda giriş bulunamadı.
+	not found	bulunamadı
+	{placed} of {n} entries have a page.	{n} girişten {placed} tanesinin sayfası var.
+	Linked {n} entries of the table of contents.	İçindekiler tablosunun {n} girişi bağlantıya dönüştürüldü.
+	A new version is available ({v}).	Yeni bir sürüm var ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Şimdi güncelle onu indirir ve programı yerinde değiştirir; ayarlarınız korunur.
+	Downloading the new version… {mb} MB	Yeni sürüm indiriliyor… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Yeni sürüm hazır. PdfCraft kapanıp yeni sürüm olarak yeniden açılacak.
+	Couldn't update: {e}	Güncellenemedi: {e}
+	Restart now	Şimdi yeniden başlat
+	Update now	Şimdi güncelle
+	Release page	Sürüm sayfası
+	save or close your documents first	önce belgelerinizi kaydedin veya kapatın
+	New password	Yeni parola
+	Trust the ICP-Brasil root certificates	ICP-Brasil kök sertifikalarına güven
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Brezilya e-CPF ve e-CNPJ sertifikalarıyla atılan imzalar her yetkiliyi elle eklemeden doğrulanır.
+	Get updates	Güncelle
+	Marks	İşaretler
+	Header line	Üst bilgi satırı
+	Footer line	Alt bilgi satırı
+	Name across the page	Çapraz ad
+	Allow printing	Yazdırmaya izin ver
+	Choose at least one mark.	En az bir işaret seçin.
+	The licence is personal and non-transferable. Printing is not permitted.	Lisans kişiseldir ve devredilemez. Yazdırmaya izin verilmez.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Bir kişi için lisanslı kopya: sayfalarda adı, görünmez bir kod, sonda bir lisans sayfası ve kopyalamaya ve değişikliklere karşı koruma.

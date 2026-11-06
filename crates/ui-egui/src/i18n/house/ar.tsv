@@ -1,0 +1,118 @@
+# This build's own interface strings (ar), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	تحرير بيانات التعريف
+	Add tools and controls	إضافة أدوات وعناصر تحكم
+	Reset to default	إعادة التعيين إلى الافتراضي
+	House tools	المنزل
+	Everyday tools	أدوات يومية
+	Finish publisher file	إنهاء ملف الناشر
+	Finish publisher file…	إنهاء ملف الناشر…
+	Sets the house's document information and removes what other applications left in the file.	يضبط معلومات المستند وفق معيار الدار ويزيل ما تركته التطبيقات الأخرى في الملف.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	إزالة بيانات XMP التعريفية للتطبيقات الأخرى (سجل InDesign، معرّفات المستند، بيانات الصور التعريفية)
+	Remove the private data of other applications	إزالة البيانات الخاصة بالتطبيقات الأخرى
+	Open with the bookmarks panel	الفتح مع لوحة الإشارات المرجعية
+	File finished. Save to write the changes into it.	تم إنهاء الملف. احفظ لكتابة التغييرات فيه.
+	PROOF	بروفة
+	Proof for the author	بروفة للمؤلف
+	Proof for the author…	بروفة للمؤلف…
+	Marks every page with a watermark and protects the copy against changes and copying.	يضع علامة مائية على كل صفحة ويحمي النسخة من التغيير والنسخ.
+	Let the author comment on the proof	السماح للمؤلف بالتعليق على البروفة
+	Use Save As for the proof, so the original stays unprotected.	استخدم «حفظ باسم» للبروفة كي يبقى الأصل دون حماية.
+	Proof ready. Use Save As to keep the original unprotected.	البروفة جاهزة. استخدم «حفظ باسم» لإبقاء الأصل دون حماية.
+	Initial every page	وضع الأحرف الأولى على كل الصفحات
+	Initial every page…	وضع الأحرف الأولى على كل الصفحات…
+	Puts your saved initials at the same place on each page.	يضع أحرفك الأولى المحفوظة في المكان نفسه من كل صفحة.
+	Create your initials first.	أنشئ أحرفك الأولى أولًا.
+	Create initials	إنشاء الأحرف الأولى
+	Bottom right corner	الزاوية السفلية اليمنى
+	Bottom left corner	الزاوية السفلية اليسرى
+	Right margin, middle	الهامش الأيمن، في المنتصف
+	Distance from the edges	المسافة من الحواف
+	Leave out the last page	استبعاد الصفحة الأخيرة
+	Then sign the last page	ثم توقيع الصفحة الأخيرة
+	Pages to initial: {n}	الصفحات المطلوب وضع الأحرف الأولى عليها: {n}
+	Initialled {n} pages.	وُضعت الأحرف الأولى على {n} صفحة.
+	Portuguese (Brazil)	البرتغالية (البرازيل)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	لا يتوفر في Windows التعرف على النص لهذه اللغة. أضفها من الإعدادات > الوقت واللغة > اللغة والمنطقة مع ميزة التعرف الضوئي على الحروف.
+	Read aloud from this page	القراءة بصوت عالٍ من هذه الصفحة
+	Pause or resume reading aloud	إيقاف القراءة بصوت عالٍ مؤقتًا أو استئنافها
+	Read aloud uses the voices of Windows.	تستخدم القراءة بصوت عالٍ أصوات Windows.
+	Finished reading aloud.	انتهت القراءة بصوت عالٍ.
+	Reading page {n}	قراءة الصفحة {n}
+	Resume	استئناف
+	Pause	إيقاف مؤقت
+	Stop	إيقاف
+	Default voice	الصوت الافتراضي
+	Speed	السرعة
+	Split book spreads	تقسيم صفحات الكتاب المفتوح
+	Split book spreads…	تقسيم صفحات الكتاب المفتوح…
+	Finding the binding… page {n} of {total}	جارٍ البحث عن كعب الكتاب… الصفحة {n} من {total}
+	No page here is a book spread (wider than tall).	لا توجد هنا صفحة لكتاب مفتوح (أعرض من ارتفاعها).
+	Split {n} spreads into {pages} pages.	قُسّمت {n} صفحة كتاب مفتوح إلى {pages} صفحة.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	كل صفحة مُسحت والكتاب مفتوح تصبح صفحتين، اليسرى أولًا. لا يُقص المسح نفسه ولا يُعاد ضغطه.
+	At the binding (found on each page)	عند كعب الكتاب (يُكتشف في كل صفحة)
+	Exactly in the middle	في المنتصف تمامًا
+	Spreads (pages wider than tall): {n}. The others stay as they are.	صفحات الكتاب المفتوح (أعرض من ارتفاعها): {n}. تبقى الصفحات الأخرى كما هي.
+	API key	مفتاح API
+	Ask a question (Enter sends, Shift+Enter for a new line)	اطرح سؤالًا (Enter للإرسال، وShift+Enter لسطر جديد)
+	Ask about the open document: a summary, where something is said, what a passage means…	اسأل عن المستند المفتوح: ملخص، أين يُذكر شيء ما، ماذا يعني مقطع…
+	Assistant	المساعد
+	Assistant settings	إعدادات المساعد
+	Choose a model first (Refresh the list).	اختر نموذجًا أولًا (حدّث القائمة).
+	Enter your API key for this AI first.	أدخل أولًا مفتاح API الخاص بك لهذا الذكاء الاصطناعي.
+	Get a key	الحصول على مفتاح
+	New conversation	محادثة جديدة
+	No models found for this key.	لم يُعثر على نماذج لهذا المفتاح.
+	Ollama address	عنوان Ollama
+	Refresh the model list	تحديث قائمة النماذج
+	Remember the keys on this computer	تذكّر المفاتيح على هذا الكمبيوتر
+	Send	إرسال
+	The AI declined to answer this.	رفض الذكاء الاصطناعي الإجابة.
+	The Assistant needs the desktop app to reach the AI.	يحتاج المساعد إلى تطبيق سطح المكتب للوصول إلى الذكاء الاصطناعي.
+	The document is too long for this AI: it got the text up to page {n}.	المستند طويل جدًا لهذا الذكاء الاصطناعي: تلقّى النص حتى الصفحة {n}.
+	These pages have no text (scanned pages need Recognize text first).	لا تحتوي هذه الصفحات على نص (تحتاج الصفحات الممسوحة أولًا إلى التعرف على النص).
+	This page	هذه الصفحة
+	Whole document	المستند كاملًا
+	Your question	سؤالك
+	Local model (Ollama)	نموذج محلي (Ollama)
+	DRM Social	إدارة الحقوق الرقمية الاجتماعية
+	DRM Social…	إدارة الحقوق الرقمية الاجتماعية…
+	Licensed to	مرخّص لـ
+	Code	الرمز
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	تختار مكان حفظ النسخة؛ وتُحفظ كلمة المرور بجانبها في ملف ينتهي اسمه بـ _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	لا يمكن رسم الحرف {c} في العلامات.
+	Create licensed copy…	إنشاء نسخة مرخّصة…
+	The password is in {file}, beside the copy.	كلمة المرور في {file}، بجانب النسخة.
+	Couldn't write the password file: {e}	تعذّرت كتابة ملف كلمة المرور: {e}
+	Table of contents to links	جدول المحتويات إلى روابط
+	Table of contents to links…	جدول المحتويات إلى روابط…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	يقرأ مداخل جدول المحتويات (يحتاج المستند الممسوح ضوئيًا أولًا إلى التعرّف على النص)، ويجد صفحة كل مدخل، ويضع رابطًا على كل مدخل وإشارة مرجعية له.
+	Table of contents on pages	جدول المحتويات في الصفحات
+	The book's page 1 is page	الصفحة 1 من الكتاب هي الصفحة
+	Links over the entries	روابط على المداخل
+	Read again	القراءة مجددًا
+	No entries found on these pages.	لم يُعثر على مداخل في هذه الصفحات.
+	not found	غير موجود
+	{placed} of {n} entries have a page.	{placed} من {n} مداخل لها صفحة.
+	Linked {n} entries of the table of contents.	مداخل جدول المحتويات التي صارت روابط: {n}.
+	A new version is available ({v}).	يتوفر إصدار جديد ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	«التحديث الآن» ينزّله ويستبدل البرنامج في مكانه؛ وتبقى إعداداتك.
+	Downloading the new version… {mb} MB	جارٍ تنزيل الإصدار الجديد… {mb} م.ب
+	The new version is ready. PdfCraft will close and open again as the new version.	الإصدار الجديد جاهز. سيُغلق PdfCraft ويُفتح مجددًا بالإصدار الجديد.
+	Couldn't update: {e}	تعذّر التحديث: {e}
+	Restart now	إعادة التشغيل الآن
+	Update now	التحديث الآن
+	Release page	صفحة الإصدار
+	save or close your documents first	احفظ مستنداتك أو أغلقها أولًا
+	New password	كلمة مرور جديدة
+	Trust the ICP-Brasil root certificates	الوثوق بشهادات الجذر لـ ICP-Brasil
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	عندئذٍ يتم التحقق من التواقيع المُنشأة بشهادات e-CPF وe-CNPJ البرازيلية دون إضافة كل جهة إصدار يدويًا.
+	Get updates	تحديث
+	Marks	العلامات
+	Header line	سطر في الترويسة
+	Footer line	سطر في التذييل
+	Name across the page	الاسم قطريًا
+	Allow printing	السماح بالطباعة
+	Choose at least one mark.	اختر علامة واحدة على الأقل.
+	The licence is personal and non-transferable. Printing is not permitted.	الترخيص شخصي وغير قابل للتحويل. الطباعة غير مسموح بها.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	نسخة مرخصة لشخص واحد: اسمه على الصفحات، ورمز غير مرئي، وصفحة ترخيص في النهاية، وحماية من النسخ والتعديل.

@@ -1,0 +1,131 @@
+# This build's own interface strings (lt), read before the craft-i18n catalogs: what the
+# build adds and the few labels it words differently. Same format as craft-i18n's pdfcraft.tsv.
+	Edit metadata	Redaguoti metaduomenis
+	Add tools and controls	Pridėti įrankių ir valdiklių
+	Reset to default	Atkurti numatytuosius
+	House tools	Namai
+	Everyday tools	Kasdieniai įrankiai
+	Finish publisher file	Užbaigti leidyklos failą
+	Finish publisher file…	Užbaigti leidyklos failą…
+	Sets the house's document information and removes what other applications left in the file.	Nustato dokumento informaciją pagal namų standartą ir pašalina tai, ką faile paliko kitos programos.
+	Remove the XMP metadata of other applications (InDesign history, document IDs, image metadata)	Pašalinti kitų programų XMP metaduomenis (InDesign istorija, dokumento ID, vaizdų metaduomenys)
+	Remove the private data of other applications	Pašalinti kitų programų privačius duomenis
+	Open with the bookmarks panel	Atidaryti su žymių skydeliu
+	File finished. Save to write the changes into it.	Failas užbaigtas. Įrašykite, kad pakeitimai būtų įrašyti į jį.
+	PROOF	KOREKTŪRA
+	Proof for the author	Korektūra autoriui
+	Proof for the author…	Korektūra autoriui…
+	Marks every page with a watermark and protects the copy against changes and copying.	Kiekviename puslapyje uždeda vandens ženklą ir apsaugo kopiją nuo keitimo ir kopijavimo.
+	Let the author comment on the proof	Leisti autoriui komentuoti korektūrą
+	Use Save As for the proof, so the original stays unprotected.	Korektūrą įrašykite naudodami Įrašyti kaip, kad originalas liktų neapsaugotas.
+	Proof ready. Use Save As to keep the original unprotected.	Korektūra paruošta. Naudokite Įrašyti kaip, kad originalas liktų neapsaugotas.
+	Initial every page	Parafuoti visus puslapius
+	Initial every page…	Parafuoti visus puslapius…
+	Puts your saved initials at the same place on each page.	Įrašytą parafą deda toje pačioje kiekvieno puslapio vietoje.
+	Create your initials first.	Pirmiausia sukurkite parafą.
+	Create initials	Sukurti parafą
+	Bottom right corner	Apatinis dešinysis kampas
+	Bottom left corner	Apatinis kairysis kampas
+	Right margin, middle	Dešinė paraštė, viduryje
+	Distance from the edges	Atstumas nuo kraštų
+	Leave out the last page	Praleisti paskutinį puslapį
+	Then sign the last page	Tada pasirašyti paskutinį puslapį
+	Pages to initial: {n}	Parafuotini puslapiai: {n}
+	Initialled {n} pages.	Parafuota puslapių: {n}.
+	Portuguese (Brazil)	Portugalų (Brazilija)
+	Windows has no text recognition for this language. Add it in Settings > Time & language > Language & region, with its optical character recognition.	„Windows“ neturi šios kalbos teksto atpažinimo. Pridėkite ją skiltyje Parametrai > Laikas ir kalba > Kalba ir regionas su optiniu simbolių atpažinimu.
+	Read aloud from this page	Skaityti garsiai nuo šio puslapio
+	Pause or resume reading aloud	Pristabdyti arba tęsti garsų skaitymą
+	Read aloud uses the voices of Windows.	Garsus skaitymas naudoja „Windows“ balsus.
+	Finished reading aloud.	Garsus skaitymas baigtas.
+	Reading page {n}	Skaitomas {n} puslapis
+	Resume	Tęsti
+	Pause	Pristabdyti
+	Stop	Stabdyti
+	Default voice	Numatytasis balsas
+	Speed	Greitis
+	Split book spreads	Padalyti knygos atvartus
+	Split book spreads…	Padalyti knygos atvartus…
+	Finding the binding… page {n} of {total}	Ieškoma nugarėlės… {n} puslapis iš {total}
+	No page here is a book spread (wider than tall).	Nė vienas puslapis čia nėra atvartas (platesnis nei aukštesnis).
+	Split {n} spreads into {pages} pages.	Padalyta atvartų: {n}, gauta puslapių: {pages}.
+	Each page scanned with the book open becomes two pages, the left one first. The scan itself is not cut or recompressed.	Kiekvienas puslapis, nuskenuotas atverstoje knygoje, tampa dviem, pirma kairysis. Pats skenuotas vaizdas neapkerpamas ir iš naujo nesuglaudinamas.
+	At the binding (found on each page)	Ties nugarėle (aptinkama kiekviename puslapyje)
+	Exactly in the middle	Tiksliai per vidurį
+	Spreads (pages wider than tall): {n}. The others stay as they are.	Atvartai (platesni nei aukštesni): {n}. Kiti lieka tokie, kokie yra.
+	API key	API raktas
+	Ask a question (Enter sends, Shift+Enter for a new line)	Užduokite klausimą (Enter siunčia, Shift+Enter nauja eilutė)
+	Ask about the open document: a summary, where something is said, what a passage means…	Klauskite apie atvertą dokumentą: santrauka, kur kas pasakyta, ką reiškia ištrauka…
+	Assistant	Asistentas
+	Assistant settings	Asistento nustatymai
+	Choose a model first (Refresh the list).	Pirmiausia pasirinkite modelį (atnaujinkite sąrašą).
+	Enter your API key for this AI first.	Pirmiausia įveskite savo šio DI API raktą.
+	Get a key	Gauti raktą
+	New conversation	Naujas pokalbis
+	No models found for this key.	Šiam raktui modelių nerasta.
+	Ollama address	Ollama adresas
+	Refresh the model list	Atnaujinti modelių sąrašą
+	Remember the keys on this computer	Įsiminti raktus šiame kompiuteryje
+	Send	Siųsti
+	The AI declined to answer this.	DI atsisakė atsakyti.
+	The Assistant needs the desktop app to reach the AI.	Asistentui reikia darbalaukio programos, kad pasiektų DI.
+	The document is too long for this AI: it got the text up to page {n}.	Dokumentas per ilgas šiam DI: jis gavo tekstą iki {n} puslapio.
+	These pages have no text (scanned pages need Recognize text first).	Šie puslapiai neturi teksto (nuskenuotiems puslapiams pirmiausia reikia teksto atpažinimo).
+	This page	Šis puslapis
+	Whole document	Visas dokumentas
+	Your question	Jūsų klausimas
+	Local model (Ollama)	Vietinis modelis (Ollama)
+	DRM Social	Socialinis DRM
+	DRM Social…	Socialinis DRM…
+	Licensed to	Licencija suteikta
+	Code	Kodas
+	You choose where to save the copy; the password is kept beside it, in a file ending in _DRM_social_senha.txt.	Jūs pasirenkate, kur įrašyti kopiją; slaptažodis laikomas šalia jos, faile, kurio pavadinimas baigiasi _DRM_social_senha.txt.
+	The character {c} can't be drawn in the marks.	Simbolio {c} žymėse nupiešti neįmanoma.
+	Create licensed copy…	Sukurti licencijuotą kopiją…
+	The password is in {file}, beside the copy.	Slaptažodis yra faile {file}, šalia kopijos.
+	Couldn't write the password file: {e}	Nepavyko įrašyti slaptažodžio failo: {e}
+	Table of contents to links	Turinys į nuorodas
+	Table of contents to links…	Turinys į nuorodas…
+	Reads the entries of the table of contents (a scan needs Recognize text first), finds the page of each one, and puts a link over each entry and a bookmark for it.	Perskaito turinio įrašus (nuskenuotam dokumentui pirmiau reikia Atpažinti tekstą), suranda kiekvieno įrašo puslapį ir uždeda ant kiekvieno įrašo nuorodą bei žymelę.
+	Table of contents on pages	Turinys puslapiuose
+	The book's page 1 is page	Knygos 1 puslapis yra puslapis
+	Links over the entries	Nuorodos ant įrašų
+	Read again	Perskaityti iš naujo
+	No entries found on these pages.	Šiuose puslapiuose įrašų nerasta.
+	not found	nerasta
+	{placed} of {n} entries have a page.	{placed} iš {n} įrašų turi puslapį.
+	Linked {n} entries of the table of contents.	Nuorodomis paversta turinio įrašų: {n}.
+	Licensed to {name}	Licencija suteikta: {name}
+	personal, non-transferable use	asmeniniam naudojimui, neperleidžiama
+	issued on {date}	išduota {date}
+	This document was issued exclusively for {name}.	Šis dokumentas išduotas išskirtinai {name}.
+	This document is material of {issuer}, issued exclusively for {name}.	Šis dokumentas yra {issuer} medžiaga, išduota išskirtinai {name}.
+	This document, {title}, was issued exclusively for {name}.	Šis dokumentas, {title}, išduotas išskirtinai {name}.
+	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Šis dokumentas, {title}, yra {issuer} medžiaga, išduota išskirtinai {name}.
+	The licence is personal and non-transferable. Printing for one's own use is permitted.	Licencija yra asmeninė ir neperleidžiama. Leidžiama spausdinti asmeniniam naudojimui.
+	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	Draudžiama šį dokumentą visą ar jo dalį bet kokiomis priemonėmis atgaminti, dalytis juo, platinti, skelbti ar perduoti kitiems, taip pat visą ar jo dalį įkelti į dirbtinio intelekto įrankius.
+	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Kiekvienoje kopijoje yra matomas ir nematomas licencijos turėtojo identifikatorius, leidžiantis atsekti jos kilmę.
+	Infringement is subject to the penalties of copyright law, without prejudice to other measures.	Už pažeidimą taikomos autorių teisių įstatymo numatytos sankcijos, nepažeidžiant kitų priemonių.
+	Issued on {date}. Code {code}.	Išduota {date}. Kodas {code}.
+	Licence	Naudojimo licencija
+	A new version is available ({v}).	Yra nauja versija ({v}).
+	Update now downloads it and swaps the program in place; your settings stay.	Atnaujinti dabar ją atsisiunčia ir pakeičia programą vietoje; jūsų nustatymai lieka.
+	Downloading the new version… {mb} MB	Atsisiunčiama nauja versija… {mb} MB
+	The new version is ready. PdfCraft will close and open again as the new version.	Nauja versija paruošta. „PdfCraft“ užsidarys ir vėl atsidarys jau kaip nauja versija.
+	Couldn't update: {e}	Nepavyko atnaujinti: {e}
+	Restart now	Paleisti iš naujo dabar
+	Update now	Atnaujinti dabar
+	Release page	Versijos puslapis
+	save or close your documents first	pirmiau įrašykite arba užverkite dokumentus
+	New password	Naujas slaptažodis
+	Trust the ICP-Brasil root certificates	Pasitikėti ICP-Brasil šakniniais sertifikatais
+	Signatures made with Brazilian e-CPF and e-CNPJ certificates then validate without adding each authority by hand.	Parašai, sukurti Brazilijos e-CPF ir e-CNPJ sertifikatais, tada patvirtinami nepridedant kiekvienos įstaigos rankiniu būdu.
+	Get updates	Atnaujinti
+	Marks	Žymos
+	Header line	Eilutė antraštėje
+	Footer line	Eilutė poraštėje
+	Name across the page	Vardas įstrižai
+	Allow printing	Leisti spausdinti
+	Choose at least one mark.	Pasirinkite bent vieną žymą.
+	The licence is personal and non-transferable. Printing is not permitted.	Licencija yra asmeninė ir neperduodama. Spausdinti neleidžiama.
+	A licensed copy for one person: their name on the pages, an invisible code, a licence page at the end, and protection against copying and changes.	Licencijuota kopija vienam asmeniui: jo vardas puslapiuose, nematomas kodas, licencijos puslapis pabaigoje ir apsauga nuo kopijavimo bei pakeitimų.
