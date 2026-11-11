@@ -241,6 +241,17 @@ impl Session {
         !self.builtin_roots_off
     }
 
+    /// Whether a signed document refuses every edit, leaving only further signatures.
+    pub fn lock_signed(&self) -> bool {
+        self.lock_signed
+    }
+
+    /// Lock signed documents against edits or not. Signing itself is never an edit, so a locked
+    /// document still takes more signatures and document timestamps.
+    pub fn set_lock_signed(&mut self, on: bool) {
+        self.lock_signed = on;
+    }
+
     /// Trust the built-in roots or not, revalidating every open document.
     pub fn set_builtin_roots(&mut self, on: bool) {
         if self.builtin_roots_off == !on {

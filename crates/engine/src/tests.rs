@@ -4700,6 +4700,41 @@ fn built_in_roots_stay_out_of_the_users_list_and_turn_off_without_losing_it() {
     assert_eq!(s.trust.certs.len(), sign::roots::builtin().len(), "validation reads the built-in roots");
 }
 
+/// With the lock on, a signed document takes no edit at all, yet still takes a second
+/// signature; the first signature carries the lock in the file (certification level 2), under
+/// which the second one is a permitted change and both stay valid.
+#[test]
+fn a_locked_signed_document_takes_only_further_signatures() {
+    let p12 = std::fs::read(concat!(env!("CARGO_MANIFEST_DIR"), "/../sign/tests/data/ec-p256.p12")).unwrap();
+    let digital_id = sign::pkcs12::open(&p12, "test").unwrap();
+    let mut s = Session::new().with_clock(|| 1_800_000_000);
+    assert!(!s.lock_signed(), "off unless the application asks for it");
+    s.set_lock_signed(true);
+    s.set_trusted_certificates(vec![digital_id.certificate.clone()]);
+    let id = s.open("fixture.pdf", None, Arc::new(fixture(2)), None).unwrap();
+    // Unsigned: edits go through.
+    s.apply(id, rect_comment(0, [10.0, 10.0, 40.0, 40.0])).unwrap();
+    let saved = s.save_bytes(id).unwrap();
+    s.mark_saved(id, saved, None).unwrap();
+    let first = SignOptions { page: 0, rect: Some([20.0, 20.0, 180.0, 60.0]), certify: Some(2), ..SignOptions::default() };
+    let signed = s.sign(id, &digital_id, first).unwrap();
+    s.mark_signed(id, signed, None).unwrap();
+    assert_eq!(s.get(id).unwrap().signatures[0].certify, Some(2));
+    // Signed: every edit is refused and nothing changes.
+    assert_eq!(s.apply(id, rect_comment(0, [80.0, 80.0, 120.0, 120.0])), Err(EditError::SignedLocked));
+    assert_eq!(s.apply(id, Edit::RotatePages { pages: vec![0], degrees: 90 }), Err(EditError::SignedLocked));
+    assert!(!s.get(id).unwrap().dirty);
+    // A second signature is still welcome, and neither breaks the other.
+    let second = SignOptions { page: 1, rect: Some([20.0, 20.0, 180.0, 60.0]), ..SignOptions::default() };
+    let signed = s.sign(id, &digital_id, second).unwrap();
+    s.mark_signed(id, signed, None).unwrap();
+    let sigs: Vec<_> = s.get(id).unwrap().signatures.iter().filter(|g| g.signed).map(|g| g.status).collect();
+    assert_eq!(sigs, vec![SignatureStatus::Valid, SignatureStatus::Valid]);
+    // Without the lock the old behaviour stands (a comment is a recorded, later change).
+    s.set_lock_signed(false);
+    assert!(s.apply(id, Edit::Sanitize).is_err());
+}
+
 #[test]
 fn signing_saving_trusting_and_commenting_afterwards() {
     let p12 = std::fs::read(concat!(env!("CARGO_MANIFEST_DIR"), "/../sign/tests/data/ec-p256.p12")).unwrap();

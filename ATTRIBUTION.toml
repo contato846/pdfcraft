@@ -3484,7 +3484,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Read before the craft-i18n catalogs by crates/ui-egui/src/i18n.rs (HOUSE_FILES)"
-sha256 = "468ceb051a1583a885f7911b47acc3a97644b69361f85158f7fed58e0fb3fd3f"
+sha256 = "89b1ea9918bcd755ca75736dbf8ef61fdf9cbd01d0efabfc5869619519d9f74a"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/house/ro.tsv"
@@ -3661,6 +3661,17 @@ licence_file = "crates/sign/roots/icp-brasil/README.md"
 kind = "data"
 usage = "Embedded by crates/sign/src/roots.rs as a built-in trusted root (Preferences can turn the ICP-Brasil roots off)"
 sha256 = "ce6c66c73e41b12881ea8a9b8cb7efef9a482ea012c3cd3b843667e37a7a145c"
+
+[[asset]]
+path = "crates/sign/roots/icp-brasil/intermediates.pem"
+title = "ICP-Brasil intermediate certification authorities (173 certificates)"
+author = "Instituto Nacional de Tecnologia da Informação (ITI) and the authorities it accredits"
+source = "https://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip (public certificates, published for distribution)"
+licence = "LicenseRef-Public-Domain"
+licence_file = "crates/sign/roots/icp-brasil/README.md"
+kind = "data"
+usage = "Embedded by crates/sign/src/roots.rs to complete a signer's chain up to a built-in root; never trusted by themselves"
+sha256 = "e0b43925ee4c1c19364e619455e7aaf58e2eb3f66899a1b8cc7d2e23363f8cb4"
 
 [[asset]]
 path = "crates/sign/tests/data/icp-brasil/ac-safeweb-rfb-v5.pem"

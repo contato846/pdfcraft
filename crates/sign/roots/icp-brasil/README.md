@@ -13,6 +13,14 @@ signatures made with e-CPF and e-CNPJ certificates validate (`crates/sign/src/ro
 | ICP-Brasilv11.crt | Autoridade Certificadora Raiz Brasileira v11 | 14:06:71:00:58:18:0F:A4:08:1A:AB:3F:24:6F:17:02:42:9C:55:2A:11:FA:31:43:B8:4C:88:CB:3A:B8:E5:E7 |
 | ICP-Brasilv12.crt | Autoridade Certificadora Raiz Brasileira v12 | D8:47:8E:37:CE:19:C6:90:CF:65:73:81:E6:8F:E6:00:E4:E1:A0:42:53:68:30:F0:68:47:E0:3E:55:4C:4B:01 |
 
+`intermediates.pem` holds the intermediate certification authorities ITI publishes at
+https://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip
+(downloaded 2026-11-11, archive SHA-256
+8617ea8c102c7c8e21f08e28b4ff836a4dbcdaa46fcb097c814c779c1833d910): every certificate of the
+archive that is not self-signed and chains to one of the roots above, re-encoded as PEM and
+concatenated in file-name order (173 certificates). They are not trust anchors: they only
+complete the chain of a signature that embeds the signer's certificate without its issuers.
+
 The test data in `crates/sign/tests/data/icp-brasil/` are two public intermediate authorities
 (AC SAFEWEB RFB v5 and AC Secretaria da Receita Federal do Brasil v4), as any e-CNPJ signature
 embeds them. Certificates are public data with no copyright claim; they carry no licence.

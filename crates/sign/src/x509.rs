@@ -21,6 +21,20 @@ pub struct Name {
 }
 
 impl Name {
+    /// Whether the two names are the same name (RFC 5280 §7.1): the same encoding, or the same
+    /// attributes in the same order once the string type, letter case and spacing are set
+    /// aside. An authority may write its own name as UTF8String while the certificate above
+    /// it was issued with PrintableString; byte comparison alone would break that chain.
+    pub fn same_as(&self, other: &Name) -> bool {
+        fn canonical(s: &str) -> String {
+            s.split_whitespace().collect::<Vec<_>>().join(" ").to_lowercase()
+        }
+        self.raw == other.raw
+            || (!self.attrs.is_empty()
+                && self.attrs.len() == other.attrs.len()
+                && self.attrs.iter().zip(&other.attrs).all(|((ao, av), (bo, bv))| ao == bo && canonical(av) == canonical(bv)))
+    }
+
     fn parse(t: &Tlv<'_>) -> Result<Name, SignError> {
         let mut attrs = Vec::new();
         for rdn in t.expect(tag::SEQUENCE, "Name")?.children()? {
@@ -533,7 +547,7 @@ pub fn build_chain_noted<'a>(leaf: &'a Certificate, pool: &'a [Certificate], at:
         // CA certificates between `last` and the leaf: what a candidate's pathLenConstraint limits.
         let below = chain.len() - 1;
         let mut found = None;
-        for c in pool.iter().filter(|c| c.subject.raw == last.issuer.raw && !chain.contains(c) && last.signed_by(&c.public_key)) {
+        for c in pool.iter().filter(|c| c.subject.same_as(&last.issuer) && !chain.contains(c) && last.signed_by(&c.public_key)) {
             // Each reason is a whole sentence, not a phrase stitched into one: a language puts the
             // two names where it needs them.
             let why = if !c.may_issue() {

@@ -796,6 +796,12 @@ fn card_fill_and_sign(ui: &mut egui::Ui, app: &mut PdfCraftApp, t: &Tokens, ctx:
     ctx.checkbox(ui, &mut app.flatten_fill_sign_on_save, tl!("Flatten Fill & Sign when saving"), t);
     ctx.label_secondary(ui, tl!("Text, marks and signatures become part of the page. Other comments stay editable."), t);
     ui.add_space(8.0);
+    let mut lock = app.session.lock_signed();
+    if ctx.checkbox(ui, &mut lock, tl!("Lock a document once it is signed"), t).changed() {
+        app.session.set_lock_signed(lock);
+    }
+    ctx.label_secondary(ui, tl!("A signed document accepts nothing but new signatures. The first signature also records the lock in the file."), t);
+    ui.add_space(8.0);
     let mut roots = app.session.builtin_roots();
     if ctx.checkbox(ui, &mut roots, tl!("Trust the ICP-Brasil root certificates"), t).changed() {
         app.session.set_builtin_roots(roots);

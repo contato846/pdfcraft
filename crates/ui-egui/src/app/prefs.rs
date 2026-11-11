@@ -147,6 +147,7 @@ impl PdfCraftApp {
             "ocr": self.ocr_draft.to_pref(),
         });
         v["trust_builtin_roots"] = serde_json::json!(self.session.builtin_roots());
+        v["lock_signed"] = serde_json::json!(self.session.lock_signed());
         v["bar_items"] = serde_json::json!(self.bar_items);
         v["assistant"] = self.assistant.settings.to_json();
         // Set apart: one more key inside the macro above passes serde_json's recursion limit.
@@ -456,6 +457,9 @@ impl PdfCraftApp {
         self.custom_actions = actions_ui::decode(&v["actions"]);
         if let Some(on) = v["javascript"].as_bool() {
             self.session.set_javascript(on);
+        }
+        if let Some(on) = v["lock_signed"].as_bool() {
+            self.session.set_lock_signed(on);
         }
         if let Some(on) = v["trust_builtin_roots"].as_bool() {
             self.session.set_builtin_roots(on);

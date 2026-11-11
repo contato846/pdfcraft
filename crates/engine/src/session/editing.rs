@@ -23,6 +23,7 @@ impl Session {
         let now = self.now();
         let today = self.today();
         let js_off = self.js_off;
+        let lock_signed = self.lock_signed;
         let xfa_time_scale = self.xfa_time_scale.unwrap_or(1);
         let doc = self.doc_mut(id)?;
         doc.edit_notices.clear();
@@ -38,6 +39,11 @@ impl Session {
         cx.today = today;
         let reason = doc.read_only_reason.clone().unwrap_or_default();
         let signed = doc.is_signed();
+        // A signed contract stays as it was signed: nothing but more signatures, which do not
+        // come through here.
+        if signed && lock_signed {
+            return Err(EditError::SignedLocked);
+        }
         let editor = doc.editor.as_mut().ok_or(EditError::ReadOnly(reason))?;
         if let Some(p) = editor.cos.permissions() {
             check_permission(&edit, &p)?;

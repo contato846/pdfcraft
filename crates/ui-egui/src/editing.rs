@@ -255,6 +255,10 @@ impl PdfCraftApp {
                         view.pending_text_open = None;
                     }
                 }
+                if matches!(e, pdfcraft_engine::EditError::SignedLocked) {
+                    self.notify_tr("This document is signed, so it is locked: only new signatures can be added.");
+                    return false;
+                }
                 let message = if matches!(edit, Edit::MoveObjects { .. }) { crate::object_ui::move_error(&e) } else { e.to_string() };
                 self.notify_fmt("{label} failed: {e}", &[("label", &crate::i18n::edit_label(&label)), ("e", &message)]);
                 false
@@ -832,6 +836,10 @@ impl PdfCraftApp {
     /// Returns false when the document is not allowed to change (nothing is written).
     fn flatten_fill_sign_for_save(&mut self, id: pdfcraft_engine::DocId) -> bool {
         if !self.flatten_fill_sign_on_save {
+            return true;
+        }
+        // A locked signed document is saved as it stands: baking would be an edit.
+        if self.session.lock_signed() && self.session.get(id).is_some_and(|d| d.is_signed()) {
             return true;
         }
         let before = self.session.get(id).map(|d| d.edit_generation());

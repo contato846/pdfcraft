@@ -155,8 +155,9 @@ fn sign_inner(
     let mut doc = doc.clone();
     let root = doc.root().ok_or_else(|| SignError::Pdf("the document has no catalog".into()))?;
     let alg = id.key.preferred_digest();
-    let reserve =
-        8192 + id.certificate.raw.len() + id.chain.iter().map(|c| c.raw.len()).sum::<usize>() + if tsa.is_some() { TOKEN_RESERVE } else { 0 };
+    // The issuers to embed: the identity's own, completed from the built-in authorities.
+    let chain = crate::roots::complete_chain(&id.certificate, &id.chain);
+    let reserve = 8192 + id.certificate.raw.len() + chain.iter().map(|c| c.raw.len()).sum::<usize>() + if tsa.is_some() { TOKEN_RESERVE } else { 0 };
     let name = id.certificate.display_name();
     // The signature dictionary.
     let mut v = Dict::new();
@@ -316,7 +317,7 @@ fn sign_inner(
     br_text.resize(width, b' ');
     out[br_at..br_at + width].copy_from_slice(&br_text);
     let digest = alg.digest(&[&out[..start], &out[end..]]);
-    let base = crate::cms::sign_detached(&id.key, &id.certificate, &id.chain, alg, &digest)?;
+    let base = crate::cms::sign_detached(&id.key, &id.certificate, &chain, alg, &digest)?;
     let cms = match tsa {
         None => base,
         Some(t) => {

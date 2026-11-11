@@ -428,6 +428,11 @@ fn sign_as(ui: &mut egui::Ui, app: &mut PdfCraftApp, t: &Tokens) -> bool {
             d.certify = Some(p);
             ui.end_row();
         }
+        if let Some(lock) = &mut d.lock {
+            ui.label("");
+            ui.add(crate::widgets::checkbox(lock, tl!("Lock the document after signing (only new signatures allowed)")));
+            ui.end_row();
+        }
         let l = ui.label(tl!("Reason"));
         ui.add(crate::widgets::line(&mut d.reason).hint_text(tl!("Optional")).desired_width(260.0)).labelled_by(l.id);
         ui.end_row();

@@ -4,7 +4,7 @@
 
 Every asset PdfCraft includes, bundles or uses to build its published material, with its author, source and licence. The policy is in [AGENTS.md](AGENTS.md) §1. The machine-readable list, with the SHA-256 of every asset, is [ATTRIBUTION.toml](ATTRIBUTION.toml). Licence texts are kept beside the assets and summarised in [NOTICE](NOTICE).
 
-## In this repository (299)
+## In this repository (300)
 
 | Asset | Title | Author | Licence | Source | Used for |
 |---|---|---|---|---|---|
@@ -305,6 +305,7 @@ Every asset PdfCraft includes, bundles or uses to build its published material, 
 | `crates/sign/roots/icp-brasil/ICP-Brasilv10.crt` | ICP-Brasil root certificate: Autoridade Certificadora Raiz Brasileira v10 | Instituto Nacional de Tecnologia da Informação (ITI), the ICP-Brasil root authority | LicenseRef-Public-Domain | https://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ (public trust anchors, published for distribution) | Embedded by crates/sign/src/roots.rs as a built-in trusted root (Preferences can turn the ICP-Brasil roots off) |
 | `crates/sign/roots/icp-brasil/ICP-Brasilv11.crt` | ICP-Brasil root certificate: Autoridade Certificadora Raiz Brasileira v11 | Instituto Nacional de Tecnologia da Informação (ITI), the ICP-Brasil root authority | LicenseRef-Public-Domain | https://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ (public trust anchors, published for distribution) | Embedded by crates/sign/src/roots.rs as a built-in trusted root (Preferences can turn the ICP-Brasil roots off) |
 | `crates/sign/roots/icp-brasil/ICP-Brasilv12.crt` | ICP-Brasil root certificate: Autoridade Certificadora Raiz Brasileira v12 | Instituto Nacional de Tecnologia da Informação (ITI), the ICP-Brasil root authority | LicenseRef-Public-Domain | https://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ (public trust anchors, published for distribution) | Embedded by crates/sign/src/roots.rs as a built-in trusted root (Preferences can turn the ICP-Brasil roots off) |
+| `crates/sign/roots/icp-brasil/intermediates.pem` | ICP-Brasil intermediate certification authorities (173 certificates) | Instituto Nacional de Tecnologia da Informação (ITI) and the authorities it accredits | LicenseRef-Public-Domain | https://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip (public certificates, published for distribution) | Embedded by crates/sign/src/roots.rs to complete a signer's chain up to a built-in root; never trusted by themselves |
 | `crates/sign/tests/data/icp-brasil/ac-safeweb-rfb-v5.pem` | ICP-Brasil intermediate certificate: AC SAFEWEB RFB v5 | Instituto Nacional de Tecnologia da Informação (ITI), the ICP-Brasil root authority | LicenseRef-Public-Domain | https://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ (public trust anchors, published for distribution) | Test data: crates/sign/src/roots.rs checks it chains to a built-in root |
 | `crates/sign/tests/data/icp-brasil/ac-srf-v4.pem` | ICP-Brasil intermediate certificate: AC Secretaria da Receita Federal do Brasil v4 | Instituto Nacional de Tecnologia da Informação (ITI), the ICP-Brasil root authority | LicenseRef-Public-Domain | https://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ (public trust anchors, published for distribution) | Test data: crates/sign/src/roots.rs checks it chains to a built-in root |
 

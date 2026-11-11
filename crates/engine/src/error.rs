@@ -67,6 +67,8 @@ pub enum EditError {
     Cancelled,
     #[error("{0} isn't possible in a signed document: it would rewrite the file and invalidate the signatures")]
     SignedRewrite(String),
+    #[error("this document is signed and locked: only further signatures can be added")]
+    SignedLocked,
     #[error("this document is signed: rewriting it would invalidate its signatures (save it incrementally instead)")]
     Signed,
     #[error("{0}")]

@@ -42,6 +42,9 @@ pub struct Session {
     pub(crate) user_trust: Vec<pdfcraft_sign::Certificate>,
     /// Preferences ▸ Signatures ▸ trust the built-in roots, inverted (on by default).
     pub(crate) builtin_roots_off: bool,
+    /// A signed document takes no edit but further signatures (off by default; the desktop
+    /// application turns it on from its preferences).
+    pub(crate) lock_signed: bool,
     /// Preferences ▸ JavaScript ▸ Enable Acrobat JavaScript, inverted (on by default).
     pub(crate) js_off: bool,
     /// Preferences ▸ Date format, when not the default (see [`dates`]).

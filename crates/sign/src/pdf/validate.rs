@@ -224,9 +224,21 @@ fn finish_validation(context: SignatureValidation<'_>, verified: VerifiedSignatu
     pool.extend(trust.certs.iter().cloned());
     // The time the chain is judged at: trusted timestamp, else the signer's claimed time.
     let at = info.timestamp_time.or(info.signing_time);
-    let (chain, refused) = build_chain_noted(&cert, &pool, at);
-    let chain: Vec<Certificate> = chain.into_iter().cloned().collect();
-    let trusted = chain.iter().any(|c| trust.trusts(c));
+    let (chain, mut refused) = build_chain_noted(&cert, &pool, at);
+    let mut chain: Vec<Certificate> = chain.into_iter().cloned().collect();
+    let mut trusted = chain.iter().any(|c| trust.trusts(c));
+    if !trusted {
+        // The signature may embed the signer's certificate without its issuers. The built-in
+        // intermediate authorities can supply them; they vouch for nothing by themselves, so
+        // the longer chain is kept only when it reaches a certificate the trust store holds.
+        pool.extend(crate::roots::intermediates().iter().cloned());
+        let (longer, why) = build_chain_noted(&cert, &pool, at);
+        if longer.iter().any(|c| trust.trusts(c)) {
+            chain = longer.into_iter().cloned().collect();
+            trusted = true;
+            refused = why;
+        }
+    }
     info.chain = chain;
     info.certificate = Some(cert.clone());
     if let Some(why) = refused

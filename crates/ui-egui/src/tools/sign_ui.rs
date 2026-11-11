@@ -113,6 +113,10 @@ pub struct SignDraft {
     pub field: Option<String>,
     /// Certify (DocMDP) with these permissions: 1 none, 2 form fill and signing, 3 also comments.
     pub certify: Option<u8>,
+    /// Lock the document with this signature, leaving only further signatures (and form
+    /// fill-in) permitted. `None`: not offered, because the document is already signed or the
+    /// signature certifies with permissions of its own. The lock is the certification level 2.
+    pub lock: Option<bool>,
     pub step: SignStep,
     pub selected: Option<usize>,
     pub password: String,
@@ -137,6 +141,7 @@ impl SignDraft {
             rect,
             field,
             certify,
+            lock: None,
             step: if ids.is_empty() { SignStep::Configure } else { SignStep::Choose },
             selected: ids.iter().position(|e| e.unusable.is_none()),
             password: String::new(),
@@ -293,6 +298,9 @@ impl PdfCraftApp {
     pub fn start_signing(&mut self, page: usize, rect: Option<[f64; 4]>, field: Option<String>, certify: Option<u8>) {
         self.refresh_os_key_store_ids();
         let mut draft = SignDraft::new(page, rect, field, certify, &self.digital_ids);
+        // The first signature can carry the lock into the file, for every other program too.
+        let unsigned = self.active_ids().and_then(|(_, id)| self.session.get(id)).is_some_and(|d| !d.is_signed());
+        draft.lock = (certify.is_none() && unsigned).then(|| self.session.lock_signed());
         draft.graphic = match &self.sign_graphic {
             SignGraphic::FillSign if self.signature.is_none() => SignGraphic::Name,
             g => g.clone(),
@@ -457,7 +465,7 @@ impl PdfCraftApp {
             rect: d.rect,
             reason: some(&d.reason),
             location: some(&d.location),
-            certify: d.certify,
+            certify: d.certify.or((d.lock == Some(true)).then_some(2)),
             appearance: d.appearance.clone(),
             // The labels the preview shows: in the interface language, or all in English.
             appearance_labels: appearance_labels(crate::i18n::current()).0,

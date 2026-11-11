@@ -139,3 +139,7 @@
 	You have version {c}. All versions are on the release page.	Você tem a versão {c}. Todas as versões ficam na página de versões.
 	Looks for a new version when PdfCraft starts. Nothing is downloaded until you choose Update now.	Procura uma versão nova quando o PdfCraft abre. Nada é baixado até você escolher Atualizar agora.
 	Looks for the latest version. Nothing is downloaded or installed automatically.	Procura a versão mais recente. Nada é baixado nem instalado automaticamente.
+	Lock the document after signing (only new signatures allowed)	Travar o documento após assinar (só novas assinaturas são permitidas)
+	Lock a document once it is signed	Travar o documento depois de assinado
+	A signed document accepts nothing but new signatures. The first signature also records the lock in the file.	Um documento assinado não aceita nada além de novas assinaturas. A primeira assinatura também grava a trava no arquivo.
+	This document is signed, so it is locked: only new signatures can be added.	Este documento está assinado e, por isso, travado: só é possível acrescentar novas assinaturas.
