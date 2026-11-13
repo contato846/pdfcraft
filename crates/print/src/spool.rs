@@ -3,8 +3,22 @@
 
 pub use craft_print::{
     Duplex, HANDLED_OPTIONS, HAS_PRINTER_PREFERENCES, Job, Printer, PrinterOption, Scaling, lp_args, lpstat_command, parse_lpoptions, parse_lpstat,
-    parse_lpstat_e, parse_ppd, parse_windows_printers, ppd_text, printers, printers_parsed,
+    parse_lpstat_e, parse_ppd, parse_windows_printers, ppd_text, printers_parsed,
 };
+
+/// The printers the system knows. On Windows the list does not wait for every driver to say
+/// what it can do (`quick_list`): a network printer out of reach used to keep the whole list
+/// from appearing.
+pub fn printers() -> Vec<Printer> {
+    #[cfg(windows)]
+    {
+        crate::quick_list::printers()
+    }
+    #[cfg(not(windows))]
+    {
+        craft_print::printers()
+    }
+}
 
 /// The driver's job options for a printer (CUPS: its PPD, with the queue's current defaults);
 /// empty when it has none or on other platforms. Reads files and runs `lpoptions`, so call it

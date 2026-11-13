@@ -20,6 +20,8 @@
 use pdfcraft_content::Matrix;
 use pdfcraft_cos::{DecodeBudget, Dict, Document, ObjRef, Object, SaveOptions, Stream, write_full};
 
+#[cfg(any(windows, test))]
+mod quick_list;
 pub mod range;
 pub mod spool;
 #[cfg(test)]

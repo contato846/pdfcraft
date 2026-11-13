@@ -15,5 +15,11 @@ pdfcraft-content = { workspace = true }
 pdfcraft-model = { workspace = true }
 thiserror = { workspace = true }
 
+# The Windows printer list, read without waiting on every driver (src/quick_list.rs): the same
+# wrappers, at the same versions, that craft-print uses for the spooler.
+[target.'cfg(windows)'.dependencies]
+winprint = { git = "https://github.com/storytold/winprint.rs", rev = "5f80b9baf6b58937c401656634e42d33f00ddf49", default-features = false }
+winsafe = { version = "0.0.29", default-features = false, features = ["winspool"] }
+
 [dev-dependencies]
 pdfcraft-render = { workspace = true }
