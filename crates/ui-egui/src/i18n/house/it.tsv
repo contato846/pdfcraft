@@ -99,9 +99,8 @@
 	personal, non-transferable use	uso personale e non trasferibile
 	issued on {date}	emesso il {date}
 	This document was issued exclusively for {name}.	Questo documento è stato emesso esclusivamente per {name}.
-	This document is material of {issuer}, issued exclusively for {name}.	Questo documento è materiale di {issuer}, emesso esclusivamente per {name}.
+	Issuer: {issuer}.	Emittente: {issuer}.
 	This document, {title}, was issued exclusively for {name}.	Questo documento, {title}, è stato emesso esclusivamente per {name}.
-	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Questo documento, {title}, è materiale di {issuer}, emesso esclusivamente per {name}.
 	The licence is personal and non-transferable. Printing for one's own use is permitted.	La licenza è personale e non trasferibile. È consentita la stampa per uso proprio.
 	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	È vietato riprodurre, condividere, distribuire, pubblicare o cedere a terzi questo documento, in tutto o in parte, con qualsiasi mezzo, e caricarlo, in tutto o in parte, in strumenti di intelligenza artificiale.
 	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Ogni copia contiene un'identificazione visibile e invisibile del licenziatario che ne consente di risalire all'origine.

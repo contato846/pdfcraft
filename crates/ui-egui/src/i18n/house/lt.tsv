@@ -99,9 +99,8 @@
 	personal, non-transferable use	asmeniniam naudojimui, neperleidžiama
 	issued on {date}	išduota {date}
 	This document was issued exclusively for {name}.	Šis dokumentas išduotas išskirtinai {name}.
-	This document is material of {issuer}, issued exclusively for {name}.	Šis dokumentas yra {issuer} medžiaga, išduota išskirtinai {name}.
+	Issuer: {issuer}.	Išdavėjas: {issuer}.
 	This document, {title}, was issued exclusively for {name}.	Šis dokumentas, {title}, išduotas išskirtinai {name}.
-	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Šis dokumentas, {title}, yra {issuer} medžiaga, išduota išskirtinai {name}.
 	The licence is personal and non-transferable. Printing for one's own use is permitted.	Licencija yra asmeninė ir neperleidžiama. Leidžiama spausdinti asmeniniam naudojimui.
 	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	Draudžiama šį dokumentą visą ar jo dalį bet kokiomis priemonėmis atgaminti, dalytis juo, platinti, skelbti ar perduoti kitiems, taip pat visą ar jo dalį įkelti į dirbtinio intelekto įrankius.
 	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Kiekvienoje kopijoje yra matomas ir nematomas licencijos turėtojo identifikatorius, leidžiantis atsekti jos kilmę.

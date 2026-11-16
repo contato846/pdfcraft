@@ -214,23 +214,17 @@ impl DrmDraft {
     /// The licence page's paragraphs.
     pub fn licence(&self) -> Vec<String> {
         let title = format!("“{}”", self.title.trim());
-        let first = if self.title.trim().is_empty() {
-            if self.issuer.trim().is_empty() {
-                crate::i18n::fmt(doc_tl("This document was issued exclusively for {name}."), &[("name", self.name.trim())])
-            } else {
-                crate::i18n::fmt(
-                    doc_tl("This document is material of {issuer}, issued exclusively for {name}."),
-                    &[("issuer", self.issuer.trim()), ("name", self.name.trim())],
-                )
-            }
-        } else if self.issuer.trim().is_empty() {
-            crate::i18n::fmt(doc_tl("This document, {title}, was issued exclusively for {name}."), &[("title", &title), ("name", self.name.trim())])
+        let mut first = if self.title.trim().is_empty() {
+            crate::i18n::fmt(doc_tl("This document was issued exclusively for {name}."), &[("name", self.name.trim())])
         } else {
-            crate::i18n::fmt(
-                doc_tl("This document, {title}, is material of {issuer}, issued exclusively for {name}."),
-                &[("title", &title), ("issuer", self.issuer.trim()), ("name", self.name.trim())],
-            )
+            crate::i18n::fmt(doc_tl("This document, {title}, was issued exclusively for {name}."), &[("title", &title), ("name", self.name.trim())])
         };
+        // The issuer stands on a line of its own, as a label: inside the sentence its name would
+        // need an article, and so a gender, in the languages that have one.
+        if !self.issuer.trim().is_empty() {
+            first.push('\n');
+            first.push_str(&crate::i18n::fmt(doc_tl("Issuer: {issuer}."), &[("issuer", self.issuer.trim())]));
+        }
         vec![
             first,
             if self.allow_printing {
@@ -562,6 +556,20 @@ mod tests {
         assert_eq!(clear_offset(Raster { rgba: &vec![0u8; w * h * 4], width: w, height: h, scale: 1.0 }, false, 18.0, line, 66.0), 18.0);
         assert_eq!(clear_offset(Raster { rgba: &[], width: 0, height: 0, scale: 1.0 }, false, 18.0, line, 66.0), 18.0);
         assert_eq!(clear_offset(Raster { rgba: &px, width: w, height: h, scale: f64::NAN }, false, 18.0, line, 66.0), 18.0);
+    }
+
+    /// The issuer is named on a line of its own under the opening sentence, never inside it
+    /// (where its name would need an article); without an issuer the line is not there.
+    #[test]
+    fn the_issuer_is_a_line_of_its_own_in_the_licence() {
+        let mut d = DrmDraft { name: "Ana Souza".into(), title: "Manual".into(), issuer: "Acme".into(), ..DrmDraft::default() };
+        let first = d.licence().remove(0);
+        assert_eq!(first, "This document, “Manual”, was issued exclusively for Ana Souza.\nIssuer: Acme.");
+        d.issuer = "  ".into();
+        assert_eq!(d.licence().remove(0), "This document, “Manual”, was issued exclusively for Ana Souza.");
+        d.title.clear();
+        d.issuer = "Acme".into();
+        assert_eq!(d.licence().remove(0), "This document was issued exclusively for Ana Souza.\nIssuer: Acme.");
     }
 
     #[test]

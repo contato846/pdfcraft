@@ -99,9 +99,8 @@
 	personal, non-transferable use	sử dụng cá nhân, không được chuyển nhượng
 	issued on {date}	cấp ngày {date}
 	This document was issued exclusively for {name}.	Tài liệu này được cấp riêng cho {name}.
-	This document is material of {issuer}, issued exclusively for {name}.	Tài liệu này là tài liệu của {issuer}, được cấp riêng cho {name}.
+	Issuer: {issuer}.	Bên phát hành: {issuer}.
 	This document, {title}, was issued exclusively for {name}.	Tài liệu này, {title}, được cấp riêng cho {name}.
-	This document, {title}, is material of {issuer}, issued exclusively for {name}.	Tài liệu này, {title}, là tài liệu của {issuer}, được cấp riêng cho {name}.
 	The licence is personal and non-transferable. Printing for one's own use is permitted.	Giấy phép mang tính cá nhân và không được chuyển nhượng. Được phép in để sử dụng riêng.
 	It is forbidden to reproduce, share, distribute, publish or hand this document over to others, in whole or in part, by any means, and to upload it, in whole or in part, to artificial intelligence tools.	Nghiêm cấm sao chép, chia sẻ, phân phối, công bố hoặc chuyển giao tài liệu này cho người khác, toàn bộ hay một phần, bằng bất kỳ phương tiện nào, và tải tài liệu, toàn bộ hay một phần, lên các công cụ trí tuệ nhân tạo.
 	Each copy carries a visible and an invisible identification of the licensee that traces its origin.	Mỗi bản sao mang thông tin nhận dạng hiển thị và ẩn của người được cấp phép, cho phép truy nguyên nguồn gốc.

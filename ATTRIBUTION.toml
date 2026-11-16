@@ -3297,7 +3297,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Read before the craft-i18n catalogs by crates/ui-egui/src/i18n.rs (HOUSE_FILES)"
-sha256 = "cf58063b9f78e94d7b5208df3a8324deabcd0ff7605e70df6ea66c269d6dc22d"
+sha256 = "2558ce73ca1e3feb0b3228cd03e29a1c8a7be52ad61f34c5412341112c7b5178"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/house/el.tsv"
@@ -3319,7 +3319,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Read before the craft-i18n catalogs by crates/ui-egui/src/i18n.rs (HOUSE_FILES)"
-sha256 = "34edd2525abe02f96c5c472bae5d6e68d4551e84398a2ba8b2cef5e25a669803"
+sha256 = "b6efad1e6fe8f7184a83bcae830ee86cb67309b0699238b2ef15538fd3fc46ae"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/house/fa.tsv"
@@ -3352,7 +3352,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Read before the craft-i18n catalogs by crates/ui-egui/src/i18n.rs (HOUSE_FILES)"
-sha256 = "4a511f75e93f3f15205d24007693f4f35a75cd539ac9f6af8aa169efc09a80d2"
+sha256 = "89b40cdaa452ad71dd9ff1a3b8593aa044b1eb06037c19aaa3f5613b1ba8e08a"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/house/hi.tsv"
@@ -3396,7 +3396,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Read before the craft-i18n catalogs by crates/ui-egui/src/i18n.rs (HOUSE_FILES)"
-sha256 = "966ba51f7892e17b0de2b77dae85ae8a939868cbbd035452edcfd32f3e432e04"
+sha256 = "ce626ae6fd7944675e45d1b84329d26a7b64f715313ed7b38d1aaa81c01c8285"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/house/ja.tsv"
@@ -3451,7 +3451,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Read before the craft-i18n catalogs by crates/ui-egui/src/i18n.rs (HOUSE_FILES)"
-sha256 = "81eada6c5e223f9887ad0993728a239fdf1c0ce8a44a014d53bcc6bd92112c31"
+sha256 = "8835c56b66ebe15bf61b8b425df84f91161b2e895acc3c4ced80a1ba4c5d6977"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/house/nb.tsv"
@@ -3484,7 +3484,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Read before the craft-i18n catalogs by crates/ui-egui/src/i18n.rs (HOUSE_FILES)"
-sha256 = "89b1ea9918bcd755ca75736dbf8ef61fdf9cbd01d0efabfc5869619519d9f74a"
+sha256 = "5d3d8ca08c38885534a72e1df59881ca56df7e71afd73c7236edbda77e465694"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/house/ro.tsv"
@@ -3583,7 +3583,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Read before the craft-i18n catalogs by crates/ui-egui/src/i18n.rs (HOUSE_FILES)"
-sha256 = "779d797c10f5690adfb4e433c1cf54c326d485e61b74c7671f3318a5931de755"
+sha256 = "900fdb5ee2cc98a88f31104566d2001eb6f7bc60ca243b73a07d4a1832742a2e"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/house/zh-hans.tsv"
