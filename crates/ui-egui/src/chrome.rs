@@ -33,6 +33,9 @@ const STRIP_BUTTON: f32 = 28.0;
 /// reordering, and platform window controls.
 pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
     let t = Tokens::get(ui.ctx());
+    // The command search and the document buttons are this build's toolbar on the top strip: a
+    // document that hides the toolbar (or F8) hides them with it; the tabs and Home stay.
+    let toolbar = !app.hidden_interface().toolbar;
     // macOS: the strip is the 28 pt title bar, so the traffic lights are centred in it; tabs and
     // buttons shrink to keep a margin above and below.
     let mac = cfg!(target_os = "macos") && app.integrated_titlebar;
@@ -72,7 +75,9 @@ pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     app.active = None;
                     app.combine_tab.focused = false;
                 }
-                document_buttons(app, ui, button);
+                if toolbar {
+                    document_buttons(app, ui, button);
+                }
                 // Reserve the three icon buttons, Update, the search and their gaps outside the
                 // scrolling tabs.
                 let update_text = ui.fonts_mut(|f| f.layout_no_wrap(tl!("Get updates").into(), theme::medium(13.0), t.text).size().x);
@@ -295,14 +300,16 @@ pub fn tab_strip(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                     }
                     // Find tools and commands, beside Update: on the top strip it leaves the mode
                     // bar's room to the workspaces.
-                    ui.add_space(6.0);
-                    let search = if roomy {
-                        widgets::search_box(ui, tl!("Find tools and commands"), SEARCH_WIDTH)
-                    } else {
-                        icons::button(ui, "search", button, false, tl!("Find tools and commands"))
-                    };
-                    if search.clicked() {
-                        app.palette_open = true;
+                    if toolbar {
+                        ui.add_space(6.0);
+                        let search = if roomy {
+                            widgets::search_box(ui, tl!("Find tools and commands"), SEARCH_WIDTH)
+                        } else {
+                            icons::button(ui, "search", button, false, tl!("Find tools and commands"))
+                        };
+                        if search.clicked() {
+                            app.palette_open = true;
+                        }
                     }
                 });
             });

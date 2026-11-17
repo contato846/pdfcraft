@@ -5662,6 +5662,7 @@ fn selected_square_under_the_update_prompt() -> Harness<'static, PdfCraftApp> {
     let mut h = harness(move |app| {
         // This build's updater asks at start only in the portable build, which knows its commit.
         app.build_sha = Some("c30002f0aca1ded9067d04ddabe19a777c76ff3a");
+        app.update_installer = Some(Arc::new(|_: &str, _: &mut dyn FnMut(u64)| Ok(())));
         app.update_source = Some(Arc::new(move || {
             // Not forever: a test that fails before the square is selected leaves no thread behind.
             let deadline = std::time::Instant::now() + std::time::Duration::from_secs(60);
