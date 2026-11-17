@@ -10,6 +10,7 @@
 pub mod cms;
 pub mod der;
 pub mod dss;
+#[cfg(test)]
 mod ec512;
 pub mod graphic;
 #[cfg(target_os = "macos")]
@@ -19,7 +20,7 @@ pub mod pdf;
 pub mod pkcs12;
 pub mod revocation;
 pub mod roots;
-mod rsa_pad;
+pub mod status_layers;
 pub mod timestamp;
 #[cfg(target_os = "windows")]
 pub mod windows;
@@ -30,11 +31,22 @@ pub use graphic::Graphic;
 pub use keys::{DigestAlg, PrivateKey, PublicKey};
 pub use pdf::{
     Appearance, AppearanceLabels, Detail, DigestCache, Fill, Modification, SignOptions, SignatureInfo, Status, TrustStore, WORDINGS, Words,
-    in_english, kind, list as signatures, sign, sign_with_timestamp, timestamp_document, validate,
+    has_signatures, in_english, kind, list as signatures, sign, sign_with_timestamp, timestamp_document, validate,
 };
 pub use pkcs12::DigitalId;
+pub use status_layers::{StatusCaptions, has_status_layers, show_status_layers, status_rgb};
 pub use timestamp::{TimestampAuthority, TimestampQuery, TimestampToken};
 pub use x509::{Certificate, Name};
+
+/// Detect the CPU's features for aws-lc now. This build has it do so on first use rather than in
+/// a static initializer before `main` (`.cargo/config.toml`, `pdfcraft_platform::crypto_env`), and
+/// aws-lc-rs asks for it before most operations but not all: an RSA key generation went without,
+/// and ran on aws-lc's portable code. So each executable calls this once at start, after
+/// `crypto_env` has run it again without an `OPENSSL_ia32cap` that would stop it here.
+#[cfg(not(target_arch = "wasm32"))]
+pub fn init_crypto() {
+    aws_lc_rs::init();
+}
 
 #[derive(Debug, thiserror::Error)]
 pub enum SignError {

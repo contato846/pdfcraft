@@ -4,7 +4,7 @@
 //! bookmarks after the existing ones.
 
 use pdfcraft_engine::toc::{TocEntry, TocScan};
-use pdfcraft_engine::{Edit, LinkAction, LinkStyle};
+use pdfcraft_engine::{Edit, LinkAction, LinkStyle, LinkZoom};
 
 use crate::theme::Tokens;
 use crate::{PdfCraftApp, widgets};
@@ -46,7 +46,12 @@ pub fn toc_edit(entries: &[TocEntry], links: bool, bookmarks: bool, top_level: u
     if links {
         for e in &placed {
             if let Some(target) = e.target {
-                edits.push(Edit::AddLink { page: e.page, rect: e.rect, action: LinkAction::Page(target), style: LinkStyle::default() });
+                edits.push(Edit::AddLink {
+                    page: e.page,
+                    rect: e.rect,
+                    action: LinkAction::Page { page: target, zoom: LinkZoom::FitPage },
+                    style: LinkStyle::default(),
+                });
             }
         }
     }

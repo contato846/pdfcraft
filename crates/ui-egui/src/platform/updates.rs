@@ -112,6 +112,15 @@ pub(crate) struct Updates {
 }
 
 impl Updates {
+    /// The Updates dialog is over the window: the pages take no keys meanwhile.
+    pub(crate) fn prompt_open(&self) -> bool {
+        self.open
+    }
+
+    /// The app is closing. Nothing waits for the exit here: an update is applied by its own
+    /// button, which restarts the app itself.
+    pub(crate) fn exiting(&mut self) {}
+
     /// A release of another build, with a download the app can install: what the Update now
     /// button needs.
     fn installable(&self, build_sha: Option<&str>) -> Option<&Release> {
