@@ -213,6 +213,8 @@ pub enum Dialog {
     AuditSpace,
     /// Signatures ▸ Show certificate.
     CertificateViewer,
+    /// Rename… on a document tab.
+    RenameFile,
     /// Pin tools to Home: selection modal.
     PinTool,
 }
